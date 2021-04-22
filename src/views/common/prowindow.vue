@@ -27,6 +27,10 @@
                     </div>
                 </a>
             </div>
+            <div class="zhiya flex ali_center flex_between" v-if="productInfo.catetype == 'FIL'" >
+                <div class="flex ali_center flex_between"><span>FIL质押</span><span>{{productInfo.deposit}}FIL</span></div>
+                <div class="flex ali_center flex_between"><span>GAS手续费</span><span>{{productInfo.productprice}}FIL</span></div>
+            </div>
             <div class="sub_btn flex ali_center flex_between">
                 <div class="left">总价<span>{{all_money}}</span>CNY</div>
                 <div class="right" :class="{on: status}" @click="submit">提交订单</div>
@@ -107,7 +111,7 @@ export default {
             let num = this.num
             let price = this.all_money
             let pid = this.status
-
+            if(!this.status) return Toast('请先选择规格')
             this.$router.push({name: 'orderSubmit', query: {
                 id,
                 num,
@@ -223,6 +227,19 @@ export default {
                     color: #fff;
                 }
             }
+        }
+    }
+    .zhiya{
+        flex-direction: column;
+        background: #eee;
+        border-radius: 10px;
+        font-size: 14px;
+        margin-top: 10px;
+        div{
+            width: 100%;
+            padding: 10px 10px;
+            box-sizing: border-box;
+            color: #333;
         }
     }
     .sub_btn {

@@ -26,7 +26,7 @@
                     <div class="second">
                         <div class="type">预计日收益</div>
                         <div class="num">{{today_bi}} {{catetype}}/台</div>
-                        <div class="num1">≈{{cny}}CNY/台</div>
+                        <div class="num1">≈{{cny}}CNY/{{unit}}</div>
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@
             </div>
             <div class="pro_name">{{title}}</div>
             <div class="price_free flex ali_center flex_between">
-                <div class="price">{{marketprice}}<span>CNY/台</span></div>
+                <div class="price">{{marketprice}}<span>CNY/{{unit}}</span></div>
                 <div class="right">电费: <span> {{fees}}CNY/度</span></div>
             </div>  
             <div class="types flex ali_center">
@@ -181,6 +181,10 @@ export default {
             danwei: "",
             isstatustime: "",
             day: "",
+            unit: "",
+            catetype: "",
+            // deposit:"",     //质押金
+            productprice:"", //手续费
         };
     },
     mounted() {
@@ -209,6 +213,10 @@ export default {
                 title: this.title,
                 suanli: this.t_num,
                 zupin: this.isstatustime == 1 ? this.day : '永久',
+                catetype: this.catetype, 
+                deposit: this.deposit, //质押
+                productprice: this.productprice, //手续费
+
             }
             if(this.catetype == 'BTC'){
                 this.danwei = 'TH/s'

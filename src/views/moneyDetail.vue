@@ -173,7 +173,7 @@ export default {
             if (this.type == 'CNY') {
                 this.$router.push('/recharge/' + this.type);
             } else {
-                this.$router.push('/recharge/' + this.type);
+                this.$router.push('/exchange/' + this.type + '/转入');
             }
         },
     }

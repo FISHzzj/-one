@@ -44,6 +44,10 @@
                 <p>电费金额</p>
                 <span>{{fees/rates}}{{paytype}}</span>
             </div>
+            <div class="item num flex ali_center flex_between" v-if="puprice">
+                <p>质押总价</p>
+                <span>{{puprice}}FIL</span>
+            </div>
             <div class="money">
                 <p>总价 <span>{{realprice/rates}}</span> {{paytype}}</p>
             </div>
@@ -137,6 +141,7 @@ export default {
             ordersn: "",
             paystatus: "", //判断支付
             rates: "",
+            puprice: "",
         };
     },
     
