@@ -210,8 +210,8 @@ export default {
             if(!res) return false
             console.log(res)
             Toast(res.msg)
-             this.dontPay()
-            // this.$router.go(-1)
+            //  this.dontPay()
+            this.$router.go(-1)
         }
     }
 };

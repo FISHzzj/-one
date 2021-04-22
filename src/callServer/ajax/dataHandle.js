@@ -518,7 +518,13 @@ export default {
             msg: message
         }
     },
-
+    userrechargeinfo(data){
+        if ( mistake(data) ) return false
+        let {f_code, accountType, money, ordersn, createtime} = data.result
+        return{
+            f_code, accountType, money, ordersn, createtime
+        }
+    },
 
 
 

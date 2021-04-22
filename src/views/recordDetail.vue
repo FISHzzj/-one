@@ -19,16 +19,16 @@
             </div>
             <div class="item flex ali_center flex_between">
                 <div class="left">充值金额(CNY)</div>
-                <div class="right num">464165561312</div>
+                <div class="right num">{{log.money}}</div>
             </div>
             <div class="item flex ali_center flex_between">
                 <div class="left">实付金额(元)</div>
-                <div class="right num">464165561312</div>
+                <div class="right num">{{log.money}}</div>
             </div>
-            <div class="item flex ali_center flex_between">
+            <!-- <div class="item flex ali_center flex_between">
                 <div class="left">付款方式</div>
-                <div class="right">{{}}</div>
-            </div>
+                <div class="right">{{log.accountType}}</div>
+            </div> -->
             <div class="item flex ali_center flex_between">
                 <div class="left">付款方信息</div>
                 <div class="right">{{sysWallet.realname}}</div>
@@ -62,6 +62,8 @@ export default {
             // this.money = res.money
             this.log = res.log
             this.sysWallet = res.sysWallet
+            console.log(this.log)
+            console.log(this.sysWallet)
         },
     }
 }
