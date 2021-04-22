@@ -19,10 +19,10 @@
                  <span class="copy" :data-clipboard-text="ordersn">复制</span>
                
             </div>
-            <div class="order_id flex ali_center flex_between" v-if="wallet">
+            <!-- <div class="order_id flex ali_center flex_between" v-if="wallet">
                 <div class="">钱包地址：<span>{{wallet}}</span></div>
                  <span class="copy" :data-clipboard-text="wallet">复制</span>
-            </div>
+            </div> -->
             
            
         </div>
@@ -43,6 +43,14 @@
             <div class="item num flex ali_center flex_between">
                 <p>电费金额</p>
                 <span>{{fees/rates}}{{paytype}}</span>
+            </div>
+            <div class="item num flex ali_center flex_between" v-if="puprice">
+                <p>FIL质押</p>
+                <span>{{deposit}}FIL</span>
+            </div>
+            <div class="item num flex ali_center flex_between" v-if="puprice">
+                <p>GAS手续费</p>
+                <span>{{derate}}FIL</span>
             </div>
             <div class="item num flex ali_center flex_between" v-if="puprice">
                 <p>质押总价</p>
@@ -142,6 +150,8 @@ export default {
             paystatus: "", //判断支付
             rates: "",
             puprice: "",
+            deposit: "",
+            derate: "",
         };
     },
     
