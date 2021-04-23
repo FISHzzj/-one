@@ -33,7 +33,7 @@
                         <div class="left">
                             <!-- <div class="type">{{item.title}}</div> -->
                             <img :src="item.thumb" class="pro_img" alt="" />
-                            <div class="num">剩余：<span>{{item.total}}</span>台</div>
+                            <!-- <div class="num">剩余：<span>{{item.total}}</span>台</div> -->
                         </div>
                         <div class="right">
                             <div class="name line">{{item.title}}</div>
