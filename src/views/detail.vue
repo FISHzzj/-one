@@ -81,7 +81,7 @@
                         <td>矿机型号</td>
                         <td>{{title}}</td>
                         <td>产出币种</td>
-                        <td>{{legal_value}}</td>
+                        <td>{{catetype}}</td>
                     </tr>
                     <tr>
                        <td>额定算力</td>
@@ -91,12 +91,12 @@
                     </tr>
                     <tr>
                         <td>预计产出</td>
-                        <td colspan="3">{{today_bi}} {{catetype}}/台≈{{cny}} CNY/台</td>
+                        <td colspan="3">{{today_bi}} {{catetype}}/{{unit}}≈{{cny}} CNY/{{unit}}</td>
          
                     </tr>
                     <tr>
                        <td>服务周期</td>
-                        <td>{{isstatustime == 1 ? day : '永久'}}</td>
+                        <td>{{day > 0 ? day : '永久'}}</td>
                         <td>管理费</td> 
                         <td>$100</td>
                     </tr>
@@ -212,7 +212,7 @@ export default {
                 shopdays: goods.shopdays,
                 title: this.title,
                 suanli: this.t_num,
-                zupin: this.isstatustime == 1 ? this.day : '永久',
+                zupin: this.day > 0 ? this.day : '永久',
                 catetype: this.catetype, 
                 deposit: this.deposit, //质押
                 productprice: this.productprice, //手续费
