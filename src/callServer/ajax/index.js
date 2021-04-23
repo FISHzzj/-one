@@ -39,10 +39,10 @@ export default function (port, data = {}, errCallback) {
         .catch( err => {
             console.warn(err)
             // 對 請求錯誤, 進行統一處理
-            Dialog.alert({
-                title: '服務器錯誤',
-                message: err
-            })
+            // Dialog.alert({
+            //     title: '网络异常,请重新登录',
+            //     message: err
+            // })
         })
         .finally ( () => {
             errCallback && errCallback()

@@ -52,12 +52,13 @@
                 <p>GAS手续费</p>
                 <span>{{derate}}FIL</span>
             </div>
-            <div class="item num flex ali_center flex_between" v-if="puprice">
+            <!-- <div class="item num flex ali_center flex_between" v-if="puprice">
                 <p>质押总价</p>
                 <span>{{puprice}}FIL</span>
-            </div>
+            </div> -->
             <div class="money">
                 <p>总价 <span>{{realprice/rates}}</span> {{paytype}}</p>
+                 <p v-if="puprice">质押总价 <span>{{puprice}}</span> FIL</p>
             </div>
         </div>
         <div class="tips">确定支付后不支持退款,请仔细确定订单信息</div>

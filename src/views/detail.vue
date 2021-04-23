@@ -25,7 +25,7 @@
                     </div>
                     <div class="second">
                         <div class="type">预计日收益</div>
-                        <div class="num">{{today_bi}} {{catetype}}/台</div>
+                        <div class="num">{{today_bi}} {{catetype}}/{{unit}}</div>
                         <div class="num1">≈{{cny}}CNY/{{unit}}</div>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                     <div :style="{width: `${total}`/ `${totalsalesreal}` *100 + '%'}"></div>
                 </div>
                 <div class="num">
-                    剩余：<span>{{total}}</span>台
+                    剩余：<span>{{total}}</span>{{unit}}
                 </div>
             </div>
             <div class="pro_name">{{title}}</div>
