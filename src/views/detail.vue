@@ -96,7 +96,7 @@
                     </tr>
                     <tr>
                        <td>服务周期</td>
-                        <td>{{day > 0 ? day : '永久'}}</td>
+                        <td>{{day > 0 ? day : '永久'}}天</td>
                         <td>管理费</td> 
                         <td>$100</td>
                     </tr>

@@ -8,7 +8,7 @@
             </div>
             <div class="type flex ali_center">
                 <div class="flex ali_center">有效算力<p>{{productInfo.suanli}} <span>TH/台</span></p></div>
-                <div class="flex ali_center">租赁期限<p>{{productInfo.zupin}}</p></div>
+                <div class="flex ali_center">租赁期限<p>{{productInfo.zupin}}天</p></div>
             </div>
             <div class="pro_num flex ali_center flex_between">
                 <div class="left">购买台数</div>
