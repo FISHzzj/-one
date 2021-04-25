@@ -2,9 +2,10 @@
 function mistake (data) {
     // 如果返回的数据, 不是 json
     if ( typeof data !== 'object') {
+        let datajson = JSON.stringify(data)
         Dialog.alert({
             title: '服務器錯誤',
-            message: 'server data type not is JSON'
+            message: datajson
         })
         return true //發生錯誤
     }
