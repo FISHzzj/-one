@@ -205,8 +205,8 @@ export default {
                 pid,
                 fees: this.fees,
                 payType: this.paytype,
-                ordersn: this.ordersn
-
+                ordersn: this.ordersn,
+                sysprice: this.puprice
             })
             if (!res) return false
             Toast(res.msg)

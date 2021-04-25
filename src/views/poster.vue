@@ -68,15 +68,16 @@ export default {
 				position: 'bottom',
 				duration: 0
             })
+            if(!this.img) return Toast('图片正在加载中！')
             let resDownload = await apicloud.download(this.img)
             if (!resDownload.isOk) {
                 toast.clear() //取消加載提示
-                return alert(`downloadErr${resDownload.err}`)
+                // return alert(`downloadErr${resDownload.err}`)
             }
             let resSave = await apicloud.saveToAlbum(resDownload.path)
             if (!resSave.isOk) {
                 toast.clear() //取消加載提示
-                return alert(`saveErr:${resSave.err}`)
+                // return alert(`saveErr:${resSave.err}`)
             }
             toast.clear() //取消加載提示
             // this.longTouch = false //重置回未長按
