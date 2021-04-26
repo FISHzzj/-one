@@ -69,7 +69,7 @@ export default {
         },
         news_detail() {
             this.$router.push({
-                path: "/forget"
+                path: "/content"
             });
         },
         goback() {
