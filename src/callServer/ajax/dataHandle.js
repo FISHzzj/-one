@@ -2,11 +2,11 @@
 function mistake (data) {
     // 如果返回的数据, 不是 json
     if ( typeof data !== 'object') {
-        let datajson = JSON.stringify(data)
-        Dialog.alert({
-            title: '服務器錯誤',
-            message: datajson
-        })
+        // let datajson = JSON.stringify(data)
+        // Dialog.alert({
+        //     title: '服務器錯誤',
+        //     message: datajson
+        // })
         return true //發生錯誤
     }
     if (parseInt(data.status) !== 1) {
@@ -153,8 +153,6 @@ export default {
                 unit,
                 cny,
                 cunit,
-
-                
             })
             
         })
