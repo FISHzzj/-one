@@ -11,7 +11,7 @@
         </swiper>
         <!-- 顶部导航 -->
         <div class="nav flex ali_center flex_around">
-            <div class="item" @click="changenav(item.id, index)" v-for="(item, index) in nav" :key="index" :class="{on: status == item.id}">
+            <div class="item" @click.stop="changenav(item.id, index)" v-for="(item, index) in nav" :key="index" :class="{on: status == item.id}">
                 <img :src="b" alt="" v-if="index == 0">
                 <img :src="e" alt="" v-if="index == 1">
                 <img :src="f" alt="" v-if="index == 2">
@@ -141,7 +141,11 @@ export default {
             this.status = index;
             this.list = []
             this.page = 1
-            this.onLoad()
+             // 防止接口再次调用
+            if (this.loading) {
+                return false;
+            }
+            this.loading = true;
             if(a == 0){
                 this.b = require("@/assets/images/b_1.jpg")
                 // b: require("@/assets/images/b.jpg"),
@@ -159,6 +163,10 @@ export default {
                 this.e = require("@/assets/images/e.jpg")
                 // f: require("@/assets/images/f.jpg"),
             }
+            // if(this.list.length == 0){
+                this.onLoad()
+            // }
+            
         },
         // godetail(id) {
         //     this.$router.push({
