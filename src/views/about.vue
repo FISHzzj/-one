@@ -9,13 +9,13 @@
             <div class="version">V4.3.0</div>
         </div>
         <div class="list">
-            <a href="tel:110" class="item flex flex_between ali_center">
+            <div class="copy item flex flex_between ali_center" :data-clipboard-text="custMobile">
                 <div class="left">客服电话</div>
                 <div class="right flex ali_center">
                     <span>{{custMobile}}</span>
                     <van-icon name="arrow" color="#999" />
                 </div>
-            </a>
+            </div>
             <!-- <div class="copy item flex flex_between ali_center" data-clipboard-text="0000000">
                 <div class="left">微信公众号</div>
                 <div class="right flex ali_center">
@@ -27,7 +27,7 @@
                 <div class="left">添加客服微信号</div>
                 <van-icon name="arrow" color="#999" />
             </div>
-            <div class="item flex flex_between ali_center" @click="$router.push('/content')">
+            <div class="item flex flex_between ali_center" @click="tocontent">
                 <div class="left">服务协议</div>
                 <van-icon name="arrow" color="#999" />
             </div>
@@ -74,6 +74,12 @@ export default {
         },
         closeservice(e) {
             this.showService = false;
+        },
+        tocontent(){
+            this.$router.push({
+                name: 'content',
+                // id:1
+            })
         }
     }
 };

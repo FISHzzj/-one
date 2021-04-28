@@ -43,7 +43,7 @@
         </div>
         <div class="tips">
             <p>温馨提示：</p>
-            <div>转账钱请无比确认地址接比重信息无误，已经转出则不可撤销，USDT充值链名称为ERC20，请仔细核对。</div>
+            <div>转账前请务必确认地址信息无误，已经转出则不可撤销，USDT充值链名称主要分为TRC20和ERC20，充值前请确认公链的名称，一旦充值错误资产不可找回，损失自担。</div>
         </div>
         <div class="submit" :class="{on: num}" @click="submit">确认{{typetype}}</div>
         <van-action-sheet
@@ -174,13 +174,14 @@ export default {
             if (!resDownload.isOk) {
                 toast.clear() //取消加載提示
                 // alert(JSON.stringify(esDownload.err))
-                return alert(`downloadErr${resDownload.err}`)
+                return false
             }
             let resSave = await apicloud.saveToAlbum(resDownload.path)
             // alert(resSave.isOk)
             if (!resSave.isOk) {
                 toast.clear() //取消加載提示
-                return alert(`saveErr:${resSave.err}`)
+                alert(`saveErr:${resSave.err}`)
+                return false
             }
             toast.clear() //取消加載提示
             // this.longTouch = false //重置回未長按

@@ -101,7 +101,7 @@
                         <td>$100</td>
                     </tr>
                     <tr>
-                        <td>预计汇报率</td>
+                        <td>预计回报率</td>
                         <td>{{today_bi}}</td>
                         <td>上架时间</td>
                         <td>{{statustimestart}}</td>
