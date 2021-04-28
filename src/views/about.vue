@@ -10,7 +10,7 @@
         </div>
         <div class="list">
             <a href="tel:110" class="item flex flex_between ali_center">
-                <div class="left">客服电话</div>
+                <div class="left">官方邮箱</div>
                 <div class="right flex ali_center">
                     <span>{{custMobile}}</span>
                     <van-icon name="arrow" color="#999" />
@@ -27,7 +27,7 @@
                 <div class="left">添加客服微信号</div>
                 <van-icon name="arrow" color="#999" />
             </div>
-            <div class="item flex flex_between ali_center" @click="$router.push('/content')">
+            <div class="item flex flex_between ali_center" @click="tocontent">
                 <div class="left">服务协议</div>
                 <van-icon name="arrow" color="#999" />
             </div>
@@ -74,6 +74,15 @@ export default {
         },
         closeservice(e) {
             this.showService = false;
+        },
+        tocontent(){
+            console.log(111)
+            this.$router.push({
+                name: 'content',
+                query:{
+                    id: 1
+                }
+            })
         }
     }
 };

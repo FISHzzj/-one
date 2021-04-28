@@ -174,13 +174,14 @@ export default {
             if (!resDownload.isOk) {
                 toast.clear() //取消加載提示
                 // alert(JSON.stringify(esDownload.err))
-                return alert(`downloadErr${resDownload.err}`)
+                return false
             }
             let resSave = await apicloud.saveToAlbum(resDownload.path)
             // alert(resSave.isOk)
             if (!resSave.isOk) {
                 toast.clear() //取消加載提示
-                return alert(`saveErr:${resSave.err}`)
+                // alert(`saveErr:${resSave.err}`)
+                return false
             }
             toast.clear() //取消加載提示
             // this.longTouch = false //重置回未長按

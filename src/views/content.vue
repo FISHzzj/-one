@@ -23,7 +23,7 @@ export default {
         };
     },
     mounted() {
-        this.id = this.$route.params.id;
+        this.id = this.$route.query.id;
         console.log(this.id);
         this.getlist()
     },
