@@ -59,7 +59,7 @@
                     <router-link 
                     class="item" 
                     v-for="item in list" :key="item.id"
-                    :to="{name: 'orderSubmit', query:{id:`${item.goodsid}`, num: `${item.total}`, price: `${item.realprice}`, pid: `${item.pid}`}}" tag="div"
+                    :to="{name: 'orderSubmit', query:{id:`${item.goodsid}`, num: `${item.total}`, price: `${item.realprice}`, pid: `${item.pid}`, orderid: `${item.id}`}}" tag="div"
                     >
                         <div class="flex ali_center flex_between id_status" v-if="item.status == 0">
                             <span class="order_sn">订单号： {{item.ordersn}}</span>
