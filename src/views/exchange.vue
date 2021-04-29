@@ -43,7 +43,7 @@
         </div>
         <div class="tips">
             <p>温馨提示：</p>
-            <div>转账钱请无比确认地址接比重信息无误，已经转出则不可撤销，USDT充值链名称为ERC20，请仔细核对。</div>
+            <div>转账前请务必确认地址信息无误，已经转出则不可撤销，USDT充值链名称主要分为TRC20和ERC20，充值前请确认公链的名称，一旦充值错误资产不可找回，损失自担。</div>
         </div>
         <div class="submit" :class="{on: num}" @click="submit">确认{{typetype}}</div>
         <van-action-sheet

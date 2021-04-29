@@ -9,13 +9,13 @@
             <div class="version">V4.3.0</div>
         </div>
         <div class="list">
-            <a href="tel:110" class="item flex flex_between ali_center">
+            <div class="copy item flex flex_between ali_center" :data-clipboard-text="custMobile">
                 <div class="left">官方邮箱</div>
                 <div class="right flex ali_center">
                     <span>{{custMobile}}</span>
                     <van-icon name="arrow" color="#999" />
                 </div>
-            </a>
+            </div>
             <!-- <div class="copy item flex flex_between ali_center" data-clipboard-text="0000000">
                 <div class="left">微信公众号</div>
                 <div class="right flex ali_center">
