@@ -10,7 +10,7 @@
         </div>
         <div class="list">
             <div class="copy item flex flex_between ali_center" :data-clipboard-text="custMobile">
-                <div class="left">客服电话</div>
+                <div class="left">官方邮箱</div>
                 <div class="right flex ali_center">
                     <span>{{custMobile}}</span>
                     <van-icon name="arrow" color="#999" />
@@ -76,9 +76,12 @@ export default {
             this.showService = false;
         },
         tocontent(){
+            console.log(111)
             this.$router.push({
                 name: 'content',
-                // id:1
+                query:{
+                    id: 1
+                }
             })
         }
     }

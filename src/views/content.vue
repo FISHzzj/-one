@@ -23,8 +23,8 @@ export default {
         };
     },
     mounted() {
-        // this.id = this.$route.params.id;
-        // console.log(this.id);
+        this.id = this.$route.query.id;
+        console.log(this.id);
         this.getlist()
     },
     methods:{

@@ -163,7 +163,7 @@ export default {
     },
     methods: {
         async getData() {
-            let {id, num, price, pid} = this.$route.query
+            let {id, num, price, pid, orderid} = this.$route.query
             if(!id) return Toast('id 不能为空')
             if(!num) return Toast('num 不能为空')
             if(!price) return Toast('price 不能为空')
@@ -172,7 +172,8 @@ export default {
                 goodsid: id,
                 total: num,
                 price,
-                pid
+                pid,
+                orderid
             })
             if (!res) return false
             let order = res.order

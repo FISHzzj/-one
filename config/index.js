@@ -11,7 +11,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
         '/apis': {
-          target: 'http://hixiaotao.com',
+          target: 'http://193.112.106.104',
           changeOrigin: true,
           logLevel: 'debug',
           headers: {
@@ -24,7 +24,7 @@ module.exports = {
     },
 
     // Various Dev Server settings
-    host: '192.168.1.102', // can be overwritten by process.env.HOST
+    host: '192.168.34.6', // can be overwritten by process.env.HOST
     port: 8085, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
