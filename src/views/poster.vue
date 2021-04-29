@@ -13,7 +13,7 @@
             <div class="title">已累计邀请<span>{{total}}</span>人，今日新增<span>{{today_user}}</span>人</div>
             <div class="title1 flex ali_center">
                 <span class="time">注册时间</span>
-                <span class="mobile">好有手机号</span>
+                <span class="mobile">好友手机号</span>
             </div>
             <div class="item flex ali_center" v-for="(item,index) in list" :key="index">
                 <span>{{item.createtime}}</span>
