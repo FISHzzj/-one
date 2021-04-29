@@ -99,11 +99,11 @@
                 <div class="somenum flex ali_center">
                     <div class="item_1">
                         <div class="type">平台总算力</div>
-                        <div class="num">{{eth.platformTotal}}</div>
+                        <div class="num">{{fil.platformTotal}}</div>
                     </div>
                     <div class="item_1">
                         <div class="type">今日新增</div>
-                        <div class="num">{{eth.todayNum}}</div>
+                        <div class="num">{{fil.todayNum}}</div>
                     </div>
                     <div class="item_1">
                         <div class="type">全网平均产出(T/天)</div>

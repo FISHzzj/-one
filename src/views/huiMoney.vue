@@ -67,7 +67,7 @@
             </div>
             <div  class="img flex flex_between ali_center">
                 <div class="title">完成转账截图</div>
-                <van-uploader :after-read="afterRead" v-if="!baseimg" />
+                <van-uploader :after-read="afterRead" />
                 <img :src="baseimg" alt="" v-if="baseimg" >
             </div>
         </div>
