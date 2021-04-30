@@ -14,10 +14,10 @@
            
 
             <div class="name">{{typetype}}{{type}}</div>
-            <div class="change flex ali_center" @click="show = true">
+            <!-- <div class="change flex ali_center" @click="show = true">
                 <span>{{typetype}}</span>
                 <van-icon name="arrow"></van-icon>
-            </div>
+            </div> -->
             <div v-if="type == 'USDT'" class="types flex ali_center">
                 <span>链类型：</span>
                 <div class="on" @click="changenav('ERC')">TRC20</div>

@@ -212,7 +212,7 @@ export default {
             if (!res) return false
             Toast(res.msg)
             this.$router.push({
-                name: "products"
+                name: "myOrder"
             })
 
         },
