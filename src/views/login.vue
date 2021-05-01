@@ -134,7 +134,7 @@ export default {
         },
         news_detail() {
             this.$router.push({
-                path: "/content"
+                path: "/content1"
             });
         },
         goback() {
