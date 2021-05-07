@@ -126,6 +126,41 @@
                     </a>
                 </div>
             </div>
+            <div class="item" >
+                <div class="title_1 flex ali_center">
+                    <p>XCH矿池</p>
+                    <van-icon name="warning-o" color="#999" />
+                </div>
+                <div class="somenum flex ali_center">
+                    <div class="item_1">
+                        <div class="type">平台总算力</div>
+                        <div class="num">{{fil.platformTotal}}</div>
+                    </div>
+                    <div class="item_1">
+                        <div class="type">今日新增</div>
+                        <div class="num">{{fil.todayNum}}</div>
+                    </div>
+                    <div class="item_1">
+                        <div class="type">全网平均产出(T/天)</div>
+                        <div class="num">{{blockRewardIn24h}}</div>
+                    </div>
+                     <div class="item_1">
+                        <div class="type">封存质押</div>
+                        <div class="num">{{currentPledgeCollateral*32}}</div>
+                    </div>
+                     <div class="item_1">
+                        <div class="type">新增GAS消耗</div>
+                        <!-- <div class="num">{{blockRewardIn24h}}</div> -->
+                        <!-- <div class="num">{{currentPledgeCollateral}}</div> -->
+                        <div class="num">{{gasIn32GB}} 32GB</div>
+                        <div class="num">{{gasIn64GB}} 64GB</div>
+                    </div>
+                    <a :href="fil_url" target="_blank" class="item_1">
+                        <div class="type">官网</div>
+                        <div class="num">chiaexplorer.com</div>
+                    </a>
+                </div>
+            </div>
         </section>
         <!-- 底部轮播 -->
         <div class="activeCenter">
