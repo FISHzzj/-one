@@ -93,7 +93,7 @@ export default {
             ethimg: require('@/assets/images/eth.png'),
             btcimg: require('@/assets/images/btc.png'),
             filimg: require('@/assets/images/fil.png'),
-            xchimg: require('@/assets/images/fil.png'),
+            xchimg: require('@/assets/images/xch.png'),
         };
     },
     mounted() {

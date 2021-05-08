@@ -225,7 +225,7 @@ export default {
             }else if(this.catetype == 'FIL'){
                 this.danwei = 'TiB'
             }else if(this.catetype == 'XCH'){
-                this.danwei = 'EiB'
+                this.danwei = 'T'
             }
         },
         // async gethuilv() {
