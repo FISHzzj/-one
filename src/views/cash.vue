@@ -94,7 +94,8 @@ export default {
                 {type:'USDT',name:'USDT代提',num:0},
                 {type:'BTC',name:'BTC代提',num:0},
                 {type:'ETH',name:'ETH代提',num:0},
-                {type:'FIL',name:'FIL代提',num:0}
+                {type:'FIL',name:'FIL代提',num:0},
+                 {type:'XCH',name:'XCH代提',num:0}
             ],
             list:[],
             right: false,
@@ -105,6 +106,7 @@ export default {
             btc: '',
             eth: '',
             fil: '',
+            xch: '',
             carType: '',
         }
     },
@@ -136,6 +138,10 @@ export default {
                 let paynum = this.num * this.fil
                 return paynum
 
+            }else if(this.active == 'XCH') {
+                let paynum = this.num * this.xch
+                return paynum
+
             }
             
         },
@@ -149,6 +155,7 @@ export default {
             this.btc = res.btc
             this.eth = res.eth
             this.fil = res.fil
+            this.xch = res.xch
             if(this.list.length > 0){
                 this.wushoukuan = false
             }else{
@@ -212,6 +219,8 @@ export default {
                 this.carType = 4
             }else if(type == "fil"){
                 this.carType = 5
+            }else if(type == "xch"){
+                this.carType = 6
             }
             let res = await $ajax('userrechargepays', {
                 getType: 2,

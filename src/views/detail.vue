@@ -224,6 +224,8 @@ export default {
                 this.danwei = 'MH/s'
             }else if(this.catetype == 'FIL'){
                 this.danwei = 'TiB'
+            }else if(this.catetype == 'XCH'){
+                this.danwei = 'EiB'
             }
         },
         // async gethuilv() {

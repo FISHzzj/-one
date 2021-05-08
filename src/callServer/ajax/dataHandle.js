@@ -63,8 +63,8 @@ export default {
     },
     kuang (data){
         if ( mistake(data) ) return false
-        let { banner, bannerTxt, btc, eth, fil, footer } = data.result
-        let {btc_url, eth_url} = data.result.hrefUrl
+        let { banner, bannerTxt, btc, eth, fil, footer, xch } = data.result
+        let {btc_url, eth_url, xch_url} = data.result.hrefUrl
         let fil_url = data.result.hrefUrl.fil
         return {
             banner,
@@ -72,10 +72,12 @@ export default {
             btc,
             eth,
             fil,
+            xch,
             footer,
             btc_url,
             eth_url,
             fil_url,
+            xch_url
 
         }
     },
@@ -106,13 +108,14 @@ export default {
     },
     userInfowallet(data){
         if ( mistake(data) ) return false
-        let {usdt, cny, btc, eth, fil, sysmoney, huilv, fil_frozen, fil_sys} = data.result.wallet
+        let {usdt, cny, btc, eth, fil, xch, sysmoney, huilv, fil_frozen, fil_sys} = data.result.wallet
         return {
             usdt,
             cny,
             btc,
             eth,
             fil,
+            xch,
             sysmoney,
             huilv,
             fil_frozen,
@@ -280,13 +283,14 @@ export default {
     },
     userpaymentpaylist(data){
         if ( mistake(data) ) return false
-        let {list, btc, eth, fil, usdt} = data.result
+        let {list, btc, eth, fil, usdt, xch} = data.result
         return{
             list,
             btc,
             eth,
             fil,
-            usdt
+            usdt,
+            xch,
 
         }
     },
@@ -386,10 +390,11 @@ export default {
     },
     usercurrenbtc(data){
         if ( mistake(data) ) return false
-        let {btc, eth} = data.result.info
+        let {btc, eth, xch} = data.result.info
         return{
             btc,
-            eth
+            eth,
+            xch
         }
     },
     usercurrenfil(data){
@@ -400,6 +405,14 @@ export default {
             currentPledgeCollateral,
             gasIn32GB,
             gasIn64GB
+        }
+    },
+    usercurrenxch(data){
+        if ( mistake(data) ) return false
+        let {xch, xch_count} = data.result.info
+        return{
+            xch,
+            xch_count
         }
     },
     usercurrenhulv(data) {

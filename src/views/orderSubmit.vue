@@ -105,6 +105,14 @@
                 <img v-if="paytype == 'eht'" src="@/assets/images/dui.png" alt="" />
                 <img v-else src="@/assets/images/yuan.png" alt="" />
             </div>
+            <div class="item flex ali_center flex_between" @click="change('xch')" v-if="paystatus == 4">
+                <div class="flex ali_center">
+                    <img src="" class="icon" alt="" />
+                    <span>XCH支付</span>
+                </div>
+                <img v-if="paytype == 'xch'" src="@/assets/images/dui.png" alt="" />
+                <img v-else src="@/assets/images/yuan.png" alt="" />
+            </div>
         </div>
         <div class="safe_tips flex ali_center">
             <img src="@/assets/images/dui.png" alt="" />同意

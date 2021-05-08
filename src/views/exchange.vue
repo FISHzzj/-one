@@ -141,6 +141,8 @@ export default {
                 this.accountType = 4
             }else if(type == "fil"){
                 this.accountType = 5
+            }else if(type == "xch"){
+                this.accountType = 6
             }
             let res = await $ajax('userrechargepays', {
                 getType: 1,

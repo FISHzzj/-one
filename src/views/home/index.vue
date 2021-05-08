@@ -126,6 +126,38 @@
                     </a>
                 </div>
             </div>
+            <div class="item" >
+                <div class="title_1 flex ali_center">
+                    <p>XCH矿池</p>
+                    <van-icon name="warning-o" color="#999" />
+                </div>
+                <div class="somenum flex ali_center">
+                    <div class="item_1">
+                        <div class="type">平台总算力</div>
+                        <div class="num">{{xch.platformTotal}}</div>
+                    </div>
+                    <div class="item_1">
+                        <div class="type">今日新增</div>
+                        <div class="num">{{xch.todayNum}}</div>
+                    </div>
+                    <div class="item_1">
+                        <div class="type">官方算力(T/天)</div>
+                        <div class="num">{{xchguangfan}}</div>
+                    </div>
+                     <div class="item_1">
+                        <div class="type">官方总算力</div>
+                        <div class="num">{{xchcountguangfan}}</div>
+                    </div>
+                     <div class="item_1">
+                        <div class="type">每日产币</div>
+                        <div class="num">{{xch.todayCoinage}}</div>
+                    </div>
+                     <a :href="btc_url" target="_blank" class="item_1">
+                        <div class="type">官网</div>
+                        <div class="num">chiaexplorer.com</div>
+                    </a>
+                </div>
+            </div>
         </section>
         <!-- 底部轮播 -->
         <div class="activeCenter">
@@ -159,6 +191,7 @@ export default {
             btc: "",
             eth: "",
             fil: "",
+            xch:"",
             noticeSwiper: {
                 direction: "vertical",
                 loop: true,
@@ -185,6 +218,8 @@ export default {
             },
             btcguangfan: "",
             ethguangfan: "",
+            xchguangfan:"",
+            xchcountguangfan:"",
             timer: null,
             blockRewardIn24h: "",
             currentPledgeCollateral: "",
@@ -194,6 +229,7 @@ export default {
             btc_url: "",
             eth_url: "",
             fil_url: "",
+            xch_url:"",
         };
     },
     mounted(){
@@ -201,9 +237,11 @@ export default {
         // console.log(22222)
           this.usercurrenbtchandle()
             this.usercurrenfil()
+            this.usercurrenxch()
         this.timer = setInterval(()=>{
             this.usercurrenbtchandle()
             this.usercurrenfil()
+            this.usercurrenxch()
         },60000)
         
     },
@@ -216,10 +254,12 @@ export default {
             this.btc = res.btc
             this.eth = res.eth
             this.fil = res.fil
+            this.xch = res.xch
             this.footer = res.footer
             this.btc_url = res.btc_url
             this.eth_url = res.eth_url
             this.fil_url = res.fil_url
+            this.xch_url = res.xch_url
             
         },
         async usercurrenbtchandle(){
@@ -228,6 +268,7 @@ export default {
             // console.log(res)
             this.btcguangfan = res.btc
             this.ethguangfan = res.eth
+           
         },
         async usercurrenfil(){
             let res = await $ajax('usercurrenfil', {})
@@ -236,6 +277,12 @@ export default {
             this.currentPledgeCollateral = res.currentPledgeCollateral.toFixed(4)
             this.gasIn32GB = res.gasIn32GB.toFixed(4)
             this.gasIn64GB = res.gasIn64GB.toFixed(4)
+        },
+         async usercurrenxch(){
+            let res = await $ajax('usercurrenxch', {})
+            if (!res) return false
+             this.xchguangfan = res.xch
+             this.xchcountguangfan = res.xch_count
         }
 
     },
