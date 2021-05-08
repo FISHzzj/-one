@@ -10,7 +10,11 @@
                 <div class="first" @click="showmask = true">
                     <div class="type">兑换币</div>
                     <div class="name flex ali_center">
-                        <img src="@/assets/images/icon/4.png" alt="">
+                        <img class="icon" src="@/assets/images/icon/5.png" alt=""  v-if="type == 'USDT'" />
+                        <img class="icon" src="@/assets/images/icon/4.png" alt=""  v-if="type == 'BTC'"/>
+                        <img class="icon" src="@/assets/images/icon/2.png" alt=""  v-if="type == 'ETH'"/>
+                        <img class="icon" src="@/assets/images/icon/3.png" alt=""  v-if="type == 'FIL'"/>
+                        <img class="icon" src="@/assets/images/icon/6.png" alt=""  v-if="type == 'XCH'"/>
                         <span>{{type}}</span>
                         <van-icon name="arrow-down" />
                     </div>
@@ -63,24 +67,31 @@
                 <van-icon name="cross" @click="showmask = false"></van-icon>
             </div>
             <div class="item flex ali_center" @click="change('BTC')">
-                <img src="@/assets/images/icon/jyjl.png" alt="">
+                <img class="icon" src="@/assets/images/icon/4.png" alt=""  />
                 <div class="info">
                     <div class="num">BTC</div>
                     <div class="type">余额：{{btc}}BTC</div>
                 </div>
             </div>
             <div class="item flex ali_center" @click="change('ETH')">
-                <img src="@/assets/images/icon/jyjl.png" alt="">
+                <img class="icon" src="@/assets/images/icon/2.png" alt=""  />
                 <div class="info">
                     <div class="num">ETH</div>
                     <div class="type">余额：{{eth}}ETH</div>
                 </div>
             </div>
             <div class="item flex ali_center" @click="change('FIL')">
-                <img src="@/assets/images/icon/jyjl.png" alt="">
+                <img class="icon" src="@/assets/images/icon/3.png" alt=""  />
                 <div class="info">
                     <div class="num">FIL</div>
                     <div class="type">余额：{{fil}}FIL</div>
+                </div>
+            </div>
+            <div class="item flex ali_center" @click="change('XCH')">
+                <img class="icon" src="@/assets/images/icon/6.png" alt="" />
+                <div class="info">
+                    <div class="num">XCH</div>
+                    <div class="type">余额：{{xch}}XCH</div>
                 </div>
             </div>
         </div>
@@ -120,6 +131,7 @@ export default {
             btc: "",
             eth: "",
             fil: "",
+            xch: "",
             rates: "",
             showPwd: false,
         };

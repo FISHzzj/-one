@@ -119,6 +119,8 @@ export default {
                 this.accountType = 5
             }else if(type == "fil"){
                 this.accountType = 6
+            }else if(type == "xch"){
+                this.accountType = 7
             }
             let res = await $ajax('userlog', {
                 type:this.accountType,
@@ -150,6 +152,8 @@ export default {
             }else if(current == 'ETH'){
                 this.tocny =  this.money * this.rates
             }else if(current == 'FIL'){
+                this.tocny =  this.money * this.rates 
+            }else if(current == 'XCH'){
                 this.tocny =  this.money * this.rates 
             }
         },

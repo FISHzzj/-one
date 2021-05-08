@@ -49,6 +49,13 @@
                         <div class="num">{{item.text}}</div>
                     </div>
                 </div>
+                <div class="wrapper flex" v-if="item.paytext == 'XCH'" :style="{'background-image': 'url('+xchimg+')'}">
+                    <div class="left"></div>
+                    <div class="right">
+                        <div class="name">{{item.wallet}}</div>
+                        <div class="num">{{item.text}}</div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="mask" v-if="showList" @click="showList = false"></div>
@@ -64,6 +71,7 @@
             <div class="item" @click="goedit('BTC')">BTC地址</div>
             <div class="item" @click="goedit('ETH')">ETH地址</div>
             <div class="item" @click="goedit('FIL')">FIL地址</div>
+             <div class="item" @click="goedit('XCH')">XCH地址</div>
         </div>
     </div>
 </template>
@@ -85,6 +93,7 @@ export default {
             ethimg: require('@/assets/images/eth.png'),
             btcimg: require('@/assets/images/btc.png'),
             filimg: require('@/assets/images/fil.png'),
+            xchimg: require('@/assets/images/fil.png'),
         };
     },
     mounted() {

@@ -34,7 +34,8 @@
                   type == 'USDT' ||
                     type == 'BTC' ||
                     type == 'ETH' ||
-                    type == 'FIL'
+                    type == 'FIL' ||
+                     type == 'XCH'
                 "
             >
                 <div class="title flex ali_center flex_between">
@@ -113,6 +114,8 @@ export default {
             this.typeName = this.type + "地址";
         } else if (this.type == "FIL") {
             this.typeName = this.type + "地址";
+        } else if (this.type == "XCH") {
+            this.typeName = this.type + "地址";
         }
     },
     methods: {
@@ -173,6 +176,8 @@ export default {
                     paymentType = "4"
                 }else if(this.type == "FIL"){
                     paymentType = "5"
+                }else if(this.type == "XCH"){
+                    paymentType = "6"
                 }
                 let res = await $ajax('userpayment', {
                     wallet:this.address,

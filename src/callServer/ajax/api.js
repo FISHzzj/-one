@@ -45,6 +45,7 @@ export default {
     userexchange: `${common}do=mobile&r=user.exchange`, //兑换账户
     usercurrenbtc: `${common}do=mobile&r=user.curren.btc`, //btc/eth实时
     usercurrenfil: `${common}do=mobile&r=user.curren.fil`, //fil实时
+    usercurrenxch: `${common}do=mobile&r=user.curren.xch`, //xch算力
     usercurrenhulv: `${common}do=mobile&r=user.curren.hulv`, //汇率数据
     userfeedbacklook: `${common}do=mobile&r=user.feedback.look`, //关于我们
     userfeedback: `${common}do=mobile&r=user.feedback`, //意见反馈

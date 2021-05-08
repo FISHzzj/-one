@@ -11,6 +11,7 @@
             <img class="icon" src="@/assets/images/icon/4.png" alt=""  v-if="type == 'BTC'"/>
             <img class="icon" src="@/assets/images/icon/2.png" alt=""  v-if="type == 'ETH'"/>
             <img class="icon" src="@/assets/images/icon/3.png" alt=""  v-if="type == 'FIL'"/>
+            <img class="icon" src="@/assets/images/icon/6.png" alt=""  v-if="type == 'XCH'"/>
            
 
             <div class="name">{{typetype}}{{type}}</div>
@@ -86,7 +87,8 @@ export default {
                 {name: "USDT", img: require('@/assets/images/icon/5.png')},
                 {name: "BTC", img: require('@/assets/images/icon/4.png')},
                 {name: "ETH", img: require('@/assets/images/icon/2.png')},
-                {name: "FIL", img: require('@/assets/images/icon/3.png')}
+                {name: "FIL", img: require('@/assets/images/icon/3.png')},
+                {name: "XCH", img: require('@/assets/images/icon/6.png')}
             ],
             code: "",
             wallet: "",
@@ -118,6 +120,8 @@ export default {
                 this.accountType = 4
             }else if(type == "fil"){
                 this.accountType = 5
+            }else if(type == "xch"){
+                this.accountType = 6
             }
             let res = await $ajax('userrecharge', {rechargeType: type, getType: 2, accountType: this.accountType})
             if(!res) return false
@@ -162,6 +166,8 @@ export default {
                 this.accountType = 4
             }else if(type == "fil"){
                 this.accountType = 5
+            }else if(type == "xch"){
+                this.accountType = 6
             }
             let res = await $ajax('userrechargepays', {
                 getType: 2,
