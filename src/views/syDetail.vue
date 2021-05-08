@@ -76,8 +76,8 @@ export default {
             limit: 10,
             finished: false,
             loading: false,
-            nian: '2021',
-            yue: '4',
+            nian: '',
+            yue: '',
             dateval:"",
             minDate: new Date(1977, 0, 1),
             maxDate: new Date(2088, 10, 1),
@@ -89,6 +89,8 @@ export default {
     },
     mounted() {
         // this.getlist()
+        this.nian = new Date().getFullYear()
+        this.yue = new Date().getMonth() + 1
         this.currenhulv('ETH', 'CNY')
         this.dateval = this.nian + '/' + this.yue;
     },
