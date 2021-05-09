@@ -12,10 +12,11 @@
         <!-- 顶部导航 -->
         <div class="nav flex ali_center flex_around">
             <div class="item" @click.stop="changenav(item.id, index)" v-for="(item, index) in nav" :key="index" :class="{on: status == item.id}">
-                <img :src="x" alt="" v-if="index == 0">
-                <img :src="b" alt="" v-if="index == 1">
+                
+                <img :src="b" alt="" v-if="index == 0">
+                <img :src="f" alt="" v-if="index == 1">
                 <img :src="e" alt="" v-if="index == 2">
-                <img :src="f" alt="" v-if="index == 3">
+                <img :src="x" alt="" v-if="index == 3">
                 <div>{{item.name}}专区</div>
             </div>
         </div>
@@ -94,7 +95,7 @@ export default {
                     clickable: true, //允许分页点击跳转
                 },
             },
-            status: "12",
+            status: "9",
             page: 1,
             limit: 10,
             finished: false,
@@ -118,7 +119,7 @@ export default {
 
             this.nav = res.category
             this.status = res.category[0].id
-            this.x = require("@/assets/images/x_1.jpg")
+            this.b = require("@/assets/images/b_1.jpg")
         },
         async onLoad() {
             let res = await $ajax('goods',{
@@ -147,7 +148,7 @@ export default {
                 return false;
             }
             this.loading = true;
-            if(a == 1){
+            if(a == 0){
                 this.b = require("@/assets/images/b_1.jpg")
                 // b: require("@/assets/images/b.jpg"),
                 this.e = require("@/assets/images/e.jpg")
@@ -160,13 +161,13 @@ export default {
             // e: require("@/assets/images/e.jpg"),
                 this.f = require("@/assets/images/f.jpg")
                 this.x = require("@/assets/images/x.jpg")
-            }else if(a == 3){
+            }else if(a == 1){
                 this.f = require("@/assets/images/f_1.jpg")
                 this.b = require("@/assets/images/b.jpg")
                 this.e = require("@/assets/images/e.jpg")
                 this.x = require("@/assets/images/x.jpg")
                 // f: require("@/assets/images/f.jpg"),
-            }else if(a == 0){
+            }else if(a == 3){
                 this.f = require("@/assets/images/f.jpg")
                 this.b = require("@/assets/images/b.jpg")
                 this.e = require("@/assets/images/e.jpg")

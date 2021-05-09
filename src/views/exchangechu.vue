@@ -15,10 +15,10 @@
            
 
             <div class="name">{{typetype}}{{type}}</div>
-            <div class="change flex ali_center" @click="show = true">
+            <!-- <div class="change flex ali_center" @click="show = true">
                 <span>{{typetype}}</span>
                 <van-icon name="arrow"></van-icon>
-            </div>
+            </div> -->
             <!-- <div v-if="type == 'USDT'" class="types flex ali_center">
                 <span>链类型：</span>
                 <div class="on" @click="changenav('ERC')">ERC20</div>
@@ -226,7 +226,7 @@ export default {
         width: 92vw;
         background: #fff;
         border-radius: 3vw;
-        height: 28vw;
+        height: 20vw;
         margin: 0 4vw;
         flex-direction: column;
         padding: 0 4vw;
