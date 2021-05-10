@@ -70,6 +70,19 @@ export default {
         this.getData()
     },
     methods: {
+         async getData() {
+             let res = await $ajax('userInfo', {
+                requstType: "info"
+            })
+            if(!res) return false
+            // this.src = res.avatar
+            // this.nickname = res.nickname
+            // this.mobile = res.mobile
+            this.sf_type = res.sf_type
+            // this.acce_type = res.acce_type
+            // this.image = res.image
+
+        },
         timing () {
             this.timer = setInterval( () => {
                 this.timeAndTextOfSendcode--

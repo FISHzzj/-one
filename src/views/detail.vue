@@ -98,7 +98,7 @@
                        <td>服务周期</td>
                         <td>{{day > 0 ? day : '永久'}}天</td>
                         <td>管理费</td> 
-                        <td>$100</td>
+                        <td>{{manager}}</td>
                     </tr>
                     <tr>
                         <td>预计回报率</td>
@@ -185,6 +185,7 @@ export default {
             catetype: "",
             // deposit:"",     //质押金
             productprice:"", //手续费
+            manager: "",
         };
     },
     mounted() {
