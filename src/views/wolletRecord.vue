@@ -16,7 +16,7 @@
             :finished-text="'我是有底线的'"
             @load="logs"
             >
-                <router-link  class="item" :to="{path: '/recordDetail/1'}" v-for="(item,index) in list" :key="index" tag="div">
+                <div  class="item"  v-for="(item,index) in list" :key="index">
                     <div class="top flex ali_center flex_between">
                         <div class="time">{{item.createtime}}</div>
                         <div class="status">{{item.statusText || item.title}} </div>
@@ -26,7 +26,7 @@
                             <div class="type">{{item.rechargeText || item.remark}}</div>
                         </div>
                         <div class="right">
-                                <div class="num">￥{{item.money}}</div>
+                                <div class="num">{{item.money}}</div>
 
                             <!-- <div class="flex item1 flex_between ali_center">
                                 <span>用户</span>
@@ -38,7 +38,7 @@
                             </div> -->
                         </div>
                     </div>
-                </router-link >
+                </div >
             </van-list>
             
         </div>
@@ -100,6 +100,17 @@ export default {
             if (res.list.length === 0) {
                 this.finished = true //加载完成
             } 
+        },
+        torecordDetail(id){
+            if(!id) return false
+            if(this.status == '2') return false
+            this.$router.push({
+                name: 'recordDetail',
+                query:{
+                    id,
+                    status: this.status
+                }
+            })
         },
     }
 };
