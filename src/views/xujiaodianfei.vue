@@ -22,7 +22,11 @@
             <div class="order_id" v-if="wallet">
                 <div class="">钱包地址：<span>{{wallet}}</span></div>
             </div>
-            
+             <div class="order_id flex ali_center flex_between">
+                <div class="">购买台数</div>
+                 <span class="copy" >X{{totalnum}}</span>
+               
+            </div>
            
         </div>
         <div class="window">
@@ -179,6 +183,7 @@ export default {
             this.title = res.title
             this.thumb = res.thumb
             this.shopdays = res.shopdays
+            this.total = res.total
            
         },
         changenav(status, val) {

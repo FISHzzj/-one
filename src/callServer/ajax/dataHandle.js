@@ -457,7 +457,7 @@ export default {
     kuangorderfeesOrder(data){
         if ( mistake(data) ) return false
         let {info} = data.result
-        let {createtime, endtime, ordersn, goodsid, title, thumb, shopdays} = info
+        let {createtime, endtime, ordersn, goodsid, title, thumb, shopdays, total} = info
         return {
             createtime, 
             endtime,
@@ -465,7 +465,8 @@ export default {
             goodsid,
             title,
             thumb,
-            shopdays
+            shopdays,
+            total
 
         }
     },
