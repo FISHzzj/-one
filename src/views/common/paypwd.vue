@@ -10,7 +10,7 @@
                 <input v-model="pwd" type="text" placeholder="输入资金密码" />
                 <div class="btn" @click="submit">确定</div>
             </div>
-            <div class="forget">忘记密码?</div>
+            <div class="forget" @click="forgethandle">忘记密码?</div>
         </div>
     </div>
 </template>
@@ -47,6 +47,11 @@ export default {
         close() {
             this.$emit("close", true);
         },
+        forgethandle(){
+             this.$router.push({
+                name: 'safe'
+            })
+        }
     }
 };
 </script>

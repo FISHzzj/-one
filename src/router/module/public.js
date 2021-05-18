@@ -433,6 +433,16 @@ export default [
         }
     },
     {
+        path: '/huzhuan/:type/:typetype', // 互转
+        name: 'huzhuan',
+        component: () => import("@/views/huzhuan.vue"),
+        props: false,//1111,
+        meta:{
+            index: 1,
+            mustLogin: true,//
+        }
+    },
+    {
         path: "/login", //登录
         name: "login",
         component: () => import("@/views/login.vue"),

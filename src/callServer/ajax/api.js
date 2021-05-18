@@ -62,6 +62,7 @@ export default {
     accountverifycode: `${common}do=mobile&r=account.verifycode`, //fil释放记录
     userchangepwd: `${common}do=mobile&r=user.changepwd`, //重置登录/交易密码
     userrechargeinfo: `${common}do=mobile&r=user.recharge.info`, //虚拟币记录详情
+    userhuzhuan: `${common}do=mobile&r=user.huzhuan`, //互转
     
     
 

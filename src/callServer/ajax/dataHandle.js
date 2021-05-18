@@ -539,6 +539,13 @@ export default {
             f_code, accountType, money, ordersn, createtime
         }
     },
+    userhuzhuan(data){
+        if ( mistake(data) ) return false
+        let {message} = data.result
+        return {
+            msg: message
+        }
+    },
 
 
 

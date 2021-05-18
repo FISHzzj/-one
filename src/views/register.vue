@@ -24,6 +24,9 @@
             <div class="next" @click="next" :class="{on: mobile}">下一步</div>
         </div>
         <div class="footer">
+             <div class="top flex ali_center">
+                <span @click="uploadApp">下载APP</span>
+            </div>
             <div class="tips flex ali_center">
                 <p>继续登录即代表同意</p>
                 <span @click="news_detail">《哈希矿场用户协议》</span>
@@ -79,7 +82,10 @@ export default {
             this.area = e.num;
             this.showArea = false;
             console.log(e);
-        }
+        },
+        uploadApp(){
+             window.location.href = 'https://downloadpkg.app3c.cn/app/download?path=https://A6163977333456.qiniucdn.apicloud-system.com/31caecf2c21c7b3f9bba5698824a8dc0_d&ver=0.0.6&size=3.08M'
+        },
     }
 }
 </script>
@@ -159,6 +165,18 @@ export default {
         bottom: 0;
         left: 0;
         width: 100%;
+        .top {
+            width: 100%;
+            color: #da428d;
+            height: 12vw;
+            font-size: 3.2vw;
+            justify-content: center;
+            p {
+                border-right: 1px solid #da428d;
+                height: 4vw;
+                margin: 0 4vw;
+            }
+        }
         .tips {
             justify-content: center;
             font-size: 3.2vw;

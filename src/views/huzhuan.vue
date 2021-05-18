@@ -1,89 +1,72 @@
 <template>
     <div class="huzhuan">
         <div class="header">
-            <van-icon @click="$router.go(-1)" name="arrow-left" color="#fff" size="20" />
+            <van-icon @click="$router.go(-1)" name="arrow-left" size="20" />
             <p>互转</p>
+            <!-- <span @click="showService = true">联系客服</span> -->
         </div>
-        <div class="top_1"></div>
-        <div class="top">
-            <div class="header_top flex ali_center flex_between">
-                <div class="first" @click="showmask = true">
-                    <div class="type">兑换币</div>
-                    <div class="name flex ali_center">
-                        <img src="@/assets/images/icon/4.png" alt="">
-                        <span>{{type}}</span>
-                        <van-icon name="arrow-down" />
-                    </div>
-                </div>
-                <div class="second">
-                    <div class="type">换取币</div>
-                    <div class="name flex ali_center">
-                        <img src="@/assets/images/icon/5.png" alt="">
-                        <span>USDT</span>
-                    </div>
-                </div>
+        <div style="height:8vw"></div>
+        <div class="content flex ali_center">
+            <img class="icon" src="@/assets/images/icon/1.png" alt=""  v-if="type == 'CNY'" />
+            <img class="icon" src="@/assets/images/icon/5.png" alt=""  v-if="type == 'USDT'" />
+            <img class="icon" src="@/assets/images/icon/4.png" alt=""  v-if="type == 'BTC'"/>
+            <img class="icon" src="@/assets/images/icon/2.png" alt=""  v-if="type == 'ETH'"/>
+            <img class="icon" src="@/assets/images/icon/3.png" alt=""  v-if="type == 'FIL'"/>
+            <img class="icon" src="@/assets/images/icon/6.png" alt=""  v-if="type == 'XCH'"/>
+           
+
+            <div class="name">{{typetype}}{{type}}</div>
+            <div class="change flex ali_center" @click="show = true">
+                <span>{{typetype}}</span>
+                <van-icon name="arrow"></van-icon>
             </div>
-            <div class="changeicon">
-                <van-icon name="exchange"></van-icon>
-            </div>
-            <div class="changenum flex flex_between">
-                <input type="num" placeholder="兑换数量"  v-model="duihuannum">
-                <div>{{receivenum}}</div>
-            </div>
-            <div class="tips flex ali_center flex_between">
-                <div class="left" v-if="num < duihuannum">
-                    {{type}}余额不足，<span @click="gorecharge(type)">请转入</span>
-                </div>
-                <div class="right">可用余额：{{num}} {{type}}</div>
-            </div>
-            <!-- <div class="time_num flex flex_between">
-                <div class="left">
-                    <div>{{type}}/USDT 1{{type}}≈0.00USDT</div>
-                    <div class="">手续费：0.03%</div>
-                </div>
-                <div class="right">{{second}}s</div>
+            <!-- <div v-if="type == 'USDT'" class="types flex ali_center">
+                <span>链类型：</span>
+                <div class="on" @click="changenav('ERC')">ERC20</div>
+                <div @click="changenav('TRC')">TRC20</div>
+            </div> -->
+            <!-- <img class="code" :src="code" alt="" />
+            <div class="address">{{wallet}}</div>
+            <div class="btns flex ali_center flex_between">
+                <div class="copy" :data-clipboard-text="wallet">复制地址</div>
+                <div class="save">保存图片</div>
             </div> -->
         </div>
-        <div class="tip">
-            <div class="title">温馨提示：</div>
-            <div class="grey">1.受汇率影响货币价格是是波动，请以最终兑换成功数量为准;</div>
-            <div class="grey">1.请确认兑换货币币种，一经兑换成功不可撤回;</div>
-            <div class="grey">1.ETH最低起兑换数量：0.1ETH;</div>
-            <div class="grey">1.、兑换由第三方大宗商家承兑;</div>
+        <div class="pays">
+            <div class="num flex flex_between ali_center">
+                <div class="title">转让金额</div>
+                <input v-model="num" type="text" placeholder="输入可转让金额" />
+            </div>
+             <div class="num flex flex_between ali_center">
+                <div class="title">转让账号</div>
+                <input v-model="roomid" type="text" placeholder="输入转让账号" />
+            </div>
+            <!-- <div class="img flex flex_between ali_center">
+                <div class="title">转账地址</div>
+                <input v-model="address" type="text" placeholder="输入转账地址" />
+            </div> -->
+            <!-- <div class="img flex flex_between ali_center">
+                <div class="title">钱包收款码</div>
+                <van-uploader :after-read="afterRead" v-if="!baseimg" />
+                <img :src="baseimg" alt="" v-if="baseimg" >
+            </div> -->
+            
         </div>
-        <div class="submit" @click="openPwd">确定兑换</div>
-        <!-- <div @click="showService = true" class="flex service ali_center">
-            <van-icon color="#666" name="service-o" />
-            <span>联系客服</span>
-        </div> -->
-        <div class="mask" v-if="showmask" @click="showmask = false"></div>
-        <div class="change_mask" v-if="showmask">
-            <div class="title flex ali_center flex_between">
-                <span>选择币种</span>
-                <van-icon name="cross" @click="showmask = false"></van-icon>
-            </div>
-            <div class="item flex ali_center" @click="change('BTC')">
-                <img src="@/assets/images/icon/jyjl.png" alt="">
-                <div class="info">
-                    <div class="num">BTC</div>
-                    <div class="type">余额：{{btc}}BTC</div>
-                </div>
-            </div>
-            <div class="item flex ali_center" @click="change('ETH')">
-                <img src="@/assets/images/icon/jyjl.png" alt="">
-                <div class="info">
-                    <div class="num">ETH</div>
-                    <div class="type">余额：{{eth}}ETH</div>
-                </div>
-            </div>
-            <div class="item flex ali_center" @click="change('FIL')">
-                <img src="@/assets/images/icon/jyjl.png" alt="">
-                <div class="info">
-                    <div class="num">FIL</div>
-                    <div class="type">余额：{{fil}}FIL</div>
-                </div>
-            </div>
+        <div class="tips">
+            <p>温馨提示：</p>
+            <!-- <div>1.最小输入数量为0.007</div>
+            <div>2.请务必保证提币钱包地址的准确性，否则资产将无法找回；</div>
+            <div>3.旷工费具体多少由市场决定，平台不收取手续费</div>
+            <div>4.提币审核会在24小时内完成，具体到账时间会受网络影响，可能有所延迟；</div> -->
+            <div>1.如长时间未到账，请及时联系客服</div>
         </div>
+        <div class="submit" :class="{on: num && roomid}" @click="submit">确认</div>
+        <van-action-sheet
+            v-model="show"
+            :actions="actions"
+            @select="onSelect"
+            cancel-text="取消"
+        />
         <service
             :showService="showService"
             @close="closeservice"
@@ -96,8 +79,10 @@
     </div>
 </template>
 <script>
-import service from "./common/service";
-import payPwd from "./common/paypwd";
+import service from "./common/service"
+import {copy} from '../func/copy'
+import payPwd from "./common/paypwd"
+
 export default {
     name: "huzhuan",
     components: {
@@ -107,121 +92,138 @@ export default {
     data() {
         return {
             showService: false,
-            second: 30,
-            // receivenum: '收入数量',
-            type: '',
-            num: '',
-            showmask: false,
-            timer: null,
-            duihuannum: "",
-            // type: 0, // 1 充值2提现3兑换
-            usdt: "",
-            cny: "",
-            btc: "",
-            eth: "",
-            fil: "",
-            rates: "",
             showPwd: false,
-        };
-    },
-    created() {
-        this.type = this.$route.params.type;
-        this.num = this.$route.params.num;
-        this.getData()
-    },
-    mounted() {
-        this.daojishi();  
-        // this.getData();      
-    },
-    
-    destroyed() {
-        window.clearInterval(this.timer);
-    },
-    computed:{
-        receivenum(){
-            let accountTan = this.type
-            this.currenhulv(accountTan, 'USDT')
-            let feeTan = this.duihuannum
-            let jieguo = (feeTan * this.rates).toFixed(4) 
-            return   jieguo == 0 ? '输入数量' : jieguo
+            show: false,
+            type: "USDT",
+            num: "",
+            roomid:"",
+            actions: [
+                {name: "CNY", img: require('@/assets/images/icon/1.png')},
+                {name: "USDT", img: require('@/assets/images/icon/5.png')},
+                {name: "BTC", img: require('@/assets/images/icon/4.png')},
+                {name: "ETH", img: require('@/assets/images/icon/2.png')},
+                {name: "FIL", img: require('@/assets/images/icon/3.png')},
+                {name: "XCH", img: require('@/assets/images/icon/6.png')}
+            ],
+            typetype: "",
+            accountType:"",
+          
+
         }
+    },
+    mounted(){
+        this.type = this.$route.params.type
+        this.typetype = this.$route.params.typetype
+        //傳遞複製按鈕選擇器, 接受複製插件的 clipboard 實例
+        // this.clipboard = copy('.copy')
+        // this.getData()
     },
     methods: {
         closePwd(e) {
             this.showPwd = false;
         },
         openPwd(e) {
+            // if(!this.paytype) return Toast("请选择支付方式")
             this.showPwd = true;
+            
+        },
+        async getData() {
+            
+            let type = this.type.toLowerCase()
+            // let type = this.type.toLowerCase()
+            if(type == "cny"){
+                this.accountType = 1
+            }else if(type == "usdt") {
+                this.accountType = 2
+            }else if(type == "btc"){
+                this.accountType = 3
+            }else if(type == "eth"){
+                this.accountType = 4
+            }else if(type == "fil"){
+                this.accountType = 5
+            }
+            let res = await $ajax('userrecharge', {rechargeType: type, getType: 2})
+            if(!res) return false
+            this.money = res.money
+            this.code = res.code
+            this.wallet = res.wallet
+            this.payId = res.id
+            this.baseimg = res.image
+        },
+        async afterRead(s) {
+            console.log(s);
+            let img = s.content
+            let res = await $ajax('userrechargeimages', {image: img})
+            if(!res) return false
+            console.log(res)
+            this.baseimg = res.img
+
+        },
+        changenav(type) {
+            if (type == 'TRC') return Toast("即将开放");
+        },
+        onSelect(e) {
+            console.log(e);
+            this.type = e.name;
+            this.img = e.img;
+            this.show = false;
+            this.getData()
         },
         closeservice(e) {
             this.showService = false;
         },
-        async getData(){
-            let res = await $ajax('userInfowallet', {requstType: "wallet"})
-            if(!res) return false
-            console.log(res)
-            Object.keys(res).forEach((key)=>{
-                this[key] = res[key]
-                
-            })
-            // this.currenhulv("USDT", 'CNY')
-            // this.currenhulv("BTC", 'CNY')
-            // this.currenhulv("ETH", 'CNY')
-            // this.currenhulv("FIL", 'CNY')
-        },
-        async noticePwd(){
-            let accountTan = this.type
-            let feeTan = this.duihuannum
-            if(!feeTan) return Toast('请输入数量')
-            this.currenhulv(accountTan, 'USDT')
-            let res = await $ajax('userexchange', {
-                accountTan: accountTan,
-                feeTan: feeTan,
-                accountAcc: 'USDT',
-                feeAcc: feeTan / this.rates
+        async noticePwd(e) {
+            let type = this.type.toLowerCase()
+            // let type = this.type.toLowerCase()
+            if(type == "cny"){
+                this.accountType = 'credit2'
+            }else if(type == "usdt") {
+                this.accountType = 'usdt'
+            }else if(type == "btc"){
+                this.accountType = 'btc'
+            }else if(type == "eth"){
+                this.accountType = 'eth'
+            }else if(type == "fil"){
+                this.accountType = 'fil'
+            }else if(type == "xch"){
+                this.accountType = 'xch'
+            }
+
+            if(!this.num) return Toast("请输入转让金额!")
+            if(!this.roomid) return Toast("输入转让ID!")
+            
+            let res = await $ajax('userhuzhuan', {
+                // getType: 2,
+                mobile: this.roomid,
+                money: this.num,
+                // wallet: this.wallet,
+                // carType: this.carType,
+                accountType: this.accountType
+        
             })
             if(!res) return false
             console.log(res)
             Toast(res.msg)
             this.$router.go(-1)
         },
-        async currenhulv(current, value){
-            let res = await $ajax('usercurrenhulv', {
-               current,
-               value
-            })
-            if (!res) return false
-            console.log(res)
-            this.rates = res.result
-            console.log(this.rates)
-        },
-        closeservice(e) {
-            this.showService = false;
-        },
-        daojishi() {
-            this.second = 30;
-            this.timer = setInterval(() => {
-                this.second--
-                if (this.second == 0) {
-                    clearInterval(this.timer);
-                    this.daojishi();
-                }
-            }, 1000);
-        },
-        change(type) {
-            this.type = type;
-            this.showmask = false;
-            if(type == 'BTC'){
-                this.num = this.btc
-            }else if(type == 'ETH'){
-                this.num = this.eth
-            }else if(type == 'FIL'){
-                this.num = this.fil
-            }
-        },
-        gorecharge(type){
-            console.log(type)
-            this.$router.push(`'/exchange/${type}/转入'`)
+        async submit() {
+            this.showPwd = true;
+            // if(!this.num) return Toast("请输入转让金额!")
+            // if(!this.roomid) return Toast("输入转让ID!")
+            
+            // let res = await $ajax('userhuzhuan', {
+            //     // getType: 2,
+            //     id: this.roomid,
+            //     money: this.num,
+            //     // wallet: this.wallet,
+            //     // carType: this.carType,
+            //     // accountType: this.accountType
+        
+            // })
+            // if(!res) return false
+            // console.log(res)
+            // Toast(res.msg)
+            // this.$router.go(-1)
         }
     }
 };
@@ -235,9 +237,8 @@ export default {
     .header {
         width: 100%;
         height: 12vw;
-        background: #da428d;
         position: relative;
-        color: #fff;
+        background: #fff;
         .van-icon {
             position: absolute;
             top: 0;
@@ -246,209 +247,132 @@ export default {
             height: 4vw;
             margin: auto 0;
         }
+        span {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 4vw;
+            font-size: 3.47vw;
+            margin: auto 0;
+            color: #999;
+            line-height: 12vw;
+        }
         p {
             width: 100%;
             line-height: 12vw;
             font-size: 4vw;
             text-align: center;
         }
-        span {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            line-height: 12vw;
-            right: 4vw;
-            margin: auto 0;
-            font-size: 3.2vw;
-            color: #eee;
-        }
     }
-    .top_1 {
-        width:100%;
-        height: 20vw;
-        background-image: linear-gradient(180deg, #da428d, #fff);
-    }
-    .top {
+    .content {
         width: 92vw;
-        margin: -17vw 4vw 0;
         background: #fff;
         border-radius: 3vw;
-        padding: 4vw 3vw;
-        .header_top {
-            .first {
-                .type {
-                    color: #999;
-                    margin-bottom: 2vw;
-                    font-size: 3.2vw;
-                }
-                .name {
-                    img {
-                        width: 8vw;
-                        height: 8vw;
-                    }
-                    span {
-                        font-weight: 600;
-                        font-size: 6vw;
-                        margin: 0 2vw;
-                    }
-                }
-            }
-            .second {
-                .type {
-                    color: #999;
-                    margin-bottom: 2vw;
-                    text-align: right;
-                    font-size: 3.2vw;
-                }
-                .name {
-                    img {
-                        width: 8vw;
-                        height: 8vw;
-                    }
-                    span {
-                        font-weight: 600;
-                        font-size: 6vw;
-                        margin: 0 2vw;
-                    }
-                }
-            }
-        }
-        .changeicon {
-            width: 8vw;
-            height: 8vw;
-            text-align: center;
-            border: 1px solid #eee;
-            border-radius: 50%;
-            line-height: 8vw;
-            margin: 0 auto;
-            position: relative;
-            &::after {
-                position: absolute;
-                content: "";
-                width: 40vw;
-                height: 1px;
-                top: 0;
-                right: -40vw;
-                bottom: 0;
-                background: #eee;
-                margin: auto 0;
-            }
-            &::before {
-                position: absolute;
-                content: "";
-                width: 40vw;
-                height: 1px;
-                top: 0;
-                left: -40vw;
-                bottom: 0;
-                background: #eee;
-                margin: auto 0;
-            }
-        }
-        .changenum {
-            border-bottom: 1px solid #f7f7f7;
+        height: 28vw;
+        margin: 0 4vw;
+        flex-direction: column;
+        padding: 0 4vw;
+        .icon {
+            width: 12vw;
             height: 12vw;
-            line-height: 12vw;
+            border-radius: 50%;
+            margin: -6vw 40vw 0;
         }
-        .tips {
+        .name {
+            line-height: 8vw;
+            font-weight: 600;
+        }
+        .change {
+            color: #999;
             font-size: 3.2vw;
-            line-height: 10vw;
-            .left {
-                color: #fc4142;
-                span {
+            height: 12vw;
+        }
+        .types {
+            width: 100%;
+            div {
+                width: 20vw;
+                height: 8vw;
+                line-height: 8vw;
+                text-align: center;
+                color: #999;
+                font-weight: 600;
+                background: #f7f7f7;
+                margin-left: 3vw;
+                border-radius: 1vw;
+                &.on {
                     color: #da428d;
+                    border: 1px solid #da428d;
                 }
             }
         }
-        .time_num {
-            background: #f5f5f5;
-            border-radius: 2vw;
-            padding: 2vw;
-            .left {
-                font-size: 3.2vw;
-                line-height: 6.5vw;
-            }
-            .right {
-                color: #da428d;
+        .code {
+            width: 30vw;
+            height: 30vw;
+            margin: 6vw 0;
+        }
+        .address {
+            word-break: break-all;
+            text-align: center;
+            font-weight: 600;
+        }
+        .btns {
+            width: 100%;
+            padding: 0 10vw;
+            text-align: center;
+            color: #da428d;
+            height: 12vw;
+            div {
+                width: 50%;
             }
         }
     }
-    .tip {
-        margin-top: 4vw;
+    .pays {
+        background: #fff;
+        width: 92vw;
+        margin: 4vw;
+        padding: 20px 4vw;
+        .num {
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+            .title {
+                font-size: 4.8vw;
+                font-weight: 600;
+                height: 12vw;
+                line-height: 12vw;
+                width: 100%;
+            }
+            input {
+                text-align: left;
+                width: 100%;
+                background: #eee;
+                padding: 10px 10px;
+                border-radius: 8px;
+            }
+        }
+        .img{
+            position: relative;
+            img{
+                width: 80px;
+                height: 80px;
+            }
+        }
+    }
+    .tips {
+        color: #999;
+        font-size: 3.1vw;
         padding: 0 4vw;
-        .title {
-            line-height: 12vw;
-            color: #333;
-            font-size: 4vw;
-        }
-        .grey {
-            font-size: 3.2vw;
-        }
     }
     .submit {
-        position: fixed;
+        width: 92vw;
         height: 12vw;
         line-height: 12vw;
-        width: 100%;
-        bottom: 16vw;
-        left: 4vw;
         text-align: center;
         color: #fff;
-        background: #da428d;
-        border-radius: 2vw;
-        width: 92vw;
-    }
-    .service {
-        position: fixed;
-        height: 12vw;
-        width: 100%;
-        justify-content: center;
-        bottom: 2vw;
-        left: 0;
-        span {
-            margin-left: 2vw;
-            color: #666;
-        }
-    }
-    .mask {
-        width: 100vw;
-        height: 100vh;
-        background: rgba(0,0,0,0.3);
-        z-index: 100;
-        top: 0;
-        left: 0;
-        position: fixed;
-    }
-    .change_mask {
-        width: 100vw;
-        background: #fff;
-        z-index: 101;
-        bottom: 0;
-        left: 0;
-        position: fixed;
-        border-radius: 5vw 5vw 0 0;
-        .title {
-            padding: 0 4vw;
-            height: 12vw;
-        }
-        .item {
-            padding: 0 4vw;
-            border-bottom: 1px solid #f7f7f7;
-            height: 20vw;
-            img {
-                width: 10vw;
-                height: 10vw;
-                margin-right: 3vw;
-            }
-            .num {
-                color: #333;
-                font-size: 4.3vw;
-            }
-            .type {
-                color: #999;
-                font-size: 3vw;
-                margin-top: 2vw;
-            }
+        background: #bbb;
+        border-radius: 1vw;
+        margin: 4vw;
+        &.on{
+            background: #da428d;
         }
     }
 }

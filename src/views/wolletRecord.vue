@@ -51,7 +51,7 @@ export default {
         return {
             title: '',
             status: 0,
-            navlist: ['转入','转出','兑换'],
+            navlist: ['转入','转出','兑换','互转'],
             typenum: '1',
             accountType: '2',
             list: [],
@@ -80,6 +80,11 @@ export default {
                 this.logs()
             }else if(index == 2){
                 this.typenum = 3
+                this.page = 1
+                this.list = []
+                this.logs()
+            }else if(index == 3){
+                this.typenum = 4
                 this.page = 1
                 this.list = []
                 this.logs()

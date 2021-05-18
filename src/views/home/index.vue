@@ -152,7 +152,7 @@
                         <div class="type">每日产币</div>
                         <div class="num">{{xch.todayCoinage}}</div>
                     </div>
-                     <a :href="btc_url" target="_blank" class="item_1">
+                     <a :href="xch_url" target="_blank" class="item_1">
                         <div class="type">官网</div>
                         <div class="num">chiaexplorer.com</div>
                     </a>
