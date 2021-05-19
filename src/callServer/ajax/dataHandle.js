@@ -457,7 +457,7 @@ export default {
     kuangorderfeesOrder(data){
         if ( mistake(data) ) return false
         let {info} = data.result
-        let {createtime, endtime, ordersn, goodsid, title, thumb, shopdays} = info
+        let {createtime, endtime, ordersn, goodsid, title, thumb, shopdays, total} = info
         return {
             createtime, 
             endtime,
@@ -465,7 +465,8 @@ export default {
             goodsid,
             title,
             thumb,
-            shopdays
+            shopdays,
+            total
 
         }
     },
@@ -536,6 +537,13 @@ export default {
         let {f_code, accountType, money, ordersn, createtime} = data.result
         return{
             f_code, accountType, money, ordersn, createtime
+        }
+    },
+    userhuzhuan(data){
+        if ( mistake(data) ) return false
+        let {message} = data.result
+        return {
+            msg: message
         }
     },
 

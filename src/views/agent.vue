@@ -5,14 +5,14 @@
             <p>代理中心</p>
         </div>
         <!-- 不是代理 -->
-        <div v-if="levelType != 2">
+        <!-- <div v-if="levelType != 2">
             <div class="img" :style="{background: `url(${img})`}">
-                <!-- 后台上传设计好的图片 -->
+                后台上传设计好的图片
             </div>
             <div class="submit" :class="{on:levelType != 0}" @click="submit">{{levelhtml}}</div>
-        </div>
+        </div> -->
         <!-- 是代理 -->
-        <div class="" v-else>
+        <div class="" >
             <div class="top">
                 <div class="infos flex ali_center flex_between">
                     <div class="left flex ali_center flex_between">
@@ -137,10 +137,11 @@ export default {
                 this.levelhtml = "审核中"
             }else if(this.levelType == 2){//申请成功
                 this.levelhtml = "审核成功"
-                this.userapplylevelind()
+                
             }else if(this.levelType == -1){ //申请失败
                 this.levelhtml = "审核失败"
             }
+            this.userapplylevelind()
         },
         async userapplylevelind() {
             let res = await $ajax('userapplylevelind', {})
