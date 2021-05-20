@@ -1,13 +1,10 @@
 <template>
     <div id="app">
-        
             <transition :name="names">
                 <keep-alive include="products">
                     <router-view></router-view>
                 </keep-alive>
             </transition>
-        
-        
     </div>
 </template>
 

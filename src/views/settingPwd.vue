@@ -34,7 +34,7 @@
             </div>
             <div class="title1">邀请码(选填)</div>
             <div class="spread">
-                <input type="text" v-model="spread" placeholder="请输入邀请码" />
+                <input type="text" v-model="spread" placeholder="请输入邀请码"  disabled/>
             </div>
             <div class="next" @click="next" :class="{on: pwd && pwd1 && code }">完成</div>
         </div>
