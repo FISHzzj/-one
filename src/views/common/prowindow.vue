@@ -28,8 +28,8 @@
                 </a>
             </div>
             <div class="zhiya flex ali_center flex_between" v-if="productInfo.catetype == 'FIL'" >
-                <div class="flex ali_center flex_between"><span>FIL质押</span><span>{{productInfo.deposit}}FIL</span></div>
-                <div class="flex ali_center flex_between"><span>GAS手续费</span><span>{{productInfo.productprice}}FIL</span></div>
+                <div class="flex ali_center flex_between"><span>FIL质押</span><span>{{productInfo.deposit*num}}FIL</span></div>
+                <div class="flex ali_center flex_between"><span>GAS手续费</span><span>{{productInfo.productprice*num}}FIL</span></div>
             </div>
             <div class="sub_btn flex ali_center flex_between">
                 <div class="left">总价<span>{{all_money}}</span>CNY</div>
