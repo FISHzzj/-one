@@ -11,7 +11,7 @@
         </swiper>
         <!-- 顶部导航 -->
         <div class="nav flex ali_center flex_around">
-            <div class="item" @click.stop="changenav(item.name, index)" v-for="(item, index) in nav" :key="index" :class="{on: status == item.name}">
+            <div class="item" @click.stop="changenav(item.name, item.id)" v-for="(item, index) in nav" :key="index" :class="{on: status == item.name}">
                 
                 <img :src="b" alt="" v-if="item.name == 'BTC'">
                 <img :src="f" alt="" v-if="item.name == 'FIL'">
@@ -96,6 +96,7 @@ export default {
                 },
             },
             status: "ETH",
+            statusid: "10",
             page: 1,
             limit: 10,
             finished: false,
@@ -118,13 +119,13 @@ export default {
             if (!res) return false
 
             this.nav = res.category
-            this.status = res.category[0].id
-            this.b = require("@/assets/images/b_1.jpg")
+            this.statusid = res.category[0].id
+            this.e = require("@/assets/images/e_1.jpg")
         },
         async onLoad() {
             let res = await $ajax('goods',{
                 page: this.page,
-                cateid: this.status
+                cateid: this.statusid
             })
             if (!res) return false
             this.banner = res.thumbs
@@ -138,9 +139,9 @@ export default {
                 this.finished = true //加载完成
             } 
         },
-        changenav(index, a) {
+        changenav(index, id) {
             console.log(index)
-            this.status = index;
+            this.statusid = id;
             this.list = []
             this.page = 1
              // 防止接口再次调用
