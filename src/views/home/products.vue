@@ -120,7 +120,16 @@ export default {
 
             this.nav = res.category
             this.statusid = res.category[0].id
-            this.e = require("@/assets/images/e_1.jpg")
+            if(this.status == 'XCH'){
+                this.x = require("@/assets/images/x_1.jpg")
+            }else if(this.status == 'BTC'){
+                this.b = require("@/assets/images/b_1.jpg")
+            }else if(this.status == 'ETH'){
+                this.e = require("@/assets/images/e_1.jpg")
+            }else if(this.status == 'FIL'){
+                this.f = require("@/assets/images/f_1.jpg")
+            }
+            
         },
         async onLoad() {
             let res = await $ajax('goods',{
@@ -142,6 +151,7 @@ export default {
         changenav(index, id) {
             console.log(index)
             this.statusid = id;
+            this.status = index
             this.list = []
             this.page = 1
              // 防止接口再次调用

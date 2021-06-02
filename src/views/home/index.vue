@@ -27,7 +27,7 @@
                 <img src="@/assets/images/home/laba2.jpg" alt="">
                 <p>矿池运营数据</p>
             </div>
-            <div class="item" >
+            <div class="item" v-if="btc">
                 <div class="title_1 flex ali_center">
                     <p>BTC矿池</p>
                     <van-icon name="warning-o" color="#999" />
@@ -59,7 +59,7 @@
                     </a>
                 </div>
             </div>
-             <div class="item" >
+             <div class="item" v-if="eth" >
                 <div class="title_1 flex ali_center">
                     <p>ETH矿池</p>
                     <van-icon name="warning-o" color="#999" />
@@ -91,7 +91,7 @@
                     </a>
                 </div>
             </div>
-             <div class="item" >
+             <div class="item" v-if="fil">
                 <div class="title_1 flex ali_center">
                     <p>FIL矿池</p>
                     <van-icon name="warning-o" color="#999" />
@@ -126,7 +126,7 @@
                     </a>
                 </div>
             </div>
-            <div class="item" >
+            <div class="item" v-if="xch" >
                 <div class="title_1 flex ali_center">
                     <p>XCH矿池</p>
                     <van-icon name="warning-o" color="#999" />
