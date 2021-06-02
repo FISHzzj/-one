@@ -11,12 +11,12 @@
         </swiper>
         <!-- 顶部导航 -->
         <div class="nav flex ali_center flex_around">
-            <div class="item" @click.stop="changenav(item.id, index)" v-for="(item, index) in nav" :key="index" :class="{on: status == item.id}">
+            <div class="item" @click.stop="changenav(item.name, index)" v-for="(item, index) in nav" :key="index" :class="{on: status == item.name}">
                 
-                <img :src="b" alt="" v-if="index == 0">
-                <img :src="f" alt="" v-if="index == 2">
-                <img :src="e" alt="" v-if="index == 1">
-                <img :src="x" alt="" v-if="index == 3">
+                <img :src="b" alt="" v-if="item.name == 'BTC'">
+                <img :src="f" alt="" v-if="item.name == 'FIL'">
+                <img :src="e" alt="" v-if="item.name == 'ETH'">
+                <img :src="x" alt="" v-if="item.name == 'XCH'">
                 <div>{{item.name}}专区</div>
             </div>
         </div>
@@ -95,7 +95,7 @@ export default {
                     clickable: true, //允许分页点击跳转
                 },
             },
-            status: "9",
+            status: "ETH",
             page: 1,
             limit: 10,
             finished: false,
@@ -148,26 +148,26 @@ export default {
                 return false;
             }
             this.loading = true;
-            if(a == 0){
+            if(index == 'BTC'){
                 this.b = require("@/assets/images/b_1.jpg")
                 // b: require("@/assets/images/b.jpg"),
                 this.e = require("@/assets/images/e.jpg")
                 this.f = require("@/assets/images/f.jpg")
                 this.x = require("@/assets/images/x.jpg")
                 
-            }else if(a == 1){
+            }else if(index == 'ETH'){
                 this.e = require("@/assets/images/e_1.jpg")
                 this.b = require("@/assets/images/b.jpg")
             // e: require("@/assets/images/e.jpg"),
                 this.f = require("@/assets/images/f.jpg")
                 this.x = require("@/assets/images/x.jpg")
-            }else if(a == 2){
+            }else if(index == 'FIL'){
                 this.f = require("@/assets/images/f_1.jpg")
                 this.b = require("@/assets/images/b.jpg")
                 this.e = require("@/assets/images/e.jpg")
                 this.x = require("@/assets/images/x.jpg")
                 // f: require("@/assets/images/f.jpg"),
-            }else if(a == 3){
+            }else if(index == 'XCH'){
                 this.f = require("@/assets/images/f.jpg")
                 this.b = require("@/assets/images/b.jpg")
                 this.e = require("@/assets/images/e.jpg")
