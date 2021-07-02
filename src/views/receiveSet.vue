@@ -71,7 +71,8 @@
             <div class="item" @click="goedit('BTC')">BTC地址</div>
             <div class="item" @click="goedit('ETH')">ETH地址</div>
             <div class="item" @click="goedit('FIL')">FIL地址</div>
-             <div class="item" @click="goedit('XCH')">XCH地址</div>
+            <div class="item" @click="goedit('XCH')">XCH地址</div>
+            <div class="item" @click="goedit('BZZ')">BZZ地址</div>
         </div>
     </div>
 </template>

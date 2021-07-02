@@ -17,6 +17,7 @@
                 <img :src="f" alt="" v-if="item.name == 'FIL'">
                 <img :src="e" alt="" v-if="item.name == 'ETH'">
                 <img :src="x" alt="" v-if="item.name == 'XCH'">
+                <img :src="z" alt="" v-if="item.name == 'BZZ'">
                 <div>{{item.name}}专区</div>
             </div>
         </div>
@@ -107,6 +108,7 @@ export default {
             b: require("@/assets/images/b.jpg"),
             e: require("@/assets/images/e.jpg"),
             f: require("@/assets/images/f.jpg"),
+            z: require("@/assets/images/z.jpg"),
             banner: [],
         };
     },
@@ -128,6 +130,8 @@ export default {
                 this.e = require("@/assets/images/e_1.jpg")
             }else if(this.status == 'FIL'){
                 this.f = require("@/assets/images/f_1.jpg")
+            }else if(this.status == 'BZZ'){
+                this.z = require("@/assets/images/z_1.jpg")
             }
             
         },
@@ -165,6 +169,7 @@ export default {
                 this.e = require("@/assets/images/e.jpg")
                 this.f = require("@/assets/images/f.jpg")
                 this.x = require("@/assets/images/x.jpg")
+                this.z = require("@/assets/images/z.jpg")
                 
             }else if(index == 'ETH'){
                 this.e = require("@/assets/images/e_1.jpg")
@@ -172,17 +177,27 @@ export default {
             // e: require("@/assets/images/e.jpg"),
                 this.f = require("@/assets/images/f.jpg")
                 this.x = require("@/assets/images/x.jpg")
+                this.z = require("@/assets/images/z.jpg")
             }else if(index == 'FIL'){
                 this.f = require("@/assets/images/f_1.jpg")
                 this.b = require("@/assets/images/b.jpg")
                 this.e = require("@/assets/images/e.jpg")
                 this.x = require("@/assets/images/x.jpg")
+                this.z = require("@/assets/images/z.jpg")
                 // f: require("@/assets/images/f.jpg"),
             }else if(index == 'XCH'){
                 this.f = require("@/assets/images/f.jpg")
                 this.b = require("@/assets/images/b.jpg")
                 this.e = require("@/assets/images/e.jpg")
                 this.x = require("@/assets/images/x_1.jpg")
+                this.z = require("@/assets/images/z.jpg")
+                // f: require("@/assets/images/f.jpg"),
+            }else if(index == 'BZZ'){
+                this.f = require("@/assets/images/f.jpg")
+                this.b = require("@/assets/images/b.jpg")
+                this.e = require("@/assets/images/e.jpg")
+                this.x = require("@/assets/images/x.jpg")
+                this.z = require("@/assets/images/z_1.jpg")
                 // f: require("@/assets/images/f.jpg"),
             }
             // if(this.list.length == 0){

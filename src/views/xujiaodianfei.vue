@@ -35,7 +35,7 @@
                 <div href="javascript:;" @click="changenav(item.id, item.value)" v-for="(item, index) in shopdays" :key="index">
                     <div class="item" :class="{on: item.id == status}" >
                         <p class="days">{{item.id}}预缴{{item.title}}天</p>
-                        <p class="money">{{item.value}}USDT/台</p>
+                        <p class="money">{{item.value}}CNY/台</p>
                         <!-- <div class="discount">8折</div> -->
                     </div>
                 </div>

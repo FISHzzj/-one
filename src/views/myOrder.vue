@@ -10,6 +10,7 @@
                 <img src="@/assets/images/icon/2.png" alt=""  v-if="item.name == 'ETH'" />
                 <img src="@/assets/images/icon/3.png" alt=""  v-if="item.name == 'FIL'"/>
                 <img src="@/assets/images/icon/6.png" alt=""  v-if="item.name == 'XCH'"/>
+                <img src="@/assets/images/icon/7.png" alt=""  v-if="item.name == 'BZZ'"/>
                 <div class="right">
                     <div class="name">{{item.name}}</div>
                     <div class="flex ali_center">

@@ -158,6 +158,38 @@
                     </a>
                 </div>
             </div>
+            <!-- <div class="item" v-if="xch" >
+                <div class="title_1 flex ali_center">
+                    <p>BZZ矿池</p>
+                    <van-icon name="warning-o" color="#999" />
+                </div>
+                <div class="somenum flex ali_center">
+                    <div class="item_1">
+                        <div class="type">平台总算力</div>
+                        <div class="num">{{xch.platformTotal}}</div>
+                    </div>
+                    <div class="item_1">
+                        <div class="type">今日新增</div>
+                        <div class="num">{{xch.todayNum}}</div>
+                    </div>
+                    <div class="item_1">
+                        <div class="type">官方算力(T/天)</div>
+                        <div class="num">{{xchguangfan}}</div>
+                    </div>
+                     <div class="item_1">
+                        <div class="type">官方总算力</div>
+                        <div class="num">{{xchcountguangfan}}</div>
+                    </div>
+                     <div class="item_1">
+                        <div class="type">每日产币</div>
+                        <div class="num">{{xch.todayCoinage}}</div>
+                    </div>
+                     <a :href="xch_url" target="_blank" class="item_1">
+                        <div class="type">官网</div>
+                        <div class="num">chiaexplorer.com</div>
+                    </a>
+                </div>
+            </div> -->
         </section>
         <!-- 底部轮播 -->
         <div class="activeCenter">

@@ -95,7 +95,8 @@ export default {
                 {type:'BTC',name:'BTC代提',num:0},
                 {type:'ETH',name:'ETH代提',num:0},
                 {type:'FIL',name:'FIL代提',num:0},
-                 {type:'XCH',name:'XCH代提',num:0}
+                 {type:'XCH',name:'XCH代提',num:0},
+                 {type:'BZZ',name:'BZZ代提',num:0}
             ],
             list:[],
             right: false,

@@ -100,6 +100,18 @@
                     <div class="num1" v-else>* * * *</div>
                 </div>
             </div>
+            <div @click="godetail(`BZZ/${bzz}`)" class="item flex ali_center">
+                <div class="left flex ali_center">
+                    <img src="@/assets/images/icon/6.png" alt="" />
+                    <span>BZZ</span>
+                </div>
+                <div class="right">
+                    <div class="num" v-if="iconeyeclose">{{bzz}}</div>
+                    <div class="num" v-else>* * * *</div>
+                    <span class="num1" v-if="iconeyeclose">≈ {{bzztocny}}CNY</span>
+                    <div class="num1" v-else>* * * *</div>
+                </div>
+            </div>
         </div>
         <div class="mask" v-if="showmask" @click="showmask = false"></div>
         <div class="change_mask" v-if="showmask">
@@ -149,6 +161,13 @@
                     <div class="type">余额：{{xch}}XCh</div>
                 </div>
             </div>
+             <div class="item flex ali_center" @click="gonext('BZZ')">
+                <img src="@/assets/images/icon/6.png" alt="">
+                <div class="info">
+                    <div class="num">BZZ</div>
+                    <div class="type">余额：{{bzz}}BZZ</div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -166,12 +185,14 @@ export default {
             eth: "",
             fil: "",
             xch:"",
+            bzz: "",
             sysmoney: "",
             usdttocny: "",
             btctocny: "",
             ethtocny: "",
             filtocny: "",
             xchtocny: "",
+            bzztocny: "",
             huilv:null,
             
         };
@@ -203,6 +224,7 @@ export default {
                 this.filtocny =  this.huilv.fil_huilv 
             // }
                 this.xchtocny =  this.huilv.xch_huilv 
+                this.bzztocny =  this.huilv.bzz_huilv 
         },
         async currenhulv(current, value){
             let res = await $ajax('usercurrenhulv', {
@@ -223,6 +245,8 @@ export default {
                 this.filtocny =  this.fil * this.rates 
             }else if(current == 'XCH'){
                 this.xchtocny =  this.xch * this.rates 
+            }else if(current == 'BZZ'){
+                this.bzztocny =  this.bzz * this.rates 
             }
         },
         changetype(index) {
@@ -264,6 +288,8 @@ export default {
                     this.$router.push('/changeType/' + type + "/" + this.fil);
                 }else if(type == 'XCH') {
                     this.$router.push('/changeType/' + type + "/" + this.xch);
+                }else if(type == 'BZZ') {
+                    this.$router.push('/changeType/' + type + "/" + this.bzz);
                 }
             }
 

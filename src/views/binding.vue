@@ -35,7 +35,8 @@
                     type == 'BTC' ||
                     type == 'ETH' ||
                     type == 'FIL' ||
-                     type == 'XCH'
+                     type == 'XCH' ||
+                     type == 'BZZ'
                 "
             >
                 <div class="title flex ali_center flex_between">
@@ -115,6 +116,8 @@ export default {
         } else if (this.type == "FIL") {
             this.typeName = this.type + "地址";
         } else if (this.type == "XCH") {
+            this.typeName = this.type + "地址";
+        }else if (this.type == "BZZ") {
             this.typeName = this.type + "地址";
         }
     },
