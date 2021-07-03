@@ -12,6 +12,7 @@
             <img class="icon" src="@/assets/images/icon/2.png" alt=""  v-if="type == 'ETH'"/>
             <img class="icon" src="@/assets/images/icon/3.png" alt=""  v-if="type == 'FIL'"/>
             <img class="icon" src="@/assets/images/icon/6.png" alt=""  v-if="type == 'XCH'"/>
+            <img class="icon" src="@/assets/images/icon/7.png" alt=""  v-if="type == 'BZZ'"/>
            
 
             <div class="name">{{typetype}}{{type}}</div>
@@ -122,6 +123,8 @@ export default {
                 this.accountType = 5
             }else if(type == "xch"){
                 this.accountType = 6
+            }else if(type == "bzz"){
+                this.accountType = 7
             }
             let res = await $ajax('userrecharge', {rechargeType: type, getType: 2, accountType: this.accountType})
             if(!res) return false
@@ -168,6 +171,8 @@ export default {
                 this.accountType = 5
             }else if(type == "xch"){
                 this.accountType = 6
+            }else if(type == "bzz"){
+                this.accountType = 7
             }
             let res = await $ajax('userrechargepays', {
                 getType: 2,

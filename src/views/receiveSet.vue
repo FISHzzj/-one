@@ -56,6 +56,13 @@
                         <div class="num">{{item.text}}</div>
                     </div>
                 </div>
+                 <div class="wrapper flex" v-if="item.paytext == 'BZZ'" :style="{'background-image': 'url('+bzzimg+')'}">
+                    <div class="left"></div>
+                    <div class="right">
+                        <div class="name">{{item.wallet}}</div>
+                        <div class="num">{{item.text}}</div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="mask" v-if="showList" @click="showList = false"></div>
@@ -95,6 +102,7 @@ export default {
             btcimg: require('@/assets/images/btc.png'),
             filimg: require('@/assets/images/fil.png'),
             xchimg: require('@/assets/images/xch.png'),
+            bzzimg: require('@/assets/images/bzz.png'),
         };
     },
     mounted() {

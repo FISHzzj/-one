@@ -181,11 +181,13 @@ export default {
                     paymentType = "5"
                 }else if(this.type == "XCH"){
                     paymentType = "6"
+                }else if(this.type == "BZZ"){
+                    paymentType = "7"
                 }
                 let res = await $ajax('userpayment', {
                     wallet:this.address,
                     paymentType: paymentType,
-                    usdtType: this.status,
+                    // usdtType: this.status,
                     code: this.sms
                 })
                 if (!res) return false

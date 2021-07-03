@@ -13,6 +13,7 @@
             <img class="icon" src="@/assets/images/icon/2.png" alt=""  v-if="type == 'ETH'"/>
             <img class="icon" src="@/assets/images/icon/3.png" alt=""  v-if="type == 'FIL'"/>
             <img class="icon" src="@/assets/images/icon/6.png" alt=""  v-if="type == 'XCH'"/>
+            <img class="icon" src="@/assets/images/icon/7.png" alt=""  v-if="type == 'BZZ'"/>
            
 
             <div class="name">{{typetype}}{{type}}</div>
@@ -103,7 +104,8 @@ export default {
                 {name: "BTC", img: require('@/assets/images/icon/4.png')},
                 {name: "ETH", img: require('@/assets/images/icon/2.png')},
                 {name: "FIL", img: require('@/assets/images/icon/3.png')},
-                {name: "XCH", img: require('@/assets/images/icon/6.png')}
+                {name: "XCH", img: require('@/assets/images/icon/6.png')},
+                {name: "BZZ", img: require('@/assets/images/icon/7.png')}
             ],
             typetype: "",
             accountType:"",
@@ -187,6 +189,8 @@ export default {
                 this.accountType = 'fil'
             }else if(type == "xch"){
                 this.accountType = 'xch'
+            }else if(type == "bzz"){
+                this.accountType = 'bzz'
             }
 
             if(!this.num) return Toast("请输入转让金额!")
