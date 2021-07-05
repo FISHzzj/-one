@@ -102,7 +102,7 @@
             </div>
             <div @click="godetail(`BZZ/${bzz}`)" class="item flex ali_center">
                 <div class="left flex ali_center">
-                    <img src="@/assets/images/icon/6.png" alt="" />
+                    <img src="@/assets/images/icon/7.png" alt="" />
                     <span>BZZ</span>
                 </div>
                 <div class="right">
@@ -162,7 +162,7 @@
                 </div>
             </div>
              <div class="item flex ali_center" @click="gonext('BZZ')">
-                <img src="@/assets/images/icon/6.png" alt="">
+                <img src="@/assets/images/icon/7.png" alt="">
                 <div class="info">
                     <div class="num">BZZ</div>
                     <div class="type">余额：{{bzz}}BZZ</div>

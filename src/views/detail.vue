@@ -225,7 +225,7 @@ export default {
                 this.danwei = 'MH/s'
             }else if(this.catetype == 'FIL'){
                 this.danwei = 'TiB'
-            }else if(this.catetype == 'XCH'){
+            }else if(this.catetype == 'XCH' || this.catetype == 'BZZ'){
                 this.danwei = 'T'
             }
         },
