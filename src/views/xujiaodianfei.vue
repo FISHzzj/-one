@@ -127,7 +127,7 @@ export default {
     },
     data() {
         return {
-            paytype: "usdt",
+            paytype: "CNY",
             showPwd: false,
             price:"",
             wallet: "",
