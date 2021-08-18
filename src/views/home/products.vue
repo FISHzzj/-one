@@ -17,7 +17,7 @@
                 <img :src="f" alt="" v-if="item.name == 'FIL'">
                 <img :src="e" alt="" v-if="item.name == 'ETH'">
                 <img :src="x" alt="" v-if="item.name == 'XCH'">
-                <img :src="z" alt="" v-if="item.name == 'BZZ'">
+                <img :src="z" alt="" v-if="item.name == 'CCN'">
                 <div>{{item.name}}专区</div>
             </div>
         </div>
@@ -130,7 +130,7 @@ export default {
                 this.e = require("@/assets/images/e_1.jpg")
             }else if(this.status == 'FIL'){
                 this.f = require("@/assets/images/f_1.jpg")
-            }else if(this.status == 'BZZ'){
+            }else if(this.status == 'CCN'){
                 this.z = require("@/assets/images/z_1.jpg")
             }
             
@@ -192,7 +192,7 @@ export default {
                 this.x = require("@/assets/images/x_1.jpg")
                 this.z = require("@/assets/images/z.jpg")
                 // f: require("@/assets/images/f.jpg"),
-            }else if(index == 'BZZ'){
+            }else if(index == 'CCN'){
                 this.f = require("@/assets/images/f.jpg")
                 this.b = require("@/assets/images/b.jpg")
                 this.e = require("@/assets/images/e.jpg")

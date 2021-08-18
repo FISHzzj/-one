@@ -36,7 +36,7 @@
                     type == 'ETH' ||
                     type == 'FIL' ||
                      type == 'XCH' ||
-                     type == 'BZZ'
+                     type == 'CCN'
                 "
             >
                 <div class="title flex ali_center flex_between">
@@ -117,7 +117,7 @@ export default {
             this.typeName = this.type + "地址";
         } else if (this.type == "XCH") {
             this.typeName = this.type + "地址";
-        }else if (this.type == "BZZ") {
+        }else if (this.type == "CCN") {
             this.typeName = this.type + "地址";
         }
     },
@@ -181,7 +181,7 @@ export default {
                     paymentType = "5"
                 }else if(this.type == "XCH"){
                     paymentType = "6"
-                }else if(this.type == "BZZ"){
+                }else if(this.type == "CCN"){
                     paymentType = "7"
                 }
                 let res = await $ajax('userpayment', {

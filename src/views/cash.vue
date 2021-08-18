@@ -96,7 +96,7 @@ export default {
                 {type:'ETH',name:'ETH代提',num:0},
                 {type:'FIL',name:'FIL代提',num:0},
                  {type:'XCH',name:'XCH代提',num:0},
-                //  {type:'BZZ',name:'BZZ代提',num:0}
+                //  {type:'CCN',name:'CCN代提',num:0}
             ],
             list:[],
             right: false,
@@ -108,7 +108,7 @@ export default {
             eth: '',
             fil: '',
             xch: '',
-            bzz: '',
+            ccn: '',
             carType: '',
         }
     },
@@ -144,8 +144,8 @@ export default {
                 let paynum = this.num * this.xch
                 return paynum
 
-            }else if(this.active == 'BZZ') {
-                let paynum = this.num * this.bzz
+            }else if(this.active == 'CCN') {
+                let paynum = this.num * this.ccn
                 return paynum
 
             }
@@ -162,7 +162,7 @@ export default {
             this.eth = res.eth
             this.fil = res.fil
             this.xch = res.xch
-            this.bzz = res.bzz
+            this.ccn = res.ccn
             if(this.list.length > 0){
                 this.wushoukuan = false
             }else{

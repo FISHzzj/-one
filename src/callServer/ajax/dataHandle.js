@@ -108,7 +108,7 @@ export default {
     },
     userInfowallet(data){
         if ( mistake(data) ) return false
-        let {usdt, cny, btc, eth, fil, xch, bzz, sysmoney, huilv, fil_frozen, fil_sys} = data.result.wallet
+        let {usdt, cny, btc, eth, fil, xch, ccn, sysmoney, huilv, fil_frozen, fil_sys} = data.result.wallet
         return {
             usdt,
             cny,
@@ -116,7 +116,7 @@ export default {
             eth,
             fil,
             xch,
-            bzz,
+            ccn,
             sysmoney,
             huilv,
             fil_frozen,
@@ -284,7 +284,7 @@ export default {
     },
     userpaymentpaylist(data){
         if ( mistake(data) ) return false
-        let {list, btc, eth, fil, usdt, xch, bzz} = data.result
+        let {list, btc, eth, fil, usdt, xch, ccn} = data.result
         return{
             list,
             btc,
@@ -292,7 +292,7 @@ export default {
             fil,
             usdt,
             xch,
-            bzz
+            ccn
 
         }
     },
