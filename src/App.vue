@@ -111,6 +111,19 @@ export default {
     -moz-box-lines: multiple;
     -o-box-lines: multiple;
 }
+.flex_row{
+    flex-direction: row;
+}
+.flex_col{
+    flex-direction: column;
+}
+.flex_nowrap{
+    flex-wrap: nowrap;
+}
+.flex_center{
+    justify-content: center;
+    -webkit-justify-content: center;
+}
 .flex_between {
     justify-content: space-between;
     -webkit-justify-content: space-between;
@@ -118,6 +131,10 @@ export default {
 .flex_around {
     justify-content: space-around;
     -webkit-justify-content: space-around;
+}
+.flex-end {
+    justify-content: flex-end;
+    -webkit-justify-content: flex-end;
 }
 .ali_center {
     align-items: center;

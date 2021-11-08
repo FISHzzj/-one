@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import module from "./module";
+import moduleOne from './moduleOne';
 // import Primary from '@/components/primary'
 // import Login from '@/components/login'
 // import Forget from '@/components/forget'
@@ -62,7 +63,8 @@ Vue.use(Router)
 
 export default new Router({
 	routes: [
-		...module,
+		// ...module,
+		...moduleOne,
 		// {
 		// 	path: '/',
 		// 	name: 'primary',

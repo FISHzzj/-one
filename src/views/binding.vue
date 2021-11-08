@@ -35,8 +35,8 @@
                     type == 'BTC' ||
                     type == 'ETH' ||
                     type == 'FIL' ||
-                     type == 'XCH' ||
-                     type == 'CCN'
+                    type == 'XCH' ||
+                    type == 'CCN'
                 "
             >
                 <div class="title flex ali_center flex_between">
