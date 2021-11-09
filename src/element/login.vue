@@ -10,12 +10,12 @@
             </div>
             <div class="phone flex ali_center">
                 <span>账号：</span>
-                <input type="number" v-model="inputMsg.mobile" placeholder="请输入手机号">
+                <input  v-model="inputMsg.mobile" placeholder="请输入手机号">
             </div>
-            <div class="pwd">
+            <div class="pwd flex ali_center">
                 <span>密码：</span>
-                <input v-if="iconeyeclose" type="text" v-model="inputMsg.pwd" placeholder="请输入密码">
-                <input v-else type="password" v-model="inputMsg.pwd" placeholder="请输入密码">
+                <input v-if="iconeyeclose" type="text" v-model="inputMsg.pwd" placeholder="请输入密码8-20位字母或数字">
+                <input v-else type="password" v-model="inputMsg.pwd" placeholder="请输入密码8-20位字母或数字">
                 <i @click="iconeyeclose = !iconeyeclose" v-if="iconeyeclose" class="iconfont iconeyeopen"></i>
                 <i @click="iconeyeclose = !iconeyeclose" v-else class="iconfont iconeyeclose"></i>
                 <van-icon v-if="inputMsg.pwd" @click="inputMsg.pwd = ''" name="cross" color="#fff" size="10" />
@@ -56,7 +56,9 @@ export default {
             })
         },
         forget(){
-
+             this.$router.push({
+                path: '/forget'
+            })
         },
     },
     mounted(){},
@@ -106,19 +108,25 @@ export default {
         }
         .phone{
             width: 100%;
-            background: #DCCF9A;
+            background: #f7f6fc;
             // border-radius: 6vw;
             position: relative;
-            height: 12vw;
+            height: 9vw;
             padding: 0 1vw;
+            background: #D6C695;
+            border: 1vw solid #FEF2C2;
+            border-radius: 2vw;
             span{
                 white-space:nowrap;
+                font-weight: bold;
+                font-size: 4vw;
             }
             input {
                 width: 100%;
                 height: 12vw;
                 border: 0;
                 text-indent: 3vw;
+                opacity: 0.5;
                 
             }
         }
@@ -126,10 +134,18 @@ export default {
             margin-top: 2.4vw;
             position: relative;
             width: 100%;
-            height: 12vw;
+            height: 9vw;
             // border-radius: 6vw;
-            background: #DCCF9A;
+            // background: #f7f6fc;
             padding: 0 1vw;
+            background: #D6C695;
+            border: 1vw solid #FEF2C2;
+            border-radius: 2vw;
+            span{
+                white-space:nowrap;
+                font-weight: bold;
+                font-size: 4vw;
+            }
             .iconfont {
                 top: 0;
                 bottom: 0;
@@ -154,7 +170,7 @@ export default {
                 text-indent: 3vw;
                 height: 12vw;
                 font-size: 4vw;
-               
+                opacity: 0.5;
             }
         }
         .footer {

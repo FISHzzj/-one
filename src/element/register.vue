@@ -18,7 +18,7 @@
             </div>
             <div class="pwd flex ali_center">
                 <span>&nbsp;&nbsp;&nbsp;密码：</span>
-                <input  type="text" v-model="inputMsg.pwd" placeholder="请输入密码">
+                <input  type="text" v-model="inputMsg.pwd" placeholder="请输入密码8-20位字母或数字">
                 <!-- <input v-else type="password" v-model="inputMsg.pwd" placeholder="请输入密码"> -->
                 <!-- <i @click="iconeyeclose = !iconeyeclose" v-if="iconeyeclose" class="iconfont iconeyeopen"></i>
                 <i @click="iconeyeclose = !iconeyeclose" v-else class="iconfont iconeyeclose"></i> -->
