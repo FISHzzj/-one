@@ -132,6 +132,10 @@ export default {
     justify-content: space-around;
     -webkit-justify-content: space-around;
 }
+.flex-start {
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
+}
 .flex-end {
     justify-content: flex-end;
     -webkit-justify-content: flex-end;
