@@ -9,7 +9,7 @@ import '@/assets/css/font_icon_6164.css'
 
 import Vant from 'vant'
 import 'vant/lib/index.css'
-import { Lazyload, Dialog, Toast, Calendar, DatetimePicker } from 'vant';
+import { Lazyload, Dialog, Toast, Calendar, DatetimePicker,Switch } from 'vant';
 
 import ajax from './callServer/ajax'
 import * as apicloud from './apicloud'
@@ -26,6 +26,7 @@ Vue.use(Vant)
 Vue.use(Lazyload)
 Vue.use(Calendar);
 Vue.use(DatetimePicker);
+Vue.use(Switch);
 
 Vue.config.productionTip = false
 
