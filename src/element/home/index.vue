@@ -1,9 +1,9 @@
 <template>
     <div class="homeIndex">
         <div class="xinxi flex flex_around ali_center">
-            <div class="xxleft flex ali_center">
+            <div class="xxleft flex ali_center" @click="gerenxinxi">
                 <img src="../../assets/images/icon/7.png" alt="" srcset="">
-                <div class="xxName flex flex_col flex_around">
+                <div class="xxName flex flex_col ">
                     <span>我是昵称</span>
                     <span>邀请码：35214253</span>
                 </div>
@@ -30,14 +30,21 @@
             </div>
         </div>
         <div class="leftbtn flex flex_col">
-            <img src="../../assets/images/nongchang/shezhi.png" alt="" srcset="">
-            <img src="../../assets/images/nongchang/cangku.png" alt="" srcset="">
-            <img src="../../assets/images/nongchang/haoyou.png" alt="" srcset="">
+            <img src="../../assets/images/nongchang/shezhi.png" alt="" srcset="" @click="shezhi">
+            <img src="../../assets/images/nongchang/cangku.png" alt="" srcset="" @click="cangku">
+            <img src="../../assets/images/nongchang/haoyou.png" alt="" srcset="" @click="haoyou">
+            <img src="../../assets/images/nongchang/denglvhaoli.png" alt="" srcset="" >
         </div>
+       
         <!-- 养殖 -->
         <div class="yangzhi ">
             <img src="../../assets/images/nongchang/yangzhione.png" alt="" srcset="">
             <img src="../../assets/images/nongchang/yangzhi.png" alt="" srcset="">
+        </div>
+         <!-- 兑换处 -->
+        <div class="duihuanchu">
+            <img src="../../assets/images/nongchang/duihuan.png" alt="" srcset="">
+            <img src="../../assets/images/nongchang/duihuanone.png" alt="" srcset="">
         </div>
         <!-- 孵化 -->
         <div class="fuhua">
@@ -47,12 +54,12 @@
         <!-- 集市 -->
          <div class="jishi">
             <img src="../../assets/images/nongchang/jishione.png" alt="" srcset="">
-            <img src="../../assets/images/nongchang/jishi.png" alt="" srcset="">
+            <img src="../../assets/images/nongchang/jishi.png" alt="" srcset="" @click="jishi">
         </div>
         <!-- 商店 -->
         <div class="shangdian">
             <img src="../../assets/images/nongchang/shangdianone.png" alt="" srcset="">
-            <img src="../../assets/images/nongchang/shangdian.png" alt="" srcset="">
+            <img src="../../assets/images/nongchang/shangdian.png" alt="" srcset="" @click="shangdian">
         </div>
         <!-- 种植 -->
         <div class="zhongzhi">
@@ -60,8 +67,19 @@
             <img src="../../assets/images/nongchang/zhongzhi.png" alt="" srcset="">
             <img src="../../assets/images/nongchang/laotou.png" alt="" srcset="">
         </div>
+        <!-- 渔场 -->
+        <div class="yuchang">
+            <img src="../../assets/images/nongchang/yuchangone.png" alt="" srcset="">
+
+        </div>
+        <!-- 加工厂 -->
+        <div class="jiagongchang">
+            <img src="../../assets/images/nongchang/jiagongchang.png" alt="" srcset="">
+            <img src="../../assets/images/nongchang/jiagongchangone.png" alt="" srcset="">
+        </div>
+
         <!-- 设置 -->
-        <div class="shezhi" v-if="shezhi">
+        <div class="shezhi" v-if="shezhikuang">
             <div class="kuang">
                 <div class="szxuan flex flex_col flex_center" v-if="shengyi">
                     <span class="flex flex_center ali_center">音乐：<van-switch v-model="yinyue" inactive-color="#BDBDBD" active-color="#EDC782" size=""/></span>
@@ -78,7 +96,7 @@
                             <span>&nbsp;&nbsp;&nbsp;&nbsp;验证码：</span>
                             <input v-model="inputMsg.code" type="text" placeholder="请输入验证码">
                         </div>
-                        <span ../..click="senVerifyCode()">{{timeAndTextOfSendcode}}</span>
+                        <span @click="senVerifyCode()">{{timeAndTextOfSendcode}}</span>
                     </div>
                     <div class="pwd flex ali_center">
                         <span>二级密码：</span>
@@ -98,7 +116,7 @@
                     </div>
                 </div>
                 <div class="shezhibtn flex flex_center">
-                   <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="">
+                   <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
                    <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt="">
                    <!-- <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt=""> -->
                 </div>
@@ -107,19 +125,160 @@
         <!-- 商店 -->
         <div class="shangdiankuang" v-if="shangdiankuang">
             <div class="kuang">
+                <div class="guanbi flex flex-end">
+                    <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="guangbi">
+                </div>
                 <div class="sdlan flex flex_center">
                     <img :src="zuo ? zuo1 : zuo2" alt="" srcset="" @click="tab(0)">
                     <img :src="shouhuquan ? shouhuquan1 : shouhuquan2" alt="" srcset="" @click="tab(1)">
                     <img :src="jisiliao ? jisiliao1 : jisiliao2" alt="" srcset="" @click="tab(2)">
                     <img :src="zhong ? zhong1 : zhong2" alt="" srcset="" @click="tab(3)">
                     <img :src="you ? you1 : you2" alt="" srcset="" @click="tab(4)">
-                    <!-- <img :src="shouhuquan ?'../../assets/images/nongchang/shangdian/shouhuquan.png':'../../assets/images/nongchang/shangdian/shouhuquan1.png'" alt="" srcset="">
-                    <img :src="jisiliao ?'../../assets/images/nongchang/shangdian/jisiliao.png':'../../assets/images/nongchang/shangdian/jisiliao1.png'" alt="" srcset="">
-                    <img :src="zhong ?'../../assets/images/nongchang/shangdian/zhong.png':'../../assets/images/nongchang/shangdian/zhong1.png'" alt="" srcset="">
-                    <img :src="you ?'../../assets/images/nongchang/shangdian/you.png':'../../assets/images/nongchang/shangdian/you1.png'" alt="" srcset=""> -->
+                </div>
+                <div class="sdlist">
+                    <div class="sditem flex ali_center" v-for="(item, index) in list" :key="index"> 
+                        <img src="../../assets/images/nongchang/shangdian/jiasu.png" alt="" srcset="">
+                        <div class="sdtext flex flex_col">
+                            <div>{{item.title}}</div>
+                            <div>{{item.title1}}</div>
+                            <div>小鸡：{{item.shuliang}}</div>
+                        </div>
+                        <img src="../../assets/images/nongchang/shangdian/goumai.png" alt="">
+                    </div>
                 </div>
             </div>
         </div>
+        <!-- 集市 -->
+        <div class="jishikuang" v-if="jishikuang">
+            <div class="kuang">
+                <div class="guanbi flex flex-end">
+                    <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="guangbi">
+                </div>
+                <div class="sdlan flex flex_center">
+                    <img :src="goumai ? goumai1 : goumai2" alt="" srcset="" @click="tabjishi(0)">
+                    <img :src="jishou ? jishou1 : jishou2" alt="" srcset="" @click="tabjishi(1)">
+                    <img :src="jilv ? jilv1 : jilv2" alt="" srcset="" @click="tabjishi(2)">
+                    
+                </div>
+                <div class="sdlist">
+                    <div class="sditem flex ali_center flex_between" v-for="(item, index) in list" :key="index"> 
+                        <!-- <img src="../../assets/images/nongchang/shangdian/jiasu.png" alt="" srcset=""> -->
+                        <div class="sdtext flex flex_col ">
+                            <div class="flex flex_between">
+                                <span>购买人：昵称</span>
+                                <span>数量：1</span>
+                            </div>
+                            <div class="flex flex_between">
+                                <span>手续费：昵称</span>
+                                <span>积分：+195</span>
+                            </div>
+                            
+                            <div>购买时间：2021-11-2 10:20:20</div>
+                        </div>
+                        <!-- <img src="../../assets/images/nongchang/shangdian/goumai.png" alt=""> -->
+                    </div>
+                    <div class="sditem flex ali_center flex_between" v-for="(item, index) in list" :key="index"> 
+                        <!-- <img src="../../assets/images/nongchang/shangdian/jiasu.png" alt="" srcset=""> -->
+                        <div class="sdtext flex flex_col " v-if="goumai || jishou">
+                            <div class="flex flex_between">
+                                <span>购买人：昵称</span>
+                                <span>数量：1</span>
+                            </div>
+                            <div class="flex flex_between">
+                                <span>手续费：昵称</span>
+                                <span>积分：+195</span>
+                            </div>
+                            
+                            <div>购买时间：2021-11-2 10:20:20</div>
+                        </div>
+                        <!-- <img src="../../assets/images/nongchang/shangdian/goumai.png" alt=""> -->
+                        <div class="sdtextone flex ali_center" v-else>
+                            <img src="../../assets/images/nongchang/shangdian/jiasu.png" alt="" srcset="">
+                            <div class="sdtext flex flex_col">
+                                <div>{{item.title}}</div>
+                                <div>{{item.title1}}</div>
+                                <div>小鸡：{{item.shuliang}}</div>
+                            </div>
+                            <img src="../../assets/images/nongchang/shangdian/goumai.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <!-- 仓库 -->
+        <div class="cangkukuang" v-if="cangkukuang">
+            <div class="kuang">
+                <div class="guanbi flex flex-end">
+                    <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="guangbi">
+                </div>
+                <!-- <div class="sdlan flex flex_center">
+                    <img :src="zuo ? zuo1 : zuo2" alt="" srcset="" @click="tab(0)">
+                    <img :src="shouhuquan ? shouhuquan1 : shouhuquan2" alt="" srcset="" @click="tab(1)">
+                    <img :src="jisiliao ? jisiliao1 : jisiliao2" alt="" srcset="" @click="tab(2)">
+                    <img :src="zhong ? zhong1 : zhong2" alt="" srcset="" @click="tab(3)">
+                    <img :src="you ? you1 : you2" alt="" srcset="" @click="tab(4)">
+                </div> -->
+                <div class="sdlist">
+                    <div class="sditem flex ali_center" v-for="(item, index) in list" :key="index"> 
+                        <img src="../../assets/images/nongchang/shangdian/jiasu.png" alt="" srcset="">
+                        <div class="sdtext flex flex_col">
+                            <div>{{item.title}}</div>
+                            <div>{{item.title1}}</div>
+                            <div>小鸡：{{item.shuliang}}</div>
+                        </div>
+                        <img src="../../assets/images/nongchang/shangdian/goumai.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 个人信息 -->
+        <div class="gerenxinxi" v-if="gerenxinxikuang">
+            <div class="kuang">
+                <div class="content  ">
+                    <img src="../../assets/images/icon/7.png" alt="">
+                    <div>昵称：955942</div>
+                    <div>ID：955942</div>
+                    <div>邀请码：jertye2862</div>
+                    <div>绑定手机：<a href="javascript:;">去绑定</a></div>
+                </div>
+                <div class="shezhibtn flex flex_center">
+                   <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
+                   <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt="">
+                   <!-- <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt=""> -->
+                </div>
+            </div>
+        </div>
+        <!-- 好友列表 -->
+        <div class="haoyoukuang" v-if="haoyoukuang">
+            <div class="kuang">
+                <div class="sdlan flex flex_center">
+                    <img :src="hao ? hao1 : hao2" alt="" srcset="" @click="tab(0)">
+                    <img :src="guangchang ? guangchang1 : guangchang2" alt="" srcset="" @click="tab(1)">
+                    
+                </div>
+                <div class="sdlist">
+                    <div class="sditem flex ali_center" v-for="(item, index) in list" :key="index"> 
+                        <!-- <img src="../../assets/images/nongchang/shangdian/jiasu.png" alt="" srcset=""> -->
+                        <div class="sdtext flex ali_center" >
+                            <div>1</div>
+                            <div class="flex ali_center">
+                                <img src="../../assets/images/icon/7.png" alt="">
+                                <span style="margin-left:2vw;">昵称</span>
+                            </div>
+                            <div class="flex ali_center"><img src="../../assets/images/nongchang/haoyou/tou.png" alt=""></div>
+                        </div>
+                        <!-- <img src="../../assets/images/nongchang/shangdian/goumai.png" alt=""> -->
+                    </div>
+                </div>
+                <div class="shezhibtn flex flex_center">
+                    <img src="../../assets/images/nongchang/haoyou/huanyipi.png" alt="">
+                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
+                   <!-- <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt=""> -->
+                </div>
+            </div>
+        </div>
+
     </div>
 </template>
 <script>
@@ -127,7 +286,7 @@ export default {
     name: 'index',
     data () {
         return {
-            shezhi: false,
+            shezhikuang: false,
             shezhitext:true,
             yinyue: false,
             yinxiao:false,
@@ -140,7 +299,7 @@ export default {
                 pwd:"",
                 spread:"",
             },
-            shangdiankuang:true,
+            shangdiankuang:false,
             zuo:true,
             zuo1:require('@/assets/images/nongchang/shangdian/zuo.png'),
             zuo2:require('@/assets/images/nongchang/shangdian/zuo1.png'),
@@ -156,6 +315,45 @@ export default {
             you:false,
             you1:require('@/assets/images/nongchang/shangdian/you.png'),
             you2:require('@/assets/images/nongchang/shangdian/you1.png'),
+            list:[
+                {
+                    img:'',
+                    title:'加速礼包LV1',
+                    title1:'加速时间：2h',
+                    shuliang:'20'
+                },
+                {
+                    img:'',
+                    title:'加速礼包LV2',
+                    title1:'加速时间：4h',
+                    shuliang:'20'
+                },
+                {
+                    img:'',
+                    title:'加速礼包LV3',
+                    title1:'加速时间：6h',
+                    shuliang:'20'
+                }
+            ],
+            goumai:true,
+            goumai1:require('@/assets/images/nongchang/jishi/zuo.png'),
+            goumai2:require('@/assets/images/nongchang/jishi/zuo1.png'),
+            jishou:false,
+            jishou1:require('@/assets/images/nongchang/jishi/zhong.png'),
+            jishou2:require('@/assets/images/nongchang/jishi/zhong1.png'),
+            jilv:false,
+            jilv1:require('@/assets/images/nongchang/jishi/you.png'),
+            jilv2:require('@/assets/images/nongchang/jishi/you1.png'),
+            jishikuang:false,
+            cangkukuang: false,
+            gerenxinxikuang:false,
+            haoyoukuang:false,
+            hao:true,
+            hao1:require('@/assets/images/nongchang/haoyou/zuo.png'),
+            hao2:require('@/assets/images/nongchang/haoyou/zuo1.png'),
+            guangchang:false,
+            guangchang1:require('@/assets/images/nongchang/haoyou/you.png'),
+            guangchang2:require('@/assets/images/nongchang/haoyou/you1.png'),
         }
     },
     mounted(){
@@ -195,6 +393,55 @@ export default {
                 this.you = !this.you 
             }
         },
+        guangbi(){
+            this.shangdiankuang = false;
+            this.jishikuang = false;
+            this.cangkukuang = false;
+            
+        },
+        shezhi(){
+            this.shezhikuang = true;
+        },
+        fanhui(){
+           this.shezhikuang = false; 
+           this.gerenxinxikuang = false;
+           this.haoyoukuang = false;
+        },
+        cangku(){
+            this.cangkukuang = true;
+        },
+        haoyou(){
+            this.haoyoukuang = true;
+        },
+        shangdian(){
+            this.shangdiankuang = true
+        },
+        jishi(){
+            this.jishikuang = true;
+        },
+        tabjishi(index){
+            if(index == 0){
+                this.goumai = !this.goumai
+                this.jishou = false
+                this.jilv = false
+                
+            }else if(index == 1){
+                this.goumai = false
+                this.jishou = !this.jishou
+                this.jilv = false
+                         
+            }else if(index == 2){
+                this.goumai = false
+                this.jishou = false
+                this.jilv = !this.jilv
+                
+            }
+        },
+        gerenxinxi(){
+            this.gerenxinxikuang = true;
+        },
+        
+
     }
 }
 </script>
@@ -206,6 +453,7 @@ export default {
         background-size: 100% 100%;
         position: relative;
         font-size: 0.65rem;
+        overflow: hidden;
         .xinxi{
             width: 95vw;
             height: 15vw;
@@ -237,6 +485,7 @@ export default {
                         font-family: Adobe Heiti Std;
                         text-stroke: 0.03rem #df7108;
                         -webkit-text-stroke: 0.03rem #df7108;
+                        height: 4vw;
                         // background: linear-gradient(180deg, #FFFCCD 0%, #FFE08E 100%);
                         // -webkit-background-clip: text;
                     }
@@ -327,25 +576,41 @@ export default {
                 height: 10vw;
             }
         }
+        
         .yangzhi{
-            position: relative;
-            left: -24%;
-            top: 22%;
+            position: absolute;
+            left: 7%;
+            top: 21%;
             img:first-child{
-                width: 75vw;
+                width: 65vw;
+            }
+            img:nth-child(2){
+                width: 14vw;
+                position: absolute;
+                top: 9vw;
+                left: 16vw;
+                // right: 65vw;
+            }
+        }
+        .duihuanchu{
+            position: absolute;
+            left: -3%;
+            top: 32%;
+            img:first-child{
+                width: 30vw;
             }
             img:nth-child(2){
                 width: 14vw;
                 position: absolute;
                 top: 15vw;
-                /* left: 1rem; */
-                right: 31vw;
+                left: 30vw;
+                // right: 58vw;
             }
         }
         .fuhua{
-            position: relative;
-            left: 83%;
-            top: 5%;
+            position: absolute;
+            left: 81%;
+            top: 30%;
             img:first-child{
                 width: 21vw;
             }
@@ -358,24 +623,24 @@ export default {
             }
         }
         .jishi{
-           position: relative;
-            left: -12%;
-            top: 15%;
+           position: absolute;
+            left: -11%;
+            top: 52%;
             img:first-child{
-                width: 52vw;
+                width: 54vw;
             }
             img:nth-child(2){
-                width: 13vw;
+                width: 14vw;
                 position: absolute;
                 top: 16vw;
-                /* left: 1rem; */
-                right: 48vw;
+                left: 42vw;
+                // right: 48vw;
             }
         }
         .shangdian{
-            position: relative;
+            position: absolute;
             left: 76%;
-            top: -14%;
+            top: 48%;
             img:first-child{
                width: 45vw;
             }
@@ -388,9 +653,9 @@ export default {
             }
         }
         .zhongzhi{
-               position: relative;
+            position: absolute;
             left: 47%;
-            top: -12%;
+            top: 67%;
             img:first-child{
                 width: 45vw;
             }
@@ -401,11 +666,36 @@ export default {
                 left: 12vw;
             }
             img:nth-child(3){
+                width: 11vw;
+                position: absolute;
+                top: -5vw;
+                left: 2vw;
+
+            }
+        }
+        .yuchang{
+            position: relative;
+            left: 9%;
+            top: 85%;
+            img:first-child{
                 width: 13vw;
                 position: absolute;
-                top: -7vw;
-                left: -1vw;
-
+                top: -5vw;
+                left: 12vw;
+            }
+        }
+        .jiagongchang{
+            position: relative;
+            left: 77%;
+            top: 77%;
+            img:first-child{
+                width: 33vw;
+            }
+            img:nth-child(2){
+                width: 14vw;
+                position: absolute;
+                top: 11vw;
+                left: -13vw;
             }
         }
         .shezhi{
@@ -665,10 +955,342 @@ export default {
                 color: #955942;
                 font-family: Adobe Heiti Std;
                 font-size: 4vw;
+                .guanbi{
+                    img:first-child{
+                        width: 13vw;
+                        height: 13vw;
+                    }
+                }
+                
                 .sdlan{
-                    margin-top: 38%;
+                    margin-top: 20%;
                     img{
                         width: 12.5vw;
+                    }
+                }
+                .sdlist{
+                    margin-top: 13%;
+                    height: 78vw;
+                    overflow-x: hidden;
+                    overflow-y: scroll;
+                    width: 90%;
+                    margin-left: 5%;
+                    .sditem{
+                        background: #FFECDC;
+                        width: 75%;
+                        margin-left: 12.5%;
+                        border-radius: 1vw;
+                        margin-bottom: 2vw;
+                      
+                        img:first-child{
+                            width: 15vw;
+                            height: 15vw;
+                            border-radius: 50%;
+                        }
+                        .sdtext{
+                            margin-left: 1vw;
+                            div{
+                                font-size: 12px;
+                                white-space: nowrap;
+                                height: 4vw;
+                                line-height: 4vw;
+                            }
+                        }
+                        img:last-child{
+                            width: 15vw;
+                            margin-left: 5vw;
+                        }
+                    }
+                }
+            }
+        }
+        .jishikuang{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 99;
+            .kuang{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 80%;
+                height: 135vw;
+                background-image: url(../../assets/images/nongchang/jishi/kuang.png);
+                background-size: 100% 100%;
+                color: #955942;
+                font-family: Adobe Heiti Std;
+                font-size: 4vw;
+                .guanbi{
+                    // margin-top: 10%;
+                    img:first-child{
+                        width: 13vw;
+                        height: 13vw;
+                    }
+                }
+                
+                .sdlan{
+                    margin-top: 20%;
+                    img{
+                        width: 17.5vw;
+                        height: 5vw;
+                    }
+                }
+                .sdlist{
+                    margin-top: 13%;
+                    height: 78vw;
+                    overflow-x: hidden;
+                    overflow-y: scroll;
+                    width: 90%;
+                    margin-left: 5%;
+                    .sditem{
+                        background: #FFECDC;
+                        width: 70%;
+                        margin-left: 15%;
+                        border-radius: 1vw;
+                        margin-bottom: 2vw;
+                          padding: 1vw 5vw;
+                        box-sizing: border-box;
+                        
+                        .sdtext{
+                            margin-left: 1vw;
+                            div{
+                                font-size: 12px;
+                                white-space: nowrap;
+                                height: 4vw;
+                                line-height: 4vw;
+                            }
+                        }
+                        .sdtextone{
+                            img:first-child{
+                                width: 15vw;
+                                height: 15vw;
+                                border-radius: 50%;
+                            }
+                            .sdtext{
+                                margin-left: 1vw;
+                                div{
+                                    font-size: 12px;
+                                    white-space: nowrap;
+                                    height: 4vw;
+                                    line-height: 4vw;
+                                }
+                            }
+                            img:last-child{
+                                width: 15vw;
+                                margin-left: 5vw;
+                            }
+                        }
+                        
+                    }
+                }
+            }
+        }
+        .cangkukuang{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 99;
+            .kuang{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 80%;
+                height: 135vw;
+                background-image: url(../../assets/images/nongchang/cangku/kuang.png);
+                background-size: 100% 100%;
+                color: #955942;
+                font-family: Adobe Heiti Std;
+                font-size: 4vw;
+                .guanbi{
+                    img:first-child{
+                        width: 13vw;
+                        height: 13vw;
+                    }
+                }
+                
+                // .sdlan{
+                //     margin-top: 20%;
+                //     img{
+                //         width: 12.5vw;
+                //     }
+                // }
+                .sdlist{
+                    margin-top: 33%;
+                    height: 78vw;
+                    overflow-x: hidden;
+                    overflow-y: scroll;
+                    width: 90%;
+                    margin-left: 5%;
+                    .sditem{
+                        background: #FFECDC;
+                        width: 75%;
+                        margin-left: 12.5%;
+                        border-radius: 1vw;
+                        margin-bottom: 2vw;
+                      
+                        img:first-child{
+                            width: 15vw;
+                            height: 15vw;
+                            border-radius: 50%;
+                        }
+                        .sdtext{
+                            margin-left: 1vw;
+                            div{
+                                font-size: 12px;
+                                white-space: nowrap;
+                                height: 4vw;
+                                line-height: 4vw;
+                            }
+                        }
+                        img:last-child{
+                            width: 15vw;
+                            margin-left: 5vw;
+                        }
+                    }
+                }
+            }
+        }
+        .gerenxinxi{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 99;
+           .kuang{
+               position: absolute;
+               top: 50%;
+               left: 50%;
+               transform: translate(-50%, -50%);
+                width: 80%;
+                height: 80vw;
+                background-image: url(../../assets/images/nongchang/gerenxinxi/kuang.png);
+                background-size: 100% 100%;
+                color: #955942;
+                font-family: Adobe Heiti Std;
+                font-size: 4vw;
+                // .szxuan{
+                //     text-align: center;
+                //     margin-top: 30%;
+                //     span{
+                //         margin-bottom: 2vw;
+                //     }
+                // }
+                .content{
+                    padding: 5vw 5vw;
+                    margin-top: 15%;
+                    text-align: center;
+                    img{
+                        width: 15vw;
+                        height: 15vw;
+                        border-radius: 50%;
+                    }
+                    div{
+                        height: 6vw;
+                        a{
+                            color:#FE523B;
+                            
+                        }
+                    }
+                    
+                    
+
+                }
+                .shezhibtn{
+                    img{
+                        width: 23vw;
+                    }
+                }
+
+           } 
+        }
+        .haoyoukuang{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(32, 29, 29, 0.7);
+            z-index: 99;
+            .kuang{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-90%, -47%);
+                width: 80%;
+                height: 126vw;
+                background-image: url(../../assets/images/nongchang/haoyou/kuang.png);
+                background-size: 100% 100%;
+                color: #955942;
+                font-family: Adobe Heiti Std;
+                font-size: 4vw;
+                // .guanbi{
+                //     img:first-child{
+                //         width: 13vw;
+                //         height: 13vw;
+                //     }
+                // }
+                
+                .sdlan{
+                    margin-top: 5%;
+                    img{
+                        width: 16.5vw;
+                    }
+                }
+                .sdlist{
+                    margin-top: 10%;
+                    height: 95vw;
+                    overflow-x: hidden;
+                    overflow-y: scroll;
+                    width: 90%;
+                    margin-left: 5%;
+                    .sditem{
+                        // background: #FFECDC;
+                        width: 75%;
+                        margin-left: 28.5%;
+                        border-radius: 1vw;
+                        margin-bottom: 2vw;
+                      
+                        // img:first-child{
+                        //     width: 15vw;
+                        //     height: 15vw;
+                        //     border-radius: 50%;
+                        // }
+                        .sdtext{
+                            margin-left: 1vw;
+                            div{
+                                font-size: 12px;
+                                white-space: nowrap;
+                                margin-right: 5vw;
+                                // height: 4vw;
+                                // line-height: 4vw;
+                                img{
+                                    width: 9vw;
+                                }
+                            }
+                            div:nth-child(2){
+                                margin-right: 10vw;
+                            }
+                        }
+                        // img:last-child{
+                        //     width: 15vw;
+                        //     margin-left: 5vw;
+                        // }
+                    }
+                }
+                .shezhibtn{
+                    img{
+                        width: 18vw;
+                        margin-left: 2vw;
                     }
                 }
             }
