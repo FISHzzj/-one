@@ -1,11 +1,11 @@
 <template>
     <div class="login">
-        <div class="logincenter">
+        <!-- <div class="logincenter">
             <div @click="loginshow">登陆</div>
             <div @click="register">注册</div>
-        </div>
+        </div> -->
         <div class="content" v-if="loginShow">
-            <div class="title">
+            <!-- <div class="title">
                 <div class="first">登陆</div>
             </div>
             <div class="phone flex ali_center">
@@ -23,14 +23,13 @@
             <div class="footer">
                  <div class="top flex flex_between">
                     <span @click="forget">忘记密码</span>
-                    <!-- <p></p> -->
                     <span @click="register">用户注册</span>
                 </div>
             </div>
             <div class="btn submit flex flex_around">
                 <div>确认</div>
                 <div>取消</div>
-            </div>
+            </div> -->
         </div>
     </div>  
 </template>
@@ -68,7 +67,7 @@ export default {
 .login{
     width: 100%;
     height: 100%;
-    background-image: url(../assets/images/nongchang/login.jpg);
+    background-image: url(../assets/images/nongchang/denglv/bg.png);
     background-size: 100% 100%;
     font-size: 4vw;
     .logincenter{
@@ -91,11 +90,13 @@ export default {
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -70%);
         width: 85%;
-        height: auto;
-        background: #F0E3AE;
-        padding: 5vw 5vw;
+        height: 100vw;
+        // background: #F0E3AE;
+        // padding: 5vw 5vw;
+        background-image: url(../assets/images/nongchang/denglv/denglv.png);
+        background-size: 100% 100%;
         .title{
             padding: 5vw 0;
             box-sizing: border-box;
