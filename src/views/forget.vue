@@ -98,7 +98,7 @@ export default {
             })
             if (!res) return false
             // 返回 登錄
-            Dialog.alert({
+            Toast({
                 message: res.msg
             })
             this.$router.push({

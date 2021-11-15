@@ -5,6 +5,23 @@
             <div @click="register">注册</div>
         </div> -->
         <div class="content" v-if="loginShow">
+
+            <div class="phone" >
+                <input  v-model="inputMsg.mobile" placeholder="请输入手机号">
+            </div>
+            <div class="pwd">
+                <input type="text" v-model="inputMsg.pwd" placeholder="请输入密码8-20位字母或数字">
+            </div>
+
+             <div class="footer">
+                 <div class="top flex flex_between">
+                    <span @click="forget">忘记密码</span>
+                    <span @click="register">用户注册</span>
+                </div>
+            </div>
+            <div class="loginbtn" @click="login">
+                <img src="../assets/images/nongchang/denglv/login.png" alt="">
+            </div>
             <!-- <div class="title">
                 <div class="first">登陆</div>
             </div>
@@ -46,8 +63,54 @@ export default {
         }
     },
     methods:{
-        loginshow(){
-
+        async login(e) {
+            // console.log(e);
+            // if (this.flag) { //登录接口
+                // let { login } = this.$i18n
+                let {mobile, pwd} = this.inputMsg
+                if (!mobile || !pwd) {
+                    this.posiX = 13;
+                    return Toast({
+                        message: '请输入账号和密码',
+                        duration: 1000,
+                    })
+                    
+                }
+                if (mobile.length < 11) {
+                    this.posiX = 13;
+                    return Toast({
+                        message: '请输入正确的手机号',
+                        duration: 1000,
+                    })
+                }
+                // 進行登錄 提示
+                const toast = Toast.loading({
+                    message: '登入中...',
+                    forbidClick: true, // 禁用背景点击
+                    loadingType: 'spinner',
+                    position: 'bottom',
+                    duration: 0
+                })
+                // 發送 ajax
+                let res = await $ajax('login',{
+                    mobile,
+                    pwd
+                }, () => {
+                    toast.clear()
+                })
+                // 如果返回爲 false ,則中斷函數
+                if (!res) return false
+                console.log(res)
+                // 保存 openid 以及 ip 到本地
+                localStorage.setItem('openid', res.openid)
+                // localStorage.setItem('ip', res.ip)
+                localStorage.setItem('mobile', mobile)
+                this.$router.push({
+                    name: 'index'
+                })
+            // } else {
+            //     this.posiX = 13;
+            // }
         },
         register(){
             this.$router.push({
@@ -70,6 +133,8 @@ export default {
     background-image: url(../assets/images/nongchang/denglv/bg.png);
     background-size: 100% 100%;
     font-size: 4vw;
+    color: #6A3D2B;
+    font-weight: 900;
     .logincenter{
         position: absolute;
         top: 50%;
@@ -92,7 +157,7 @@ export default {
         left: 50%;
         transform: translate(-50%, -70%);
         width: 85%;
-        height: 100vw;
+        height: 85vw;
         // background: #F0E3AE;
         // padding: 5vw 5vw;
         background-image: url(../assets/images/nongchang/denglv/denglv.png);
@@ -108,23 +173,26 @@ export default {
             }
         }
         .phone{
-            width: 100%;
-            background: #f7f6fc;
+            width: 75%;
+            // background: #f7f6fc;
             // border-radius: 6vw;
             position: relative;
             height: 9vw;
             padding: 0 1vw;
-            background: #D6C695;
-            border: 1vw solid #FEF2C2;
+            // background: #D6C695;
+            // border: 1vw solid #FEF2C2;
             border-radius: 2vw;
+            position: absolute;
+            top: 41%;
+            left: 13%;
             span{
                 white-space:nowrap;
                 font-weight: bold;
                 font-size: 4vw;
             }
             input {
-                width: 100%;
-                height: 12vw;
+                width: 90%;
+                height: 10vw;
                 border: 0;
                 text-indent: 3vw;
                 opacity: 0.5;
@@ -132,16 +200,19 @@ export default {
             }
         }
         .pwd {
-            margin-top: 2.4vw;
-            position: relative;
-            width: 100%;
+            // margin-top: 2.4vw;
+            // position: relative;
+            width: 75%;
             height: 9vw;
             // border-radius: 6vw;
             // background: #f7f6fc;
             padding: 0 1vw;
-            background: #D6C695;
-            border: 1vw solid #FEF2C2;
+            // background: #D6C695;
+            // border: 1vw solid #FEF2C2;
             border-radius: 2vw;
+            position: absolute;
+            top: 64%;
+            left: 13%;
             span{
                 white-space:nowrap;
                 font-weight: bold;
@@ -169,24 +240,30 @@ export default {
             }
             input {
                 text-indent: 3vw;
-                height: 12vw;
+                height: 10vw;
                 font-size: 4vw;
                 opacity: 0.5;
+                width: 100%;
             }
         }
         .footer {
             // position: fixed;
             // bottom: 0;
             // left: 0;
-            width: 100%;
+            width: 75%;
             padding: 4vw 0; 
-            font-weight: 900;
+            // font-weight: 900;
+            position: absolute;
+            top: 78%;
+            left: 13%;
+            color: #fff;
             
             .top {
                 width: 100%;
-                color: #5F3F27;
+                color: #fff;
                 height: 12vw;
                 font-size: 4vw;
+                font-family: Microsoft YaHei;
                 // justify-content: center;
                 p {
                     border-right: 1px solid #5F3F27;
@@ -201,6 +278,15 @@ export default {
                 span {
                     color: #5F3F27;
                 }
+            }
+        }
+        .loginbtn{
+            position: absolute;
+            top: 99%;
+            left: 40%;
+            img{
+                width: 20vw;
+                // height: 20vw;
             }
         }
         .btn{

@@ -1,52 +1,28 @@
 <template lang="">
     <div class="register">
         <div class="content" v-if="registerShow">
-            <div class="title">
-                <div class="first">新用户注册</div>
-            </div>
-            <div class="phone flex ali_center">
-                <span>&nbsp;&nbsp;&nbsp;+86：</span>
+             <div class="phone ">
+                <!-- <span>&nbsp;&nbsp;&nbsp;+86：</span> -->
                 <input type="number" v-model="inputMsg.mobile" placeholder="请输入手机号">
             </div>
-             
-            <div class="code flex flex_between">
-                <div class="flex flex_nowrap ali_center">
-                    <span>验证码：</span>
-                    <input v-model="inputMsg.code" type="text" placeholder="请输入验证码">
-                </div>
+            <div class="code flex ali_center">
+                <input v-model="inputMsg.code" type="text" placeholder="请输入验证码">
                 <span @click="senVerifyCode()">{{timeAndTextOfSendcode}}</span>
             </div>
-            <div class="pwd flex ali_center">
-                <span>&nbsp;&nbsp;&nbsp;密码：</span>
-                <input  type="text" v-model="inputMsg.pwd" placeholder="请输入密码8-20位字母或数字">
-                <!-- <input v-else type="password" v-model="inputMsg.pwd" placeholder="请输入密码"> -->
-                <!-- <i @click="iconeyeclose = !iconeyeclose" v-if="iconeyeclose" class="iconfont iconeyeopen"></i>
-                <i @click="iconeyeclose = !iconeyeclose" v-else class="iconfont iconeyeclose"></i> -->
-                <van-icon v-if="inputMsg.pwd" @click="inputMsg.pwd = ''" name="cross" color="#fff" size="10" />
+            <div class="pwd">
+                <input type="text" v-model="inputMsg.pwd" placeholder="请输入密码8至12位數字和字母">
             </div>
-            <div class="spread flex ali_center">
-                <span>邀请码：</span>
-                <input type="text" v-model="inputMsg.spread" placeholder="请输入邀请码"  disabled/>
+            <div class="pwd1">
+                <input type="text" v-model="inputMsg.pwd_confirm" placeholder="请输入确认密码8至12位數字和字母">
             </div>
-            <div class="footer">
-                 <div class="top flex ali_center">
-                  
-                    <van-radio-group v-model="radio">
-                        <van-radio name="1" shape="square"> </van-radio>
-                    </van-radio-group>
-                    &nbsp;&nbsp;
-                    我已阅读并同意
-                    <span @click="news_detail">《用户注册协议》</span>
-                    和
-                    <span @click="news_detail">《隐私政策》</span>
-                </div>
+            <div class="spread">
+                <input type="text" v-model="inputMsg.spread" placeholder="请输入邀请码">
             </div>
-            <div class="btn submit flex flex_around">
-                <div>确认</div>
+            <div class="registerbtn flex flex_between">
+                <img src="../assets/images/nongchang/denglv/fanhui.png" alt="" @click="fanhui">
+                <img src="../assets/images/nongchang/denglv/register.png" alt="" @click="register">
             </div>
-            <div class="gologin flex flex-end" @click="gologin">
-                返回登录>>
-            </div>
+            
         </div>
     </div>
 </template>
@@ -57,11 +33,12 @@ export default {
         return{
             registerShow:true,
             code:"",
-            timeAndTextOfSendcode:"获取验证码",
+            timeAndTextOfSendcode:"发送验证码",
             inputMsg:{
                 mobile:"",
                 code:"",
                 pwd:"",
+                pwd_confirm:"",
                 spread:"",
             },
             radio: 1,
@@ -71,16 +48,102 @@ export default {
 
     },
     methods:{
-        senVerifyCode(){
-
+        timing () {
+            this.timer = setInterval( () => {
+                this.timeAndTextOfSendcode--
+                if (this.timeAndTextOfSendcode <= 0) {
+                    clearInterval(this.timer)
+                    this.timeAndTextOfSendcode = '发送验证码'
+                }
+            }, 1000)
         },
+        // 发送验证码
+        async senVerifyCode () {
+            // let { register } = this.$i18n
+            if ( this.timeAndTextOfSendcode !== '发送验证码') return false
+            if (!this.inputMsg.mobile) return Toast( '请输入手机号')
+            let res = await $ajax('sendVerifycode',{
+                mobile: this.inputMsg.mobile,
+                "type": "register" //短信验证码类型：register，forget
+            })
+            if (!res) return false
+            Toast(res.msg)
+            this.timeAndTextOfSendcode = 60
+            this.timing() //執行倒計時
+        },
+        
         news_detail(){
             
         },
-        gologin(){
-            this.$router.push({
-                path: '/login'
+        fanhui(){
+            this.$router.go(-1);
+        },
+        async register() {
+            if (!this.inputMsg.mobile) return Toast( '请输入手机号');
+            let pwdRex = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,12}$/g //驗證密碼的正則
+            if (!pwdRex.test(this.inputMsg.pwd)) return Toast( '登录密碼(8至12位數字和字母組合)')
+            console.log(this.pwd1)
+            // if (!pwdRex.test(this.pwd1)) return Toast( '交易密碼(8至12位數字和字母組合)')
+            if(this.inputMsg.pwd != this.inputMsg.pwd_confirm) return Toast( '两次输入的密码不一致')
+            if (!this.inputMsg.code) return Toast( '请输入短信验证码')
+            if (!this.spread) return Toast( '请输入邀请码')
+
+             let res = await $ajax('register', {
+                mobile: this.inputMsg.mobile,
+                pwd:this.inputMsg.pwd,
+                pwd_confirm: this.inputMsg.pwd_confirm,
+                sms_code: this.inputMsg.code,
+                agent: this.inputMsg.spread //邀请码
             })
+            if (!res) return false
+            // 如果爲 非 app 進入, 則跳轉下載頁面, 並終止函數
+            // if ( sessionStorage.getItem('noApp') ) {
+            //     // alert(222)
+            //     window.location.href = 'https://downloadpkg.app3c.cn/app/download?path=https://A6163977333456.qiniucdn.apicloud-system.com/31caecf2c21c7b3f9bba5698824a8dc0_d&ver=0.0.6&size=3.08M'
+            //     return false
+            // }
+            // 進行登錄 提示
+			const toast = Toast.loading({
+				message: '登入中...',
+				forbidClick: true, // 禁用背景点击
+				loadingType: 'spinner',
+				position: 'bottom',
+				duration: 0
+            })
+            // 註冊成功 直接登錄, 跳轉登錄頁面
+			let loginRes = await $ajax('login',{
+				mobile:this.inputMsg.mobile,
+				pwd:this.inputMsg.pwd
+            }, () => {
+				toast.clear()
+			})
+            
+            sessionStorage.removeItem('info') //移除 sessionStorage
+            localStorage.setItem('openid', loginRes.openid)
+			// localStorage.setItem('ip', loginRes.ip)
+			localStorage.setItem('mobile', this.mobile)
+            
+			this.$router.push({
+				path: '/login'
+			}).catch((err)=>{
+                console.log(err)
+            });//把error 抛出来
+            //  this.$router.replace({
+            //         path: this.$route.path,
+            //         query
+            // })
+            // .catch(()=>{});//把error 抛出来
+            
+            
+
+
+            // this.$router.push({
+            //     path: "/settingPwd",
+            //     query: {
+            //         mobile: this.mobile
+            //     }
+            // });
+
         },
     }
 }
@@ -89,7 +152,7 @@ export default {
     .register{
         width: 100%;
         height: 100%;
-        background-image: url(../assets/images/nongchang/login.jpg);
+        background-image: url(../assets/images/nongchang/denglv/bg.png);
         background-size: 100% 100%;
         font-size: 4vw;
         color: #6A3D2B;
@@ -98,12 +161,13 @@ export default {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            width: 85%;
-            height: auto;
-            background: #F0E3AE;
-            padding: 5vw 5vw;
-
+            transform: translate(-50%, -70%);
+            width: 70%;
+            height: 110vw;
+            // background: #F0E3AE;
+            // padding: 5vw 5vw;
+            background-image: url(../assets/images/nongchang/denglv/zhuce.png);
+            background-size: 100% 100%;
             .title{
                 padding: 5vw 0;
                 box-sizing: border-box;
@@ -115,31 +179,39 @@ export default {
                 }
             }
             .phone{
-                width: 100%;
-                background: #f7f6fc;
+                width: 75%;
+                // background: #f7f6fc;
                 // border-radius: 6vw;
-                position: relative;
-                height: 9vw;
-                padding: 0 1vw;
-                background: #D6C695;
-                border: 1vw solid #FEF2C2;
-                border-radius: 2vw;
+                position: absolute;
+                height: 8vw;
+                // padding: 0 1vw;
+                // background: #D6C695;
+                // border: 1vw solid #FEF2C2;
+                // border-radius: 2vw;
+                top: 26.5%;
+                left: 13%;
+
                 span{
                     white-space:nowrap;
                 }
                 input {
                     width: 100%;
-                    height: 9vw;
+                    height: 7vw;
                     border: 0;
                     text-indent: 3vw;
+                    opacity: 0.5;
+                    font-size: 3.5vw;
                 }
             }
             .code{
-                margin-top: 2.4vw;
+                // margin-top: 2.4vw;
                 width: 100%;
                 height: 9vw;
                 // border-radius: 6vw;
                 // background: #D6C695;
+                position: absolute;
+                top: 40%;
+                left: 13%;
                 
                 
                 
@@ -154,35 +226,41 @@ export default {
                     white-space: nowrap;
                 }
                 span:last-child{
-                    font-size: 1vw;
-                    line-height: 4vw;
-                    padding: 2vw 3vw;
+                    font-size: 3vw;
+                    line-height: 5vw;
+                    -webkit-box-sizing: border-box;
                     box-sizing: border-box;
-                    background: #868785;
+                    background: #FFE19D;
                     border-radius: 1vw;
-                    color: #fff;
+                    color: #955942;
                     border: 1vw solid #FEF2C2;
                     border-radius: 2vw;
+                    height: 7vw;
 
                     
                 }
                 input {
                     text-indent: 3vw;
                     height: 9vw;
-                    font-size: 4vw;
+                    font-size: 3.5vw;
+                    width: 52%;
+                    opacity: 0.5;
                 }
             }
             .pwd {
-                margin-top: 2.4vw;
-                position: relative;
-                width: 100%;
-                height: 9vw;
+                // margin-top: 2.4vw;
+                // position: relative;
+                width: 72%;
+                height: 7vw;
                 // border-radius: 6vw;
                 // background: #f7f6fc;
-                padding: 0 1vw;
-                background: #D6C695;
-                border: 1vw solid #FEF2C2;
-                border-radius: 2vw;
+                // padding: 0 1vw;
+                // background: #D6C695;
+                // border: 1vw solid #FEF2C2;
+                // border-radius: 2vw;
+                position: absolute;
+                top: 55.5%;
+                left: 13%;
                 .iconfont {
                     top: 0;
                     bottom: 0;
@@ -205,25 +283,83 @@ export default {
                 }
                 input {
                     text-indent: 3vw;
-                    height: 9vw;
-                    font-size: 4vw;
+                    height: 7vw;
+                    font-size: 3.5vw;
+                    opacity: 0.5;
+                     width: 100%;
                 }
             }
             .spread{
-                 margin-top: 2.4vw;
-                position: relative;
+                //  margin-top: 2.4vw;
+                // position: relative;
                 width: 100%;
                 height: 9vw;
                 // border-radius: 6vw;
                 // background: #f7f6fc;
-                background: #D6C695;
-                padding: 0 1vw;
-                border: 1vw solid #FEF2C2;
-                border-radius: 2vw;
+                // background: #D6C695;
+                // padding: 0 1vw;
+                // border: 1vw solid #FEF2C2;
+                // border-radius: 2vw;
+                 position: absolute;
+                top: 83.5%;
+                left: 13%;
                 input {
                     text-indent: 3vw;
                     height: 9vw;
                     font-size: 4vw;
+                    opacity: 0.5;
+                }
+            }
+            .pwd1{
+                 // margin-top: 2.4vw;
+                // position: relative;
+                width: 72%;
+                height: 7vw;
+                // border-radius: 6vw;
+                // background: #f7f6fc;
+                // padding: 0 1vw;
+                // background: #D6C695;
+                // border: 1vw solid #FEF2C2;
+                // border-radius: 2vw;
+                position: absolute;
+                top: 70.5%;
+                left: 13%;
+                .iconfont {
+                    top: 0;
+                    bottom: 0;
+                    margin: auto 0;
+                    right: 4vw;
+                    height: 4vw;
+                    position: absolute;
+                    border-radius: 50%;
+                }
+                .van-icon {
+                    top: 0;
+                    bottom: 0;
+                    margin: auto 0;
+                    right: 9vw;
+                    height: 2.5vw;
+                    position: absolute;
+                    border-radius: 50%;
+                    padding: 1vw;
+                    background: rgba(0,0,0,.3);
+                }
+                input {
+                    text-indent: 3vw;
+                    height: 7vw;
+                    font-size: 3.5vw;
+                    opacity: 0.5;
+                     width: 100%;
+                }
+            }
+            .registerbtn{
+                position: absolute;
+                top: 99%;
+                left: 15%;
+                img{
+                    width: 20vw;
+                    margin-right: 20%;
+                    // height: 20vw;
                 }
             }
             .footer {

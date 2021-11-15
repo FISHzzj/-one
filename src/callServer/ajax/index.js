@@ -24,10 +24,15 @@ export default function (port, data = {}, errCallback) {
     Object.keys(data).forEach( key => {
         formData.append(key, data[key])
     })
-    formData.append('token', localStorage.getItem('openid'))
+    // formData.append('token', localStorage.getItem('openid'))
     // 返回 promise 實例
     return new Promise ( resolve => {
-        axios.post(api[port], formData)
+        axios.post(api[port], formData, {
+            headers: {
+                'token': localStorage.getItem('openid'),
+                
+            }
+        })
         .then( res => {
             res.data && deviceIpLimit(res.data.newclientip) // ip 限制判斷
             // console.log(res)

@@ -2,10 +2,10 @@
     <div class="homeIndex">
         <div class="xinxi flex flex_around ali_center">
             <div class="xxleft flex ali_center" @click="gerenxinxi">
-                <img src="../../assets/images/icon/7.png" alt="" srcset="">
+                <img :src="avatar" alt="" srcset="">
                 <div class="xxName flex flex_col ">
-                    <span>我是昵称</span>
-                    <span>邀请码：35214253</span>
+                    <span>{{nick_name}}</span>
+                    <span>邀请码：{{invite_code}}</span>
                 </div>
             </div>
             <div class="xxcenter flex flex_col flex_around ">
@@ -286,6 +286,12 @@ export default {
     name: 'index',
     data () {
         return {
+            user_id:"",
+            nick_name:"",
+            avatar:"",
+            mobile:"",
+            invite_code:"",
+            balance:"",
             shezhikuang: false,
             shezhitext:true,
             yinyue: false,
@@ -357,9 +363,17 @@ export default {
         }
     },
     mounted(){
-
+        this.getData();
     },
     methods:{
+        async getData(){
+            let res = await $ajax('userinfo', {})
+            if (!res) return false
+            console.log(res)
+            Object.keys(res).forEach((key) =>{
+                this[key] = res[key]
+            })
+        },
         tab(index){
             if(index == 0){
                 this.zuo = !this.zuo

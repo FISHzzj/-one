@@ -2,14 +2,19 @@
  * 后端 请求, api 的 封装
  */
 
-let common = '/app/index.php?i=1&c=entry&m=ewei_shopv2&' //公共字段
+// let common = '/app/index.php?i=1&c=entry&m=ewei_shopv2&' //公共字段
+let common = '/farm/'  //公共字段
 
 export default {
     uploader: `${common}do=mobile&r=util.uploader`, //上傳圖片
-    sendVerifycode: `${common}do=mobile&r=account.verifycode`, // 發送驗證碼
-    login: `${common}do=mobile&r=account.login`, //登录
-    register: `${common}do=mobile&r=account.register`, //註冊
-    forget: `${common}do=mobile&r=account.forget`, // 忘記密碼
+    // sendVerifycode: `${common}do=mobile&r=account.verifycode`, // 發送驗證碼
+    // login: `${common}do=mobile&r=account.login`, //登录
+    // register: `${common}do=mobile&r=account.register`, //註冊
+    // forget: `${common}do=mobile&r=account.forget`, // 忘記密碼
+
+
+
+
     center: `${common}do=mobile&r=points.center`, // 我的
     kuang: `${common}do=mobile&r=kuang`, //首页
     userSet: `${common}do=mobile&r=user.userSet`, //编辑会员资料
@@ -116,4 +121,12 @@ export default {
     feedbackList: `${common}do=mobile&r=points.feedback.details`, // 反饋列表
     get_qq: `${common}do=mobile&r=points.feedback.get_qq`, // 获取QQ
     sdcustomerService: `${common}do=mobile&r=points.sd_customer_service`, //联系我们
+
+    register:`${common}user/register`, //注册
+    login:`${common}user/login`, //登录
+    sendVerifycode: `${common}index/send_sms`, // 發送驗證碼
+    forget: `${common}user/forget_login`, // 忘記密碼
+    userinfo: `${common}user/info`, // 用户信息
+    
+
 }

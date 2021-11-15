@@ -9,15 +9,15 @@ function mistake (data) {
         // })
         return true //發生錯誤
     }
-    if (parseInt(data.status) !== 1) {
-        if(data.result.message == '请先登录'){
+    if (parseInt(data.code) !== 1) {
+        if(data.msg == '请先登录'){
             localStorage.removeItem('openid')
             localStorage.removeItem('mobile')
         }
         Dialog.alert({
-            message: data.result.message
+            message: data.msg
         })
-        if(data.result.message == '请先登录'){
+        if(data.msg == '请先登录'){
             localStorage.removeItem('openid')
             localStorage.removeItem('mobile')
         }
@@ -36,7 +36,7 @@ export default {
         // console.log(data)
         if ( mistake(data) ) return false
         return {
-            openid: data.result.token,
+            openid: data.token,
             // ip: data.newclientip
         }
     },
@@ -44,21 +44,21 @@ export default {
         // console.log(data)
         if ( mistake(data) ) return false
         return {
-            msg: data.result.message
+            msg: data.msg
         }
     },
     register (data) {
         // console.log(data)
         if ( mistake(data) ) return false
         return {
-            msg: data.result.message
+            msg: data.message
         }
     },
     forget (data) {
         // console.log(data)
         if ( mistake(data) ) return false
         return {
-            msg: data.result.message
+            msg: data.msg
         }
     },
     kuang (data){
@@ -1150,5 +1150,21 @@ export default {
 
         return list
 
-    }
+    },
+
+
+
+    //农场
+    userinfo(data){
+        if ( mistake(data) ) return false
+        let { user_id, nick_name, avatar, mobile, invite_code, balance } = data.user
+        return {
+            user_id,
+            nick_name,
+            avatar,
+            mobile,
+            invite_code,
+            balance
+        }
+    },
 }

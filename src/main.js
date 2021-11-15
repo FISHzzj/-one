@@ -59,8 +59,9 @@ window.apiready = async function() {
 // 进行路由 之前, 进行 判断
 router.beforeEach((to,from,next) => {
     let isLogin = localStorage.getItem("openid") || false //獲取本地存儲的openid, 判斷狀態
-    console.log(isLogin)
-    console.log(to.meta.mustLogin)
+    // console.log(!isLogin)
+    // console.log(to.meta.mustLogin)
+    // console.log(to.meta.mustLogin && !isLogin)
     window.scroll(0, 0) //每次切換頁面, 都滾動到頂部
     // 如果 必須登錄, 且 未登錄, 則 跳轉 登錄界面
     if (to.meta.mustLogin && !isLogin) {
