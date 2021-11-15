@@ -78,7 +78,7 @@
                             <span>&nbsp;&nbsp;&nbsp;&nbsp;验证码：</span>
                             <input v-model="inputMsg.code" type="text" placeholder="请输入验证码">
                         </div>
-                        <span ../..click="senVerifyCode()">{{timeAndTextOfSendcode}}</span>
+                        <span @click="senVerifyCode()">{{timeAndTextOfSendcode}}</span>
                     </div>
                     <div class="pwd flex ali_center">
                         <span>二级密码：</span>
