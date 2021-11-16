@@ -153,7 +153,7 @@
                                     <div>数量：{{item.stock}}</div>
                                     <div>小鸡：{{item.price}}</div>
                                 </div>
-                                <img src="../../assets/images/nongchang/shangdian/goumai.png" alt="">
+                                <img src="../../assets/images/nongchang/shangdian/goumai.png" alt="" @click="xiaojigoumai(item.id)">
                             </div>
                             <div class="sditem flex ali_center" v-else>
                                 <img :src="item.img" alt="" srcset="">
@@ -162,7 +162,7 @@
                                     <div>时间：{{item.speed}}</div>
                                     <div>小鸡：{{item.money}}</div>
                                 </div>
-                                <img src="../../assets/images/nongchang/shangdian/goumai.png" alt="">
+                                <img src="../../assets/images/nongchang/shangdian/goumai.png" alt="" >
                             </div>
                           
                         </div>
@@ -374,18 +374,25 @@
                     
                 </div>
                 <div class="sdlist">
-                    <div class="sditem flex ali_center" v-for="(item, index) in list" :key="index"> 
-                        <!-- <img src="../../assets/images/nongchang/shangdian/jiasu.png" alt="" srcset=""> -->
-                        <div class="sdtext flex ali_center" >
-                            <div>1</div>
-                            <div class="flex ali_center">
-                                <img src="../../assets/images/icon/7.png" alt="">
-                                <span style="margin-left:2vw;">昵称</span>
+                    <van-list
+                        v-model="loading"
+                        :finished="finished"
+                        :finished-text="'我是有底线的'"
+                        @load="fanslists"
+                    >
+                        <div class="sditem flex ali_center" v-for="(item, index) in list" :key="index"> 
+                            <!-- <img src="../../assets/images/nongchang/shangdian/jiasu.png" alt="" srcset=""> -->
+                            <div class="sdtext flex ali_center" >
+                                <div>{{item.user_id}}</div>
+                                <div class="flex ali_center">
+                                    <img :src="item.avatar" alt="">
+                                    <span style="margin-left:2vw;">{{item.nick_name}}</span>
+                                </div>
+                                <div class="flex ali_center"><img src="../../assets/images/nongchang/haoyou/tou.png" alt=""></div>
                             </div>
-                            <div class="flex ali_center"><img src="../../assets/images/nongchang/haoyou/tou.png" alt=""></div>
+                            <!-- <img src="../../assets/images/nongchang/shangdian/goumai.png" alt=""> -->
                         </div>
-                        <!-- <img src="../../assets/images/nongchang/shangdian/goumai.png" alt=""> -->
-                    </div>
+                    </van-list>
                 </div>
                 <div class="shezhibtn flex flex_center">
                     <img src="../../assets/images/nongchang/haoyou/huanyipi.png" alt="">
@@ -470,6 +477,30 @@ export default {
         // this.goodslists();
     },
     methods:{
+        async fanslists(){
+            let res = await $ajax('fanslists', {
+                 page: this.page
+             })
+            if (!res) return false
+            // console.log(res)
+            // this.list = res.goods
+            this.page++
+            console.log(res.fans)
+            // this.listtotal = res.listtotal
+            this.list.push(...res.fans)
+            // // 加载状态结束
+            this.loading = false
+            if (res.fans.length === 0) {
+                this.finished = true //加载完成
+            } 
+        },
+        async xiaojigoumai(id){ //小鸡购买
+            let res = await $ajax('goodsbuy', {
+                 id: id
+             })
+            if (!res) return false
+            Toast(res.msg)
+        },
         async goodslists(){ // 小鸡
              let res = await $ajax('goodslists', {
                  page: this.page
@@ -1439,6 +1470,7 @@ export default {
 
                 }
                 .shezhibtn{
+                    margin-top: 8%;
                     img{
                         width: 23vw;
                     }
@@ -1481,7 +1513,7 @@ export default {
                 }
                 .sdlist{
                     margin-top: 10%;
-                    height: 95vw;
+                    height: 92vw;
                     overflow-x: hidden;
                     overflow-y: scroll;
                     width: 90%;
@@ -1521,6 +1553,7 @@ export default {
                     }
                 }
                 .shezhibtn{
+                    margin-top: 5%;
                     img{
                         width: 18vw;
                         margin-left: 2vw;

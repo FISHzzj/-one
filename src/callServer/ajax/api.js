@@ -133,7 +133,8 @@ export default {
     propfeed: `${common}prop/feed`, //饲料 
     propbroom: `${common}prop/broom`, //扫帚 
     proppack: `${common}prop/pack`, //加速包
-    
+    goodsbuy: `${common}goods/buy`, //购买
+    fanslists: `${common}fans/lists`, //好友列表
     
      
 

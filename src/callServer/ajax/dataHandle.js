@@ -1215,4 +1215,17 @@ export default {
             pack
         }
     },
+    goodsbuy(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
+    fanslists(data){
+        if ( mistake(data) ) return false
+        let {fans} = data
+        return {
+            fans
+        }
+    },
 }
