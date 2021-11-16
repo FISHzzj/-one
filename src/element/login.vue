@@ -52,6 +52,7 @@
 </template>
 <script>
 export default {
+    name: 'login',
     data(){
         return {
             iconeyeclose: false,
