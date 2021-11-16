@@ -10,17 +10,17 @@ function mistake (data) {
         return true //發生錯誤
     }
     if (parseInt(data.code) !== 1) {
-        if(data.msg == '请先登录'){
+        if(parseInt(data.code) == 12){
             localStorage.removeItem('openid')
             localStorage.removeItem('mobile')
         }
         Dialog.alert({
             message: data.msg
         })
-        if(data.msg == '请先登录'){
-            localStorage.removeItem('openid')
-            localStorage.removeItem('mobile')
-        }
+        // if(data.msg == '请先登录'){
+        //     localStorage.removeItem('openid')
+        //     localStorage.removeItem('mobile')
+        // }
         return true //發生錯誤
     }
     return false //未發生錯誤

@@ -11,19 +11,19 @@
             <div class="xxcenter flex flex_col flex_around ">
                 <div class="flex ali_center flex_between">
                     <img src="../../assets/images/nongchang/jifen.png" alt="" srcset="">
-                    <span>1000</span>
+                    <span>{{balance.integral}}</span>
                     <img src="../../assets/images/nongchang/jiahao.png" alt="" srcset="">
                 </div>
                 <div class="flex ali_center flex_between">
                     <img src="../../assets/images/nongchang/jidan.png" alt="" srcset="">
-                    <span>8888</span>
+                    <span>{{balance.credit2}}</span>
                     <img src="../../assets/images/nongchang/jiahao.png" alt="" srcset="">
                 </div>
             </div>
             <div class="xxright flex flex_col flex-start">
                 <div class="flex ali_center flex_between">
                     <img src="../../assets/images/nongchang/xiaoji.png" alt="" srcset="">
-                    <span>1000</span>
+                    <span>{{balance.credit2}}</span>
                     <img src="../../assets/images/nongchang/jiahao.png" alt="" srcset="">
                 </div>
                
