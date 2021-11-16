@@ -127,6 +127,14 @@ export default {
     sendVerifycode: `${common}index/send_sms`, // 發送驗證碼
     forget: `${common}user/forget_login`, // 忘記密碼
     userinfo: `${common}user/info`, // 用户信息
+    goodslists: `${common}goods/lists`, //小鸡
+    propfence: `${common}prop/fence`, //围栏 
+    propdog: `${common}prop/dog`, //守护犬 
+    propfeed: `${common}prop/feed`, //饲料 
+    propbroom: `${common}prop/broom`, //扫帚 
+    proppack: `${common}prop/pack`, //加速包
     
+    
+     
 
 }

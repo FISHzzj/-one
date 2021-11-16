@@ -1,26 +1,26 @@
 export default [
-    // {
-    //     path: '/',
-    //     name: 'home',
-    //     redirect: { name: 'index' },
-    //     component: () => import("@/element/home"),
-    //     meta:{
-    //         index: 0,
-    //         mustLogin: false,//1111,
-    //     },
-    //     children: [
-    //         {
-    //             path: '/index', // 首页
-    //             name: 'index',
-    //             component: () => import("@/element/home/index.vue"),
-    //             props: false,//1111,
-    //             meta:{
-    //                 index: 1,
-    //                 mustLogin: true,//
-    //             }
-    //         },
-    //     ]
-    // },
+    {
+        path: '/',
+        name: 'home',
+        redirect: { name: 'index' },
+        component: () => import("@/element/home"),
+        meta:{
+            index: 0,
+            mustLogin: false,//1111,
+        },
+        children: [
+            {
+                path: '/index', // 首页
+                name: 'index',
+                component: () => import("@/element/home/index.vue"),
+                props: false,//1111,
+                meta:{
+                    index: 1,
+                    mustLogin: true,//
+                }
+            },
+        ]
+    },
     {
         path: "/login", //登录
         name: "login",

@@ -1132,7 +1132,7 @@ export default {
         if ( mistake(data) ) return false
         let {feedback_list} = data.result
         let list = []
-        feedback_list.forEach( item => {
+        feedback_list.forEach( item => { 
             let {addtime, content, thumb, title} = item
             let images = thumb ? thumb.split(',') : []
             list.push({
@@ -1165,6 +1165,54 @@ export default {
             mobile,
             invite_code,
             balance
+        }
+    },
+    goodslists(data){
+        if ( mistake(data) ) return false
+        let {goods} = data
+
+        return {
+            goods
+        }
+    },
+    propfence(data){
+        if ( mistake(data) ) return false
+        let {fence} = data
+
+        return {
+            fence
+        }
+    },
+    propdog(data){
+        if ( mistake(data) ) return false
+        let {dog} = data
+
+        return {
+            dog
+        }
+    },
+    propfeed(data){
+        if ( mistake(data) ) return false
+        let {feed,chick} = data
+        let list = feed.concat(chick)
+        return {
+            list
+        }
+    },
+    propbroom(data){
+        if ( mistake(data) ) return false
+        let {broom} = data
+
+        return {
+            broom
+        }
+    },
+    proppack(data){
+        if ( mistake(data) ) return false
+        let {pack} = data
+
+        return {
+            pack
         }
     },
 }
