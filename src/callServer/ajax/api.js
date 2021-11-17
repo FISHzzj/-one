@@ -135,6 +135,11 @@ export default {
     proppack: `${common}prop/pack`, //加速包
     goodsbuy: `${common}goods/buy`, //购买
     fanslists: `${common}fans/lists`, //好友列表
+    fansalllists: `${common}fans/all_lists`, //广场列表
+    tradelists: `${common}trade/lists`, //我要购买
+    trademine: `${common}trade/mine`, //我的挂卖
+    tradeorder: `${common}trade/order`, //交易记录
+    tradebuy: `${common}trade/buy`, //发起交易
     
      
 

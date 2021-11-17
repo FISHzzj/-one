@@ -1228,4 +1228,39 @@ export default {
             fans
         }
     },
+    fansalllists(data){
+        if ( mistake(data) ) return false
+        let {fans} = data
+        return {
+            fans
+        }
+    },
+    tradelists(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    trademine(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    tradeorder(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    tradebuy(data){
+        if ( mistake(data) ) return false
+        return {
+            // sn: data.sn,
+            msg: data.msg
+        }
+    },
 }
