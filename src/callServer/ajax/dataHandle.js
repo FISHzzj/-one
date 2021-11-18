@@ -1155,6 +1155,15 @@ export default {
 
 
     //农场
+    config(data){
+        if ( mistake(data) ) return false
+        let { ins, sms, trade } = data
+        return {
+            ins, 
+            sms, 
+            trade 
+        }
+    },
     userinfo(data){
         if ( mistake(data) ) return false
         let { user_id, nick_name, avatar, mobile, invite_code, balance } = data.user
@@ -1263,4 +1272,19 @@ export default {
             msg: data.msg
         }
     },
+    tradesell(data){
+        if ( mistake(data) ) return false
+        return {
+            // sn: data.sn,
+            msg: data.msg
+        }
+    },
+    tradeclear(data){
+        if ( mistake(data) ) return false
+        return {
+            // sn: data.sn,
+            msg: data.msg
+        }
+    },
+
 }

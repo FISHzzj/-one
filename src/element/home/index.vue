@@ -309,13 +309,19 @@
                     >
                          <div class="sditem flex ali_center flex_between" v-for="(item, index) in list" :key="index"> 
                             <div class="sdtextone flex ali_center">
-                                <img :src="item.avatar" alt="" srcset="">
+                                <img :src="item.img" alt="" srcset="">
                                 <div class="sdtext flex flex_col">
                                     <div>{{item.title}}</div>
                                     <div>数量：{{item.sp_num}}</div>
                                     <div>积分：{{item.unit}}</div>
+                                    <div>出售中</div>
                                 </div>
-                                <img src="../../assets/images/nongchang/jishi/chushouzhong.png" alt="">
+                                <img src="../../assets/images/nongchang/jishi/chehui.png" alt="">
+                                <!-- <div class="jishoubtn flex flex_col ali_center">
+                                    <img src="../../assets/images/nongchang/jishi/chushouzhong.png" alt="">
+                                    
+                                </div> -->
+                                
                             </div>
                          </div>
                         
@@ -349,7 +355,7 @@
                     </van-list>
                 </div>
                 <div class="jishou flex flex_center" v-if="statusjishi == 1">
-                    <img src="../../assets/images/nongchang/jishi/jishou.png" alt="" srcset="">
+                    <img src="../../assets/images/nongchang/jishi/jishou.png" alt="" srcset="" @click="jishoubtn">
                 </div>
             </div>
         </div>
@@ -495,6 +501,73 @@
                 </div>
             </div>
         </div>
+        <!-- 集市交易-- 寄售 -->
+        <div class="jishijishou animat" v-if="jishoukuang">
+            <div class="kuang">
+                <div class="content ">
+                    <!-- <img src="../../assets/images/icon/7.png" alt=""> -->
+                    <div>寄售物品：小鸡</div>
+                    <div class="gmkshuliang flex flex_center ali_center">
+                        <span>小鸡单价：</span>
+                        <input type="text" placeholder="单价在±10%幅度" v-model="unit" @blur="jisuanjifen">
+                    </div>
+                    <div style="white-space: nowrap;">&nbsp;&nbsp;&nbsp;&nbsp;手续费：{{shouxufei}}%</div>
+                    <div class="gmkshuliang flex flex_center ali_center">
+                        <span>寄售数量：</span>
+                        <input type="text" placeholder="寄售数量" v-model="jishounum" @blur="jisuanjifen">
+                    </div>
+                    <div class="gmkshuliang flex flex_center ali_center">
+                        <span>收获积分：</span>
+                        <input type="text" placeholder="收获积分" v-model="shouhuojifen" disabled>
+                    </div>
+                    <!-- <div>售卖数量：{{goumaidingdan.sp_num}}</div>
+                    <div>小鸡单价：{{goumaidingdan.unit}}积分</div>
+                    <div class="gmkshuliang flex flex_center ali_center">
+                        <span>购买数量：</span>
+                        <input type="text" placeholder="购买数量" v-model="num" @blur="jisuantotal(goumaidingdan.unit)">
+                    </div> -->
+                    
+                </div>
+                <div class="shezhibtn flex flex_center">
+                   <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
+                   <img src="../../assets/images/nongchang/jishi/queding.png" alt="" @click="jishouqueding">
+                   <!-- <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt=""> -->
+                </div>
+            </div>
+        </div>
+         <!-- 商店交易-- 购买小鸡 -->
+        <div class="shangdiangoumai animat" v-if="shangdiangoumaikuang">
+            <div class="kuang">
+                <div class="content ">
+                    <!-- <img src="../../assets/images/icon/7.png" alt=""> -->
+                    <div>购买物品：小鸡</div>
+                    <div class="gmkshuliang flex flex_center ali_center">
+                        <span>小鸡单价：</span>
+                        <input type="text" v-model="xiaojiprice"  disabled>
+                    </div>
+                    <div class="gmkshuliang flex flex_center ali_center">
+                        <span>购买数量：</span>
+                        <input type="text" v-model="goumaishuliang"  disabled>
+                    </div>
+                    <div class="gmkshuliang flex flex_center ali_center">
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;总积分：</span>
+                        <input type="text"  placeholder="收获积分" v-model="zongjifen" disabled>
+                    </div>
+                    <!-- <div>售卖数量：{{goumaidingdan.sp_num}}</div>
+                    <div>小鸡单价：{{goumaidingdan.unit}}积分</div>
+                    <div class="gmkshuliang flex flex_center ali_center">
+                        <span>购买数量：</span>
+                        <input type="text" placeholder="购买数量" v-model="num" @blur="jisuantotal(goumaidingdan.unit)">
+                    </div> -->
+                    
+                </div>
+                <div class="shezhibtn flex flex_center">
+                   <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
+                   <img src="../../assets/images/nongchang/jishi/queding.png" alt="" @click="goumaiqueding">
+                   <!-- <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt=""> -->
+                </div>
+            </div>
+        </div>
         <!-- 集市---支付密码 -->
         <div class="zhifukuang animat" v-if="zhifukuang">
             <div class="kuang">
@@ -601,27 +674,119 @@ export default {
             zhifukuang:false,
             value: '', //支付密码 数字键盘
             showKeyboard: false, //数字键盘
+            jishoukuang:false,
+            unit:"", //小鸡单价
+            jishounum:"",//寄售数量
+            shouhuojifen:"", //收获积分
+            shouxufei:"10%", //手续费
+            xiaojiprice:1, //小鸡价格
+            goumaishuliang:330, //购买数量
+            shangdiangoumaikuang:false,
+            xiaojiID: '', //购买 小鸡ID
           
         }
     },
     mounted(){
         this.getData();
         // this.goodslists();
+        this.getshouxufei();
+    },
+    computed:{
+        //收获积分
+        // shouhuojifen(){
+        //     if(!this.jishounum || this.jishounum == '') return Toast('请输入寄售数量');
+        //     if(!this.unit || this.unit == '') return Toast('请输入小鸡单价');
+            
+        //     return this.jishounum * this.unit * (1 - this.shouxufei);
+        // }
+        // 总积分
+        zongjifen(){
+            return this.xiaojiprice * this.goumaishuliang
+        },
     },
     methods:{
-        //集市--我要购买 -- 确认支付密码
-        async zhifuqueding(){
-            if(!this.goumaidingdan.id) return Toast('没有此订单！');
-            if(!this.value || this.value == "") return Toast('请输入支付密码！');
-            let res = await $ajax('tradebuy', {
-                "trade_id": this.goumaidingdan.id, //出售订单id
-                "num": this.num, //交易数量
-                "pay_pwd": this.value //交易密码
-             })
+        jishoubtn(){
+            this.jishoukuang = true;
+        },
+        //挂售 -- 确定
+        jishouqueding(){
+            if(!this.jishounum) return Toast('请输入寄售数量！')
+            if(!this.unit || this.unit == '') return Toast('请输入小鸡单价');
+            this.zhifukuang = true;
+
+            
+        },
+        //获取手续费
+        async getshouxufei(){
+             let res = await $ajax('config', {})
             if (!res) return false
             console.log(res);
-            Toast(res.msg);
-            this.fanhui();
+            this.shouxufei = res.trade.trade_fee
+        },
+        // 计算收获积分
+        jisuanjifen(){
+            if(!this.unit || this.unit == '') return Toast('请输入小鸡单价');
+            if(!this.jishounum || this.jishounum == '') return Toast('请输入寄售数量');
+            
+            
+            this.shouhuojifen = this.jishounum * this.unit * (100 - this.shouxufei)/100;
+
+        },
+        // -- 确认支付密码
+        async zhifuqueding(){
+            if(this.goumaidingdan.id){ ///集市--我要购买
+                // if(!this.goumaidingdan.id) return Toast('没有此订单！');
+                if(!this.value || this.value == "") return Toast('请输入支付密码！');
+                let res = await $ajax('tradebuy', {
+                    "trade_id": this.goumaidingdan.id, //出售订单id
+                    "num": this.num, //交易数量
+                    "pay_pwd": this.value //交易密码
+                })
+                if (!res) return false
+                console.log(res);
+                Toast(res.msg);
+                this.goumaidingdan = {};
+                this.value = "";
+                this.num = "";
+                 this.fanhui();
+            }else if(this.xiaojiID){ //商店 --- 购买小鸡 ID
+                let res = await $ajax('goodsbuy', {
+                     id: this.xiaojiID,
+                    pay_pwd: this.value,
+                     
+                 })
+                if (!res) return false
+                Toast(res.msg)
+                this.value = "";
+                this.xiaojiID = "";
+                 this.fanhui();
+                 this.page = 1
+                 this.list = [];
+                 this.finished = false;
+
+            } else{// /集市--我的寄售 -- 寄售
+                // if(!this.jishounum) return Toast('请输入寄售数量！')
+                //  if(!this.unit || this.unit == '') return Toast('请输入小鸡单价');
+                if(!this.value || this.value == "") return Toast('请输入支付密码！');
+                let res = await $ajax('tradesell', {
+                    "unit": this.unit, //单价
+                    "num": this.jishounum, //数量
+                    "pay_pwd": this.value //支付密码
+                })
+                if (!res) return false
+                console.log(res);
+                Toast(res.msg);
+                this.value = "";
+                this.jishounum = "";
+                this.unit = "";
+                 this.fanhui();
+                 this.page = 1
+                 this.list = [];
+                 this.finished = false;
+                //  this.trademine();
+            }
+            
+           
 
         },
         //集市--我要购买 -- 确认
@@ -780,12 +945,13 @@ export default {
                 this.finished = true //加载完成
             } 
         },
+        async goumaiqueding(){ // 商店 -- 小鸡购买-- 确定
+            this.zhifukuang = true;
+        },
         async xiaojigoumai(id){ //小鸡购买
-            let res = await $ajax('goodsbuy', {
-                 id: id
-             })
-            if (!res) return false
-            Toast(res.msg)
+            this.xiaojiID = id
+            this.shangdiangoumaikuang = true;
+           
         },
         async goodslists(){ // 小鸡
              let res = await $ajax('goodslists', {
@@ -959,6 +1125,8 @@ export default {
            this.tishikuang = false;
            this.goumaikuang = false;
            this.zhifukuang = false;
+           this.jishoukuang = false;
+           this.shangdiangoumaikuang = false;
         },
         cangku(){
             this.cangkukuang = true;
@@ -1595,7 +1763,9 @@ export default {
                         // box-sizing: border-box;
                         
                         .sdtext{
-                            margin-left: 1vw;
+                            // margin-left: 1vw;
+                            padding: 1vw;
+                            box-sizing: border-box;
                             div{
                                 font-size: 12px;
                                 white-space: nowrap;
@@ -1604,6 +1774,8 @@ export default {
                             }
                         }
                         .sdtextone{
+                            padding: 1vw;
+                            box-sizing: border-box;
                             img:first-child{
                                 width: 10vw;
                                 height: 10vw;
@@ -1622,8 +1794,18 @@ export default {
                             }
                             img:last-child{
                                 width: 15vw;
-                                margin-left: 5vw;
+                                margin-left: 3vw;
                             }
+                            // .jishoubtn{
+                            //      margin-left: 3vw;
+                            //     img{
+                            //         width: 15vw;
+                            //         height: 5vw;
+                            //         border-radius: 0;
+                            //         // margin-bottom: 2vw;
+                            //         margin-left: 0;
+                            //     }
+                            // }
                         }
                         
                     }
@@ -1961,6 +2143,140 @@ export default {
                             padding: 0 1vw;
                             width: 24vw;
                             color:#955942;
+                        }
+                    }
+                    
+                    
+
+                }
+                .shezhibtn{
+                    // margin-top: 8%;
+                    img{
+                        width: 23vw;
+                    }
+                }
+
+           } 
+        }
+        .jishijishou{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 99;
+           .kuang{
+               position: absolute;
+               top: 50%;
+               left: 50%;
+               transform: translate(-50%, -50%);
+                width: 80%;
+                height: 80vw;
+                background-image: url(../../assets/images/nongchang/jishi/jishikuang.png);
+                background-size: 100% 100%;
+                color: #955942;
+                font-family: Adobe Heiti Std;
+                font-size: 4vw;
+                // .szxuan{
+                //     text-align: center;
+                //     margin-top: 30%;
+                //     span{
+                //         margin-bottom: 2vw;
+                //     }
+                // }
+                .content{
+                    padding: 5vw 17vw;
+                    margin-top: 15%;
+                    text-align: left;
+                    // img{
+                    //     width: 15vw;
+                    //     height: 15vw;
+                    //     border-radius: 50%;
+                    // }
+                    div{
+                        height: 6vw;
+                        // a{
+                        //     color:#FE523B;
+                            
+                        // }
+                    }
+                    .gmkshuliang{
+                        margin-top: 3vw;
+                        input{
+                            background: #EDC782;
+                            border-radius: 1vw;
+                            padding: 1vw 1vw;
+                            width: 24vw;
+                            color:#955942;
+                            font-size: 10px;
+                        }
+                    }
+                    
+                    
+
+                }
+                .shezhibtn{
+                    // margin-top: 8%;
+                    img{
+                        width: 23vw;
+                    }
+                }
+
+           } 
+        }
+        .shangdiangoumai{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 99;
+           .kuang{
+               position: absolute;
+               top: 50%;
+               left: 50%;
+               transform: translate(-50%, -50%);
+                width: 80%;
+                height: 80vw;
+                background-image: url(../../assets/images/nongchang/shangdian/shangdiankuang.png);
+                background-size: 100% 100%;
+                color: #955942;
+                font-family: Adobe Heiti Std;
+                font-size: 4vw;
+                // .szxuan{
+                //     text-align: center;
+                //     margin-top: 30%;
+                //     span{
+                //         margin-bottom: 2vw;
+                //     }
+                // }
+                .content{
+                    padding: 5vw 17vw;
+                    margin-top: 15%;
+                    text-align: left;
+                    // img{
+                    //     width: 15vw;
+                    //     height: 15vw;
+                    //     border-radius: 50%;
+                    // }
+                    div{
+                        height: 6vw;
+                        // a{
+                        //     color:#FE523B;
+                            
+                        // }
+                    }
+                    .gmkshuliang{
+                        margin-top: 3vw;
+                        input{
+                            background: #EDC782;
+                            border-radius: 1vw;
+                            padding: 1vw 1vw;
+                            width: 24vw;
+                            color:#955942;
+                            font-size: 10px;
                         }
                     }
                     

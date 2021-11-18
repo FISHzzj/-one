@@ -122,6 +122,8 @@ export default {
     get_qq: `${common}do=mobile&r=points.feedback.get_qq`, // 获取QQ
     sdcustomerService: `${common}do=mobile&r=points.sd_customer_service`, //联系我们
 
+    
+    config:`${common}config`, //系统设定
     register:`${common}user/register`, //注册
     login:`${common}user/login`, //登录
     sendVerifycode: `${common}index/send_sms`, // 發送驗證碼
@@ -133,14 +135,20 @@ export default {
     propfeed: `${common}prop/feed`, //饲料 
     propbroom: `${common}prop/broom`, //扫帚 
     proppack: `${common}prop/pack`, //加速包
-    goodsbuy: `${common}goods/buy`, //购买
+    goodsbuy: `${common}goods/buy`, //小鸡购买
     fanslists: `${common}fans/lists`, //好友列表
     fansalllists: `${common}fans/all_lists`, //广场列表
     tradelists: `${common}trade/lists`, //我要购买
     trademine: `${common}trade/mine`, //我的挂卖
     tradeorder: `${common}trade/order`, //交易记录
     tradebuy: `${common}trade/buy`, //发起交易
+    tradesell: `${common}trade/sell`, //发布挂买订单
+    tradeclear: `${common}trade/clear`, //取消挂买订单 
+    housebuild: `${common}house/build`, //开鸡舍
+    houseadd_chick: `${common}house/add_chick`, //开鸡舍
+  
     
-     
+    
+    
 
 }
