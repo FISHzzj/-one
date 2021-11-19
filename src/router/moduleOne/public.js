@@ -47,5 +47,14 @@ export default [
             index: 0,
             mustLogin: false,//1111,
         }
+    },
+    {
+        path: "/yangzhi", //养殖
+        name: "yangzhi",
+        component: () => import("@/element/home/yangzhi.vue"),
+        meta: {
+            index: 0,
+            mustLogin: true,//1111,
+        }
     }
 ];

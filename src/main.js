@@ -73,7 +73,7 @@ router.beforeEach((to,from,next) => {
     } else if ( isLogin && !to.meta.mustLogin ) {
         // 已經登錄 且 頁面無需登錄, 跳轉 資產頁面
         next({
-            name: 'index'
+            name: 'yangzhi'
         })
     } else if ( !to.meta.mustLogin || (to.meta.mustLogin && isLogin) ) {
         // 如果 無需登錄 或者 必須登錄且 已經 登錄, 則直接跳轉

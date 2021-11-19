@@ -39,7 +39,7 @@
         <!-- 养殖 -->
         <div class="yangzhi">
             <img src="../../assets/images/nongchang/yangzhione.png" alt="" srcset="">
-            <img src="../../assets/images/nongchang/yangzhi.png" alt="" srcset="">
+            <img src="../../assets/images/nongchang/yangzhi.png" alt="" srcset="" @click="yangzhi">
         </div>
          <!-- 兑换处 -->
         <div class="duihuanchu">
@@ -389,10 +389,10 @@
         <div class="gerenxinxi animat" v-if="gerenxinxikuang">
             <div class="kuang">
                 <div class="content  ">
-                    <img src="../../assets/images/icon/7.png" alt="">
-                    <div>昵称：955942</div>
-                    <div>ID：955942</div>
-                    <div>邀请码：jertye2862</div>
+                    <img :src="avatar" alt="">
+                    <div>昵称：{{nick_name}}</div>
+                    <div>ID：{{user_id}}</div>
+                    <div>邀请码：{{invite_code}}</div>
                     <div>绑定手机：<a href="javascript:;">去绑定</a></div>
                 </div>
                 <div class="shezhibtn flex flex_center">
@@ -705,6 +705,12 @@ export default {
         },
     },
     methods:{
+        // 去养殖页
+        yangzhi(){
+            this.$router.push({
+                name: 'yangzhi'
+            })
+        },
         jishoubtn(){
             this.jishoukuang = true;
         },
@@ -756,7 +762,7 @@ export default {
                      
                  })
                 if (!res) return false
-                Toast(res.msg)
+                Toast('购买成功，您购买的300只小鸡已放到仓库')
                 this.value = "";
                 this.xiaojiID = "";
                  this.fanhui();
@@ -1158,6 +1164,7 @@ export default {
         height: 100%;
         background-image: url(../../assets/images/nongchang/index_bg.png);
         background-size: 100% 100%;
+        background-repeat: no-repeat;
         position: relative;
         font-size: 0.65rem;
         overflow: hidden;
