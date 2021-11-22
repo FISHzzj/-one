@@ -1318,5 +1318,17 @@ export default {
             msg: data.msg
         }
     },
+    houseuse_dog(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
+    houseuse_fence(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
 
 }

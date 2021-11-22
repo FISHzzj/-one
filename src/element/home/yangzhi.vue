@@ -35,7 +35,7 @@
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[0].status == 0">
                 <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[0].status == 1">
                 <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="houseList[0].status == 1">
-                <div class="xiaoji" v-show="houseList[0].num > 0" @click="houseadd_chick(houseList[0].id)">
+                <div class="xiaoji" v-show="houseList[0].num > 0" @click="houseadd_chick(houseList[0].id,houseList[0].type,houseList[0].num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
@@ -304,14 +304,14 @@
             </div>
             
             <div class="PathItem">
-                <a class="link" href="javascript:;" title="守护犬" :style="shouhuquan">
+                <a class="link" href="javascript:;" title="守护犬" :style="shouhuquan" @click="shouhuquanhandle">
                     <span class="item" style="background-image: url(@/assets/images/nongchang/yangzhi/shouhuquan.png); -moz-transform: rotate(0deg);" data-transform="rotate(0deg)"></span>
                 </a>
                 <!-- <div class="metaicondetail shadow"><div class="inner"><p>官方指导价</p>暂无价格<s></s></div></div> -->
             </div>
             
             <div class="PathItem">
-                <a class="link" href="javascript:;" title="围栏" :style="weilan">
+                <a class="link" href="javascript:;" title="围栏" :style="weilan" @click="weilanhandle">
                     <span class="item" style="background-image: url(@/assets/images/nongchang/yangzhi/weilan.png); -moz-transform: rotate(0deg);" data-transform="rotate(0deg)"></span>
                 </a>
                 <!-- <div class="metaicondetail shadow"><div class="inner"><p>官方指导价</p>暂无价格<s></s></div></div> -->
@@ -334,17 +334,17 @@
                </div>
                <!-- 守护犬 -->
                <div class="shouhuquanlist flex " v-if="shouhuquanlist">
-                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="">
-                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="">
-                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="">
-                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="">
+                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="" @click="shouhuquanProp(1)">
+                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="" @click="shouhuquanProp(2)">
+                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="" @click="shouhuquanProp(3)">
+                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="" @click="shouhuquanProp(4)">
                </div>
                <!-- 围栏 -->
-               <div class="jisiliaolist flex " v-if="weilanlist">
-                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="">
-                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="">
-                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="">
-                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="">
+               <div class="weilanlist flex " v-if="weilanlist">
+                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="" @click="weilanProp(1)">
+                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="" @click="weilanProp(2)">
+                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="" @click="weilanProp(3)">
+                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="" @click="weilanProp(4)">
                </div>
            </div>
                 
@@ -360,24 +360,6 @@
                     <div>ID：{{user_id}}</div>
                     <div>邀请码：{{invite_code}}</div>
                     <div>绑定手机：<a href="javascript:;">去绑定</a></div>
-                </div>
-                <div class="shezhibtn flex flex_center">
-                   <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
-                   <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt="">
-                   <!-- <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt=""> -->
-                </div>
-            </div>
-        </div>
-
-        <!-- 围栏 -->
-        <div class="weilan animat" v-if="weilankuang">
-            <div class="kuang">
-                <div class="content">
-                    <div>当前鸡舍：<span>1号鸡舍</span></div>
-                    <div>围栏等级：<span>围栏LV1</span></div>
-                    <div>围栏天数：<span>7天</span></div>
-                    <div>小鸡数量：<span>3000</span></div>
-                    <div>围栏消耗：<span>300小鸡</span></div>
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
@@ -403,18 +385,36 @@
             </div>
         </div>
 
+        <!-- 围栏 -->
+        <div class="weilan animat" v-if="weilankuang">
+            <div class="kuang">
+                <div class="content">
+                    <div>当前鸡舍：<span>{{tudiID}}号鸡舍</span></div>
+                    <div>围栏等级：<span>围栏LV{{dengji}}</span></div>
+                    <div>围栏天数：<span>{{day}}天</span></div>
+                    <div>小鸡数量：<span>{{num}}</span></div>
+                    <div>围栏消耗：<span>{{xiaohaoxiaoji}}小鸡</span></div>
+                </div>
+                <div class="shezhibtn flex flex_center">
+                   <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
+                   <img src="../../assets/images/nongchang/shezhi/queding.png" alt="" @click="weilanqueding">
+                   <!-- <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt=""> -->
+                </div>
+            </div>
+        </div>
+
          <!-- 守护犬 -->
         <div class="shouhuquan animat" v-if="shouhuquankuang">
             <div class="kuang">
                 <div class="content">
-                    <div>当前鸡舍：<span>1号鸡舍</span></div>
-                    <div>守护等级：<span>哈士奇LV1</span></div>
-                    <div>守护天数：<span>7天</span></div>
-                    <div>守护消耗：<span>500小鸡</span></div>
+                    <div>当前鸡舍：<span>{{tudiID}}号鸡舍</span></div>
+                    <div>守护等级：<span>哈士奇LV{{dengji}}</span></div>
+                    <div>守护天数：<span>{{day}}天</span></div>
+                    <div>守护消耗：<span>{{money}}小鸡</span></div>
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
-                   <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt="">
+                   <img src="../../assets/images/nongchang/shezhi/queding.png" alt="" @click="shouhuquanqueding">
                    <!-- <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt=""> -->
                 </div>
             </div>
@@ -425,13 +425,13 @@
             <div class="kuang">
                 <div class="content">
                     <div>当前鸡舍：<span>{{tudiID}}号鸡舍</span></div>
-                    <div>饲料等级：<span>鸡饲料LV{{siliaoID}}</span></div>
-                    <div>小鸡数量：<span>1200</span></div>
-                    <div>喂养消耗：<span>500小鸡</span></div>
+                    <div>饲料等级：<span>鸡饲料LV{{dengji}}</span></div>
+                    <div>小鸡数量：<span>{{num}}</span></div>
+                    <div>喂养消耗：<span>{{xiaohaoxiaoji}}小鸡</span></div>
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
-                   <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt="">
+                   <img src="../../assets/images/nongchang/shezhi/queding.png" alt="" @click="jisiliaoqueding">
                    <!-- <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt=""> -->
                 </div>
             </div>
@@ -646,8 +646,16 @@ export default {
             tishixingxi: '购买成功，守护犬已应用 <br>到对应鸡舍',
             fangda:false, //放大效果
             tudiID:"",  //土地id
+            type:"", //1：普通鸡舍；2：高级鸡舍
+            num:"", //鸡舍里的小鸡数量
+            dengji:"", // 鸡饲料等级; 守护等级
             list:[], //鸡饲料 拿money
-            siliaoID:"", //鸡饲料 ID
+            siliaoID:"", //鸡饲料等级id;
+            money:"", // 消耗小鸡数量的百分比;守护消耗
+            xiaohaoxiaoji:"", //喂养消耗; 围栏消耗：
+            day:"", //守护天数
+            shouhuquanID: "", //守护等级id;
+            weilanID:"", // 围栏等级ID
         }
     },
     created() {
@@ -656,25 +664,137 @@ export default {
     mounted(){
         this.getData();
         this.propfeed();
+        this.propdog();
+        this.propfence();
         
     },
     methods:{
+        //围栏 购买
+        async weilanqueding(){
+            let res = await $ajax('houseuse_fence', {
+                house_id: this.tudiID, // 土地id
+                prop_fence: this.weilanID // 围栏id
+            })
+            if (!res) return false
+            this.tishixingxi = res.msg
+            this.tishikuang = true
+            this.houseIndex();
+            this.fangda = false;
+            this.tudiID = ""; //土地id 清空
+            this.type = ""; //1：普通鸡舍；2：高级鸡舍 清空
+            this.num = ""; //鸡舍里的小鸡数量 清空
+        },
+        // 选择围栏等级
+        async weilanProp(id){
+            if(!this.tudiID || this.tudiID == '') return Toast('请先选择土地')
+            this.dengji = id
+            this.list.forEach((item, index)=>{
+                // let sort = index + 1;
+                if(item.level == id){
+                    this.money = item.money
+                    this.weilanID = item.id
+                    this.day = item.day
+                }
+            })
+            this.xiaohaoxiaoji = this.num * (this.money/100)
+            this.weilankuang = true
+
+            
+        },
+        async propfence(){ //围栏
+             let res = await $ajax('propfence', {
+                 page: 1
+             })
+            if (!res) return false
+            // console.log(res)
+            this.list = res.fence
+            console.log(this.list)
+           
+        },
+        //围栏 列表
+        async weilanhandle(){
+            console.log(this.tudiID)
+            if(!this.tudiID || this.tudiID == '') return Toast('请先选择土地')
+            this.weilanlist = !this.weilanlist
+        },
+        //守护犬 购买
+        async shouhuquanqueding(){
+            let res = await $ajax('houseuse_dog', {
+                house_id: this.tudiID, // 土地id
+                prop_dog: this.shouhuquanID // 饲料id
+            })
+            if (!res) return false
+            this.tishixingxi = res.msg
+            this.tishikuang = true
+            this.houseIndex();
+            this.fangda = false;
+            this.tudiID = ""; //土地id 清空
+            this.type = ""; //1：普通鸡舍；2：高级鸡舍 清空
+            this.num = ""; //鸡舍里的小鸡数量 清空
+        },
+        // 选择守护犬等级
+        async shouhuquanProp(id){
+            if(!this.tudiID || this.tudiID == '') return Toast('请先选择土地')
+            this.dengji = id
+            this.list.forEach((item, index)=>{
+                if(item.level == id){
+                    console.log(item);
+                    this.money = item.money
+                    this.day = item.day
+                    this.shouhuquanID = item.id
+                }
+            })
+            this.xiaohaoxiaoji = this.num * (this.money/100)
+            this.shouhuquankuang = true
+
+            
+        },
+        async propdog(){ //守护犬
+             let res = await $ajax('propdog', {
+                 page: 1
+             })
+            if (!res) return false
+            // console.log(res)
+            this.list = res.dog
+            console.log(this.list)
+        },
+        // 守护犬 列表
+        shouhuquanhandle(){
+            console.log(this.tudiID)
+            if(!this.tudiID || this.tudiID == '') return Toast('请先选择土地')
+            this.shouhuquanlist = !this.shouhuquanlist
+
+        },
+        //鸡饲料 购买
+        async jisiliaoqueding(){
+            let res = await $ajax('houseuse_feed', {
+                house_id: this.tudiID, // 土地id
+                prop_feed: this.siliaoID // 饲料id
+            })
+            if (!res) return false
+            this.tishixingxi = res.msg
+            this.tishikuang = true
+            this.houseIndex();
+            this.fangda = false;
+            this.tudiID = ""; //土地id 清空
+            this.type = ""; //1：普通鸡舍；2：高级鸡舍 清空
+            this.num = ""; //鸡舍里的小鸡数量 清空
+        },
         // 选择饲料等级
         async jiliaoProp(id){
             if(!this.tudiID || this.tudiID == '') return Toast('请先选择土地')
-            this.siliaoID = id
+            this.dengji = id
+            this.list.forEach((item, index)=>{
+                // let sort = index + 1;
+                if(item.level == id){
+                    this.money = item.money
+                    this.siliaoID = item.id
+                }
+            })
+            this.xiaohaoxiaoji = this.num * (this.money/100)
             this.jisiliaokuang = true
 
-            // let res = await $ajax('houseuse_feed', {
-            //     house_id: this.tudiID, // 土地id
-            //     prop_feed: id // 饲料等级
-            // })
-            // if (!res) return false
-            // this.tishixingxi = res.msg
-            // this.tishikuang = true
-            // this.houseIndex();
-            // this.fangda = false;
-            // this.tudiID = ""
+            
         },
         async propfeed(){ //鸡饲料
              let res = await $ajax('propfeed', {
@@ -716,7 +836,9 @@ export default {
             this.tishikuang = true;
             this.houseIndex();
             this.fangda = false;
-            this.tudiID = ""
+            this.tudiID = ""; //土地id 清空
+            this.type = ""; //1：普通鸡舍；2：高级鸡舍 清空
+            this.num = ""; //鸡舍里的小鸡数量 清空
         },
         //增养小鸡 框
         async zengyanghandle(){
@@ -725,13 +847,17 @@ export default {
             
         },
         //选择土地 
-        async houseadd_chick(id){
+        async houseadd_chick(id, type, num){
             if(this.fangda){
                 this.fangda = false
                 this.tudiID = ""; //土地id 清空
+                this.type = ""; //1：普通鸡舍；2：高级鸡舍 清空
+                this.num = ""; //鸡舍里的小鸡数量 清空
             }else{
                 this.fangda = true
                 this.tudiID = id; //土地id
+                this.type = type; //1：普通鸡舍；2：高级鸡舍
+                this.num = num; //鸡舍里的小鸡数量
             }
             // this.PathRun()
         },
@@ -870,6 +996,9 @@ export default {
             this.shouhuquankuang = false;
             this.jisiliaokuang = false;
             this.tishikuang = false;
+            this.jisiliaolist = false;
+            this.shouhuquanlist = false;
+            this.weilanlist = false;
            
         },
         
@@ -2218,6 +2347,24 @@ export default {
                         // height: 15vw;
                     }
                 }
+                .shouhuquanlist{
+                    background: rgba(255, 255, 255, 0.5);
+                    padding: 1vw 1vw;
+                    border-radius: 10vw;
+                    >img{
+                        width: 11vw;
+                        // height: 15vw;
+                    }
+                }
+                .weilanlist{
+                    background: rgba(255, 255, 255, 0.5);
+                    padding: 1vw 1vw;
+                    border-radius: 10vw;
+                    >img{
+                        width: 11vw;
+                        // height: 15vw;
+                    }
+                }
             }
         }
 
@@ -2620,7 +2767,7 @@ export default {
 .PathInner a .item, .rotate{width:100%;height:100%;background-position:center;background-repeat:no-repeat;display:block;overflow:hidden;text-align:center;vertical-align:middle;position:absolute;}
 .PathInner .PathMain{z-index:1000;position:absolute;display:block;/* overflow:hidden; */background-position:center;background-repeat:no-repeat;bottom:0;left:0;}
 .PathInner .PathMain .Tmain{background-image: url(../../assets/images/nongchang/yangzhi/daoju.png); width: 10vw; height: 10vw;background-size: 100% 100%;}
-.PathInner .PathMain .Tmain .rotate{background-image: url(../../assets/images/nongchang/yangzhi/icon-2x.png); -moz-transform: rotate(0deg);position:absolute;bottom:0;left:0;}
+.PathInner .PathMain .Tmain .rotate{ -moz-transform: rotate(0deg);position:absolute;bottom:0;left:0;}
 .PathInner .cover {width:100%;height:100%;display:block;background:url(../../assets/images/nongchang/yangzhi/bg-hl-2x.png) center no-repeat;cursor: pointer;*filter:alpha(opacity=0);filter:alpha(opacity=0)\0;opacity:0;-webkit-transition:opacity .2s ease-out;-moz-transition:opacity .2s ease-out;-ms-transition:opacity .2s ease-out;-o-transition:opacity .2s ease-out;}
 .PathInner .cover:hover {opacity:0.2;*filter:alpha(opacity=20);filter:alpha(opacity=20)\0;}
 .PathItem .link{position:absolute;bottom:0;left:0;width: 10vw; height: 10vw;background-size: 100% 100%; background-image: url(../../assets/images/nongchang/yangzhi/zengyang.png);}

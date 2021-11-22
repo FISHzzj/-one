@@ -149,6 +149,8 @@ export default {
     houseindex: `${common}house/index`, //养殖场首页
     housereap: `${common}house/reap`, //收获鸡蛋
     houseuse_feed: `${common}house/use_feed`, //使用饲料
+    houseuse_dog: `${common}house/use_dog`, //使用守护犬
+    houseuse_fence: `${common}house/use_fence`, //使用围栏
     
     
     
