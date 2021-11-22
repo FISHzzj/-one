@@ -146,7 +146,12 @@ export default {
     tradeclear: `${common}trade/clear`, //取消挂买订单 
     housebuild: `${common}house/build`, //开鸡舍
     houseadd_chick: `${common}house/add_chick`, //开鸡舍
-  
+    houseindex: `${common}house/index`, //养殖场首页
+    housereap: `${common}house/reap`, //收获鸡蛋
+    houseuse_feed: `${common}house/use_feed`, //使用饲料
+    
+    
+    
     
     
     

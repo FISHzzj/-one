@@ -1286,5 +1286,37 @@ export default {
             msg: data.msg
         }
     },
+    houseindex(data){
+        if ( mistake(data) ) return false
+        let {house, super_house} = data
+        return {
+            house,
+            super_house
+        }
+    },
+    housebuild(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
+    houseadd_chick(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
+    housereap(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
+    houseuse_feed(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
 
 }

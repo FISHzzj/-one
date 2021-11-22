@@ -30,20 +30,26 @@
             </div>
         </div>
         <!-- 普通地 -->
-        <div class="yzputongdi">
-            <div class="onedi">
-                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="putongdi.onedi.weikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="putongdi.onedi.yikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="putongdi.onedi.yikaidi">
-                <div class="xiaoji" v-show="putongdi.onedi.xiaoji">
+        <div class="yzputongdi" v-if="houseList.length > 0">
+            <div class="onedi" :class="fangda ? 'animatfangda' : 'animatsuoxiao'">
+                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[0].status == 0">
+                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[0].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="houseList[0].status == 1">
+                <div class="xiaoji" v-show="houseList[0].num > 0" @click="houseadd_chick(houseList[0].id)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
                 </div>                
-                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="putongdi.onedi.suotou">
-                <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="putongdi.onedi.weilan1">
-                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="putongdi.onedi.gou">
+                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="houseList[0].status == 0" @click="housebuild(houseList[0].id)">
+                <div class="weilandengji" v-show="houseList[0].prop_fence != 0">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="houseList[0].prop_fence_level == 1">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan2.png" alt="" srcset="" v-show="houseList[0].prop_fence_level == 2">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan3.png" alt="" srcset="" v-show="houseList[0].prop_fence_level == 3">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan4.png" alt="" srcset="" v-show="houseList[0].prop_fence_level == 4">
+                </div>
+                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="houseList[0].prop_dog != 0">
+                <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="houseList[0].eggs > 0" @click="shouhuo(houseList[0].id)">
                 
             </div>
             <div class="twodi">
@@ -284,35 +290,35 @@
              
 
             <div class="PathItem">
-                <a class="link" href="javascrip:;" title="增养" :style="zengyang">
+                <a class="link" href="javascript:;" title="增养" :style="zengyang" @click="zengyanghandle">
                     <span class="item" style="background-image:url(@/assets/images/nongchang/yangzhi/zengyang.png); -moz-transform: rotate(0deg);" data-transform="rotate(0deg)"></span>
                 </a>
                 <!-- <div class="metaicondetail shadow"><div class="inner"><p>官方指导价</p>暂无价格<s></s></div></div> -->
             </div>
             
             <div class="PathItem">
-                <a class="link" href="javascrip:;" title="鸡饲料" :style="jisiliao">
+                <a class="link" href="javascript:;" title="鸡饲料" :style="jisiliao" @click="jisiliaohandle">
                     <span class="item" style="background-image:url(../../assets/images/nongchang/yangzhi/jisiliao.png); -moz-transform: rotate(0deg);" data-transform="rotate(0deg)"></span>
                 </a>
                 <!-- <div class="metaicondetail shadow"><div class="inner"><p>官方指导价</p>暂无价格<s></s></div></div> -->
             </div>
             
             <div class="PathItem">
-                <a class="link" href="javascrip:;" title="守护犬" :style="shouhuquan">
+                <a class="link" href="javascript:;" title="守护犬" :style="shouhuquan">
                     <span class="item" style="background-image: url(@/assets/images/nongchang/yangzhi/shouhuquan.png); -moz-transform: rotate(0deg);" data-transform="rotate(0deg)"></span>
                 </a>
                 <!-- <div class="metaicondetail shadow"><div class="inner"><p>官方指导价</p>暂无价格<s></s></div></div> -->
             </div>
             
             <div class="PathItem">
-                <a class="link" href="javascrip:;" title="围栏" :style="weilan">
+                <a class="link" href="javascript:;" title="围栏" :style="weilan">
                     <span class="item" style="background-image: url(@/assets/images/nongchang/yangzhi/weilan.png); -moz-transform: rotate(0deg);" data-transform="rotate(0deg)"></span>
                 </a>
                 <!-- <div class="metaicondetail shadow"><div class="inner"><p>官方指导价</p>暂无价格<s></s></div></div> -->
             </div>
 
             <div class="PathItem">
-                <a class="link" href="javascrip:;" title="订单" :style="dingdan">
+                <a class="link" href="javascript:;" title="订单" :style="dingdan">
                     <span class="item" style="background-image:url(@/assets/images/nongchang/yangzhi/suotou.png); -moz-transform: rotate(0deg);" data-transform="rotate(0deg)"></span>
                 </a>
                 <!-- <div class="metaicondetail shadow"><div class="inner"><p>官方指导价</p>暂无价格<s></s></div></div> -->
@@ -321,10 +327,10 @@
            <div class="pathlist">
                <!-- 鸡饲料 -->
                <div class="jisiliaolist flex " v-if="jisiliaolist">
-                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="">
-                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="">
-                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="">
-                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="">
+                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="" @click="jiliaoProp(1)">
+                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="" @click="jiliaoProp(2)">
+                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="" @click="jiliaoProp(3)">
+                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="" @click="jiliaoProp(4)">
                </div>
                <!-- 守护犬 -->
                <div class="shouhuquanlist flex " v-if="shouhuquanlist">
@@ -391,7 +397,7 @@
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
-                   <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt="">
+                   <img src="../../assets/images/nongchang/shezhi/queding.png" alt="" @click="zengyangqueding">
                    <!-- <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt=""> -->
                 </div>
             </div>
@@ -418,8 +424,8 @@
         <div class="jisiliao animat" v-if="jisiliaokuang">
             <div class="kuang">
                 <div class="content">
-                    <div>当前鸡舍：<span>1号鸡舍</span></div>
-                    <div>饲料等级：<span>鸡饲料LV1</span></div>
+                    <div>当前鸡舍：<span>{{tudiID}}号鸡舍</span></div>
+                    <div>饲料等级：<span>鸡饲料LV{{siliaoID}}</span></div>
                     <div>小鸡数量：<span>1200</span></div>
                     <div>喂养消耗：<span>500小鸡</span></div>
                 </div>
@@ -435,8 +441,7 @@
         <div class="tishikuang animat" v-if="tishikuang">
             <div class="kuang">
                 <div class="content  ">
-                    <div>购买成功，守护犬已应用 <br>
-                        到对应鸡舍</div>
+                    <div v-html="tishixingxi"></div>
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
@@ -493,6 +498,8 @@ export default {
                     suotou:true,
                     weilan1:false,
                     gou:false,
+                    sort:1, //序号
+                    status:0, //状态：0未开启：1已开启
                 },
                 twodi:{
                     weikaidi:true,
@@ -501,6 +508,8 @@ export default {
                     suotou:true,
                     weilan1:false,
                     gou:false,
+                    sort:2, //序号
+                    status:0, //状态：0未开启：1已开启
                 },
                 threedi:{
                     weikaidi:true,
@@ -509,6 +518,8 @@ export default {
                     suotou:true,
                     weilan1:false,
                     gou:false,
+                    sort:3, //序号
+                    status:0, //状态：0未开启：1已开启
                 },
                 fourdi:{
                     weikaidi:true,
@@ -517,6 +528,8 @@ export default {
                     suotou:true,
                     weilan1:false,
                     gou:false,
+                    sort:4, //序号
+                    status:0, //状态：0未开启：1已开启
                 },
                 fivedi:{
                     weikaidi:true,
@@ -525,6 +538,8 @@ export default {
                     suotou:true,
                     weilan1:false,
                     gou:false,
+                    sort:5, //序号
+                    status:0, //状态：0未开启：1已开启
                 },
                 sixdi:{
                     weikaidi:true,
@@ -533,6 +548,8 @@ export default {
                     suotou:true,
                     weilan1:false,
                     gou:false,
+                    sort:6, //序号
+                    status:0, //状态：0未开启：1已开启
                 },
                 sevendi:{
                     weikaidi:true,
@@ -541,6 +558,8 @@ export default {
                     suotou:true,
                     weilan1:false,
                     gou:false,
+                    sort:7, //序号
+                    status:0, //状态：0未开启：1已开启
                 },
                 eightdi:{
                     weikaidi:true,
@@ -549,6 +568,8 @@ export default {
                     suotou:true,
                     weilan1:false,
                     gou:false,
+                    sort:8, //序号
+                    status:0, //状态：0未开启：1已开启
                 },
                 ninedi:{
                     weikaidi:true,
@@ -557,6 +578,8 @@ export default {
                     suotou:true,
                     weilan1:false,
                     gou:false,
+                    sort:9, //序号
+                    status:0, //状态：0未开启：1已开启
                 },
                 tendi:{
                     weikaidi:true,
@@ -565,6 +588,8 @@ export default {
                     suotou:true,
                     weilan1:false,
                     gou:false,
+                    sort:10, //序号
+                    status:0, //状态：0未开启：1已开启
                 }
                 
             },
@@ -611,22 +636,129 @@ export default {
                 }
             },
             weilankuang:false,
-            zengyangshuliang:"11111",
+            zengyangshuliang:"", //增养数量
             zengyangkuang:false,
             shouhuquankuang: false,
             jisiliaokuang:false,
             tishikuang:false,
-
+            houseList:[], // 普通
+            super_house:[], //高级
+            tishixingxi: '购买成功，守护犬已应用 <br>到对应鸡舍',
+            fangda:false, //放大效果
+            tudiID:"",  //土地id
+            list:[], //鸡饲料 拿money
+            siliaoID:"", //鸡饲料 ID
         }
+    },
+    created() {
+        this.houseIndex();
     },
     mounted(){
         this.getData();
+        this.propfeed();
+        
     },
     methods:{
+        // 选择饲料等级
+        async jiliaoProp(id){
+            if(!this.tudiID || this.tudiID == '') return Toast('请先选择土地')
+            this.siliaoID = id
+            this.jisiliaokuang = true
+
+            // let res = await $ajax('houseuse_feed', {
+            //     house_id: this.tudiID, // 土地id
+            //     prop_feed: id // 饲料等级
+            // })
+            // if (!res) return false
+            // this.tishixingxi = res.msg
+            // this.tishikuang = true
+            // this.houseIndex();
+            // this.fangda = false;
+            // this.tudiID = ""
+        },
+        async propfeed(){ //鸡饲料
+             let res = await $ajax('propfeed', {
+                 page: 1
+             })
+            if (!res) return false
+            // console.log(res)
+            this.list = res.list
+            console.log(this.list)
+           
+        },
+        // 鸡饲料 列表
+        async jisiliaohandle(){
+            console.log(this.tudiID)
+            if(!this.tudiID || this.tudiID == '') return Toast('请先选择土地')
+            this.jisiliaolist = !this.jisiliaolist
+        },
+        //收货鸡蛋 
+        async shouhuo(id){
+            let res = await $ajax('housereap', {
+                house_id: this.tudiID,
+            })
+            if (!res) return false
+            this.tishixingxi = res.msg
+            this.tishikuang = true
+            this.houseIndex();
+        },
+        //增养小鸡 确定
+        async zengyangqueding(){
+            if(!this.tudiID || this.tudiID == '') return Toast('请先选择土地')
+            if(!this.zengyangshuliang || this.zengyangshuliang == '') return Toast('请输入增养数量')
+            let res = await $ajax('houseadd_chick', {
+                house_id: this.tudiID,
+                num: this.zengyangshuliang
+            })
+            if (!res) return false
+            console.log(res)
+            this.tishixingxi = res.msg;
+            this.tishikuang = true;
+            this.houseIndex();
+            this.fangda = false;
+            this.tudiID = ""
+        },
+        //增养小鸡 框
+        async zengyanghandle(){
+            if(!this.tudiID || this.tudiID == '') return Toast('请先选择土地')
+            this.zengyangkuang = true;
+            
+        },
+        //选择土地 
+        async houseadd_chick(id){
+            if(this.fangda){
+                this.fangda = false
+                this.tudiID = ""; //土地id 清空
+            }else{
+                this.fangda = true
+                this.tudiID = id; //土地id
+            }
+            // this.PathRun()
+        },
+        //开鸡舍
+        async housebuild(id){
+            // console.log(id)
+            let res = await $ajax('housebuild', {
+                house_id: id
+            })
+            if (!res) return false
+            console.log(res)
+            this.tishixingxi = res.msg
+            this.tishikuang = true
+            this.houseIndex();
+        },
+        async houseIndex(){
+            let res = await $ajax('houseindex', {})
+            if (!res) return false
+            // console.log(res)
+            this.houseList = res.house
+            this.super_house = res.super_house
+            
+        },
         async getData(){
             let res = await $ajax('userinfo', {})
             if (!res) return false
-            console.log(res)
+            // console.log(res)
             Object.keys(res).forEach((key) =>{
                 this[key] = res[key]
             })
@@ -634,14 +766,14 @@ export default {
         PathRun(){
             var PathMenu = $('#PathMenu');
             var PathItems = PathMenu.children('.PathItem').slice(0,5);
-            console.log(PathItems);
+            // console.log(PathItems);
             if(PathStatus == 0){
                 var Count = PathItems.length;
-                console.log(Count);
+                // console.log(Count);
                 PathItems.each(function(SP){
-                    console.log(SP);
+                    // console.log(SP);
                     var ID = $(this).index();
-                    console.log(ID);
+                    // console.log(ID);
                     if (ID == 1) {
                         var X 	= Radius;
                         var Y 	= 0; 
@@ -670,7 +802,7 @@ export default {
                         X1	= -X1;
                         console.log(44444444444444)
                     }
-                    console.log($(this).children().children())
+                    // console.log($(this).children().children())
 
                     $(this).children().children().animate({rotate:720},600);
                     
@@ -875,11 +1007,11 @@ export default {
                     width: 50vw;
                 }
                 >img:nth-child(2){
-                    width: 41vw;
-                    position: absolute;
-                    top: 0vw;
-                    left: 5vw;
-                    z-index: 9;
+                    width: 50vw;
+                    // position: absolute;
+                    // top: 0vw;
+                    // left: 5vw;
+                    // z-index: 9;
                 }
                 >img:nth-child(3){
                     width: 10vw;
@@ -926,12 +1058,14 @@ export default {
                     z-index: 10;
                     // display: none;
                 }
-                >img:nth-child(6){
-                    width: 52vw;
-                    position: absolute;
-                    top: -5vw;
-                    left: -1vw;
-                    z-index: 11;
+                >.weilandengji{
+                    >img{
+                        width: 52vw;
+                        position: absolute;
+                        top: -5vw;
+                        left: -1vw;
+                        z-index: 11;
+                    }
                 }
                 >img:nth-child(7){
                     width: 14vw;
@@ -939,6 +1073,13 @@ export default {
                     top: -5vw;
                     left: 2vw;
                     z-index: 10;
+                }
+                >img:nth-child(8){
+                    width: 10vw;
+                    position: absolute;
+                    top: -7vw;
+                    left: 20vw;
+                    z-index: 15;
                 }
             }
             >.twodi{
@@ -953,11 +1094,11 @@ export default {
 
                 }
                 >img:nth-child(2){
-                    width: 41vw;
-                    position: absolute;
-                    top: 0vw;
-                    left: 5vw;
-                    z-index: 9;
+                    width: 50vw;
+                    // position: absolute;
+                    // top: 0vw;
+                    // left: 5vw;
+                    // z-index: 9;
                 }
                 >img:nth-child(3){
                     width: 10vw;
@@ -1036,11 +1177,11 @@ export default {
 
                 }
                 >img:nth-child(2){
-                    width: 41vw;
-                    position: absolute;
-                    top: 0vw;
-                    left: 5vw;
-                    z-index: 9;
+                    width: 50vw;
+                    // position: absolute;
+                    // top: 0vw;
+                    // left: 5vw;
+                    // z-index: 9;
                 }
                 >img:nth-child(3){
                     width: 10vw;
@@ -1119,11 +1260,11 @@ export default {
 
                 }
                 >img:nth-child(2){
-                    width: 41vw;
-                    position: absolute;
-                    top: 0vw;
-                    left: 5vw;
-                    z-index: 9;
+                    width: 50vw;
+                    // position: absolute;
+                    // top: 0vw;
+                    // left: 5vw;
+                    // z-index: 9;
                 }
                 >img:nth-child(3){
                     width: 10vw;
@@ -1202,11 +1343,11 @@ export default {
 
                 }
                 >img:nth-child(2){
-                    width: 41vw;
-                    position: absolute;
-                    top: 0vw;
-                    left: 5vw;
-                    z-index: 9;
+                    width: 50vw;
+                    // position: absolute;
+                    // top: 0vw;
+                    // left: 5vw;
+                    // z-index: 9;
                 }
                 >img:nth-child(3){
                     width: 10vw;
@@ -1285,11 +1426,11 @@ export default {
 
                 }
                 >img:nth-child(2){
-                    width: 41vw;
-                    position: absolute;
-                    top: 0vw;
-                    left: 5vw;
-                    z-index: 9;
+                    width: 50vw;
+                    // position: absolute;
+                    // top: 0vw;
+                    // left: 5vw;
+                    // z-index: 9;
                 }
                 >img:nth-child(3){
                     width: 10vw;
@@ -1368,11 +1509,11 @@ export default {
 
                 }
                 >img:nth-child(2){
-                    width: 41vw;
-                    position: absolute;
-                    top: 0vw;
-                    left: 5vw;
-                    z-index: 9;
+                    width: 50vw;
+                    // position: absolute;
+                    // top: 0vw;
+                    // left: 5vw;
+                    // z-index: 9;
                 }
                 >img:nth-child(3){
                     width: 10vw;
@@ -1451,11 +1592,11 @@ export default {
 
                 }
                 >img:nth-child(2){
-                    width: 41vw;
-                    position: absolute;
-                    top: 0vw;
-                    left: 5vw;
-                    z-index: 9;
+                    width: 50vw;
+                    // position: absolute;
+                    // top: 0vw;
+                    // left: 5vw;
+                    // z-index: 9;
                 }
                 >img:nth-child(3){
                     width: 10vw;
@@ -1534,11 +1675,11 @@ export default {
 
                 }
                 >img:nth-child(2){
-                    width: 41vw;
-                    position: absolute;
-                    top: 0vw;
-                    left: 5vw;
-                    z-index: 9;
+                    width: 50vw;
+                    // position: absolute;
+                    // top: 0vw;
+                    // left: 5vw;
+                    // z-index: 9;
                 }
                 >img:nth-child(3){
                     width: 10vw;
@@ -1617,11 +1758,11 @@ export default {
 
                 }
                 >img:nth-child(2){
-                    width: 41vw;
-                    position: absolute;
-                    top: 0vw;
-                    left: 5vw;
-                    z-index: 9;
+                    width: 50vw;
+                    // position: absolute;
+                    // top: 0vw;
+                    // left: 5vw;
+                    // z-index: 9;
                 }
                 >img:nth-child(3){
                     width: 10vw;
@@ -1699,11 +1840,11 @@ export default {
                     width: 50vw;
                 }
                 >img:nth-child(2){
-                    width: 41vw;
-                    position: absolute;
-                    top: 0vw;
-                    left: 5vw;
-                    z-index: 9;
+                    width: 50vw;
+                    // position: absolute;
+                    // top: 0vw;
+                    // left: 5vw;
+                    // z-index: 9;
                 }
                 >img:nth-child(3){
                     width: 10vw;
@@ -1774,11 +1915,11 @@ export default {
                     width: 50vw;
                 }
                 >img:nth-child(2){
-                    width: 41vw;
-                    position: absolute;
-                    top: 0vw;
-                    left: 5vw;
-                    z-index: 9;
+                    width: 50vw;
+                    // position: absolute;
+                    // top: 0vw;
+                    // left: 5vw;
+                    // z-index: 9;
                 }
                 >img:nth-child(3){
                     width: 10vw;
@@ -1848,11 +1989,11 @@ export default {
                     width: 50vw;
                 }
                 >img:nth-child(2){
-                    width: 41vw;
-                    position: absolute;
-                    top: 0vw;
-                    left: 5vw;
-                    z-index: 9;
+                    width: 50vw;
+                    // position: absolute;
+                    // top: 0vw;
+                    // left: 5vw;
+                    // z-index: 9;
                 }
                 >img:nth-child(3){
                     width: 10vw;
@@ -1922,11 +2063,11 @@ export default {
                     width: 50vw;
                 }
                 >img:nth-child(2){
-                    width: 41vw;
-                    position: absolute;
-                    top: 0vw;
-                    left: 5vw;
-                    z-index: 9;
+                    width: 50vw;
+                    // position: absolute;
+                    // top: 0vw;
+                    // left: 5vw;
+                    // z-index: 9;
                 }
                 >img:nth-child(3){
                     width: 10vw;
@@ -1996,11 +2137,11 @@ export default {
                     width: 50vw;
                 }
                 >img:nth-child(2){
-                    width: 41vw;
-                    position: absolute;
-                    top: 0vw;
-                    left: 5vw;
-                    z-index: 9;
+                    width: 50vw;
+                    // position: absolute;
+                    // top: 0vw;
+                    // left: 5vw;
+                    // z-index: 9;
                 }
                 >img:nth-child(3){
                     width: 10vw;
@@ -2515,6 +2656,46 @@ export default {
     } */
 }
 @-webkit-keyframes mymove{
+    0%{
+        transform: scale(1);
+    }
+    25%{
+        transform: scale(1.1);
+    }
+    50%{
+        transform: scale(1);
+    }
+    /* 75%{
+        transform: scale(1.2);
+    } */
+}
+
+
+// 放大
+.animatfangda{
+    transition: all 1s ease-in-out;
+    transform: scale(1.1); /*放大1.1倍*/
+}
+// 缩小
+.animatsuoxiao{
+    transition: all 1s ease-in-out;
+    transform: scale(1); /*放大1.1倍*/
+}
+@keyframes mymoveda{
+    0%{
+        transform: scale(1);  /*开始为原始大小*/
+    }
+    25%{
+        transform: scale(1.1); /*放大1.1倍*/
+    }
+    50%{
+        transform: scale(1);
+    }
+    /* 75%{
+        transform: scale(1.2);
+    } */
+}
+@-webkit-keyframes mymoveda{
     0%{
         transform: scale(1);
     }
