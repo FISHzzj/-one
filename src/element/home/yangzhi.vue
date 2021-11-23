@@ -31,7 +31,7 @@
         </div>
         <!-- 普通地 -->
         <div class="yzputongdi" v-if="houseList.length > 0">
-            <div class="onedi" :class="fangda ? 'animatfangda' : 'animatsuoxiao'">
+            <div class="onedi" :class="fangda == houseList[0].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[0].status == 0">
                 <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[0].status == 1">
                 <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="houseList[0].status == 1">
@@ -52,226 +52,307 @@
                 <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="houseList[0].eggs > 0" @click="shouhuo(houseList[0].id)">
                 
             </div>
-            <div class="twodi">
-                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="putongdi.twodi.weikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="putongdi.twodi.yikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="putongdi.twodi.yikaidi">
-                <div class="xiaoji" v-show="putongdi.twodi.xiaoji">
+            <div class="twodi" :class="fangda == houseList[1].id ? 'animatfangda' : 'animatsuoxiao'">
+                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[1].status == 0">
+                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[1].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="houseList[1].status == 1">
+                <div class="xiaoji" v-show="houseList[1].num > 0" @click="houseadd_chick(houseList[1].id,houseList[1].type,houseList[1].num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
                 </div>                
-                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="putongdi.twodi.suotou">
-                <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="putongdi.twodi.weilan1">
-                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="putongdi.twodi.gou">
+                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="houseList[1].status == 0" @click="housebuild(houseList[1].id)">
+                <div class="weilandengji" v-show="houseList[1].prop_fence != 0">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="houseList[1].prop_fence_level == 1">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan2.png" alt="" srcset="" v-show="houseList[1].prop_fence_level == 2">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan3.png" alt="" srcset="" v-show="houseList[1].prop_fence_level == 3">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan4.png" alt="" srcset="" v-show="houseList[1].prop_fence_level == 4">
+                </div>
+                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="houseList[1].prop_dog != 0">
+                <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="houseList[1].eggs > 0" @click="shouhuo(houseList[1].id)">
                 
             </div>
-            <div class="threedi">
-                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="putongdi.threedi.weikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="putongdi.threedi.yikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="putongdi.threedi.yikaidi">
-                <div class="xiaoji" v-show="putongdi.threedi.xiaoji">
+            <div class="threedi" :class="fangda == houseList[2].id ? 'animatfangda' : 'animatsuoxiao'">
+                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[2].status == 0">
+                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[2].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="houseList[2].status == 1">
+                <div class="xiaoji" v-show="houseList[2].num > 0" @click="houseadd_chick(houseList[2].id,houseList[2].type,houseList[2].num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
                 </div>                
-                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="putongdi.threedi.suotou">
-                <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="putongdi.threedi.weilan1">
-                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="putongdi.threedi.gou">
-                
+                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="houseList[2].status == 0" @click="housebuild(houseList[2].id)">
+                <div class="weilandengji" v-show="houseList[2].prop_fence != 0">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="houseList[2].prop_fence_level == 1">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan2.png" alt="" srcset="" v-show="houseList[2].prop_fence_level == 2">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan3.png" alt="" srcset="" v-show="houseList[2].prop_fence_level == 3">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan4.png" alt="" srcset="" v-show="houseList[2].prop_fence_level == 4">
+                </div>
+                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="houseList[2].prop_dog != 0">
+                <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="houseList[2].eggs > 0" @click="shouhuo(houseList[2].id)">
                 
             </div>
-            <div class="fourdi">
-                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="putongdi.fourdi.weikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="putongdi.fourdi.yikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="putongdi.fourdi.yikaidi">
-                <div class="xiaoji" v-show="putongdi.fourdi.xiaoji">
+            <div class="fourdi" :class="fangda == houseList[3].id ? 'animatfangda' : 'animatsuoxiao'">
+                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[3].status == 0">
+                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[3].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="houseList[3].status == 1">
+                <div class="xiaoji" v-show="houseList[3].num > 0" @click="houseadd_chick(houseList[3].id,houseList[3].type,houseList[3].num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
                 </div>                
-                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="putongdi.fourdi.suotou">
-                <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="putongdi.fourdi.weilan1">
-                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="putongdi.fourdi.gou">
-                
-                
-            </div>
-            <div class="fivedi">
-                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="putongdi.fivedi.weikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="putongdi.fivedi.yikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="putongdi.fivedi.yikaidi">
-                <div class="xiaoji" v-show="putongdi.fivedi.xiaoji">
-                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
-                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
-                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
-                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
-                </div>                
-                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="putongdi.fivedi.suotou">
-                <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="putongdi.fivedi.weilan1">
-                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="putongdi.fivedi.gou">
-                
-                
-            </div>
-            <div class="sixdi">
-                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="putongdi.sixdi.weikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="putongdi.sixdi.yikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="putongdi.sixdi.yikaidi">
-                <div class="xiaoji" v-show="putongdi.sixdi.xiaoji">
-                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
-                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
-                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
-                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
-                </div>                
-                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="putongdi.sixdi.suotou">
-                <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="putongdi.sixdi.weilan1">
-                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="putongdi.sixdi.gou">
+                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="houseList[3].status == 0" @click="housebuild(houseList[3].id)">
+                <div class="weilandengji" v-show="houseList[3].prop_fence != 0">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="houseList[3].prop_fence_level == 1">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan2.png" alt="" srcset="" v-show="houseList[3].prop_fence_level == 2">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan3.png" alt="" srcset="" v-show="houseList[3].prop_fence_level == 3">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan4.png" alt="" srcset="" v-show="houseList[3].prop_fence_level == 4">
+                </div>
+                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="houseList[3].prop_dog != 0">
+                <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="houseList[3].eggs > 0" @click="shouhuo(houseList[3].id)">
                 
                 
             </div>
-            <div class="sevendi">
-                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="putongdi.sevendi.weikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="putongdi.sevendi.yikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="putongdi.sevendi.yikaidi">
-                <div class="xiaoji" v-show="putongdi.sevendi.xiaoji">
+            <div class="fivedi" :class="fangda == houseList[4].id ? 'animatfangda' : 'animatsuoxiao'">
+                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[4].status == 0">
+                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[4].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="houseList[4].status == 1">
+                <div class="xiaoji" v-show="houseList[4].num > 0" @click="houseadd_chick(houseList[4].id,houseList[4].type,houseList[4].num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
                 </div>                
-                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="putongdi.sevendi.suotou">
-                <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="putongdi.sevendi.weilan1">
-                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="putongdi.sevendi.gou">
+                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="houseList[4].status == 0" @click="housebuild(houseList[4].id)">
+                <div class="weilandengji" v-show="houseList[4].prop_fence != 0">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="houseList[4].prop_fence_level == 1">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan2.png" alt="" srcset="" v-show="houseList[4].prop_fence_level == 2">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan3.png" alt="" srcset="" v-show="houseList[4].prop_fence_level == 3">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan4.png" alt="" srcset="" v-show="houseList[4].prop_fence_level == 4">
+                </div>
+                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="houseList[4].prop_dog != 0">
+                <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="houseList[4].eggs > 0" @click="shouhuo(houseList[4].id)">
                 
                 
             </div>
-            <div class="eightdi">
-                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="putongdi.eightdi.weikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="putongdi.eightdi.yikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="putongdi.eightdi.yikaidi">
-                <div class="xiaoji" v-show="putongdi.eightdi.xiaoji">
+            <div class="sixdi" :class="fangda == houseList[5].id ? 'animatfangda' : 'animatsuoxiao'">
+                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[5].status == 0">
+                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[5].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="houseList[5].status == 1">
+                <div class="xiaoji" v-show="houseList[5].num > 0" @click="houseadd_chick(houseList[5].id,houseList[5].type,houseList[5].num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
                 </div>                
-                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="putongdi.eightdi.suotou">
-                <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="putongdi.eightdi.weilan1">
-                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="putongdi.eightdi.gou">
+                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="houseList[5].status == 0" @click="housebuild(houseList[5].id)">
+                <div class="weilandengji" v-show="houseList[5].prop_fence != 0">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="houseList[5].prop_fence_level == 1">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan2.png" alt="" srcset="" v-show="houseList[5].prop_fence_level == 2">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan3.png" alt="" srcset="" v-show="houseList[5].prop_fence_level == 3">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan4.png" alt="" srcset="" v-show="houseList[5].prop_fence_level == 4">
+                </div>
+                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="houseList[5].prop_dog != 0">
+                <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="houseList[5].eggs > 0" @click="shouhuo(houseList[5].id)">  
+                
+            </div>
+            <div class="sevendi" :class="fangda == houseList[6].id ? 'animatfangda' : 'animatsuoxiao'">
+                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[6].status == 0">
+                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[6].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="houseList[6].status == 1">
+                <div class="xiaoji" v-show="houseList[6].num > 0" @click="houseadd_chick(houseList[6].id,houseList[6].type,houseList[6].num)">
+                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
+                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
+                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
+                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
+                </div>                
+                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="houseList[6].status == 0" @click="housebuild(houseList[6].id)">
+                <div class="weilandengji" v-show="houseList[6].prop_fence != 0">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="houseList[6].prop_fence_level == 1">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan2.png" alt="" srcset="" v-show="houseList[6].prop_fence_level == 2">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan3.png" alt="" srcset="" v-show="houseList[6].prop_fence_level == 3">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan4.png" alt="" srcset="" v-show="houseList[6].prop_fence_level == 4">
+                </div>
+                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="houseList[6].prop_dog != 0">
+                <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="houseList[6].eggs > 0" @click="shouhuo(houseList[6].id)">  
                 
                 
             </div>
-            <div class="ninedi">
-                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="putongdi.ninedi.weikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="putongdi.ninedi.yikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="putongdi.ninedi.yikaidi">
-                <div class="xiaoji" v-show="putongdi.ninedi.xiaoji">
+            <div class="eightdi" :class="fangda == houseList[7].id ? 'animatfangda' : 'animatsuoxiao'">
+                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[7].status == 0">
+                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[7].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="houseList[7].status == 1">
+                <div class="xiaoji" v-show="houseList[7].num > 0" @click="houseadd_chick(houseList[7].id,houseList[7].type,houseList[7].num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
                 </div>                
-                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="putongdi.ninedi.suotou">
-                <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="putongdi.ninedi.weilan1">
-                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="putongdi.ninedi.gou">
+                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="houseList[7].status == 0" @click="housebuild(houseList[7].id)">
+                <div class="weilandengji" v-show="houseList[7].prop_fence != 0">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="houseList[7].prop_fence_level == 1">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan2.png" alt="" srcset="" v-show="houseList[7].prop_fence_level == 2">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan3.png" alt="" srcset="" v-show="houseList[7].prop_fence_level == 3">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan4.png" alt="" srcset="" v-show="houseList[7].prop_fence_level == 4">
+                </div>
+                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="houseList[7].prop_dog != 0">
+                <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="houseList[7].eggs > 0" @click="shouhuo(houseList[7].id)">  
+                
                 
                 
             </div>
-            <div class="tendi">
-                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="putongdi.tendi.weikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="putongdi.tendi.yikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="putongdi.tendi.yikaidi">
-                <div class="xiaoji" v-show="putongdi.tendi.xiaoji">
+            <div class="ninedi" :class="fangda == houseList[8].id ? 'animatfangda' : 'animatsuoxiao'">
+                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[8].status == 0">
+                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[8].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="houseList[8].status == 1">
+                <div class="xiaoji" v-show="houseList[8].num > 0" @click="houseadd_chick(houseList[8].id,houseList[8].type,houseList[8].num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
                 </div>                
-                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="putongdi.tendi.suotou">
-                <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="putongdi.tendi.weilan1">
-                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="putongdi.tendi.gou">
+                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="houseList[8].status == 0" @click="housebuild(houseList[8].id)">
+                <div class="weilandengji" v-show="houseList[8].prop_fence != 0">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="houseList[8].prop_fence_level == 1">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan2.png" alt="" srcset="" v-show="houseList[8].prop_fence_level == 2">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan3.png" alt="" srcset="" v-show="houseList[8].prop_fence_level == 3">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan4.png" alt="" srcset="" v-show="houseList[8].prop_fence_level == 4">
+                </div>
+                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="houseList[8].prop_dog != 0">
+                <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="houseList[8].eggs > 0" @click="shouhuo(houseList[8].id)">  
                 
                 
+            </div>
+            <div class="tendi" :class="fangda == houseList[9].id ? 'animatfangda' : 'animatsuoxiao'">
+                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[9].status == 0">
+                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[9].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="houseList[9].status == 1">
+                <div class="xiaoji" v-show="houseList[9].num > 0" @click="houseadd_chick(houseList[9].id,houseList[9].type,houseList[9].num)">
+                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
+                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
+                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
+                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
+                </div>                
+                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="houseList[9].status == 0" @click="housebuild(houseList[9].id)">
+                <div class="weilandengji" v-show="houseList[9].prop_fence != 0">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="houseList[9].prop_fence_level == 1">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan2.png" alt="" srcset="" v-show="houseList[9].prop_fence_level == 2">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan3.png" alt="" srcset="" v-show="houseList[9].prop_fence_level == 3">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan4.png" alt="" srcset="" v-show="houseList[9].prop_fence_level == 4">
+                </div>
+                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="houseList[9].prop_dog != 0">
+                <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="houseList[9].eggs > 0" @click="shouhuo(houseList[9].id)">  
+
             </div>
         </div>
 
         <!-- 高级地 -->
-        <div class="yzgaojidi">
-            <div class="onedi">
-                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="gaojidi.onedi.weikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/gaojitudi.png" alt="" srcset="" v-show="gaojidi.onedi.yikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="gaojidi.onedi.yikaidi">
-                <div class="xiaoji" v-show="gaojidi.onedi.xiaoji">
+        <div class="yzgaojidi" v-if="super_house.length > 0">
+            <div class="onedi" :class="fangda == super_house[0].id ? 'animatfangda' : 'animatsuoxiao'">
+                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="super_house[0].status == 0">
+                <img src="../../assets/images/nongchang/yangzhi/gaojitudi.png" alt="" srcset="" v-show="super_house[0].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="super_house[0].status == 1">
+                <div class="xiaoji" v-show="super_house[0].num > 0" @click="houseadd_chick(super_house[0].id,super_house[0].type,super_house[0].num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
-                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
-                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
+                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
+                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
                 </div>                
-                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="gaojidi.onedi.suotou">
-                <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="gaojidi.onedi.weilan1">
-                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="gaojidi.onedi.gou">
+                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="super_house[0].status == 0" @click="housebuild(super_house[0].id)">
+                <div class="weilandengji" v-show="super_house[0].prop_fence != 0">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="super_house[0].prop_fence_level == 1">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan2.png" alt="" srcset="" v-show="super_house[0].prop_fence_level == 2">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan3.png" alt="" srcset="" v-show="super_house[0].prop_fence_level == 3">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan4.png" alt="" srcset="" v-show="super_house[0].prop_fence_level == 4">
+                </div>
+                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="super_house[0].prop_dog != 0">
+                <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="super_house[0].eggs > 0" @click="shouhuo(super_house[0].id)"> 
+
+            </div>
+            <div class="twodi" :class="fangda == super_house[1].id ? 'animatfangda' : 'animatsuoxiao'">
+                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="super_house[1].status == 0">
+                <img src="../../assets/images/nongchang/yangzhi/gaojitudi.png" alt="" srcset="" v-show="super_house[1].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="super_house[1].status == 1">
+                <div class="xiaoji" v-show="super_house[1].num > 0" @click="houseadd_chick(super_house[1].id,super_house[1].type,super_house[1].num)">
+                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
+                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
+                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
+                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
+                </div>                
+                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="super_house[1].status == 0" @click="housebuild(super_house[1].id)">
+                <div class="weilandengji" v-show="super_house[1].prop_fence != 0">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="super_house[1].prop_fence_level == 1">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan2.png" alt="" srcset="" v-show="super_house[1].prop_fence_level == 2">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan3.png" alt="" srcset="" v-show="super_house[1].prop_fence_level == 3">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan4.png" alt="" srcset="" v-show="super_house[1].prop_fence_level == 4">
+                </div>
+                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="super_house[1].prop_dog != 0">
+                <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="super_house[1].eggs > 0" @click="shouhuo(super_house[1].id)"> 
+            </div>
+            <div class="threedi" :class="fangda == super_house[2].id ? 'animatfangda' : 'animatsuoxiao'">
+                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="super_house[2].status == 0">
+                <img src="../../assets/images/nongchang/yangzhi/gaojitudi.png" alt="" srcset="" v-show="super_house[2].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="super_house[2].status == 1">
+                <div class="xiaoji" v-show="super_house[2].num > 0" @click="houseadd_chick(super_house[2].id,super_house[2].type,super_house[2].num)">
+                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
+                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
+                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
+                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
+                </div>                
+                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="super_house[2].status == 0" @click="housebuild(super_house[2].id)">
+                <div class="weilandengji" v-show="super_house[2].prop_fence != 0">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="super_house[2].prop_fence_level == 1">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan2.png" alt="" srcset="" v-show="super_house[2].prop_fence_level == 2">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan3.png" alt="" srcset="" v-show="super_house[2].prop_fence_level == 3">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan4.png" alt="" srcset="" v-show="super_house[2].prop_fence_level == 4">
+                </div>
+                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="super_house[2].prop_dog != 0">
+                <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="super_house[2].eggs > 0" @click="shouhuo(super_house[2].id)">
                 
             </div>
-            <div class="twodi">
-                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="gaojidi.onedi.weikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/gaojitudi.png" alt="" srcset="" v-show="gaojidi.onedi.yikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="gaojidi.onedi.yikaidi">
-                <div class="xiaoji" v-show="gaojidi.onedi.xiaoji">
+            <div class="fourdi" :class="fangda == super_house[3].id ? 'animatfangda' : 'animatsuoxiao'">
+                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="super_house[3].status == 0">
+                <img src="../../assets/images/nongchang/yangzhi/gaojitudi.png" alt="" srcset="" v-show="super_house[3].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="super_house[3].status == 1">
+                <div class="xiaoji" v-show="super_house[3].num > 0" @click="houseadd_chick(super_house[3].id,super_house[3].type,super_house[3].num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
-                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
-                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
+                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
+                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
                 </div>                
-                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="gaojidi.onedi.suotou">
-                <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="gaojidi.onedi.weilan1">
-                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="gaojidi.onedi.gou">
+                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="super_house[3].status == 0" @click="housebuild(super_house[3].id)">
+                <div class="weilandengji" v-show="super_house[3].prop_fence != 0">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="super_house[3].prop_fence_level == 1">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan2.png" alt="" srcset="" v-show="super_house[3].prop_fence_level == 2">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan3.png" alt="" srcset="" v-show="super_house[3].prop_fence_level == 3">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan4.png" alt="" srcset="" v-show="super_house[3].prop_fence_level == 4">
+                </div>
+                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="super_house[3].prop_dog != 0">
+                <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="super_house[3].eggs > 0" @click="shouhuo(super_house[3].id)">
                 
             </div>
-            <div class="threedi">
-                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="gaojidi.onedi.weikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/gaojitudi.png" alt="" srcset="" v-show="gaojidi.onedi.yikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="gaojidi.onedi.yikaidi">
-                <div class="xiaoji" v-show="gaojidi.onedi.xiaoji">
+            <div class="fivedi" :class="fangda == super_house[4].id ? 'animatfangda' : 'animatsuoxiao'">
+                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="super_house[4].status == 0">
+                <img src="../../assets/images/nongchang/yangzhi/gaojitudi.png" alt="" srcset="" v-show="super_house[4].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="super_house[4].status == 1">
+                <div class="xiaoji" v-show="super_house[4].num > 0" @click="houseadd_chick(super_house[4].id,super_house[4].type,super_house[4].num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
-                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
-                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
+                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
+                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="">
                 </div>                
-                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="gaojidi.onedi.suotou">
-                <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="gaojidi.onedi.weilan1">
-                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="gaojidi.onedi.gou">
-                
-            </div>
-            <div class="fourdi">
-                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="gaojidi.onedi.weikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/gaojitudi.png" alt="" srcset="" v-show="gaojidi.onedi.yikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="gaojidi.onedi.yikaidi">
-                <div class="xiaoji" v-show="gaojidi.onedi.xiaoji">
-                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
-                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
-                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
-                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
-                </div>                
-                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="gaojidi.onedi.suotou">
-                <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="gaojidi.onedi.weilan1">
-                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="gaojidi.onedi.gou">
-                
-            </div>
-            <div class="fivedi">
-                <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="gaojidi.onedi.weikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/gaojitudi.png" alt="" srcset="" v-show="gaojidi.onedi.yikaidi">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="gaojidi.onedi.yikaidi">
-                <div class="xiaoji" v-show="gaojidi.onedi.xiaoji">
-                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
-                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
-                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
-                    <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
-                </div>                
-                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="gaojidi.onedi.suotou">
-                <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="gaojidi.onedi.weilan1">
-                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="gaojidi.onedi.gou">
+                <img src="../../assets/images/nongchang/yangzhi/suotou.png" alt="" srcset="" v-show="super_house[4].status == 0" @click="housebuild(super_house[4].id)">
+                <div class="weilandengji" v-show="super_house[3].prop_fence != 0">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan1.png" alt="" srcset="" v-show="super_house[4].prop_fence_level == 1">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan2.png" alt="" srcset="" v-show="super_house[4].prop_fence_level == 2">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan3.png" alt="" srcset="" v-show="super_house[4].prop_fence_level == 3">
+                    <img src="../../assets/images/nongchang/yangzhi/weilan4.png" alt="" srcset="" v-show="super_house[4].prop_fence_level == 4">
+                </div>
+                <img src="../../assets/images/nongchang/yangzhi/gou.png" alt="" srcset="" v-show="super_house[4].prop_dog != 0">
+                <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="super_house[4].eggs > 0" @click="shouhuo(super_house[4].id)">
                 
             </div>
             
@@ -318,7 +399,7 @@
             </div>
 
             <div class="PathItem">
-                <a class="link" href="javascript:;" title="订单" :style="dingdan">
+                <a class="link" href="javascript:;" title="订单" :style="dingdan" @click="dingdanhandle">
                     <span class="item" style="background-image:url(@/assets/images/nongchang/yangzhi/suotou.png); -moz-transform: rotate(0deg);" data-transform="rotate(0deg)"></span>
                 </a>
                 <!-- <div class="metaicondetail shadow"><div class="inner"><p>官方指导价</p>暂无价格<s></s></div></div> -->
@@ -341,15 +422,19 @@
                </div>
                <!-- 围栏 -->
                <div class="weilanlist flex " v-if="weilanlist">
-                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="" @click="weilanProp(1)">
-                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="" @click="weilanProp(2)">
-                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="" @click="weilanProp(3)">
-                   <img src="../../assets/images/nongchang/yangzhi/jisiliao1.png" alt="" srcset="" @click="weilanProp(4)">
+                   <img src="../../assets/images/nongchang/yangzhi/weilan_1.png" alt="" srcset="" @click="weilanProp(1)">
+                   <img src="../../assets/images/nongchang/yangzhi/weilan_2.png" alt="" srcset="" @click="weilanProp(2)">
+                   <img src="../../assets/images/nongchang/yangzhi/weilan_3.png" alt="" srcset="" @click="weilanProp(3)">
+                   <img src="../../assets/images/nongchang/yangzhi/weilan_4.png" alt="" srcset="" @click="weilanProp(4)">
                </div>
            </div>
                 
         </div>  
 
+        <!-- 右上角 返回 -->
+        <div class="fanhui" @click="$router.go(-1);">
+            <img src="../../assets/images/nongchang/yangzhi/bg-2x.png" alt="">
+        </div>
 
         <!-- 个人信息 -->
         <div class="gerenxinxi animat" v-if="gerenxinxikuang">
@@ -373,8 +458,8 @@
         <div class="zengyang animat" v-if="zengyangkuang">
             <div class="kuang">
                 <div class="content">
-                    <div>当前鸡舍：<span>1号鸡舍</span></div>
-                    <div>小鸡数量：<span>3000</span></div>
+                    <div>当前鸡舍：<span>{{tudiID}}号鸡舍</span></div>
+                    <div>小鸡数量：<span>{{num}}</span></div>
                     <div>增养数量：<input type="text" v-model="zengyangshuliang"></div>
                 </div>
                 <div class="shezhibtn flex flex_center">
@@ -447,6 +532,62 @@
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
                   
                 </div>
+            </div>
+        </div>
+
+        <!-- 订单明细 -->
+        <div class="dingdankuang animat" v-if="dingdankuang">
+            <div class="kuang">
+                <div class="guanbi flex flex-end">
+                    <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="guangbi">
+                </div>
+                <!-- <div class="sdlan flex flex_center">
+                    <img :src="goumai ? goumai1 : goumai2" alt="" srcset="" @click="tabjishi(0)">
+                    <img :src="jishou ? jishou1 : jishou2" alt="" srcset="" @click="tabjishi(1)">
+                    <img :src="jilv ? jilv1 : jilv2" alt="" srcset="" @click="tabjishi(2)">
+                    
+                </div> -->
+                <div class="sdlist" >
+                    <van-list
+                        v-model="loading"
+                        :finished="finished"
+                        :finished-text="'我是有底线的'"
+                        @load="tradeorder"
+                    >
+                        <div class="sditem flex ali_center flex_between" v-for="(item, index) in list" :key="index"> 
+                            <!-- <img src="../../assets/images/nongchang/shangdian/jiasu.png" alt="" srcset=""> -->
+                            <div class="sdtext flex flex_col ">
+                                <div class="flex flex_between">
+                                    <span style="width: 36vw;overflow: hidden;margin-right:5vw;">鸡舍等级：普通鸡舍（1号）</span>
+                                    <!-- <span>数量：100</span> -->
+                                </div>
+                                <div class="flex flex_between">
+                                    <span  style="width: 36vw;overflow: hidden;margin-right:5vw;">小鸡总数：3000</span>
+                                    <span>订单数量：6</span>
+                                </div>
+                                
+                                <!-- <div>购买时间：2021-21-21 00:00:00</div> -->
+                                <div class="sdtextxiala flex flex_col ">
+                                    <div class="flex flex_between">
+                                        <span style="width: 36vw;overflow: hidden;margin-right:5vw;">守护犬：哈士奇</span>
+                                        <!-- <span>数量：100</span> -->
+                                    </div>
+                                    <div class="flex ali_center">
+                                        <span style="margin-right:2vw;">守护等级：LV1</span>
+                                        <img src="../../assets/images/nongchang/yangzhi/shengji.png" alt="">
+                                    </div>
+                                    
+                                    <div>剩余时间：2021-11-20  16 : 48</div>
+                                </div>
+                            </div>
+                            
+                           
+                        </div>
+                        
+                    </van-list>
+                </div>
+                
+               
             </div>
         </div>
         
@@ -656,6 +797,12 @@ export default {
             day:"", //守护天数
             shouhuquanID: "", //守护等级id;
             weilanID:"", // 围栏等级ID
+            dingdankuang: false, //订单 明细
+            list:[],
+            page: 1,
+            limit: 10,
+            finished: false,
+            loading: false,
         }
     },
     created() {
@@ -669,6 +816,13 @@ export default {
         
     },
     methods:{
+        dingdanhandle(){
+            this.dingdankuang = true;
+        },
+        guangbi(){
+            this.dingdankuang = false;
+            
+        },
         //围栏 购买
         async weilanqueding(){
             let res = await $ajax('houseuse_fence', {
@@ -815,7 +969,7 @@ export default {
         //收货鸡蛋 
         async shouhuo(id){
             let res = await $ajax('housereap', {
-                house_id: this.tudiID,
+                house_id: id,
             })
             if (!res) return false
             this.tishixingxi = res.msg
@@ -854,7 +1008,7 @@ export default {
                 this.type = ""; //1：普通鸡舍；2：高级鸡舍 清空
                 this.num = ""; //鸡舍里的小鸡数量 清空
             }else{
-                this.fangda = true
+                this.fangda = id
                 this.tudiID = id; //土地id
                 this.type = type; //1：普通鸡舍；2：高级鸡舍
                 this.num = num; //鸡舍里的小鸡数量
@@ -876,7 +1030,7 @@ export default {
         async houseIndex(){
             let res = await $ajax('houseindex', {})
             if (!res) return false
-            // console.log(res)
+            console.log(res)
             this.houseList = res.house
             this.super_house = res.super_house
             
@@ -1279,12 +1433,14 @@ export default {
                     z-index: 10;
                     // display: none;
                 }
-                >img:nth-child(6){
-                    width: 52vw;
-                    position: absolute;
-                    top: -5vw;
-                    left: -1vw;
-                    z-index: 11;
+                >.weilandengji{
+                    >img{
+                        width: 52vw;
+                        position: absolute;
+                        top: -5vw;
+                        left: -1vw;
+                        z-index: 11;
+                    }
                 }
                 >img:nth-child(7){
                     width: 14vw;
@@ -1292,6 +1448,13 @@ export default {
                     top: -5vw;
                     left: 2vw;
                     z-index: 10;
+                }
+                >img:nth-child(8){
+                    width: 10vw;
+                    position: absolute;
+                    top: -7vw;
+                    left: 20vw;
+                    z-index: 15;
                 }
             }
             >.threedi{
@@ -1362,12 +1525,14 @@ export default {
                     z-index: 10;
                     // display: none;
                 }
-                >img:nth-child(6){
-                    width: 52vw;
-                    position: absolute;
-                    top: -5vw;
-                    left: -1vw;
-                    z-index: 11;
+                >.weilandengji{
+                    >img{
+                        width: 52vw;
+                        position: absolute;
+                        top: -5vw;
+                        left: -1vw;
+                        z-index: 11;
+                    }
                 }
                 >img:nth-child(7){
                     width: 14vw;
@@ -1375,6 +1540,13 @@ export default {
                     top: -5vw;
                     left: 2vw;
                     z-index: 10;
+                }
+                >img:nth-child(8){
+                    width: 10vw;
+                    position: absolute;
+                    top: -7vw;
+                    left: 20vw;
+                    z-index: 15;
                 }
             }
             >.fourdi{
@@ -1445,12 +1617,14 @@ export default {
                     z-index: 10;
                     // display: none;
                 }
-                >img:nth-child(6){
-                    width: 52vw;
-                    position: absolute;
-                    top: -5vw;
-                    left: -1vw;
-                    z-index: 11;
+                >.weilandengji{
+                    >img{
+                        width: 52vw;
+                        position: absolute;
+                        top: -5vw;
+                        left: -1vw;
+                        z-index: 11;
+                    }
                 }
                 >img:nth-child(7){
                     width: 14vw;
@@ -1458,6 +1632,13 @@ export default {
                     top: -5vw;
                     left: 2vw;
                     z-index: 10;
+                }
+                >img:nth-child(8){
+                    width: 10vw;
+                    position: absolute;
+                    top: -7vw;
+                    left: 20vw;
+                    z-index: 15;
                 }
             }
             >.fivedi{
@@ -1528,12 +1709,14 @@ export default {
                     z-index: 10;
                     // display: none;
                 }
-                >img:nth-child(6){
-                    width: 52vw;
-                    position: absolute;
-                    top: -5vw;
-                    left: -1vw;
-                    z-index: 11;
+                >.weilandengji{
+                    >img{
+                        width: 52vw;
+                        position: absolute;
+                        top: -5vw;
+                        left: -1vw;
+                        z-index: 11;
+                    }
                 }
                 >img:nth-child(7){
                     width: 14vw;
@@ -1541,6 +1724,13 @@ export default {
                     top: -5vw;
                     left: 2vw;
                     z-index: 10;
+                }
+                >img:nth-child(8){
+                    width: 10vw;
+                    position: absolute;
+                    top: -7vw;
+                    left: 20vw;
+                    z-index: 15;
                 }
             }
             >.sixdi{
@@ -1611,12 +1801,14 @@ export default {
                     z-index: 10;
                     // display: none;
                 }
-                >img:nth-child(6){
-                    width: 52vw;
-                    position: absolute;
-                    top: -5vw;
-                    left: -1vw;
-                    z-index: 11;
+                >.weilandengji{
+                    >img{
+                        width: 52vw;
+                        position: absolute;
+                        top: -5vw;
+                        left: -1vw;
+                        z-index: 11;
+                    }
                 }
                 >img:nth-child(7){
                     width: 14vw;
@@ -1624,6 +1816,13 @@ export default {
                     top: -5vw;
                     left: 2vw;
                     z-index: 10;
+                }
+                >img:nth-child(8){
+                    width: 10vw;
+                    position: absolute;
+                    top: -7vw;
+                    left: 20vw;
+                    z-index: 15;
                 }
             }
             >.sevendi{
@@ -1694,12 +1893,14 @@ export default {
                     z-index: 10;
                     // display: none;
                 }
-                >img:nth-child(6){
-                    width: 52vw;
-                    position: absolute;
-                    top: -5vw;
-                    left: -1vw;
-                    z-index: 11;
+                >.weilandengji{
+                    >img{
+                        width: 52vw;
+                        position: absolute;
+                        top: -5vw;
+                        left: -1vw;
+                        z-index: 11;
+                    }
                 }
                 >img:nth-child(7){
                     width: 14vw;
@@ -1707,6 +1908,13 @@ export default {
                     top: -5vw;
                     left: 2vw;
                     z-index: 10;
+                }
+                >img:nth-child(8){
+                    width: 10vw;
+                    position: absolute;
+                    top: -7vw;
+                    left: 20vw;
+                    z-index: 15;
                 }
             }
             >.eightdi{
@@ -1777,12 +1985,14 @@ export default {
                     z-index: 10;
                     // display: none;
                 }
-                >img:nth-child(6){
-                    width: 52vw;
-                    position: absolute;
-                    top: -5vw;
-                    left: -1vw;
-                    z-index: 11;
+                >.weilandengji{
+                    >img{
+                        width: 52vw;
+                        position: absolute;
+                        top: -5vw;
+                        left: -1vw;
+                        z-index: 11;
+                    }
                 }
                 >img:nth-child(7){
                     width: 14vw;
@@ -1790,6 +2000,13 @@ export default {
                     top: -5vw;
                     left: 2vw;
                     z-index: 10;
+                }
+                >img:nth-child(8){
+                    width: 10vw;
+                    position: absolute;
+                    top: -7vw;
+                    left: 20vw;
+                    z-index: 15;
                 }
             }
             >.ninedi{
@@ -1860,12 +2077,14 @@ export default {
                     z-index: 10;
                     // display: none;
                 }
-                >img:nth-child(6){
-                    width: 52vw;
-                    position: absolute;
-                    top: -5vw;
-                    left: -1vw;
-                    z-index: 11;
+                >.weilandengji{
+                    >img{
+                        width: 52vw;
+                        position: absolute;
+                        top: -5vw;
+                        left: -1vw;
+                        z-index: 11;
+                    }
                 }
                 >img:nth-child(7){
                     width: 14vw;
@@ -1873,6 +2092,13 @@ export default {
                     top: -5vw;
                     left: 2vw;
                     z-index: 10;
+                }
+                >img:nth-child(8){
+                    width: 10vw;
+                    position: absolute;
+                    top: -7vw;
+                    left: 20vw;
+                    z-index: 15;
                 }
             }
             >.tendi{
@@ -1943,12 +2169,14 @@ export default {
                     z-index: 10;
                     // display: none;
                 }
-                >img:nth-child(6){
-                    width: 52vw;
-                    position: absolute;
-                    top: -5vw;
-                    left: -1vw;
-                    z-index: 11;
+                >.weilandengji{
+                    >img{
+                        width: 52vw;
+                        position: absolute;
+                        top: -5vw;
+                        left: -1vw;
+                        z-index: 11;
+                    }
                 }
                 >img:nth-child(7){
                     width: 14vw;
@@ -1956,6 +2184,13 @@ export default {
                     top: -5vw;
                     left: 2vw;
                     z-index: 10;
+                }
+                >img:nth-child(8){
+                    width: 10vw;
+                    position: absolute;
+                    top: -7vw;
+                    left: 20vw;
+                    z-index: 15;
                 }
             }
         }
@@ -2020,12 +2255,14 @@ export default {
                     z-index: 10;
                     // display: none;
                 }
-                >img:nth-child(6){
-                    width: 52vw;
-                    position: absolute;
-                    top: -5vw;
-                    left: -1vw;
-                    z-index: 11;
+                >.weilandengji{
+                    >img{
+                        width: 52vw;
+                        position: absolute;
+                        top: -5vw;
+                        left: -1vw;
+                        z-index: 11;
+                    }
                 }
                 >img:nth-child(7){
                     width: 14vw;
@@ -2033,6 +2270,13 @@ export default {
                     top: -5vw;
                     left: 2vw;
                     z-index: 10;
+                }
+                >img:nth-child(8){
+                    width: 10vw;
+                    position: absolute;
+                    top: -7vw;
+                    left: 20vw;
+                    z-index: 15;
                 }
 
             }
@@ -2095,12 +2339,14 @@ export default {
                     z-index: 10;
                     // display: none;
                 }
-                >img:nth-child(6){
-                    width: 52vw;
-                    position: absolute;
-                    top: -5vw;
-                    left: -1vw;
-                    z-index: 11;
+                >.weilandengji{
+                    >img{
+                        width: 52vw;
+                        position: absolute;
+                        top: -5vw;
+                        left: -1vw;
+                        z-index: 11;
+                    }
                 }
                 >img:nth-child(7){
                     width: 14vw;
@@ -2108,6 +2354,13 @@ export default {
                     top: -5vw;
                     left: 2vw;
                     z-index: 10;
+                }
+                >img:nth-child(8){
+                    width: 10vw;
+                    position: absolute;
+                    top: -7vw;
+                    left: 20vw;
+                    z-index: 15;
                 }
             }
             >.threedi{
@@ -2169,12 +2422,14 @@ export default {
                     z-index: 10;
                     // display: none;
                 }
-                >img:nth-child(6){
-                    width: 52vw;
-                    position: absolute;
-                    top: -5vw;
-                    left: -1vw;
-                    z-index: 11;
+                >.weilandengji{
+                    >img{
+                        width: 52vw;
+                        position: absolute;
+                        top: -5vw;
+                        left: -1vw;
+                        z-index: 11;
+                    }
                 }
                 >img:nth-child(7){
                     width: 14vw;
@@ -2182,6 +2437,13 @@ export default {
                     top: -5vw;
                     left: 2vw;
                     z-index: 10;
+                }
+                >img:nth-child(8){
+                    width: 10vw;
+                    position: absolute;
+                    top: -7vw;
+                    left: 20vw;
+                    z-index: 15;
                 }
             }
             >.fourdi{
@@ -2243,12 +2505,14 @@ export default {
                     z-index: 10;
                     // display: none;
                 }
-                >img:nth-child(6){
-                    width: 52vw;
-                    position: absolute;
-                    top: -5vw;
-                    left: -1vw;
-                    z-index: 11;
+                >.weilandengji{
+                    >img{
+                        width: 52vw;
+                        position: absolute;
+                        top: -5vw;
+                        left: -1vw;
+                        z-index: 11;
+                    }
                 }
                 >img:nth-child(7){
                     width: 14vw;
@@ -2256,6 +2520,13 @@ export default {
                     top: -5vw;
                     left: 2vw;
                     z-index: 10;
+                }
+                >img:nth-child(8){
+                    width: 10vw;
+                    position: absolute;
+                    top: -7vw;
+                    left: 20vw;
+                    z-index: 15;
                 }
             }
             >.fivedi{
@@ -2317,12 +2588,14 @@ export default {
                     z-index: 10;
                     // display: none;
                 }
-                >img:nth-child(6){
-                    width: 52vw;
-                    position: absolute;
-                    top: -5vw;
-                    left: -1vw;
-                    z-index: 11;
+                >.weilandengji{
+                    >img{
+                        width: 52vw;
+                        position: absolute;
+                        top: -5vw;
+                        left: -1vw;
+                        z-index: 11;
+                    }
                 }
                 >img:nth-child(7){
                     width: 14vw;
@@ -2330,6 +2603,13 @@ export default {
                     top: -5vw;
                     left: 2vw;
                     z-index: 10;
+                }
+                >img:nth-child(8){
+                    width: 10vw;
+                    position: absolute;
+                    top: -7vw;
+                    left: 20vw;
+                    z-index: 15;
                 }
             }
         }
@@ -2367,7 +2647,17 @@ export default {
                 }
             }
         }
-
+        
+        .fanhui{
+            position: fixed;
+            right: 5vw;
+            top:25vw;
+            z-index: 99;
+            >img{
+                width: 10vw;
+                height: 10vw;
+            }
+        }
 
         .gerenxinxi{
             width: 100%;
@@ -2758,6 +3048,138 @@ export default {
 
            } 
             
+        }
+
+        .dingdankuang{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 99;
+            .kuang{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 80%;
+                height: 135vw;
+                background-image: url(../../assets/images/nongchang/yangzhi/dingdanmingxi.png);
+                background-size: 100% 100%;
+                color: #955942;
+                font-family: Adobe Heiti Std;
+                font-size: 4vw;
+                .guanbi{
+                    // margin-top: 10%;
+                    img:first-child{
+                        width: 13vw;
+                        height: 13vw;
+                    }
+                }
+                
+                // .sdlan{
+                //     margin-top: 20%;
+                //     img{
+                //         width: 17.5vw;
+                //         height: 5vw;
+                //     }
+                // }
+                .sdlist{
+                    margin-top: 27%;
+                    height: 95vw;
+                    overflow-x: hidden;
+                    overflow-y: scroll;
+                    width: 90%;
+                    margin-left: 5%;
+                    .sditem{
+                        background: #E9D6BE;
+                        box-shadow: 0px 2px 3px 0px rgba(255, 255, 255, 0.6), 0px 2px 0px 0px rgba(209, 190, 169, 0.5);
+                        width: 85%;
+                        margin-left: 8%;
+                        border-radius: 1vw;
+                        margin-bottom: 2vw;
+                        // height: 13vw;
+                        //   padding: 1vw 5vw;
+                        // box-sizing: border-box;
+                        
+                        .sdtext{
+                            // margin-left: 1vw;
+                            padding: 1vw;
+                            box-sizing: border-box;
+                            >div{
+                                font-size: 12px;
+                                white-space: nowrap;
+                                height: 4vw;
+                                line-height: 4vw;
+                                margin-bottom: 2vw;
+                            }
+                            >.sdtextxiala{
+                                padding: 1vw;
+                                box-sizing: border-box;
+                                background: #FFECDC;
+                                height: 16vw;
+                                border-radius: 1vw;
+                                >div{
+                                    font-size: 12px;
+                                    white-space: nowrap;
+                                    height: 4vw;
+                                    line-height: 4vw;
+                                    margin-bottom: 1vw;
+                                    img{
+                                        width: 12vw;
+                                        height: 5vw;
+                                    }
+                                }
+                            }
+                        }
+                        
+                        .sdtextone{
+                            padding: 1vw;
+                            box-sizing: border-box;
+                            img:first-child{
+                                width: 10vw;
+                                height: 10vw;
+                                border-radius: 50%;
+                            }
+                            .sdtext{
+                                margin-left: 1vw;
+                                div{
+                                    font-size: 10px;
+                                    white-space: nowrap;
+                                    height: 4vw;
+                                    line-height: 4vw;
+                                    width: 22vw;
+                                    overflow: hidden;
+                                }
+                            }
+                            img:last-child{
+                                width: 15vw;
+                                margin-left: 3vw;
+                            }
+                            // .jishoubtn{
+                            //      margin-left: 3vw;
+                            //     img{
+                            //         width: 15vw;
+                            //         height: 5vw;
+                            //         border-radius: 0;
+                            //         // margin-bottom: 2vw;
+                            //         margin-left: 0;
+                            //     }
+                            // }
+                        }
+                        
+                    }
+                }
+                .jishou{
+                    margin-top: 3vw;
+                    img{
+                        width: 15vw;
+                        height: 7vw;
+
+                    }
+                }
+            }
         }
     }
 .PathMenu{position:absolute;right: 0px; bottom: 0px; width: 60px; height: 60px;}
