@@ -432,8 +432,9 @@
         </div>  
 
         <!-- 右上角 返回 -->
-        <div class="fanhui" @click="$router.go(-1);">
-            <img src="../../assets/images/nongchang/yangzhi/bg-2x.png" alt="">
+        <div class="fanhui" >
+            <img src="../../assets/images/nongchang/yangzhi/fanhui.png" alt="" @click="$router.go(-1);">
+            <img src="../../assets/images/nongchang/yangzhi/saoba.png" alt="" @click="saobashow">
         </div>
 
         <!-- 个人信息 -->
@@ -631,151 +632,6 @@ export default {
             jisiliaolist:false,
             weilanlist:false,
             shouhuquanlist: false,
-            putongdi:{
-                onedi:{
-                    weikaidi:true,
-                    yikaidi:false,
-                    xiaoji:false,
-                    suotou:true,
-                    weilan1:false,
-                    gou:false,
-                    sort:1, //序号
-                    status:0, //状态：0未开启：1已开启
-                },
-                twodi:{
-                    weikaidi:true,
-                    yikaidi:false,
-                    xiaoji:false,
-                    suotou:true,
-                    weilan1:false,
-                    gou:false,
-                    sort:2, //序号
-                    status:0, //状态：0未开启：1已开启
-                },
-                threedi:{
-                    weikaidi:true,
-                    yikaidi:false,
-                    xiaoji:false,
-                    suotou:true,
-                    weilan1:false,
-                    gou:false,
-                    sort:3, //序号
-                    status:0, //状态：0未开启：1已开启
-                },
-                fourdi:{
-                    weikaidi:true,
-                    yikaidi:false,
-                    xiaoji:false,
-                    suotou:true,
-                    weilan1:false,
-                    gou:false,
-                    sort:4, //序号
-                    status:0, //状态：0未开启：1已开启
-                },
-                fivedi:{
-                    weikaidi:true,
-                    yikaidi:false,
-                    xiaoji:false,
-                    suotou:true,
-                    weilan1:false,
-                    gou:false,
-                    sort:5, //序号
-                    status:0, //状态：0未开启：1已开启
-                },
-                sixdi:{
-                    weikaidi:true,
-                    yikaidi:false,
-                    xiaoji:false,
-                    suotou:true,
-                    weilan1:false,
-                    gou:false,
-                    sort:6, //序号
-                    status:0, //状态：0未开启：1已开启
-                },
-                sevendi:{
-                    weikaidi:true,
-                    yikaidi:false,
-                    xiaoji:false,
-                    suotou:true,
-                    weilan1:false,
-                    gou:false,
-                    sort:7, //序号
-                    status:0, //状态：0未开启：1已开启
-                },
-                eightdi:{
-                    weikaidi:true,
-                    yikaidi:false,
-                    xiaoji:false,
-                    suotou:true,
-                    weilan1:false,
-                    gou:false,
-                    sort:8, //序号
-                    status:0, //状态：0未开启：1已开启
-                },
-                ninedi:{
-                    weikaidi:true,
-                    yikaidi:false,
-                    xiaoji:false,
-                    suotou:true,
-                    weilan1:false,
-                    gou:false,
-                    sort:9, //序号
-                    status:0, //状态：0未开启：1已开启
-                },
-                tendi:{
-                    weikaidi:true,
-                    yikaidi:false,
-                    xiaoji:false,
-                    suotou:true,
-                    weilan1:false,
-                    gou:false,
-                    sort:10, //序号
-                    status:0, //状态：0未开启：1已开启
-                }
-                
-            },
-            gaojidi:{
-                onedi:{
-                    weikaidi:true,
-                    yikaidi:false,
-                    xiaoji:false,
-                    suotou:true,
-                    weilan1:false,
-                    gou:false,
-                },
-                twodi:{
-                    weikaidi:true,
-                    yikaidi:false,
-                    xiaoji:false,
-                    suotou:true,
-                    weilan1:false,
-                    gou:false,
-                },
-                threedi:{
-                    weikaidi:true,
-                    yikaidi:false,
-                    xiaoji:false,
-                    suotou:true,
-                    weilan1:false,
-                    gou:false,
-                },
-                fourdi:{
-                    weikaidi:true,
-                    yikaidi:false,
-                    xiaoji:false,
-                    suotou:true,
-                    weilan1:false,
-                    gou:false,
-                },
-                fivedi:{
-                    weikaidi:true,
-                    yikaidi:false,
-                    xiaoji:false,
-                    suotou:true,
-                    weilan1:false,
-                    gou:false,
-                }
-            },
             weilankuang:false,
             zengyangshuliang:"", //增养数量
             zengyangkuang:false,
@@ -816,6 +672,9 @@ export default {
         
     },
     methods:{
+        saobashow(){
+            
+        },
         dingdanhandle(){
             this.dingdankuang = true;
         },

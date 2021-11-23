@@ -54,12 +54,12 @@
         <!-- 集市 -->
          <div class="jishi">
             <img src="../../assets/images/nongchang/jishione.png" alt="" srcset="">
-            <img src="../../assets/images/nongchang/jishi.png" alt="" srcset="" @click="jishi">
+            <img src="../../assets/images/nongchang/jishi.png" alt="" srcset="" @click="jishihandle">
         </div>
         <!-- 商店 -->
         <div class="shangdian">
             <img src="../../assets/images/nongchang/shangdianone.png" alt="" srcset="">
-            <img src="../../assets/images/nongchang/shangdian.png" alt="" srcset="" @click="shangdian">
+            <img src="../../assets/images/nongchang/shangdian.png" alt="" srcset="" @click="shangdianhandle">
         </div>
         <!-- 种植 -->
         <div class="zhongzhi">
@@ -1338,10 +1338,10 @@ export default {
         haoyou(){
             this.haoyoukuang = true;
         },
-        shangdian(){
+        shangdianhandle(){
             this.shangdiankuang = true
         },
-        jishi(){
+        jishihandle(){
             this.jishikuang = true;
         },
         
