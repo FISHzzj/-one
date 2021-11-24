@@ -82,8 +82,8 @@
         <div class="shezhi animat" v-if="shezhikuang">
             <div class="kuang">
                 <div class="szxuan flex flex_col flex_center" v-if="shengyi">
-                    <span class="flex flex_center ali_center">音乐：<van-switch v-model="yinyue" inactive-color="#BDBDBD" active-color="#EDC782" size=""/></span>
-                    <span  class="flex flex_center ali_center">音效：<van-switch v-model="yinxiao" inactive-color="#BDBDBD" active-color="#EDC782" size="" /></span>
+                    <span class="flex flex_center ali_center">音乐：<van-switch v-model="yinyue" inactive-color="#BDBDBD" active-color="#EDC782" size="" @change="musicPlay" /></span>
+                    <span  class="flex flex_center ali_center">音效：<van-switch v-model="yinxiao" inactive-color="#BDBDBD" active-color="#EDC782" size="" @change="musicClick" /></span>
                     <span  class="flex flex_center ali_center">二级密码：<strong style="color:#FE523B;text-decoration: underline;">{{shezhitext ? '去设置' : '已设置'}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 </div>
                 <div class="content" v-else>
@@ -117,8 +117,9 @@
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
-                   <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt="">
-                   <!-- <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt=""> -->
+                   <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt="" v-if="shengyi" @click="tologin">
+                   <img src="../../assets/images/nongchang/shezhi/queding.png" alt="" v-else>
+                   
                 </div>
             </div>
         </div>
@@ -747,6 +748,9 @@
                 </div>
             </div>
         </div>
+        <!-- 背景音乐 -->
+        <audio :src="MP3_bg" loop ref="MusicPlay"></audio>
+        <audio :src="MP3_click" ref="MusicClick"></audio>
     </div>
 </template>
 <script>
@@ -866,10 +870,11 @@ export default {
             goumaixiaoji1:require('@/assets/images/nongchang/jifenmingxi/goumaixiaoji.png'),
             goumaixiaoji2:require('@/assets/images/nongchang/jifenmingxi/goumaixiaoji1.png'),
             statusjifen:0,
-            jifenzhuanrangkuang:true,
+            jifenzhuanrangkuang:false,
             to_user_id: "", //转让ID
             jifennum:"", //转让积分
-          
+            MP3_bg:require('@/assets/images/nongchang/music/bg_music.mp3'),
+            MP3_click:require('@/assets/images/nongchang/music/click.mp3'),
         }
     },
     mounted(){
@@ -891,6 +896,30 @@ export default {
         },
     },
     methods:{
+        musicClick () {
+            if(this.yinxiao){
+                 this.$refs.MusicClick.play()
+            }else{
+                this.$refs.MusicClick.pause()
+            }
+           
+        },
+        musicPlay () {
+            if(this.yinyue){
+                 this.$refs.MusicPlay.play()
+            }else{
+                this.$refs.MusicPlay.pause()
+            }
+           
+        },
+        // 切换账号
+        tologin(){
+            localStorage.removeItem('openid');
+            localStorage.removeItem('mobile')
+            this.$router.push({
+                name: 'login'
+            })
+        },
         // 转让确定 弹支付
         zhuanrangqueding(){
             if(!this.to_user_id) return Toast('请输入转让ID!')
@@ -1467,6 +1496,7 @@ export default {
         },
         shezhi(){
             this.shezhikuang = true;
+            this.shengyi = true;
         },
         fanhui(){
            this.shezhikuang = false; 
@@ -3043,7 +3073,7 @@ export default {
                transform: translate(-50%, -50%);
                 width: 80%;
                 height: 80vw;
-                background-image: url(../../assets/images/nongchang/shezhi/kuang.png);
+                background-image: url(../../assets/images/nongchang/jifenmingxi/jifenzhuanrangkuang.png);
                 background-size: 100% 100%;
                 color: #955942;
                 font-family: Adobe Heiti Std;

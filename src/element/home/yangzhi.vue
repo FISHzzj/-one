@@ -567,58 +567,50 @@
                 <div class="guanbi flex flex-end">
                     <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="guangbi">
                 </div>
-                <!-- <div class="sdlan flex flex_center">
-                    <img :src="goumai ? goumai1 : goumai2" alt="" srcset="" @click="tabjishi(0)">
-                    <img :src="jishou ? jishou1 : jishou2" alt="" srcset="" @click="tabjishi(1)">
-                    <img :src="jilv ? jilv1 : jilv2" alt="" srcset="" @click="tabjishi(2)">
+                <div class="sdlist" v-if="houselistshow">
                     
-                </div> -->
-                <div class="sdlist" >
-                    
-                        <div class="sditem flex ali_center flex_between" v-for="(item, index) in house_list" :key="index"> 
-                            <!-- <img src="../../assets/images/nongchang/shangdian/jiasu.png" alt="" srcset=""> -->
-                            <div class="sdtext flex flex_col ">
-                                <div class="flex flex_between" @click="houselog_list(item.id,index)">
-                                    <span style="width: 36vw;overflow: hidden;margin-right:5vw;">鸡舍等级：{{index > 9 ? '高级鸡舍' : '普通鸡舍'}}（{{item.sort}}号）</span>
-                                    <!-- <span>数量：100</span> -->
-                                </div>
-                                <div class="flex flex_between"  @click="houselog_list(item.id, index)">
-                                    <span  style="width: 36vw;overflow: hidden;margin-right:5vw;">小鸡总数：{{item.num}}</span>
-                                    <span>订单数量：{{item.order_num}}</span>
-                                </div>
-                                
-                                <!-- <div>购买时间：2021-21-21 00:00:00</div> -->
-                                
-                                <div  :class="`addAlert_${index}`">
-                                    <van-list
-                                        v-model="loading"
-                                        :finished="finished"
-                                        :finished-text="'我是有底线的'"
-                                        @load="houselog_list"
-                                    >
-                                        <div class="sdtextxiala flex flex_col " v-for="(x, i) in list" :key="i">
-                                            <div class="flex flex_between">
-                                                <span style="width: 36vw;overflow: hidden;margin-right:5vw;">小鸡总数：{{x.num}}</span>
-                                                <!-- <span>数量：100</span> -->
-                                            </div>
-                                            <div class="flex ali_center">
-                                                <span style="margin-right:2vw;">围栏等级：LV{{x.prop_fence_level}}</span>
-                                                <img src="../../assets/images/nongchang/yangzhi/shengji.png" alt="">
-                                            </div>
-                                            
-                                            <div>剩余时间：{{x.prop_fence_end_time}}</div>
-                                        </div>
-                                    </van-list>
-                                </div>
-                               
+                    <div class="sditem flex ali_center flex_between" v-for="(item, index) in house_list" :key="index"> 
+                        <!-- <img src="../../assets/images/nongchang/shangdian/jiasu.png" alt="" srcset=""> -->
+                        <div class="sdtext flex flex_col ">
+                            <div class="flex flex_between" @click="houselog_list(item.id)">
+                                <span style="width: 36vw;overflow: hidden;margin-right:5vw;">鸡舍等级：{{index > 9 ? '高级鸡舍' : '普通鸡舍'}}（{{item.sort}}号）</span>
+                                <!-- <span>数量：100</span> -->
+                            </div>
+                            <div class="flex flex_between"  @click="houselog_list(item.id)">
+                                <span  style="width: 36vw;overflow: hidden;margin-right:5vw;">小鸡总数：{{item.num}}</span>
+                                <span>订单数量：{{item.order_num}}</span>
                             </div>
                             
-                           
                         </div>
-                        
-                    
+                    </div>
                 </div>
-                
+                <div class="sdlist" v-if="houselog_listshow">
+                    <van-list
+                        v-model="loading"
+                        :finished="finished"
+                        :finished-text="'我是有底线的'"
+                        @load="log_list"
+                    >
+                        <div class="sditem flex ali_center flex_between" v-for="(item, index) in list" :key="index"> 
+                            <!-- <img src="../../assets/images/nongchang/shangdian/jiasu.png" alt="" srcset=""> -->
+                            <div class="sdtext flex flex_col ">
+                                <div class="flex flex_between" >
+                                    <span>围栏等级：{{item.prop_fence_title}}</span>
+                                    <span>小鸡数量数量：{{item.num}}</span>
+                                </div>
+                                <div class="flex flex_between" >
+                                    <!-- <span  style="width: 36vw;overflow: hidden;margin-right:5vw;">小鸡总数：{{item.num}}</span> -->
+                                    <span>到期时间：{{item.prop_fence_end_time}}</span>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </van-list>
+
+                    <div class="jishou flex flex_center">
+                        <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="gopage">
+                    </div>   
+                </div>
                
             </div>
         </div>
@@ -840,6 +832,8 @@ export default {
             saobaID:"", //扫把等级ID
             saobakuang:false,//扫把框
             houselog_listshow:false,
+            houselistshow: true,
+            house_id:"",
         }
     },
     created() {
@@ -883,13 +877,22 @@ export default {
             this.xiaohaoxiaoji = this.num * (this.money/100)
             this.saobakuang = true
         },
+        //返回 -鸡舍详情
+        gopage(){
+             this.houselog_listshow = false
+            this.houselistshow = true
+            this.page = 1;
+            this.list = [];
+            this.finished = false;
+        },
+        
         //增养记录列表 
-        async houselog_list(id, index){
+        async log_list(){
             // let addAlert = `addAlert_${index}`
             // $(`${addAlert}`).show();
             let res = await $ajax('houselog_list', {
                  page: this.page,
-                 house_id: id //鸡舍 
+                 house_id: this.house_id //鸡舍 
              })
             if (!res) return false
             // console.log(res)
@@ -900,9 +903,17 @@ export default {
             this.list.push(...res.list)
             // // 加载状态结束
             this.loading = false
-            if (res.fans.length === 0) {
+            if (res.list.length === 0) {
                 this.finished = true //加载完成
             } 
+        },
+        houselog_list(id){
+            console.log(id);
+            if(id){
+                this.house_id = id 
+            }
+            this.houselog_listshow = true
+            this.houselistshow = false
         },
         //鸡舍详情
         async gethousesimple(){
@@ -3350,7 +3361,10 @@ export default {
                     }
                 }
                 .jishou{
-                    margin-top: 3vw;
+                    // margin-top: 3vw;
+                    position: absolute;
+                    bottom: -1vw;
+                    left: 38%;
                     img{
                         width: 15vw;
                         height: 7vw;
