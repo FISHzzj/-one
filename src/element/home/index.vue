@@ -8,8 +8,8 @@
                     <span>邀请码：{{invite_code}}</span>
                 </div>
             </div>
-            <div class="xxcenter flex flex_col flex_around ">
-                <div class="flex ali_center flex_between">
+            <div class="xxcenter flex flex_col flex_around " >
+                <div class="flex ali_center flex_between" @click="jifen">
                     <img src="../../assets/images/nongchang/jifen.png" alt="" srcset="">
                     <span>{{balance.integral}}</span>
                     <img src="../../assets/images/nongchang/jiahao.png" alt="" srcset="">
@@ -54,12 +54,12 @@
         <!-- 集市 -->
          <div class="jishi">
             <img src="../../assets/images/nongchang/jishione.png" alt="" srcset="">
-            <img src="../../assets/images/nongchang/jishi.png" alt="" srcset="" @click="jishi">
+            <img src="../../assets/images/nongchang/jishi.png" alt="" srcset="" @click="jishihandle">
         </div>
         <!-- 商店 -->
         <div class="shangdian">
             <img src="../../assets/images/nongchang/shangdianone.png" alt="" srcset="">
-            <img src="../../assets/images/nongchang/shangdian.png" alt="" srcset="" @click="shangdian">
+            <img src="../../assets/images/nongchang/shangdian.png" alt="" srcset="" @click="shangdianhandle">
         </div>
         <!-- 种植 -->
         <div class="zhongzhi">
@@ -568,7 +568,7 @@
                 </div>
             </div>
         </div>
-        <!-- 集市---支付密码 -->
+        <!--支付密码 -->
         <div class="zhifukuang animat" v-if="zhifukuang">
             <div class="kuang">
                 <div class="content  ">
@@ -683,6 +683,70 @@
                 </div>
             </div>
         </div>
+        <!-- 积分明细 -->
+        <div class="jifenkuang animat" v-if="jifenkuang">
+            <div class="kuang">
+                <div class="guanbi flex flex-end">
+                    <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
+                </div>
+                <div class="sdlan flex flex_center">
+                    <img :src="chongzhitixian ? chongzhitixian1 : chongzhitixian2" alt="" srcset="" @click="tabjifen(0)">
+                    <img :src="zhuanrangjifen ? zhuanrangjifen1 : zhuanrangjifen2" alt="" srcset="" @click="tabjifen(1)">
+                    <img :src="goumaixiaoji ? goumaixiaoji1 : goumaixiaoji2" alt="" srcset="" @click="tabjifen(2)">
+                    
+                </div>
+                <div class="sdlist">
+                    <van-list
+                        v-model="loading"
+                        :finished="finished"
+                        :finished-text="'我是有底线的'"
+                        @load="tradeorder"
+                    >
+                        <div class="sditem flex ali_center flex_between" v-for="(item, index) in list" :key="index"> 
+                            <!-- <img src="../../assets/images/nongchang/shangdian/jiasu.png" alt="" srcset=""> -->
+                            <div class="sdtext flex flex_col ">
+                                <div class="flex flex_between">
+                                    <span style="width: 30vw;overflow: hidden;margin-right:5vw;">类别:集市交易</span>
+                                    <span v-if="item.status != 1">ID：ys25421</span>
+                                </div>
+                                <div class="flex flex_between">
+                                    <span style="width: 30vw;overflow: hidden;margin-right:5vw;">积分：-200</span>
+                                    <!-- <span>数量：300</span> -->
+                                </div>
+                                
+                                <div>时间：2021-11-20 18:22</div>
+                            </div>
+                            <!-- <img src="../../assets/images/nongchang/shangdian/goumai.png" alt=""> -->
+                        </div>
+                        
+                    </van-list>
+                </div>
+                <div class="jishou flex flex_center" >
+                    <img src="../../assets/images/nongchang/jifenmingxi/zhuanrangbtn.png" alt="" srcset="" @click="zhuanrangbtn">
+                </div>
+            </div>
+        </div>
+        <!--积分转让 -->
+        <div class="jifenzhuanrangkuang animat" v-if="jifenzhuanrangkuang">
+            <div class="kuang">
+                <div class="content  ">
+                     <div class="zhuan flex ali_center">
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;转让ID：</span>
+                        <input type="number" v-model="to_user_id" placeholder="请输入转让ID">
+                    </div>
+                    <div class="zhuan flex ali_center">
+                        <span>转让积分：</span>
+                        <input type="number" v-model="jifennum" placeholder="请输入转让积分">
+                    </div>
+    
+                </div>
+                <div class="shezhibtn flex flex_center">
+                   <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
+                   <img src="../../assets/images/nongchang/jishi/queding.png" alt="" @click="zhuanrangqueding">
+                   
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -791,6 +855,20 @@ export default {
             fuhua1:require('@/assets/images/nongchang/xiaojimingxi/fuhua.png'),
             fuhua2:require('@/assets/images/nongchang/xiaojimingxi/fuhua1.png'),
             statusxiaoji:0,
+            jifenkuang: false,//积分明细
+            chongzhitixian:false,
+            chongzhitixian1:require('@/assets/images/nongchang/jifenmingxi/chongzhitixian.png'),
+            chongzhitixian2:require('@/assets/images/nongchang/jifenmingxi/chongzhitixian1.png'),
+            zhuanrangjifen:false,
+            zhuanrangjifen1:require('@/assets/images/nongchang/jifenmingxi/zhuanrangjifen.png'),
+            zhuanrangjifen2:require('@/assets/images/nongchang/jifenmingxi/zhuanrangjifen1.png'),
+            goumaixiaoji:false,
+            goumaixiaoji1:require('@/assets/images/nongchang/jifenmingxi/goumaixiaoji.png'),
+            goumaixiaoji2:require('@/assets/images/nongchang/jifenmingxi/goumaixiaoji1.png'),
+            statusjifen:0,
+            jifenzhuanrangkuang:true,
+            to_user_id: "", //转让ID
+            jifennum:"", //转让积分
           
         }
     },
@@ -813,6 +891,60 @@ export default {
         },
     },
     methods:{
+        // 转让确定 弹支付
+        zhuanrangqueding(){
+            if(!this.to_user_id) return Toast('请输入转让ID!')
+            if(!this.jifennum || this.jifennum == '') return Toast('请输入转让积分!');
+            this.zhifukuang = true
+            
+        },
+        zhuanrangbtn(){
+            this.jifenzhuanrangkuang = true
+
+        },
+        jifen(){
+           this.jifenkuang = true
+            
+        },
+        async projifen(){
+            let res = await $ajax('tradelists', {
+                 page: this.page
+             })
+            if (!res) return false
+            // console.log(res)
+            // this.list = res.goods
+            this.page++
+            console.log(res.list)
+            // this.listtotal = res.listtotal
+            this.list.push(...res.list)
+            // // 加载状态结束
+            this.loading = false
+            if (res.list.length === 0) {
+                this.finished = true //加载完成
+            } 
+        },
+        //积分明细
+        tabjifen(index){
+            this.page = 1;
+            this.list = [];
+            this.finished = false;
+            this.statusjifen = index
+            if(index == 0){
+                this.chongzhitixian = !this.chongzhitixian
+                this.zhuanrangjifen = false
+                this.goumaixiaoji = false
+
+            }else if(index == 1){
+                this.chongzhitixian = false
+                this.zhuanrangjifen = !this.zhuanrangjifen
+                this.goumaixiaoji = false
+            }else if(index == 2){
+                this.chongzhitixian = false
+                this.zhuanrangjifen = false
+                this.goumaixiaoji = !this.goumaixiaoji
+              
+            }
+        },
         xiaoji(){
            this.xiaojikuang = true
             
@@ -951,6 +1083,7 @@ export default {
                 this.num = "";
                  this.fanhui();
             }else if(this.xiaojiID){ //商店 --- 购买小鸡 ID
+                if(!this.value || this.value == "") return Toast('请输入支付密码！');
                 let res = await $ajax('goodsbuy', {
                      id: this.xiaojiID,
                     pay_pwd: this.value,
@@ -964,6 +1097,21 @@ export default {
                  this.page = 1
                  this.list = [];
                  this.finished = false;
+
+            } else if(this.to_user_id && this.jifennum){ //积分转让 -- 转让ID
+                if(!this.value || this.value == "") return Toast('请输入支付密码！');
+                let res = await $ajax('transfersubmit', {
+                    to_user_id: this.to_user_id,
+                    num: this.jifennum,
+                    pay_pwd: this.value,
+                     
+                 })
+                if (!res) return false
+                Toast(res.msg)
+                this.value = "";
+                this.to_user_id = "";
+                this.jifennum = "";
+                
 
             } else{// /集市--我的寄售 -- 寄售
                 // if(!this.jishounum) return Toast('请输入寄售数量！')
@@ -1331,6 +1479,8 @@ export default {
            this.shangdiangoumaikuang = false;
            this.jidangkuang = false;
            this.xiaojikuang = false;
+           this.jifenkuang = false;
+           this.jifenzhuanrangkuang = false;
         },
         cangku(){
             this.cangkukuang = true;
@@ -1338,10 +1488,10 @@ export default {
         haoyou(){
             this.haoyoukuang = true;
         },
-        shangdian(){
+        shangdianhandle(){
             this.shangdiankuang = true
         },
-        jishi(){
+        jishihandle(){
             this.jishikuang = true;
         },
         
@@ -2142,7 +2292,7 @@ export default {
 
                 }
                 .shezhibtn{
-                    margin-top: 8%;
+                    // margin-top: 8%;
                     img{
                         width: 23vw;
                     }
@@ -2504,7 +2654,7 @@ export default {
             top: 0;
             left: 0;
             background: rgba(32, 29, 29, 0.7);
-            z-index: 99;
+            z-index: 101;
             .kuang{
                position: absolute;
                top: 50%;
@@ -2768,6 +2918,181 @@ export default {
                     }
                 }
             }
+        }
+        .jifenkuang{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 99;
+            .kuang{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 80%;
+                height: 135vw;
+                background-image: url(../../assets/images/nongchang/xiaojimingxi/kuang.png);
+                background-size: 100% 100%;
+                color: #955942;
+                font-family: Adobe Heiti Std;
+                font-size: 4vw;
+                .guanbi{
+                    // margin-top: 10%;
+                    img:first-child{
+                        width: 13vw;
+                        height: 13vw;
+                    }
+                }
+                
+                .sdlan{
+                    margin-top: 20%;
+                    img{
+                        width: 17.5vw;
+                        height: 5vw;
+                    }
+                }
+                .sdlist{
+                    margin-top: 13%;
+                    height: 78vw;
+                    overflow-x: hidden;
+                    overflow-y: scroll;
+                    width: 90%;
+                    margin-left: 5%;
+                    .sditem{
+                        background: #FFECDC;
+                        width: 76%;
+                        margin-left: 12%;
+                        border-radius: 1vw;
+                        margin-bottom: 2vw;
+                        //   padding: 1vw 5vw;
+                        // box-sizing: border-box;
+                        
+                        .sdtext{
+                            // margin-left: 1vw;
+                            padding: 1vw;
+                            box-sizing: border-box;
+                            div{
+                                font-size: 12px;
+                                white-space: nowrap;
+                                height: 4vw;
+                                line-height: 4vw;
+                            }
+                        }
+                        .sdtextone{
+                            padding: 1vw;
+                            box-sizing: border-box;
+                            img:first-child{
+                                width: 10vw;
+                                height: 10vw;
+                                border-radius: 50%;
+                            }
+                            .sdtext{
+                                margin-left: 1vw;
+                                div{
+                                    font-size: 10px;
+                                    white-space: nowrap;
+                                    height: 4vw;
+                                    line-height: 4vw;
+                                    width: 22vw;
+                                    overflow: hidden;
+                                }
+                            }
+                            img:last-child{
+                                width: 15vw;
+                                margin-left: 3vw;
+                            }
+                            // .jishoubtn{
+                            //      margin-left: 3vw;
+                            //     img{
+                            //         width: 15vw;
+                            //         height: 5vw;
+                            //         border-radius: 0;
+                            //         // margin-bottom: 2vw;
+                            //         margin-left: 0;
+                            //     }
+                            // }
+                        }
+                        
+                    }
+                }
+                .jishou{
+                    margin-top: 3vw;
+                    img{
+                        width: 15vw;
+                        height: 7vw;
+
+                    }
+                }
+            }
+        }
+        .jifenzhuanrangkuang{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 100;
+           .kuang{
+               position: absolute;
+               top: 50%;
+               left: 50%;
+               transform: translate(-50%, -50%);
+                width: 80%;
+                height: 80vw;
+                background-image: url(../../assets/images/nongchang/shezhi/kuang.png);
+                background-size: 100% 100%;
+                color: #955942;
+                font-family: Adobe Heiti Std;
+                font-size: 4vw;
+                .szxuan{
+                    text-align: center;
+                    margin-top: 30%;
+                    span{
+                        margin-bottom: 2vw;
+                    }
+                }
+                .content{
+
+                    padding: 5vw 5vw;
+                    margin-top: 25%;
+                    .zhuan{
+                        width: 100%;
+                        background: #f7f6fc;
+                        // border-radius: 6vw;
+                        position: relative;
+                        height: 9vw;
+                        padding: 0 1vw;
+                        // background: #D6C695;
+                        // border: 1vw solid #FEF2C2;
+                        // border-radius: 2vw;
+                        span{
+                            white-space:nowrap;
+                        }
+                        input {
+                            width: 60%;
+                            height: 7vw;
+                            border: 0;
+                            text-indent: 3vw;
+                            background: #EDC782;
+                            border: 0.5vw solid #EDC782;
+                            border-radius: 2vw;
+                            font-size: 3vw;
+                        }
+                    }
+
+                }
+                .shezhibtn{
+                    // margin-top: ;
+                    img{
+                        width: 23vw;
+                    }
+                }
+
+           } 
         }
 
        

@@ -1330,5 +1330,26 @@ export default {
             msg: data.msg
         }
     },
+    housesimple(data){
+        if ( mistake(data) ) return false
+        let {house_list} = data
+        return {
+            house_list
+        }
+    },
+    transfersubmit(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
+    houselog_list(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+
+    },
 
 }

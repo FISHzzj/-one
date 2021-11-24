@@ -151,6 +151,9 @@ export default {
     houseuse_feed: `${common}house/use_feed`, //使用饲料
     houseuse_dog: `${common}house/use_dog`, //使用守护犬
     houseuse_fence: `${common}house/use_fence`, //使用围栏
+    housesimple: `${common}house/simple`, //鸡舍详情
+    transfersubmit: `${common}transfer/submit`, //转账
+    houselog_list: `${common}house/log_list`, //增养记录列表
     
     
     

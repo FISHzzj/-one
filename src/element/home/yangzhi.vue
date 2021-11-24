@@ -432,8 +432,16 @@
         </div>  
 
         <!-- 右上角 返回 -->
-        <div class="fanhui" @click="$router.go(-1);">
-            <img src="../../assets/images/nongchang/yangzhi/bg-2x.png" alt="">
+        <div class="fanhui flex flex_col">
+            <img src="../../assets/images/nongchang/yangzhi/fanhui.png" alt=""  @click="$router.go(-1);">
+            <img src="../../assets/images/nongchang/yangzhi/saobaquan.png" alt=""  @click="saobaquan">
+            <div class="saobalist flex flex_col" v-show="saobalistshow">
+                <img src="../../assets/images/nongchang/yangzhi/saoba1.png" alt=""  @click="tabsaoba(1)">
+                <img src="../../assets/images/nongchang/yangzhi/saoba2.png" alt=""  @click="tabsaoba(2)">
+                <img src="../../assets/images/nongchang/yangzhi/saoba3.png" alt=""  @click="tabsaoba(3)">
+                <img src="../../assets/images/nongchang/yangzhi/saoba4.png" alt=""  @click="tabsaoba(4)">
+
+            </div>
         </div>
 
         <!-- 个人信息 -->
@@ -454,6 +462,23 @@
             </div>
         </div>
 
+         <!-- 扫把 -->
+        <div class="saobakuang animat" v-if="saobakuang">
+            <div class="kuang">
+                <div class="content">
+                    <div>当前鸡舍：<span>{{tudiID}}号鸡舍</span></div>
+                    <div>扫帚等级：<span>扫帚LV{{dengji}}</span></div>
+                    <div>小鸡数量：<span>{{num}}</span></div>
+                    <div>扫帚消耗：<span>{{xiaohaoxiaoji}}小鸡</span></div>
+                </div>
+                <div class="shezhibtn flex flex_center">
+                   <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
+                   <img src="../../assets/images/nongchang/shezhi/queding.png" alt="" @click="saobaqueding">
+                   <!-- <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt=""> -->
+                </div>
+            </div>
+        </div>
+
         <!-- 增养 -->
         <div class="zengyang animat" v-if="zengyangkuang">
             <div class="kuang">
@@ -469,6 +494,7 @@
                 </div>
             </div>
         </div>
+        
 
         <!-- 围栏 -->
         <div class="weilan animat" v-if="weilankuang">
@@ -548,43 +574,49 @@
                     
                 </div> -->
                 <div class="sdlist" >
-                    <van-list
-                        v-model="loading"
-                        :finished="finished"
-                        :finished-text="'我是有底线的'"
-                        @load="tradeorder"
-                    >
-                        <div class="sditem flex ali_center flex_between" v-for="(item, index) in list" :key="index"> 
+                    
+                        <div class="sditem flex ali_center flex_between" v-for="(item, index) in house_list" :key="index"> 
                             <!-- <img src="../../assets/images/nongchang/shangdian/jiasu.png" alt="" srcset=""> -->
                             <div class="sdtext flex flex_col ">
-                                <div class="flex flex_between">
-                                    <span style="width: 36vw;overflow: hidden;margin-right:5vw;">鸡舍等级：普通鸡舍（1号）</span>
+                                <div class="flex flex_between" @click="houselog_list(item.id,index)">
+                                    <span style="width: 36vw;overflow: hidden;margin-right:5vw;">鸡舍等级：{{index > 9 ? '高级鸡舍' : '普通鸡舍'}}（{{item.sort}}号）</span>
                                     <!-- <span>数量：100</span> -->
                                 </div>
-                                <div class="flex flex_between">
-                                    <span  style="width: 36vw;overflow: hidden;margin-right:5vw;">小鸡总数：3000</span>
-                                    <span>订单数量：6</span>
+                                <div class="flex flex_between"  @click="houselog_list(item.id, index)">
+                                    <span  style="width: 36vw;overflow: hidden;margin-right:5vw;">小鸡总数：{{item.num}}</span>
+                                    <span>订单数量：{{item.order_num}}</span>
                                 </div>
                                 
                                 <!-- <div>购买时间：2021-21-21 00:00:00</div> -->
-                                <div class="sdtextxiala flex flex_col ">
-                                    <div class="flex flex_between">
-                                        <span style="width: 36vw;overflow: hidden;margin-right:5vw;">守护犬：哈士奇</span>
-                                        <!-- <span>数量：100</span> -->
-                                    </div>
-                                    <div class="flex ali_center">
-                                        <span style="margin-right:2vw;">守护等级：LV1</span>
-                                        <img src="../../assets/images/nongchang/yangzhi/shengji.png" alt="">
-                                    </div>
-                                    
-                                    <div>剩余时间：2021-11-20  16 : 48</div>
+                                
+                                <div  :class="`addAlert_${index}`">
+                                    <van-list
+                                        v-model="loading"
+                                        :finished="finished"
+                                        :finished-text="'我是有底线的'"
+                                        @load="houselog_list"
+                                    >
+                                        <div class="sdtextxiala flex flex_col " v-for="(x, i) in list" :key="i">
+                                            <div class="flex flex_between">
+                                                <span style="width: 36vw;overflow: hidden;margin-right:5vw;">小鸡总数：{{x.num}}</span>
+                                                <!-- <span>数量：100</span> -->
+                                            </div>
+                                            <div class="flex ali_center">
+                                                <span style="margin-right:2vw;">围栏等级：LV{{x.prop_fence_level}}</span>
+                                                <img src="../../assets/images/nongchang/yangzhi/shengji.png" alt="">
+                                            </div>
+                                            
+                                            <div>剩余时间：{{x.prop_fence_end_time}}</div>
+                                        </div>
+                                    </van-list>
                                 </div>
+                               
                             </div>
                             
                            
                         </div>
                         
-                    </van-list>
+                    
                 </div>
                 
                
@@ -793,16 +825,21 @@ export default {
             list:[], //鸡饲料 拿money
             siliaoID:"", //鸡饲料等级id;
             money:"", // 消耗小鸡数量的百分比;守护消耗
-            xiaohaoxiaoji:"", //喂养消耗; 围栏消耗：
+            xiaohaoxiaoji:"", //喂养消耗; 围栏消耗：；扫帚消耗：
             day:"", //守护天数
             shouhuquanID: "", //守护等级id;
             weilanID:"", // 围栏等级ID
             dingdankuang: false, //订单 明细
+            house_list:[], //鸡舍详情
             list:[],
             page: 1,
             limit: 10,
             finished: false,
             loading: false,
+            saobalistshow:false, 
+            saobaID:"", //扫把等级ID
+            saobakuang:false,//扫把框
+            houselog_listshow:false,
         }
     },
     created() {
@@ -816,8 +853,72 @@ export default {
         
     },
     methods:{
+        // 扫把确定 待定
+        async saobaqueding(){
+            let res = await $ajax('houseuse_fence', {
+                house_id: this.tudiID, // 土地id
+                prop_fence: this.weilanID // 围栏id
+            })
+            if (!res) return false
+            this.tishixingxi = res.msg
+            this.tishikuang = true
+            this.houseIndex();
+            this.fangda = false;
+            this.tudiID = ""; //土地id 清空
+            this.type = ""; //1：普通鸡舍；2：高级鸡舍 清空
+            this.num = ""; //鸡舍里的小鸡数量 清空
+        },
+        // 选择扫把等级
+        tabsaoba(id){
+            if(!this.tudiID || this.tudiID == '') return Toast('请先选择土地')
+            this.dengji = id
+            this.list.forEach((item, index)=>{
+                // let sort = index + 1;
+                if(item.level == id){
+                    this.money = item.money
+                    this.saobaID = item.id
+                    // this.day = item.day
+                }
+            })
+            this.xiaohaoxiaoji = this.num * (this.money/100)
+            this.saobakuang = true
+        },
+        //增养记录列表 
+        async houselog_list(id, index){
+            // let addAlert = `addAlert_${index}`
+            // $(`${addAlert}`).show();
+            let res = await $ajax('houselog_list', {
+                 page: this.page,
+                 house_id: id //鸡舍 
+             })
+            if (!res) return false
+            // console.log(res)
+            // this.list = res.goods
+            this.page++
+            console.log(res.list)
+            // this.listtotal = res.listtotal
+            this.list.push(...res.list)
+            // // 加载状态结束
+            this.loading = false
+            if (res.fans.length === 0) {
+                this.finished = true //加载完成
+            } 
+        },
+        //鸡舍详情
+        async gethousesimple(){
+            let res = await $ajax('housesimple', {
+                // page: this.page
+            })
+            if (!res) return false
+            console.log(res)
+            this.house_list = res.house_list
+        },
+        saobaquan(){
+            this.saobalistshow = !this.saobalistshow
+        },
         dingdanhandle(){
             this.dingdankuang = true;
+            this.gethousesimple();
         },
         guangbi(){
             this.dingdankuang = false;
@@ -1153,7 +1254,7 @@ export default {
             this.jisiliaolist = false;
             this.shouhuquanlist = false;
             this.weilanlist = false;
-           
+            this.saobakuang = false;
         },
         
 
@@ -2650,12 +2751,22 @@ export default {
         
         .fanhui{
             position: fixed;
-            right: 5vw;
+            left: 5vw;
             top:25vw;
             z-index: 99;
             >img{
-                width: 10vw;
-                height: 10vw;
+                width: 12vw;
+                margin-bottom: 4vw;
+                // height: 10vw;
+            }
+            >div{
+                background: rgba(255, 255, 255, 0.5);
+                border-radius: 10vw;
+                >img{
+                width: 13vw;
+                margin-bottom: 4vw;
+                // height: 10vw;
+            }
             }
         }
 
@@ -2701,6 +2812,73 @@ export default {
                             color:#FE523B;
                             
                         }
+                    }
+
+                }
+                .shezhibtn{
+                    // margin-top: 8%;
+                    img{
+                        width: 23vw;
+                    }
+                }
+
+           } 
+        }
+        
+        .saobakuang{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 99;
+           .kuang{
+               position: absolute;
+               top: 50%;
+               left: 50%;
+               transform: translate(-50%, -50%);
+                width: 80%;
+                height: 80vw;
+                background-image: url(../../assets/images/nongchang/yangzhi/saobakuang.png);
+                background-size: 100% 100%;
+                color: #955942;
+                font-family: Adobe Heiti Std;
+                font-size: 4vw;
+                // .szxuan{
+                //     text-align: center;
+                //     margin-top: 30%;
+                //     span{
+                //         margin-bottom: 2vw;
+                //     }
+                // }
+                .content{
+                    padding: 5vw 5vw;
+                    margin-top: 15%;
+                    text-align: center;
+                    // img{
+                    //     width: 15vw;
+                    //     height: 15vw;
+                    //     border-radius: 50%;
+                    // }
+                    div{
+                        // height: 6vw;
+                        margin-bottom: 1vw;
+                        >span{
+                            // padding: 1vw 2vw;
+                            // box-sizing: border-box;
+                            background: #EDC782;
+                            border-radius: 1vw;
+                            width: 30vw;
+                            display: inline-block;
+                            text-align: left;
+                            padding-left: 2vw;
+                        }
+                        
+                        // a{
+                        //     color:#FE523B;
+                            
+                        // }
                     }
 
                 }
