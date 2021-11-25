@@ -151,6 +151,14 @@ export default {
     houseuse_feed: `${common}house/use_feed`, //使用饲料
     houseuse_dog: `${common}house/use_dog`, //使用守护犬
     houseuse_fence: `${common}house/use_fence`, //使用围栏
+    housesimple: `${common}house/simple`, //鸡舍详情
+    transfersubmit: `${common}transfer/submit`, //转账
+    houselog_list: `${common}house/log_list`, //增养记录列表
+    housebuy_broom: `${common}house/buy_broom`, //购买扫帚
+    houseuse_broom: `${common}house/use_broom`, //打扫
+    housebroom_list: `${common}house/broom_list`, //扫帚列表
+    housesteal: `${common}house/steal`, //偷盗
+    
     
     
     
