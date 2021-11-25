@@ -9,10 +9,10 @@
                 </div>
             </div>
             <div class="xxcenter flex flex_col flex_around " >
-                <div class="flex ali_center flex_between" @click="jifen">
-                    <img src="../../assets/images/nongchang/jifen.png" alt="" srcset="">
-                    <span>{{balance.integral}}</span>
-                    <img src="../../assets/images/nongchang/jiahao.png" alt="" srcset="">
+                <div class="flex ali_center flex_between" >
+                    <img src="../../assets/images/nongchang/jifen.png" alt="" srcset="" @click="jifen">
+                    <span @click="jifen">{{balance.integral}}</span>
+                    <img src="../../assets/images/nongchang/jiahao.png" alt="" srcset="" @click="chongzhitixianhandle">
                 </div>
                 <div class="flex ali_center flex_between" @click="jidan">
                     <img src="../../assets/images/nongchang/jidan.png" alt="" srcset="">
@@ -23,7 +23,7 @@
             <div class="xxright flex flex_col flex-start">
                 <div class="flex ali_center flex_between" @click="xiaoji">
                     <img src="../../assets/images/nongchang/xiaoji.png" alt="" srcset="">
-                    <span>{{balance.credit2}}</span>
+                    <span>{{balance.credit1}}</span>
                     <img src="../../assets/images/nongchang/jiahao.png" alt="" srcset="">
                 </div>
                
@@ -124,7 +124,7 @@
             </div>
         </div>
         <!-- 商店 -->
-        <div class="shangdiankuang animat" v-if="shangdiankuang">
+        <div class="shangdiankuang animat" v-show="shangdiankuang">
             
             <div class="kuang">
                 <div class="guanbi flex flex-end">
@@ -142,6 +142,7 @@
                         v-model="loading"
                         :finished="finished"
                         :finished-text="'我是有底线的'"
+                    
                         @load="propfeed"
                     >
                         <div
@@ -174,6 +175,7 @@
                         v-model="loading"
                         :finished="finished"
                         :finished-text="'我是有底线的'"
+                    
                         @load="propdog"
                     >
                         <div
@@ -197,6 +199,7 @@
                         v-model="loading"
                         :finished="finished"
                         :finished-text="'我是有底线的'"
+                   
                         @load="propfence"
                     >
                         <div
@@ -220,6 +223,7 @@
                         v-model="loading"
                         :finished="finished"
                         :finished-text="'我是有底线的'"
+                    
                         @load="propbroom"
                     >
                         <div
@@ -234,7 +238,7 @@
                                 <div>收获：{{item.gift}}%</div>
                                 <div>小鸡：{{item.money}}</div>
                             </div>
-                            <img src="../../assets/images/nongchang/shangdian/goumai.png" alt="">
+                            <img src="../../assets/images/nongchang/shangdian/goumai.png" alt="" @click="goumaisaoba(item.id)">
                           
                         </div>
                     </van-list>
@@ -244,6 +248,7 @@
                         v-model="loading"
                         :finished="finished"
                         :finished-text="'我是有底线的'"
+                   
                         @load="proppack"
                     >
                         <div
@@ -266,7 +271,7 @@
             </div>
         </div>
         <!-- 集市 -->
-        <div class="jishikuang animat" v-if="jishikuang">
+        <div class="jishikuang animat" v-show="jishikuang">
             <div class="kuang">
                 <div class="guanbi flex flex-end">
                     <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="guangbi">
@@ -301,7 +306,7 @@
                     </van-list>
                 </div>
                 
-                <div class="sdlist" v-if="statusjishi == 1">
+                <div class="sdlist" v-if="statusjishi == 1 ">
                     <van-list
                         v-model="loading"
                         :finished="finished"
@@ -398,7 +403,7 @@
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
-                   <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt="">
+                   <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt="" @click="tologin">
                    <!-- <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt=""> -->
                 </div>
             </div>
@@ -418,7 +423,7 @@
                         :finished-text="'我是有底线的'"
                         @load="fanslists"
                     >
-                        <div class="sditem flex ali_center" v-for="(item, index) in list" :key="index"> 
+                        <div class="sditem flex ali_center" v-for="(item, index) in list" :key="index" @click="goyangzhi(item.user_id)"> 
                             <!-- <img src="../../assets/images/nongchang/shangdian/jiasu.png" alt="" srcset=""> -->
                             <div class="sdtext flex ali_center" >
                                 <div>{{item.user_id}}</div>
@@ -439,7 +444,7 @@
                         :finished-text="'我是有底线的'"
                         @load="fansalllists"
                     >
-                        <div class="sditem flex ali_center" v-for="(item, index) in list" :key="index"> 
+                        <div class="sditem flex ali_center" v-for="(item, index) in list" :key="index" @click="goyangzhi(item.user_id)"> 
                             <!-- <img src="../../assets/images/nongchang/shangdian/jiasu.png" alt="" srcset=""> -->
                             <div class="sdtext flex ali_center" >
                                 <div>{{item.user_id}}</div>
@@ -578,7 +583,7 @@
                     <!-- 密码输入框 -->
                     <van-password-input
                         :value="value"
-                        :length="6"
+                        :error-info="errorInfo"
                         :focused="showKeyboard"
                         @focus="showKeyboard = true"
                     />
@@ -827,6 +832,7 @@ export default {
             total:"",   //支付积分 - 集市 - 我的购买
             zhifukuang:false,
             value: '', //支付密码 数字键盘
+            errorInfo: '',
             showKeyboard: false, //数字键盘
             jishoukuang:false,
             unit:"", //小鸡单价
@@ -843,7 +849,7 @@ export default {
             shouhuo2:require('@/assets/images/nongchang/jidanmingxi/shouhuo1.png'),
             touqu:false,
             touqu1:require('@/assets/images/nongchang/jidanmingxi/touqu.png'),
-            touqu2:require('@/assets/images/nongchang/jidanmingxi/touqu.png'),
+            touqu2:require('@/assets/images/nongchang/jidanmingxi/touqu1.png'),
             dasao:false,
             dasao1:require('@/assets/images/nongchang/jidanmingxi/dasao.png'),
             dasao2:require('@/assets/images/nongchang/jidanmingxi/dasao1.png'),
@@ -895,7 +901,21 @@ export default {
             return this.xiaojiprice * this.goumaishuliang
         },
     },
+    watch: {
+        value(value) {
+            
+            if (value.length > 6 ) {
+                this.errorInfo = '密码长度超过6位';
+                this.value = ''
+            } else {
+                this.errorInfo = '';
+            }
+        },
+    },
     methods:{
+        chongzhitixianhandle(){
+
+        },
         musicClick () {
             if(this.yinxiao){
                  this.$refs.MusicClick.play()
@@ -1061,6 +1081,15 @@ export default {
               
             }
         },
+        // 去好友养殖
+        goyangzhi(user_id){
+            this.$router.push({
+                name: 'yangzhi',
+                query:{
+                    user_id:user_id
+                }
+            })
+        },
         // 去养殖页
         yangzhi(){
             this.$router.push({
@@ -1111,6 +1140,7 @@ export default {
                 this.value = "";
                 this.num = "";
                  this.fanhui();
+                 this.getData();
             }else if(this.xiaojiID){ //商店 --- 购买小鸡 ID
                 if(!this.value || this.value == "") return Toast('请输入支付密码！');
                 let res = await $ajax('goodsbuy', {
@@ -1193,26 +1223,32 @@ export default {
 
         },
         tabjishi(index){
+            console.log('index', index)
             this.page = 1;
             this.list = [];
+            this.loading = true;
             this.finished = false;
             this.statusjishi = index
             if(index == 0){
-                this.goumai = !this.goumai
+          
+                this.goumai = true
                 this.jishou = false
                 this.jilv = false
-                
+                this.tradelists();
                 
             }else if(index == 1){
+            
                 this.goumai = false
-                this.jishou = !this.jishou
+                this.jishou = true
                 this.jilv = false
+                this.trademine();
                          
             }else if(index == 2){
+   
                 this.goumai = false
                 this.jishou = false
-                this.jilv = !this.jilv
-                
+                this.jilv = true
+                this.tradeorder();
             }
         },
         //集市 我要购买
@@ -1276,17 +1312,18 @@ export default {
         tabhaoyou(index){
             this.page = 1;
             this.list = [];
+            this.loading = true;
             this.finished = false;
+            this.statushao = index
             if(index == 0){
                 this.hao = true
                 this.guangchang = false
-                this.statushao = index
-                // this.fanslists();
+                
+                this.fanslists();
             }else if(index == 1){
                 this.hao = false
                 this.guangchang = true
-                this.statushao = index
-                // this.fansalllists();    
+                this.fansalllists();    
             }
         },
         async fanslists(){
@@ -1399,6 +1436,15 @@ export default {
                 this.finished = true //加载完成
             } 
         },
+        //购买扫把
+        async goumaisaoba(id){
+             let res = await $ajax('housebuy_broom', {
+                 fans_id: this.user_id,
+                 prop_broom: id,
+             })
+            if (!res) return false
+            Toast(res.msg)
+        },
         async propbroom(){ //扫吧
              let res = await $ajax('propbroom', {
                  page: this.page
@@ -1443,49 +1489,55 @@ export default {
             })
         },
         tab(index){
+            console.log('index', index)
             this.page = 1;
             this.list = [];
             this.finished = false;
+            this.loading = true;
+            this.status = index
+         
             if(index == 0){
+                console.log(1111111111)
                 this.zuo = false
                 this.shouhuquan = false
-                this.jisiliao = !this.jisiliao
+                this.jisiliao = true
                 this.zhong = false
                 this.you =false
-                this.status = index
+                
                 // this.goodslists();
-                // this.propfeed();
+                this.propfeed();
             }else if(index == 1){
                 this.zuo = false
-                this.shouhuquan = !this.shouhuquan
+                this.shouhuquan = true
                 this.jisiliao = false
                 this.zhong = false
                 this.you = false    
-                this.status = index  
-                // this.propdog();    
+                // this.status = index  
+                this.propdog();    
             }else if(index == 2){
-                this.zuo = !this.zuo;
+                this.zuo = true;
                 this.shouhuquan = false
                 this.jisiliao = false
                 this.zhong = false
                 this.you = false
-                this.status = index
-                // this.propfence();
+                // this.status = index
+                this.propfence();
             }else if(index == 3){
                 this.zuo = false
                 this.shouhuquan = false
                 this.jisiliao = false
-                this.zhong = !this.zhong
+                this.zhong = true
                 this.you = false
-                this.status = index
+                // this.status = index
+                this.propbroom();
             }else if(index == 4){
                 this.zuo = false
                 this.shouhuquan = false
                 this.jisiliao = false
                 this.zhong = false
-                this.you = !this.you 
-                this.status = index
-                // this.proppack()
+                this.you = true
+                // this.status = index
+                this.proppack()
             }
         },
         guangbi(){
@@ -1511,18 +1563,28 @@ export default {
            this.xiaojikuang = false;
            this.jifenkuang = false;
            this.jifenzhuanrangkuang = false;
+           this.value = '';
         },
         cangku(){
             this.cangkukuang = true;
         },
         haoyou(){
             this.haoyoukuang = true;
+            this.tabhaoyou(0);
         },
         shangdianhandle(){
+            
             this.shangdiankuang = true
+            this.tab(0)
+            // this.finished = false;
         },
         jishihandle(){
+            // this.page = 1;
+            // this.list = [];
+            // this.finished = false;
             this.jishikuang = true;
+            this.tabjishi(0)
+            
         },
         
         gerenxinxi(){

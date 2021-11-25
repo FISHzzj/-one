@@ -154,6 +154,9 @@ export default {
     housesimple: `${common}house/simple`, //鸡舍详情
     transfersubmit: `${common}transfer/submit`, //转账
     houselog_list: `${common}house/log_list`, //增养记录列表
+    housebuy_broom: `${common}house/buy_broom`, //购买扫帚
+    houseuse_broom: `${common}house/use_broom`, //打扫
+    housebroom_list: `${common}house/broom_list`, //扫帚列表
     
     
     

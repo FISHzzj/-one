@@ -86,7 +86,7 @@ export default {
             // if (!pwdRex.test(this.pwd1)) return Toast( '交易密碼(8至12位數字和字母組合)')
             if(this.inputMsg.pwd != this.inputMsg.pwd_confirm) return Toast( '两次输入的密码不一致')
             if (!this.inputMsg.code) return Toast( '请输入短信验证码')
-            if (!this.spread) return Toast( '请输入邀请码')
+            if (!this.inputMsg.spread) return Toast( '请输入邀请码')
 
              let res = await $ajax('register', {
                 mobile: this.inputMsg.mobile,
@@ -306,7 +306,7 @@ export default {
                 input {
                     text-indent: 3vw;
                     height: 9vw;
-                    font-size: 4vw;
+                    font-size: 3.5vw;
                     opacity: 0.5;
                 }
             }

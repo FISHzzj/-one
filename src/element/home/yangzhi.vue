@@ -359,7 +359,7 @@
         </div>
 
         <!-- 左下角按钮 -->
-        <div class="PathInner" id="PathMenu" >
+        <div class="PathInner" id="PathMenu" v-if="!userIdshow">
 
             <div class="PathMain">
                 <div class="Tmain" @click="PathRun">
@@ -434,7 +434,7 @@
         <!-- 右上角 返回 -->
         <div class="fanhui flex flex_col">
             <img src="../../assets/images/nongchang/yangzhi/fanhui.png" alt=""  @click="$router.go(-1);">
-            <img src="../../assets/images/nongchang/yangzhi/saobaquan.png" alt=""  @click="saobaquan">
+            <img src="../../assets/images/nongchang/yangzhi/saobaquan.png" alt=""  @click="saobaquan" v-if="userIdshow">
             <div class="saobalist flex flex_col" v-show="saobalistshow">
                 <img src="../../assets/images/nongchang/yangzhi/saoba1.png" alt=""  @click="tabsaoba(1)">
                 <img src="../../assets/images/nongchang/yangzhi/saoba2.png" alt=""  @click="tabsaoba(2)">
@@ -828,6 +828,7 @@ export default {
             limit: 10,
             finished: false,
             loading: false,
+            userIdshow:true,
             saobalistshow:false, 
             saobaID:"", //扫把等级ID
             saobakuang:false,//扫把框
@@ -837,6 +838,13 @@ export default {
         }
     },
     created() {
+        this.user_id = this.$route.query.user_id || ""
+        console.log(this.user_id);
+        if(this.user_id){
+            this.userIdshow = true;
+        }else{
+            this.userIdshow = false;
+        }
         this.houseIndex();
     },
     mounted(){
@@ -844,14 +852,15 @@ export default {
         this.propfeed();
         this.propdog();
         this.propfence();
+        this.propbroom_list();
         
     },
     methods:{
         // 扫把确定 待定
         async saobaqueding(){
-            let res = await $ajax('houseuse_fence', {
+            let res = await $ajax('houseuse_broom', {
                 house_id: this.tudiID, // 土地id
-                prop_fence: this.weilanID // 围栏id
+                prop_broom: this.saobaID // 扫把id
             })
             if (!res) return false
             this.tishixingxi = res.msg
@@ -877,6 +886,15 @@ export default {
             this.xiaohaoxiaoji = this.num * (this.money/100)
             this.saobakuang = true
         },
+        async propbroom_list(){ //扫帚列表
+             let res = await $ajax('housebroom_list', {
+                 page: 1
+             })
+            if (!res) return false
+            // console.log(res)
+            this.list = res.list
+            console.log(this.list)
+        },
         //返回 -鸡舍详情
         gopage(){
              this.houselog_listshow = false
@@ -896,7 +914,7 @@ export default {
              })
             if (!res) return false
             // console.log(res)
-            // this.list = res.goods
+            // this.list = res.goods                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
             this.page++
             console.log(res.list)
             // this.listtotal = res.listtotal
@@ -1129,6 +1147,7 @@ export default {
         },
         //开鸡舍
         async housebuild(id){
+            if(this.userIdshow) return false
             // console.log(id)
             let res = await $ajax('housebuild', {
                 house_id: id
@@ -1140,7 +1159,9 @@ export default {
             this.houseIndex();
         },
         async houseIndex(){
-            let res = await $ajax('houseindex', {})
+            let res = await $ajax('houseindex', {
+                fans_id:this.user_id
+            })
             if (!res) return false
             console.log(res)
             this.houseList = res.house
@@ -1148,7 +1169,9 @@ export default {
             
         },
         async getData(){
-            let res = await $ajax('userinfo', {})
+            let res = await $ajax('userinfo', {
+                "fans_id": this.user_id //好友user_id（不填就是自己的）
+            })
             if (!res) return false
             // console.log(res)
             Object.keys(res).forEach((key) =>{

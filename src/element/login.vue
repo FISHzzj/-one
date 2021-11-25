@@ -197,6 +197,7 @@ export default {
                 border: 0;
                 text-indent: 3vw;
                 opacity: 0.5;
+                font-size: 3.7vw;
                 
             }
         }
@@ -242,7 +243,7 @@ export default {
             input {
                 text-indent: 3vw;
                 height: 10vw;
-                font-size: 4vw;
+                font-size: 3.7vw;
                 opacity: 0.5;
                 width: 100%;
             }

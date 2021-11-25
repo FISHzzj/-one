@@ -1351,5 +1351,24 @@ export default {
         }
 
     },
+    housebuy_broom(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
+    houseuse_broom(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
+    housebroom_list(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
 
 }
