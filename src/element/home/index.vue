@@ -586,10 +586,22 @@
                             <option value ="2">提现</option>
                         </select>
                     </div>
-                    <div v-if="selectVal == 2">
+                    <div class="flex flex_col flex_end" v-if="selectVal == 2">
+                        <div class="gmkshuliang flex flex_center ali_center">
+                            <span style="white-space: nowrap;">Trx账户私钥：</span>
+                            <input type="text" v-model="privatekey" >
+                        </div>
+                        <div class="gmkshuliang flex flex_center ali_center">
+                            <span style="white-space: nowrap;">币的合约地址：</span>
+                            <input type="text" v-model="tokencontract" >
+                        </div>
+                        <div class="gmkshuliang flex flex_center ali_center">
+                            <span>目标地址：</span>
+                            <input type="text" v-model="target" >
+                        </div>
                         <div class="gmkshuliang flex flex_center ali_center">
                             <span>&nbsp;&nbsp;&nbsp;&nbsp;手续费：</span>
-                            <input type="text" v-model="shouxufei"  disabled>
+                            <input type="text" v-model="withdraw"  disabled>
                         </div>
                         <div class="gmkshuliang flex flex_center ali_center">
                             <span>提现数量：</span>
@@ -612,9 +624,9 @@
                     
                    
                 </div>
-                <div class="shezhibtn flex flex_center">
+                <div class="shezhibtn flex flex_center" v-if="selectVal == 2">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
-                   <img src="../../assets/images/nongchang/jishi/queding.png" alt="" @click="goumaiqueding">
+                   <img src="../../assets/images/nongchang/jishi/queding.png" alt="" @click="tixianqueding">
                    <!-- <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt=""> -->
                 </div>
             </div>
@@ -928,12 +940,15 @@ export default {
             MP3_click:require('@/assets/images/nongchang/music/click.mp3'),
             chongzhitixiankuang:false,
             selectVal:1,
-            shouxufei:"5%",
             tixianshuliang:"",
             shijidaozhan:"",
             chongzhidizhi:"jertye2862sadsd132sadasd5as4sasd12321",
             erweima:"http://6006.jujiawangluokeji.com/uploads/images/20211115/c5fab0dd442615f2055a26f0bb604f3f.jpg",
-
+            privatekey:"", //Trx账户私钥：
+            tokencontract:"", //币的合约地址
+            target:"", //目标地址：
+            withdraw: "", //提现手续费%
+        
         }
     },
     mounted(){
@@ -966,8 +981,38 @@ export default {
         },
     },
     methods:{
-        //充值提现
-        chongzhitixianhandle(){
+        //提现
+        async tixianqueding(){
+            if(!this.privatekey) return Toast('请输入Trx账户私钥')
+            if(!this.tokencontract) return Toast('请输入币的合约地址')
+            if(!this.target) return Toast('请输入币的目标地址')
+            if(!this.tixianshuliang) return Toast('请输入提现数量')
+            let res = await $ajax('balancewithdraw', {
+                "privatekey": this.privatekey, //Trx账户私钥
+                "tokencontract": this.tokencontract, //币的合约地址
+                "target": this.target, //币的目标地址
+                "amount": this.tixianshuliang //数量(积分)
+            })
+            if (!res) return false
+            console.log(res)
+            Toast(res.msg)
+            this.chongzhitixiankuang = false;
+            this.privatekey = ""
+            this.tokencontract = ""
+            this.target = ""
+            this.tixianshuliang = ""
+
+        },
+        //充值
+        async chongzhitixianhandle(){
+            
+            let res = await $ajax('balancerecharge', {
+                 uid: this.user_id
+             })
+            if (!res) return false
+            console.log(res)
+            this.chongzhidizhi = res.trc_address
+            this.erweima = res.trc_qrcode
             this.chongzhitixiankuang = true;
         },
         musicClick () {
@@ -1166,7 +1211,8 @@ export default {
              let res = await $ajax('config', {})
             if (!res) return false
             console.log(res);
-            this.shouxufei = res.trade.trade_fee
+            this.shouxufei = res.trade.trade_fee //实际交易手续费（卖家成功卖出，收益到账时扣除%）
+            this.withdraw = res.withdraw.balance_fee //提现手续费%
         },
         // 计算收获积分
         jisuanjifen(){
@@ -2674,7 +2720,7 @@ export default {
                left: 50%;
                transform: translate(-50%, -50%);
                 width: 80%;
-                height: 80vw;
+                height: 120vw;
                 background-image: url(../../assets/images/nongchang/jishi/jishikuang.png);
                 background-size: 100% 100%;
                 color: #955942;
@@ -2808,7 +2854,7 @@ export default {
                left: 50%;
                transform: translate(-50%, -50%);
                 width: 80%;
-                height: 95vw;
+                height: 120vw;
                 background-image: url(../../assets/images/nongchang/chongzhitixian.png);
                 background-size: 100% 100%;
                 color: #955942;

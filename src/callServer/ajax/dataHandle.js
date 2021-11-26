@@ -1157,11 +1157,12 @@ export default {
     //农场
     config(data){
         if ( mistake(data) ) return false
-        let { ins, sms, trade } = data
+        let { ins, sms, trade, withdraw } = data
         return {
             ins, 
             sms, 
-            trade 
+            trade,
+            withdraw
         }
     },
     userinfo(data){
@@ -1371,6 +1372,20 @@ export default {
         }
     },
     housesteal(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
+    balancerecharge(data){
+        if ( mistake(data) ) return false
+        let {trc_address, trc_qrcode} = data
+        return {
+            trc_address,
+            trc_qrcode
+        }
+    },
+    balancewithdraw(data){
         if ( mistake(data) ) return false
         return {
             msg: data.msg

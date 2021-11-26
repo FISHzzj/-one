@@ -158,6 +158,10 @@ export default {
     houseuse_broom: `${common}house/use_broom`, //打扫
     housebroom_list: `${common}house/broom_list`, //扫帚列表
     housesteal: `${common}house/steal`, //偷盗
+    balancerecharge: `${common}balance/recharge`, //充值界面
+    balancewithdraw: `${common}balance/withdraw`, //提现界面
+    
+    
     
     
     
