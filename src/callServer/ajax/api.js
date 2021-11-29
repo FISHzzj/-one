@@ -160,6 +160,19 @@ export default {
     housesteal: `${common}house/steal`, //偷盗
     balancerecharge: `${common}balance/recharge`, //充值界面
     balancewithdraw: `${common}balance/withdraw`, //提现界面
+    logbalance_integral: `${common}log/balance_integral`, //充值提现
+    logtransfer_integral: `${common}log/transfer_integral`, //转账
+    logtrade_integral: `${common}log/trade_integral`, //交易
+    logtrade_chick: `${common}log/trade_chick`, //小鸡交易
+    logshop_chick: `${common}log/shop_chick`, //商店购买
+    loghatch_chick: `${common}log/hatch_chick`, //孵化
+    logget_egg: `${common}log/get_egg`, //收获
+    logsteal_egg: `${common}log/steal_egg`, //偷盗获得鸡蛋记录
+    logclean_egg: `${common}log/clean_egg`, //打扫获得鸡蛋 
+    hatchindex: `${common}hatch/index`, //孵化首页
+    hatchcreate: `${common}hatch/create`, //孵化
+    hatchuse_pack: `${common}hatch/use_pack`, //使用加速包
+    
     
     
     

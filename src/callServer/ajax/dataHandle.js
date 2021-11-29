@@ -1391,5 +1391,87 @@ export default {
             msg: data.msg
         }
     },
+    logbalance_integral(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    logtransfer_integral(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    logtrade_integral(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    logtrade_chick(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    logshop_chick(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    loghatch_chick(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    logget_egg(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    logsteal_egg(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    logclean_egg(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    hatchindex(data){
+        if ( mistake(data) ) return false
+        return {
+            data
+        }
+    },
+    hatchcreate(data){
+        if ( mistake(data) ) return false
+     
+        return {
+            msg: data.msg
+        }
+    },
+    hatchuse_pack(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
 
 }
