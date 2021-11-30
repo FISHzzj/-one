@@ -369,29 +369,150 @@
             </div>
         </div>
         <!-- 仓库 -->
-        <div class="cangkukuang animat" v-if="cangkukuang">
+        <div class="cangkukuang animat" v-show="cangkukuang">
+            
             <div class="kuang">
                 <div class="guanbi flex flex-end">
                     <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="guangbi">
                 </div>
-                <!-- <div class="sdlan flex flex_center">
-                    <img :src="zuo ? zuo1 : zuo2" alt="" srcset="" @click="tab(0)">
+                <div class="sdlan flex flex_center">
+                    <img :src="jisiliao ? jisiliao1 : jisiliao2" alt="" srcset="" @click="tab(0)">
                     <img :src="shouhuquan ? shouhuquan1 : shouhuquan2" alt="" srcset="" @click="tab(1)">
-                    <img :src="jisiliao ? jisiliao1 : jisiliao2" alt="" srcset="" @click="tab(2)">
+                    <img :src="zuo ? zuo1 : zuo2" alt="" srcset="" @click="tab(2)">
                     <img :src="zhong ? zhong1 : zhong2" alt="" srcset="" @click="tab(3)">
                     <img :src="you ? you1 : you2" alt="" srcset="" @click="tab(4)">
-                </div> -->
-                <div class="sdlist">
-                    <div class="sditem flex ali_center" v-for="(item, index) in list" :key="index"> 
-                        <img src="../../assets/images/nongchang/shangdian/jiasu.png" alt="" srcset="">
-                        <div class="sdtext flex flex_col">
-                            <div>{{item.title}}</div>
-                            <div>{{item.title1}}</div>
-                            <div>小鸡：{{item.shuliang}}</div>
-                        </div>
-                        <img src="../../assets/images/nongchang/shangdian/goumai.png" alt="">
-                    </div>
                 </div>
+                <div class="sdlist" v-show="status == 0">
+                    <van-list
+                        v-model="loading"
+                        :finished="finished"
+                        :finished-text="'我是有底线的'"
+                    
+                        @load="propfeed"
+                    >
+                        <div
+                            v-for="(item,index) in list" :key="index"
+                            >
+                            <div class="sditem flex ali_center" v-if="item.title == '小鸡'">
+                                <img :src="item.img" alt="" srcset="">
+                                <div class="sdtext flex flex_col">
+                                    <div>{{item.title}}</div>
+                                    <div>数量：{{item.stock}}</div>
+                                    <div>小鸡：{{item.price}}</div>
+                                </div>
+                                <!-- <img src="../../assets/images/nongchang/shangdian/goumai.png" alt="" @click="xiaojigoumai(item.id)"> -->
+                            </div>
+                            <div class="sditem flex ali_center" v-else>
+                                <img :src="item.img" alt="" srcset="">
+                                <div class="sdtext flex flex_col">
+                                    <div>{{item.title}}</div>
+                                    <div>时间：{{item.speed}}</div>
+                                    <div>小鸡：{{item.money}}</div>
+                                </div>
+                                <!-- <img src="../../assets/images/nongchang/shangdian/goumai.png" alt="" > -->
+                            </div>
+                          
+                        </div>
+                    </van-list>
+                </div>
+                <div class="sdlist" v-show="status == 1">
+                    <van-list
+                        v-model="loading"
+                        :finished="finished"
+                        :finished-text="'我是有底线的'"
+                    
+                        @load="propdog"
+                    >
+                        <div
+                             class="sditem flex ali_center"
+                            v-for="(item,index) in list" :key="index"
+                            >
+                            
+                            <img :src="item.img" alt="" srcset="">
+                            <div class="sdtext flex flex_col">
+                                <div>{{item.title}}</div>
+                                <div>防盗：{{item.steal}}%</div>
+                                <div>小鸡：{{item.price}}</div>
+                            </div>
+                            <!-- <img src="../../assets/images/nongchang/shangdian/goumai.png" alt=""> -->
+                          
+                        </div>
+                    </van-list>
+                </div>
+                <div class="sdlist" v-show="status == 2">
+                    <van-list
+                        v-model="loading"
+                        :finished="finished"
+                        :finished-text="'我是有底线的'"
+                   
+                        @load="propfence"
+                    >
+                        <div
+                             class="sditem flex ali_center"
+                            v-for="(item,index) in list" :key="index"
+                            >
+                            
+                            <img :src="item.img" alt="" srcset="">
+                            <div class="sdtext flex flex_col">
+                                <div>{{item.title}}</div>
+                                <div>收益：{{item.profit}}%</div>
+                                <div>小鸡：{{item.money}}</div>
+                            </div>
+                            <!-- <img src="../../assets/images/nongchang/shangdian/goumai.png" alt=""> -->
+                          
+                        </div>
+                    </van-list>
+                </div>
+                <div class="sdlist" v-show="status == 3">
+                    <van-list
+                        v-model="loading"
+                        :finished="finished"
+                        :finished-text="'我是有底线的'"
+                    
+                        @load="propbroom"
+                    >
+                        <div
+                             class="sditem flex ali_center"
+                            v-for="(item,index) in list" :key="index"
+                            >
+                            
+                            <img :src="item.img" alt="" srcset="">
+                            <div class="sdtext flex flex_col">
+                                <div>{{item.title}}</div>
+                                <div>次数：{{item.count}}</div>
+                                <div>收获：{{item.gift}}%</div>
+                                <div>小鸡：{{item.money}}</div>
+                            </div>
+                            <!-- <img src="../../assets/images/nongchang/shangdian/goumai.png" alt="" @click="goumaisaoba(item.id)"> -->
+                          
+                        </div>
+                    </van-list>
+                </div>
+                <div class="sdlist" v-show="status == 4">
+                    <van-list
+                        v-model="loading"
+                        :finished="finished"
+                        :finished-text="'我是有底线的'"
+                   
+                        @load="proppack"
+                    >
+                        <div
+                             class="sditem flex ali_center"
+                            v-for="(item,index) in list" :key="index"
+                            >
+                            
+                            <img :src="item.img" alt="" srcset="">
+                            <div class="sdtext flex flex_col">
+                                <div>{{item.title}}</div>
+                                <div>加速时间：{{item.time}}</div>
+                                <div>小鸡：{{item.money}}</div>
+                            </div>
+                            <!-- <img src="../../assets/images/nongchang/shangdian/goumai.png" alt=""> -->
+                          
+                        </div>
+                    </van-list>
+                </div>
+                
             </div>
         </div>
         <!-- 个人信息 -->
@@ -982,7 +1103,7 @@
                 <div class="jishou flex flex_col flex_center ali_center ">
                     <img src="../../assets/images/nongchang/yangzhi/jiasu.png" alt="" srcset="" v-if="fuhuaIf" @click="jiasubtn" >
                     <img src="../../assets/images/nongchang/yangzhi/fuhua.png" alt="" srcset=""  v-else @click="fuhuabtn">
-                    <div style="color:#E2751A;font-size:3vw;">{{finish_time}}后孵化</div>
+                    <div style="color:#E2751A;font-size:3vw;" v-if="finish_time">{{finish_time}}后孵化</div>
                 </div>
             </div>
         </div>
@@ -1004,18 +1125,19 @@
         <div class="jiasukuang animat" v-if="jiasukuang">
             <div class="kuang">
                 <div class="content">
-                    <div>孵化数量：<input type="text" v-model="jiasufuhuashuliang"></div>
+                    <div>孵化数量：<input type="text" v-model="jiasufuhuashuliang" @blur="jiashufuhuashulianghandle"></div>
                     <div>加速等级：
                         <span>
                             <select style="background: #EDC782;border: 0;width: 88%;color: #955942;font-size: 4vw;" 
                             v-model="jiasudengjixuan" @change="selectdengji(jiasudengjixuan)">
+                                <option value ="0">请选择</option> 
                                 <option :value ="item.id"  v-for="(item, index) in list" :key="index">{{item.title}}</option>
                                 <!-- <option value ="2">提现</option> -->
                             </select>    
                         </span>
                     </div>
                     <div>加速时间：<span>{{jiasushijian}}小时</span></div>
-                    <div>加速消耗：<span>{{jiasuxiaohao}}小时</span></div>
+                    <div>加速消耗：<span>{{jiasuxiaohao}}小鸡</span></div>
                 </div>
                 <div class="shezhibtn flex  flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
@@ -1167,7 +1289,7 @@ export default {
             fuhuashuliang:"",
             jiasukuang:false,
             jiasufuhuashuliang:"",
-            jiasudengjixuan:"1",
+            jiasudengjixuan:"0",
             finish_time:"",
             jiasushijian:"",
             jiasuxiaohao:"",
@@ -1215,6 +1337,17 @@ export default {
         // },
     },
     methods:{
+        jiashufuhuashulianghandle(){
+            if(this.jiasufuhuashuliang == "") return Toast('请输入孵化数量')
+            this.list.forEach((item, index)=>{
+                if(item.id == this.jiasudengjixuan){
+                    this.jiasushijian = item.time
+                    if(this.jiasufuhuashuliang != ''){
+                        this.jiasuxiaohao = this.jiasufuhuashuliang * item.money/100
+                    }
+                }
+            })
+        },
         async jiasufuhuaqueding(){
             if(this.jiasufuhuashuliang == "") return Toast('请输入孵化数量')
             // if(this.jiasudengjixuan == 1) return Toast('请输入孵化数量')
@@ -1224,24 +1357,26 @@ export default {
             if (!res) return false
             console.log(res)
             Toast(res.msg)
+            this.fanhui();
         },
         selectdengji(value){
-            // this.list.forEach((item, index)=>{
-            //     if(item.id == value){
-            //         this.jiasushijian = item.time
-            //         if(this.jiasufuhuashuliang != ''){
-            //             this.jiasuxiaohao = this.jiasufuhuashuliang * item.money/100
-            //         }
-            //     }
-            // })
+            console.log(value)
+            if(this.jiasufuhuashuliang == "") return Toast('请输入孵化数量')
+            this.list.forEach((item, index)=>{
+                if(item.id == value){
+                    this.jiasushijian = item.time
+                    if(this.jiasufuhuashuliang != ''){
+                        this.jiasuxiaohao = this.jiasufuhuashuliang * item.money/100
+                    }
+                }
+            })
         },
         jiasubtn(){
             this.jiasukuang = true;
             this.list = [];
             this.page = 1;
             this.proppack();
-            console.log(this.list)
-            this.jiasudengjixuan = this.list[0].id
+            
         },
         async fuhuaqueding(){
             if(this.fuhuashuliang == "") return Toast('请输入孵化数量')
@@ -1251,6 +1386,7 @@ export default {
             if (!res) return false
             console.log(res)
             Toast(res.msg)
+            this.fanhui();
         },
         fuhuabtn(){
             this.fuhua1kuang = true;
@@ -1259,12 +1395,17 @@ export default {
              let res = await $ajax('hatchindex', {})
             if (!res) return false
             console.log(res)
-            if(!res){
+            let data = res.data.data
+            if(!data){
+                console.log(2222222)
                 this.fuhuaIf = false
+                
             }else{
+                console.log(333333333)
                 this.fuhuaIf = true
                 let data = res.data.data
                 this.finish_time = this.getFormatDuringTime(data.finish_time) 
+                
             }
         },
         getFormatDuringTime(during) {
@@ -1486,6 +1627,7 @@ export default {
         tabxiaoji(index){
             this.page = 1;
             this.list = [];
+            this.loading = true;
             this.finished = false;
             this.statusxiaoji = index
 
@@ -1493,16 +1635,17 @@ export default {
                 this.jishi = true
                 this.shangdian = false
                 this.fuhua = false
-
+                this.propjishi();
             }else if(index == 1){
                 this.jishi = false
                 this.shangdian = true
                 this.fuhua = false  
+                this.propshangdian();
             }else if(index == 2){
                 this.jishi = false
                 this.shangdian = false
                 this.fuhua = true
-              
+                this.propfuhua();
             }
         },
         jidan(){
@@ -2819,14 +2962,14 @@ export default {
                     }
                 }
                 
-                // .sdlan{
-                //     margin-top: 20%;
-                //     img{
-                //         width: 12.5vw;
-                //     }
-                // }
+                .sdlan{
+                    margin-top: 20%;
+                    img{
+                        width: 12.5vw;
+                    }
+                }
                 .sdlist{
-                    margin-top: 33%;
+                    margin-top: 13%;
                     height: 78vw;
                     overflow-x: hidden;
                     overflow-y: scroll;
@@ -2847,7 +2990,7 @@ export default {
                         .sdtext{
                             margin-left: 1vw;
                             div{
-                                font-size: 12px;
+                                font-size: 10px;
                                 white-space: nowrap;
                                 height: 4vw;
                                 line-height: 4vw;
@@ -3563,6 +3706,7 @@ export default {
                             // margin-left: 1vw;
                             padding: 1vw;
                             box-sizing: border-box;
+                            width: 100%;
                             div{
                                 font-size: 12px;
                                 white-space: nowrap;

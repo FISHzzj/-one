@@ -693,9 +693,9 @@ export default {
         }
     },
     created() {
-        this.user_id = this.$route.query.user_id || ""
-        console.log(this.user_id);
-        if(this.user_id){
+        this.user_id_other = this.$route.query.user_id || ""
+        console.log(this.user_id_other);
+        if(this.user_id_other){
             this.userIdshow = true;
         }else{
             this.userIdshow = false;
@@ -953,7 +953,8 @@ export default {
         },
         //收货鸡蛋 
         async shouhuo(id){
-            if(!this.user_id || this.user_id == ""){
+            console.log(this.user_id_other)
+            if(!this.user_id_other || this.user_id_other == ""){
                 let res = await $ajax('housereap', {
                     house_id: id,
                 })
@@ -1036,7 +1037,7 @@ export default {
         },
         async getData(){
             let res = await $ajax('userinfo', {
-                "fans_id": this.user_id //好友user_id（不填就是自己的）
+                "fans_id": this.user_id_other //好友user_id（不填就是自己的）
             })
             if (!res) return false
             // console.log(res)
