@@ -1473,5 +1473,17 @@ export default {
             msg: data.msg
         }
     },
+    useredit(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
+    userforget_pay(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
 
 }

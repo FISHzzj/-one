@@ -148,7 +148,7 @@ export default {
     }
 }
 </script>
-<style lang="less">
+<style lang="less" scope>
     .forget{
         width: 100%;
         height: 100%;

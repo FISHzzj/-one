@@ -127,7 +127,7 @@ export default {
     mounted(){},
 }
 </script>
-<style lang="less">
+<style lang="less" scope>
 .login{
     width: 100%;
     height: 100%;
@@ -186,6 +186,7 @@ export default {
             position: absolute;
             top: 41%;
             left: 13%;
+            
             span{
                 white-space:nowrap;
                 font-weight: bold;
@@ -198,6 +199,7 @@ export default {
                 text-indent: 3vw;
                 opacity: 0.5;
                 font-size: 3.7vw;
+                background: rgba(255,255,255,0);
                 
             }
         }
@@ -246,6 +248,7 @@ export default {
                 font-size: 3.7vw;
                 opacity: 0.5;
                 width: 100%;
+                background: rgba(255,255,255,0);
             }
         }
         .footer {

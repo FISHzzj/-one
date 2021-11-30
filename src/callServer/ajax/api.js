@@ -172,6 +172,9 @@ export default {
     hatchindex: `${common}hatch/index`, //孵化首页
     hatchcreate: `${common}hatch/create`, //孵化
     hatchuse_pack: `${common}hatch/use_pack`, //使用加速包
+    useredit: `${common}user/edit`, //换手机号
+    userforget_pay: `${common}user/forget_pay`, //重置支付密码
+    
     
     
     

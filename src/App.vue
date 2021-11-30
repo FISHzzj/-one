@@ -2,9 +2,13 @@
     <div id="app">
             <transition :name="names">
                 <keep-alive include="products">
-                    <router-view></router-view>
+                    <router-view/>
+                    
                 </keep-alive>
             </transition>
+            <!-- 背景音乐 -->
+                    <audio :src="MP3_bg" loop ref="MusicPlay" preload="preload"  controls="controls" style="display:none;"></audio>
+                    <audio :src="MP3_click" ref="MusicClick" preload="preload"  controls="controls" style="display:none;"></audio>
     </div>
 </template>
 
@@ -28,6 +32,8 @@ export default {
         return{
             names:'left',
             active: 0,
+            MP3_bg:require('@/assets/images/nongchang/music/bg_music.mp3'),
+            MP3_click:require('@/assets/images/nongchang/music/click.mp3'),
         }
     },
     components : {
