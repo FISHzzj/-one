@@ -1103,7 +1103,7 @@
                 <div class="jishou flex flex_col flex_center ali_center ">
                     <img src="../../assets/images/nongchang/yangzhi/jiasu.png" alt="" srcset="" v-if="fuhuaIf" @click="jiasubtn" >
                     <img src="../../assets/images/nongchang/yangzhi/fuhua.png" alt="" srcset=""  v-else @click="fuhuabtn">
-                    <div style="color:#E2751A;font-size:3vw;">{{finish_time}}后孵化</div>
+                    <div style="color:#E2751A;font-size:3vw;" v-if="finish_time">{{finish_time}}后孵化</div>
                 </div>
             </div>
         </div>
@@ -1125,18 +1125,19 @@
         <div class="jiasukuang animat" v-if="jiasukuang">
             <div class="kuang">
                 <div class="content">
-                    <div>孵化数量：<input type="text" v-model="jiasufuhuashuliang"></div>
+                    <div>孵化数量：<input type="text" v-model="jiasufuhuashuliang" @blur="jiashufuhuashulianghandle"></div>
                     <div>加速等级：
                         <span>
                             <select style="background: #EDC782;border: 0;width: 88%;color: #955942;font-size: 4vw;" 
                             v-model="jiasudengjixuan" @change="selectdengji(jiasudengjixuan)">
+                                <option value ="0">请选择</option> 
                                 <option :value ="item.id"  v-for="(item, index) in list" :key="index">{{item.title}}</option>
                                 <!-- <option value ="2">提现</option> -->
                             </select>    
                         </span>
                     </div>
                     <div>加速时间：<span>{{jiasushijian}}小时</span></div>
-                    <div>加速消耗：<span>{{jiasuxiaohao}}小时</span></div>
+                    <div>加速消耗：<span>{{jiasuxiaohao}}小鸡</span></div>
                 </div>
                 <div class="shezhibtn flex  flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
@@ -1321,7 +1322,7 @@ export default {
             fuhuashuliang:"",
             jiasukuang:false,
             jiasufuhuashuliang:"",
-            jiasudengjixuan:"1",
+            jiasudengjixuan:"0",
             finish_time:"",
             jiasushijian:"",
             jiasuxiaohao:"",
@@ -1441,6 +1442,7 @@ export default {
             if (!res) return false
             console.log(res)
             Toast(res.msg)
+            this.fanhui();
         },
         selectdengji(value){
             if(this.jiasufuhuashuliang == "") return Toast('请输入孵化数量')
@@ -1470,6 +1472,7 @@ export default {
             if (!res) return false
             console.log(res)
             Toast(res.msg)
+            this.fanhui();
         },
         fuhuabtn(){
             this.fuhua1kuang = true;
@@ -1478,12 +1481,17 @@ export default {
              let res = await $ajax('hatchindex', {})
             if (!res) return false
             console.log(res)
-            if(!res){
+            let data = res.data.data
+            if(!data){
+                console.log(2222222)
                 this.fuhuaIf = false
+                
             }else{
+                console.log(333333333)
                 this.fuhuaIf = true
                 let data = res.data.data
                 this.finish_time = this.getFormatDuringTime(data.finish_time) 
+                
             }
         },
         getFormatDuringTime(during) {
@@ -3829,6 +3837,7 @@ export default {
                             // margin-left: 1vw;
                             padding: 1vw;
                             box-sizing: border-box;
+                            width: 100%;
                             div{
                                 font-size: 12px;
                                 white-space: nowrap;
