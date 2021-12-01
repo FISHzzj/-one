@@ -13,6 +13,7 @@ function mistake (data) {
         if(parseInt(data.code) == 12){
             localStorage.removeItem('openid')
             localStorage.removeItem('mobile')
+            location.reload();
         }
         Dialog.alert({
             message: data.msg

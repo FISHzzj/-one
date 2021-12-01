@@ -1,5 +1,5 @@
 <template>
-    <div class="login">
+    <div class="loginnongchang">
         <!-- <div class="logincenter">
             <div @click="loginshow">登陆</div>
             <div @click="register">注册</div>
@@ -128,7 +128,7 @@ export default {
 }
 </script>
 <style lang="less" scope>
-.login{
+.loginnongchang{
     width: 100%;
     height: 100%;
     background-image: url(../assets/images/nongchang/denglv/bg.png);
