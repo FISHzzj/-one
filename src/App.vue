@@ -34,11 +34,12 @@ export default {
             active: 0,
             MP3_bg:require('@/assets/images/nongchang/music/bg_music.mp3'),
             MP3_click:require('@/assets/images/nongchang/music/click.mp3'),
+            yinyue: true,
         }
     },
     components : {
         Test
-    }
+    },
 }
 </script>
 
@@ -122,6 +123,9 @@ export default {
 }
 .flex_col{
     flex-direction: column;
+}
+.flex_wrap{
+    flex-wrap: wrap;
 }
 .flex_nowrap{
     flex-wrap: nowrap;

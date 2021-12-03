@@ -56,5 +56,14 @@ export default [
             index: 0,
             mustLogin: true,//1111,
         }
+    },
+    {
+        path: "/invite", //分享
+        name: "invite",
+        component: () => import("@/element/home/invite.vue"),
+        meta: {
+            index: 0,
+            mustLogin: true,//1111,
+        }
     }
 ];

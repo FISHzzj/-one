@@ -174,6 +174,8 @@ export default {
     hatchuse_pack: `${common}hatch/use_pack`, //使用加速包
     useredit: `${common}user/edit`, //换手机号
     userforget_pay: `${common}user/forget_pay`, //重置支付密码
+    userposter: `${common}user/poster`, //分享页面
+    
     
     
     

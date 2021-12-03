@@ -40,6 +40,15 @@
         <div class="yangzhi">
             <img src="../../assets/images/nongchang/yangzhione.png" alt="" srcset="" @click="yangzhi">
             <img src="../../assets/images/nongchang/yangzhi.png" alt="" srcset="" @click="yangzhi">
+            <div class="yangzhiji">
+                <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" @click="yangzhi">
+                <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" @click="yangzhi">
+                <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" @click="yangzhi">
+                <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" @click="yangzhi">
+                <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" @click="yangzhi">
+                <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" @click="yangzhi">
+
+            </div>
         </div>
          <!-- 兑换处 -->
         <div class="duihuanchu">
@@ -73,6 +82,9 @@
             <img src="../../assets/images/nongchang/yu1.gif" alt="" srcset="" @click="kaifazhong">
             <img src="../../assets/images/nongchang/yu2.gif" alt="" srcset="" @click="kaifazhong">
             <img src="../../assets/images/nongchang/yu.gif" alt="" srcset="" @click="kaifazhong">
+            <img src="../../assets/images/nongchang/yu1.gif" alt="" srcset="" @click="kaifazhong">
+            <img src="../../assets/images/nongchang/yu2.gif" alt="" srcset="" @click="kaifazhong">
+
 
         </div>
         <!-- 加工厂 -->
@@ -142,27 +154,29 @@
                 </div>
                 <div class="sdlist" v-show="status == 0">
                     <van-list
+                        class="flex flex_row flex_wrap flex_between"
                         v-model="loading"
                         :finished="finished"
                         :finished-text="'我是有底线的'"
-                    
+                        
                         @load="propfeed"
                     >
                         <div
+                            style="width:48%;"
                             v-for="(item,index) in list" :key="index"
                             >
-                            <div class="sditem flex ali_center" v-if="item.title == '小鸡'">
+                            <div class="sditem flex flex_col ali_center" v-if="item.title == '小鸡'">
                                 <img :src="item.img" alt="" srcset="">
-                                <div class="sdtext flex flex_col">
+                                <div class="sdtext flex flex_col ali_center">
                                     <div>{{item.title}}</div>
                                     <div>数量：{{item.stock}}</div>
                                     <div>小鸡：{{item.price}}</div>
                                 </div>
                                 <img src="../../assets/images/nongchang/shangdian/goumai.png" alt="" @click="xiaojigoumai(item.id)">
                             </div>
-                            <div class="sditem flex ali_center" v-else>
+                            <div class="sditem flex flex_col ali_center" v-else>
                                 <img :src="item.img" alt="" srcset="">
-                                <div class="sdtext flex flex_col">
+                                <div class="sdtext flex flex_col ali_center">
                                     <div>{{item.title}}</div>
                                     <div>时间：{{item.speed}}</div>
                                     <div>小鸡：{{item.money}}</div>
@@ -175,6 +189,7 @@
                 </div>
                 <div class="sdlist" v-show="status == 1">
                     <van-list
+                        class="flex flex_row flex_wrap flex_between"
                         v-model="loading"
                         :finished="finished"
                         :finished-text="'我是有底线的'"
@@ -182,15 +197,16 @@
                         @load="propdog"
                     >
                         <div
-                             class="sditem flex ali_center"
+                             class="sditem flex flex_col ali_center"
+                             style="width:48%;"
                             v-for="(item,index) in list" :key="index"
                             >
                             
                             <img :src="item.img" alt="" srcset="">
-                            <div class="sdtext flex flex_col">
+                            <div class="sdtext flex flex_col ali_center">
                                 <div>{{item.title}}</div>
                                 <div>防盗：{{item.steal}}%</div>
-                                <div>小鸡：{{item.price}}</div>
+                                <div>小鸡：{{item.money}}</div>
                             </div>
                             <img src="../../assets/images/nongchang/shangdian/goumai.png" alt="" @click="yangzhi">
                           
@@ -199,6 +215,7 @@
                 </div>
                 <div class="sdlist" v-show="status == 2">
                     <van-list
+                        class="flex flex_row flex_wrap flex_between"
                         v-model="loading"
                         :finished="finished"
                         :finished-text="'我是有底线的'"
@@ -206,12 +223,13 @@
                         @load="propfence"
                     >
                         <div
-                             class="sditem flex ali_center"
+                             class="sditem flex flex_col ali_center"
+                             style="width:48%;"
                             v-for="(item,index) in list" :key="index"
                             >
                             
                             <img :src="item.img" alt="" srcset="">
-                            <div class="sdtext flex flex_col">
+                            <div class="sdtext flex flex_col ali_center">
                                 <div>{{item.title}}</div>
                                 <div>收益：{{item.profit}}%</div>
                                 <div>小鸡：{{item.money}}</div>
@@ -223,6 +241,7 @@
                 </div>
                 <div class="sdlist" v-show="status == 3">
                     <van-list
+                        class="flex flex_row flex_wrap flex_between"
                         v-model="loading"
                         :finished="finished"
                         :finished-text="'我是有底线的'"
@@ -230,12 +249,13 @@
                         @load="propbroom"
                     >
                         <div
-                             class="sditem flex ali_center"
+                            class="sditem flex flex_col ali_center"
+                            style="width:48%;"
                             v-for="(item,index) in list" :key="index"
                             >
                             
                             <img :src="item.img" alt="" srcset="">
-                            <div class="sdtext flex flex_col">
+                            <div class="sdtext flex flex_col ali_center">
                                 <div>{{item.title}}</div>
                                 <div>次数：{{item.count}}</div>
                                 <div>收获：{{item.gift}}%</div>
@@ -248,6 +268,7 @@
                 </div>
                 <div class="sdlist" v-show="status == 4">
                     <van-list
+                        class="flex flex_row flex_wrap flex_between"
                         v-model="loading"
                         :finished="finished"
                         :finished-text="'我是有底线的'"
@@ -255,7 +276,8 @@
                         @load="proppack"
                     >
                         <div
-                             class="sditem flex ali_center"
+                            class="sditem flex flex_col ali_center"
+                            style="width:48%;"
                             v-for="(item,index) in list" :key="index"
                             >
                             
@@ -348,7 +370,7 @@
                             <!-- <img src="../../assets/images/nongchang/shangdian/jiasu.png" alt="" srcset=""> -->
                             <div class="sdtext flex flex_col ">
                                 <div class="flex flex_between">
-                                    <span style="width: 30vw;overflow: hidden;margin-right:5vw;">{{item.status == 1 ? '购买人' : '寄卖人'}}：{{item.nick_name}}</span>
+                                    <span style="width: 30vw;overflow: hidden;margin-right:5vw;">{{item.status == 2 ? '购买人' : '寄卖人'}}：{{item.nick_name}}</span>
                                     <span>数量：{{item.num}}</span>
                                 </div>
                                 <div class="flex flex_between">
@@ -519,15 +541,31 @@
         <div class="gerenxinxi animat" v-if="gerenxinxikuang">
             <div class="kuang">
                 <div class="content  ">
-                    <img :src="avatar" alt="">
-                    <div>昵称：{{nick_name}}</div>
-                    <div>ID：{{user_id}}</div>
-                    <div :data-clipboard-text="invite_code" class="copy">邀请码：{{invite_code}}<a href="javascript:;">&nbsp;&nbsp;&nbsp;&nbsp;复制</a> </div>
-                    <div @click="bangding">绑定手机：{{mobile}}<a href="javascript:;">&nbsp;&nbsp;去绑定</a></div>
+                    <div class="flex">
+                        <img :src="avatar" alt="" style="margin-right:2vw;">
+                        <div class="flex flex_col">
+                             <div>昵称：{{nick_name}}</div>
+                            <div>ID：{{user_id}}</div>
+                        </div>
+                    </div>
+                    <div>邀请人：{{first_leader.nick_name}} </div>
+
+                    <div :data-clipboard-text="invite_code" class="copy">邀请码：{{invite_code}}<a style="background: linear-gradient(0deg, rgb(255, 168, 0) 0%, rgb(255, 245, 89) 100%);
+                        padding: 0 2vw;
+                        text-align: center;
+                        display: inline-block;
+                        border-radius: 1vw;
+                        font-size: 14px;margin-left:2vw" href="javascript:;">复制</a> </div>
+                    <div @click="bangding">绑定手机：{{mobile}}<a style="background: linear-gradient(0deg, rgb(255, 168, 0) 0%, rgb(255, 245, 89) 100%);
+                        padding: 0 2vw;
+                        text-align: center;
+                        display: inline-block;
+                        border-radius: 1vw;
+                        font-size: 14px;margin-left:2vw" href="javascript:;">修改</a></div>
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
-                   <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt="" @click="tologin">
+                   <img src="../../assets/images/nongchang/gerenxinxi/fenxiang.png" alt="" @click="tofenxiang">
                    <!-- <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt=""> -->
                 </div>
             </div>
@@ -1100,6 +1138,9 @@
                 <div class="guanbi flex flex-end">
                     <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
                 </div>
+                 <div class="dan flex flex_center" v-if="finish_time">
+                    <img src="../../assets/images/nongchang/yangzhi/dan.png" alt="" @click="fanhui">
+                </div>
                 <div class="jishou flex flex_col flex_center ali_center ">
                     <img src="../../assets/images/nongchang/yangzhi/jiasu.png" alt="" srcset="" v-if="fuhuaIf" @click="jiasubtn" >
                     <img src="../../assets/images/nongchang/yangzhi/fuhua.png" alt="" srcset=""  v-else @click="fuhuabtn">
@@ -1194,6 +1235,7 @@ export default {
             avatar:"",
             mobile:"",
             invite_code:"",
+            first_leader:{},
             balance:"",
             shezhikuang: false,
             shezhitext:true,
@@ -1593,6 +1635,12 @@ export default {
             if (!res) return false
             Toast(res.msg)
             this.fanhui();
+        },
+        //去分享
+        tofenxiang(){
+            this.$router.push({
+                name:'invite'
+            })
         },
         // 切换账号
         tologin(){
@@ -2550,6 +2598,54 @@ export default {
                 left: 16vw;
                 // right: 65vw;
             }
+            >.yangzhiji{
+                 width: 14vw;
+                position: absolute;
+                top: 9vw;
+                left: 16vw;
+                >img:first-child{
+                    width: 10vw;
+                    position: absolute;
+                    top: 9vw;
+                    left: 16vw;
+
+                }
+                >img:nth-child(2){
+                    width: 10vw;
+                    position: absolute;
+                    top: 13vw;
+                    left: 10vw;
+
+                }
+                >img:nth-child(3){
+                    width: 10vw;
+                    position: absolute;
+                    top: 16vw;
+                    left: 16vw;
+
+                }
+                >img:nth-child(4){
+                    width: 10vw;
+                    position: absolute;
+                    top: 13vw;
+                    left: 23vw;
+
+                }
+                >img:nth-child(5){
+                    width: 10vw;
+                    position: absolute;
+                    top: 5vw;
+                    left: 23vw;
+
+                }
+                >img:nth-child(6){
+                    width: 10vw;
+                    position: absolute;
+                    top: 9vw;
+                    left: 29vw;
+
+                }
+            }
         }
         .duihuanchu{
             position: absolute;
@@ -2655,6 +2751,18 @@ export default {
                 left: -3vw;
             }
             img:nth-child(4){
+                // width: 13vw;
+                position: absolute;
+                top: 12vw;
+                left: 12vw;
+            }
+            img:nth-child(5){
+                // width:13vw;
+                position: absolute;
+                top: 3vw;
+                left: -9vw;
+            }
+            img:nth-child(6){
                 // width: 13vw;
                 position: absolute;
                 top: 12vw;
@@ -2943,6 +3051,7 @@ export default {
                     margin-top: 20%;
                     img{
                         width: 12.5vw;
+                        height: 6vw;
                     }
                 }
                 .sdlist{
@@ -2950,14 +3059,16 @@ export default {
                     height: 78vw;
                     overflow-x: hidden;
                     overflow-y: scroll;
-                    width: 90%;
-                    margin-left: 5%;
+                    width: 70%;
+                    margin-left: 15%;
                     .sditem{
                         background: #FFECDC;
-                        width: 75%;
-                        margin-left: 12.5%;
+                        width: 100%;
+                        // margin-left: 12.5%;
                         border-radius: 1vw;
                         margin-bottom: 2vw;
+                        padding: 2vw;
+                        box-sizing: border-box;
                       
                         img:first-child{
                             width: 15vw;
@@ -2969,13 +3080,13 @@ export default {
                             div{
                                 font-size: 10px;
                                 white-space: nowrap;
-                                height: 4vw;
-                                line-height: 4vw;
+                                height: 5vw;
+                                line-height: 5vw;
                             }
                         }
                         img:last-child{
                             width: 15vw;
-                            margin-left: 5vw;
+                            // margin-left: 5vw;
                         }
                     }
                 }
@@ -3012,8 +3123,8 @@ export default {
                 .sdlan{
                     margin-top: 20%;
                     img{
-                        width: 17.5vw;
-                        height: 5vw;
+                         width: 20vw;
+                        height: 6vw;
                     }
                 }
                 .sdlist{
@@ -3120,7 +3231,8 @@ export default {
                 .sdlan{
                     margin-top: 20%;
                     img{
-                        width: 12.5vw;
+                        width: 13.5vw;
+                        height: 6vw;
                     }
                 }
                 .sdlist{
@@ -3189,19 +3301,20 @@ export default {
                 .content{
                     padding: 5vw 5vw;
                     margin-top: 15%;
-                    text-align: center;
+                    text-align: left;
+                    margin-left: 7vw;
                     img{
                         width: 15vw;
                         height: 15vw;
                         border-radius: 50%;
                     }
                     div{
-                        height: 6vw;
+                        // height: 6vw;
                         /* margin-top: 1vw; */
-                        line-height: 6vw;
-                        margin-bottom: 0.5vw;
+                        // line-height: 6vw;
+                        // margin-bottom: 0.5vw;
                         a{
-                            color:#FE523B;
+                            color:#955942;
                             
                         }
                     }
@@ -3230,7 +3343,7 @@ export default {
                 position: absolute;
                 top: 50%;
                 left: 50%;
-                transform: translate(-90%, -47%);
+                transform: translate(-50%, -50%);
                 width: 80%;
                 height: 126vw;
                 background-image: url(../../assets/images/nongchang/haoyou/kuang.png);
@@ -3248,7 +3361,8 @@ export default {
                 .sdlan{
                     margin-top: 5%;
                     img{
-                        width: 16.5vw;
+                        width: 20vw;
+                        height: 6vw;
                     }
                 }
                 .sdlist{
@@ -3260,8 +3374,8 @@ export default {
                     margin-left: 5%;
                     .sditem{
                         // background: #FFECDC;
-                        width: 75%;
-                        margin-left: 28.5%;
+                        // width: 75%;
+                        margin-left: 13.5%;
                         border-radius: 1vw;
                         margin-bottom: 2vw;
                       
@@ -3731,8 +3845,8 @@ export default {
                 .sdlan{
                     margin-top: 20%;
                     img{
-                        width: 17.5vw;
-                        height: 5vw;
+                        width: 20vw;
+                        height: 6vw;
                     }
                 }
                 .sdlist{
@@ -3840,8 +3954,8 @@ export default {
                 .sdlan{
                     margin-top: 20%;
                     img{
-                        width: 17.5vw;
-                        height: 5vw;
+                         width: 20vw;
+                        height: 6vw;
                     }
                 }
                 .sdlist{
@@ -3950,8 +4064,8 @@ export default {
                 .sdlan{
                     margin-top: 20%;
                     img{
-                        width: 17.5vw;
-                        height: 5vw;
+                         width: 20vw;
+                        height: 6vw;
                     }
                 }
                 .sdlist{
@@ -4125,8 +4239,8 @@ export default {
                 .sdlan{
                     margin-top: 20%;
                     img{
-                        width: 17.5vw;
-                        height: 5vw;
+                        width: 20vw;
+                        height: 6vw;
                     }
                 }
                 .sdlist{
@@ -4193,8 +4307,14 @@ export default {
                         
                     }
                 }
+                .dan{
+                    margin-top: 70%;
+                    img{
+                        width:25vw;
+                    }
+                }
                 .jishou{
-                    margin-top: 105vw;
+                    margin-top: 16vw;
                     img{
                         width: 25vw;
                         // height: 7vw;
@@ -4453,6 +4573,9 @@ export default {
     .van-password-input__security li{
         background-color: #EDC782;
         border: 1px solid #A96E03;
+    }
+    .van-list__finished-text{
+        width: 100%;
     }
     // .van-switch--on {
     //     background: #EDC782!important;

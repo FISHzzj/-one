@@ -1168,14 +1168,15 @@ export default {
     },
     userinfo(data){
         if ( mistake(data) ) return false
-        let { user_id, nick_name, avatar, mobile, invite_code, balance } = data.user
+        let { user_id, nick_name, avatar, mobile, invite_code, balance, first_leader } = data.user
         return {
             user_id,
             nick_name,
             avatar,
             mobile,
             invite_code,
-            balance
+            balance,
+            first_leader
         }
     },
     goodslists(data){
@@ -1484,6 +1485,15 @@ export default {
         if ( mistake(data) ) return false
         return {
             msg: data.msg
+        }
+    },
+    userposter(data){
+        if ( mistake(data) ) return false 
+        let {url, background_img, invite_code} = data
+        return{
+            url, 
+            background_img, 
+            invite_code
         }
     },
 
