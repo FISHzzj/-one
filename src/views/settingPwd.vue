@@ -106,11 +106,11 @@ export default {
             })
             if (!res) return false
             // 如果爲 非 app 進入, 則跳轉下載頁面, 並終止函數
-            // if ( sessionStorage.getItem('noApp') ) {
-            //     // alert(222)
-            //     window.location.href = 'https://downloadpkg.app3c.cn/app/download?path=https://A6163977333456.qiniucdn.apicloud-system.com/31caecf2c21c7b3f9bba5698824a8dc0_d&ver=0.0.6&size=3.08M'
-            //     return false
-            // }
+            if ( sessionStorage.getItem('noApp') ) {
+                // alert(222)
+                window.location.href = 'https://downloadpkg.apicloud.com/app/download?path=https://a6163977333456pri.qiniucdn.apicloud-system.com/85e691d918062ec03b71ba5948a97a86.apk?e=1625923942&token=JJoArmGfyj9tY_GtRsWJNn9k1PESc6Q8tjbTubvH:2N1NfHXJFEZhIN7F8FbiLsAvWtc='
+                return false
+            }
             // 進行登錄 提示
 			const toast = Toast.loading({
 				message: '登入中...',
