@@ -28,6 +28,11 @@
                 </div>
                
             </div>
+            <div class="niaoniao">
+                <img src="../../assets/images/nongchang/niao1.gif" alt="" srcset="">
+                <img src="../../assets/images/nongchang/niao2.gif" alt="" srcset="">
+
+            </div>
         </div>
         <div class="leftbtn flex flex_col">
             <img src="../../assets/images/nongchang/shezhi.png" alt="" srcset="" @click="shezhi">
@@ -41,12 +46,12 @@
             <img src="../../assets/images/nongchang/yangzhione.png" alt="" srcset="" @click="yangzhi">
             <img src="../../assets/images/nongchang/yangzhi.png" alt="" srcset="" @click="yangzhi">
             <div class="yangzhiji">
+                <img src="../../assets/images/nongchang/yangzhi/xiaoji3.gif" alt="" srcset="" @click="yangzhi">
+                <img src="../../assets/images/nongchang/yangzhi/xiaoji2.gif" alt="" srcset="" @click="yangzhi">
+                <img src="../../assets/images/nongchang/yangzhi/xiaoji3.gif" alt="" srcset="" @click="yangzhi">
                 <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" @click="yangzhi">
-                <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" @click="yangzhi">
-                <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" @click="yangzhi">
-                <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" @click="yangzhi">
-                <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" @click="yangzhi">
-                <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" @click="yangzhi">
+                <img src="../../assets/images/nongchang/yangzhi/xiaoji2.gif" alt="" srcset="" @click="yangzhi">
+                <img src="../../assets/images/nongchang/yangzhi/xiaoji3.gif" alt="" srcset="" @click="yangzhi">
 
             </div>
         </div>
@@ -170,7 +175,7 @@
                                 <div class="sdtext flex flex_col ali_center" >
                                     <div>{{item.title}}</div>
                                     <div>数量：{{item.stock}}</div>
-                                    <div>小鸡：{{item.price}}</div>
+                                    <div>鸡分：{{item.price}}</div>
                                 </div>
                                 <img src="../../assets/images/nongchang/shangdian/goumai.png" alt="" @click="xiaojigoumai(item.id)">
                             </div>
@@ -179,7 +184,7 @@
                                 <div class="sdtext flex flex_col ali_center" @click="jisiliaohandle(item.img, item.title, item.speed, item.money)">
                                     <div>{{item.title}}</div>
                                     <div>时间：{{item.speed}}</div>
-                                    <div>小鸡：{{item.money}}</div>
+                                    <div>鸡分：{{item.money}}</div>
                                 </div>
                                 <img src="../../assets/images/nongchang/shangdian/goumai.png" alt="" @click="yangzhi" >
                             </div>
@@ -206,7 +211,7 @@
                             <div class="sdtext flex flex_col ali_center" @click="shouhuquanhandle(item.img, item.title, item.steal, item.money)">
                                 <div>{{item.title}}</div>
                                 <div>防盗：{{item.steal}}%</div>
-                                <div>小鸡：{{item.money}}</div>
+                                <div>鸡分：{{item.money}}</div>
                             </div>
                             <img src="../../assets/images/nongchang/shangdian/goumai.png" alt="" @click="yangzhi">
                           
@@ -232,7 +237,7 @@
                             <div class="sdtext flex flex_col ali_center" @click="weilanhandle(item.img, item.title, item.profit, item.money)">
                                 <div>{{item.title}}</div>
                                 <div>收益：{{item.profit}}%</div>
-                                <div>小鸡：{{item.money}}</div>
+                                <div>鸡分：{{item.money}}</div>
                             </div>
                             <img src="../../assets/images/nongchang/shangdian/goumai.png" alt="" @click="yangzhi">
                           
@@ -260,7 +265,7 @@
                                 <div>{{item.title}}</div>
                                 <div>次数：{{item.count}}</div>
                                 <div>收获：{{item.gift}}%</div>
-                                <div>小鸡：{{item.money}}</div>
+                                <div>鸡分：{{item.money}}</div>
                             </div>
                             <img src="../../assets/images/nongchang/shangdian/goumai.png" alt="" @click="goumaisaoba(item.id)">
                           
@@ -286,7 +291,7 @@
                             <div class="sdtext flex flex_col">
                                 <div>{{item.title}}</div>
                                 <div>加速时间：{{item.time}}</div>
-                                <div>小鸡：{{item.money}}</div>
+                                <div>鸡分：{{item.money}}</div>
                             </div>
                             <img src="../../assets/images/nongchang/shangdian/goumai.png" alt="" @click="fuhuahandle">
                           
@@ -421,7 +426,7 @@
                                 <div class="sdtext flex flex_col">
                                     <div>{{item.title}}</div>
                                     <div>数量：{{item.stock}}</div>
-                                    <div>小鸡：{{item.price}}</div>
+                                    <div>鸡分：{{item.price}}</div>
                                 </div>
                                 <!-- <img src="../../assets/images/nongchang/shangdian/goumai.png" alt="" @click="xiaojigoumai(item.id)"> -->
                             </div>
@@ -430,7 +435,7 @@
                                 <div class="sdtext flex flex_col">
                                     <div>{{item.title}}</div>
                                     <div>时间：{{item.speed}}</div>
-                                    <div>小鸡：{{item.money}}</div>
+                                    <div>鸡分：{{item.money}}</div>
                                 </div>
                                 <!-- <img src="../../assets/images/nongchang/shangdian/goumai.png" alt="" > -->
                             </div>
@@ -456,7 +461,7 @@
                             <div class="sdtext flex flex_col">
                                 <div>{{item.title}}</div>
                                 <div>防盗：{{item.steal}}%</div>
-                                <div>小鸡：{{item.money}}</div>
+                                <div>鸡分：{{item.money}}</div>
                             </div>
                             <!-- <img src="../../assets/images/nongchang/shangdian/goumai.png" alt=""> -->
                           
@@ -481,7 +486,7 @@
                             <div class="sdtext flex flex_col">
                                 <div>{{item.title}}</div>
                                 <div>收益：{{item.profit}}%</div>
-                                <div>小鸡：{{item.money}}</div>
+                                <div>鸡分：{{item.money}}</div>
                             </div>
                             <!-- <img src="../../assets/images/nongchang/shangdian/goumai.png" alt=""> -->
                           
@@ -507,7 +512,7 @@
                                 <div>{{item.title}}</div>
                                 <div>次数：{{item.count}}</div>
                                 <div>收获：{{item.gift}}%</div>
-                                <div>小鸡：{{item.money}}</div>
+                                <div>鸡分：{{item.money}}</div>
                             </div>
                             <!-- <img src="../../assets/images/nongchang/shangdian/goumai.png" alt="" @click="goumaisaoba(item.id)"> -->
                           
@@ -532,7 +537,7 @@
                             <div class="sdtext flex flex_col">
                                 <div>{{item.title}}</div>
                                 <div>加速时间：{{item.time}}</div>
-                                <div>小鸡：{{item.money}}</div>
+                                <div>鸡分：{{item.money}}</div>
                             </div>
                             <!-- <img src="../../assets/images/nongchang/shangdian/goumai.png" alt=""> -->
                           
@@ -549,7 +554,12 @@
                     <div class="flex">
                         <img :src="avatar" alt="" style="margin-right:2vw;">
                         <div class="flex flex_col">
-                             <div>昵称：{{nick_name}}</div>
+                             <div @click="nicheng">昵称：{{nick_name}}<a style="background: linear-gradient(0deg, rgb(255, 168, 0) 0%, rgb(255, 245, 89) 100%);
+                                padding: 0 2vw;
+                                text-align: center;
+                                display: inline-block;
+                                border-radius: 1vw;
+                                font-size: 14px;margin-left:2vw" href="javascript:;">修改</a></div>
                             <div>ID：{{user_id}}</div>
                         </div>
                     </div>
@@ -567,6 +577,12 @@
                         display: inline-block;
                         border-radius: 1vw;
                         font-size: 14px;margin-left:2vw" href="javascript:;">修改</a></div>
+                    <div>团队人数: {{team_info.count}} </div>
+                    <div>团队总鸡量：{{team_info.credit1}} </div>
+                    <div>团队总蛋量：{{team_info.credit2}} </div>
+                    <div>团队总鸡分量：{{team_info.integral}} </div>
+                    <!-- <div>邀请人：{{first_leader.nick_name}} </div> -->
+
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
@@ -584,46 +600,52 @@
                     
                 </div>
                 <div class="sdlist" v-if="statushao == 0">
-                    <van-list
+                    <!-- <van-list
                         v-model="loading"
                         :finished="finished"
                         :finished-text="'我是有底线的'"
                         @load="fanslists"
-                    >
-                        <div class="sditem flex ali_center" v-for="(item, index) in list" :key="index" @click="goyangzhi(item.user_id)"> 
+                    > -->
+                        <div class="sditem flex ali_center" v-for="(item, index) in list" :key="index" > 
                             <!-- <img src="../../assets/images/nongchang/shangdian/jiasu.png" alt="" srcset=""> -->
                             <div class="sdtext flex ali_center" >
-                                <div>{{item.user_id}}</div>
+                                <!-- <div>{{item.user_id}}</div> -->
                                 <div class="flex ali_center">
                                     <img :src="item.avatar" alt="">
                                     <span style="margin-left:2vw;">{{item.nick_name}}</span>
                                 </div>
-                                <div class="flex ali_center"><img src="../../assets/images/nongchang/haoyou/tou.png" alt=""></div>
+                                <div class="flex ali_center">
+                                    <img src="../../assets/images/nongchang/haoyou/saoba.png" alt="" v-show="item.status_clean" @click="goyangzhi(item.user_id)">
+                                    <img src="../../assets/images/nongchang/haoyou/tou.png" alt="" v-show="item.status_steal" @click="goyangzhi(item.user_id)">
+                                </div>
                             </div>
                             <!-- <img src="../../assets/images/nongchang/shangdian/goumai.png" alt=""> -->
                         </div>
-                    </van-list>
+                    <!-- </van-list> -->
                 </div>
                 <div class="sdlist" v-if="statushao == 1">
-                    <van-list
+                    <!-- <van-list
                         v-model="loading"
                         :finished="finished"
                         :finished-text="'我是有底线的'"
                         @load="fansalllists"
-                    >
+                    > -->
                         <div class="sditem flex ali_center" v-for="(item, index) in list" :key="index" @click="goyangzhi(item.user_id)"> 
                             <!-- <img src="../../assets/images/nongchang/shangdian/jiasu.png" alt="" srcset=""> -->
                             <div class="sdtext flex ali_center" >
-                                <div>{{item.user_id}}</div>
+                                <!-- <div>{{item.user_id}}</div> -->
                                 <div class="flex ali_center">
                                     <img :src="item.avatar" alt="">
                                     <span style="margin-left:2vw;">{{item.nick_name}}</span>
                                 </div>
-                                <div class="flex ali_center"><img src="../../assets/images/nongchang/haoyou/tou.png" alt=""></div>
+                                <div class="flex ali_center">
+                                    <img src="../../assets/images/nongchang/haoyou/saoba.png" alt="" v-show="item.status_clean" @click="goyangzhi(item.user_id)">
+                                    <img src="../../assets/images/nongchang/haoyou/tou.png" alt="" v-show="item.status_steal" @click="goyangzhi(item.user_id)">
+                                </div>
                             </div>
                             <!-- <img src="../../assets/images/nongchang/shangdian/goumai.png" alt=""> -->
                         </div>
-                    </van-list>
+                    <!-- </van-list> -->
                 </div>
                 <div class="shezhibtn flex flex_center">
                     <img src="../../assets/images/nongchang/haoyou/huanyipi.png" alt="" @click="huanyipi">
@@ -754,16 +776,16 @@
                         </select>
                     </div>
                     <div class="flex flex_col flex_end" v-if="selectVal == 2">
-                        <div class="gmkshuliang flex flex_center ali_center">
+                        <!-- <div class="gmkshuliang flex flex_center ali_center">
                             <span style="white-space: nowrap;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;私钥：</span>
                             <input type="text" v-model="privatekey" >
                         </div>
                         <div class="gmkshuliang flex flex_center ali_center">
                             <span style="white-space: nowrap;">合约地址：</span>
                             <input type="text" v-model="tokencontract" >
-                        </div>
+                        </div> -->
                         <div class="gmkshuliang flex flex_center ali_center">
-                            <span style="white-space: nowrap;">目标地址：</span>
+                            <span style="white-space: nowrap;">钱包地址：</span>
                             <input type="text" v-model="target" >
                         </div>
                         <div class="gmkshuliang flex flex_center ali_center">
@@ -780,21 +802,32 @@
                         </div>
                     </div>
                     <div v-else>
+                        
                         <div class="gmkshuliang flex flex_center ali_center">
-                            <span style="white-space: nowrap;">充值地址：</span>
-                            <input type="text" v-model="chongzhidizhi"  disabled >
-                            <a style="background: linear-gradient(0deg, rgb(255, 168, 0) 0%, rgb(255, 245, 89) 100%);
+                            <span style="white-space: nowrap;">用户地址：</span>
+                            <input type="text" v-model="fromaddress" placeholder="请登录获取用户地址" >
+                            <!-- <a style="background: linear-gradient(0deg, rgb(255, 168, 0) 0%, rgb(255, 245, 89) 100%);
                             padding: 0 2vw;
                             text-align: center;
                             display: inline-block;
                             border-radius: 1vw;
                             color: #955942;
                             white-space: nowrap;
-                            font-size: 14px;margin-left:2vw" href="javascript:;" :data-clipboard-text="chongzhidizhi" class="copy">复制</a> 
+                            font-size: 14px;margin-left:2vw" href="javascript:;" :data-clipboard-text="chongzhidizhi" class="copy">复制</a>  -->
                         </div>
-                        <div class="gmkshuliang flex flex_center ali_center">
+                        <!-- <div class="gmkshuliang flex flex_center ali_center">
+                            <span style="white-space: nowrap;">充值地址：</span>
+                            <input type="text" v-model="toaddress"  disabled >
+                            
+                        </div> -->
+                         <div class="gmkshuliang flex flex_center ali_center">
+                            <span style="white-space: nowrap;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数量：</span>
+                            <input type="text" v-model="amount"  >
+                        </div>
+                       
+                        <!-- <div class="gmkshuliang flex flex_center ali_center">
                             <img :src="erweima" alt="">
-                        </div>
+                        </div> -->
                     </div>
                     
                    
@@ -802,7 +835,8 @@
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
                    <img src="../../assets/images/nongchang/jishi/queding.png" alt="" @click="tixianqueding"  v-if="selectVal == 2">
-                   <!-- <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt=""> -->
+                   <img src="../../assets/images/nongchang/jishi/queding.png" alt="" @click="chongzhiqueding" v-if="selectVal == 1">
+                   <img src="../../assets/images/nongchang/denglv/login.png" alt="" @click="tologinqianbao" >
                 </div>
             </div>
         </div>
@@ -1021,8 +1055,10 @@
                         
                     </van-list>
                 </div>
-                <div class="jishou flex flex_center" v-if="statusjishi == 1">
-                    <img src="../../assets/images/nongchang/jishi/jishou.png" alt="" srcset="" @click="jishoubtn">
+                <div class="jishou flex flex_center" >
+                    <img src="../../assets/images/nongchang/jishi/jishou.png" alt="" srcset="" @click="jishoubtn" v-if="statusjishi == 1">
+                    <img src="../../assets/images/nongchang/jishi/zhuanrangbtn.png" alt="" srcset="" @click="jifenzhuanrangbtn">
+
                 </div>
             </div>
         </div>
@@ -1080,9 +1116,9 @@
                                     <span >ID：{{item.source_id}}</span>
                                 </div>
                                 <div class="flex flex_between">
-                                    <span style="width: 30vw;overflow: hidden;margin-right:5vw;" v-if="item.source_type == 105">鸡分：-{{item.source_type}}</span>
-                                    <span style="width: 30vw;overflow: hidden;margin-right:5vw;" v-else>鸡分：{{item.source_type}}</span>
-                                    <!-- <span>数量：300</span> -->
+                                    <span style="width: 30vw;overflow: hidden;margin-right:5vw;" v-if="item.change_type == 2">鸡分：-{{item.change_amount}}</span>
+                                    <span style="width: 30vw;overflow: hidden;margin-right:5vw;" v-else>鸡分：{{item.change_amount}}</span>
+                                    <span>昵称：{{item.user_name}}</span>
                                 </div>
                                 
                                 <div>时间：{{item.create_time}}</div>
@@ -1129,11 +1165,11 @@
             <div class="kuang">
                 <div class="content  ">
                      <div class="zhuan flex ali_center">
-                        <span>&nbsp;&nbsp;&nbsp;&nbsp;转让ID：</span>
+                        <span class="width20">转让ID：</span>
                         <input type="number" v-model="to_user_id" placeholder="请输入转让ID">
                     </div>
                     <div class="zhuan flex ali_center">
-                        <span>转让鸡分：</span>
+                        <span class="width20">转让鸡分：</span>
                         <input type="number" v-model="jifennum" placeholder="请输入转让鸡分">
                     </div>
     
@@ -1145,14 +1181,35 @@
                 </div>
             </div>
         </div>
+        <!--小鸡转让 -->
+        <div class="xiaojizhuanrangkuang animat" v-if="xiaojizhuanrangkuang">
+            <div class="kuang">
+                <div class="content  ">
+                     <div class="zhuan flex ali_center">
+                        <span class="width20">转让ID：</span>
+                        <input type="number" v-model="to_user_id" placeholder="请输入转让ID">
+                    </div>
+                    <div class="zhuan flex ali_center">
+                        <span class="width20">转让小鸡：</span>
+                        <input type="number" v-model="xiaojinum" placeholder="请输入转让小鸡">
+                    </div>
+    
+                </div>
+                <div class="shezhibtn flex flex_center">
+                   <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
+                   <img src="../../assets/images/nongchang/jishi/queding.png" alt="" @click="xiaojizhuanrangqueding">
+                   
+                </div>
+            </div>
+        </div>
         <!-- 孵化 -->
         <div class="fuhuakuang animat" v-if="fuhuakuang">
             <div class="kuang">
                 <div class="guanbi flex flex-end">
                     <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
                 </div>
-                 <div class="dan flex flex_center" v-if="finish_time">
-                    <img src="../../assets/images/nongchang/yangzhi/dan.png" alt="" @click="fanhui">
+                 <div class="dan flex flex_center" :class="finish_time ? '': 'margintop'">
+                    <img src="../../assets/images/nongchang/yangzhi/dan.png" alt="" v-if="finish_time" @click="fanhui">
                 </div>
                 <div class="jishou flex flex_col flex_center ali_center ">
                     <img src="../../assets/images/nongchang/yangzhi/jiasu.png" alt="" srcset="" v-if="fuhuaIf" @click="jiasubtn" >
@@ -1191,7 +1248,7 @@
                         </span>
                     </div>
                     <div>加速时间：<span>{{jiasushijian}}小时</span></div>
-                    <div>加速消耗：<span>{{jiasuxiaohao}}小鸡</span></div>
+                    <div>加速消耗：<span>{{jiasuxiaohao}}鸡分</span></div>
                 </div>
                 <div class="shezhibtn flex  flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
@@ -1231,7 +1288,22 @@
                 </div>
             </div>
         </div>
-
+        <div class="nechenggenghuan animat" v-if="nechenggenghuan">
+            <div class="kuang">
+                <div class="content ">
+                    <!-- <img src="../../assets/images/icon/7.png" alt=""> -->
+                    <!-- <div>购买物品：小鸡</div> -->
+                    <div class="gmkshuliang flex flex_center ali_center">
+                        <span>会员昵称：</span>
+                        <input type="text" v-model="newnicheng" placeholder="请输入新会员昵称">
+                    </div>   
+                </div>
+                <div class="shezhibtn flex flex_center">
+                   <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
+                   <img src="../../assets/images/nongchang/jishi/queding.png" alt="" @click="nechengxiugai">
+                </div>
+            </div>
+        </div>
         <!-- 围栏 -->
         <div class="weilan animat" v-if="weilankuang">
             <div class="kuang">
@@ -1239,7 +1311,7 @@
                     <div><img :src="imgSrc" alt=""> </div>
                     <div>围栏等级：<span>{{dengji}}</span></div>
                     <div>围栏收益：<span>{{profit}}%</span></div>
-                    <div>围栏消耗：<span>{{xiaohaoxiaoji}}小鸡</span></div>
+                    <div>围栏消耗：<span>{{xiaohaoxiaoji}}鸡分</span></div>
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
@@ -1256,7 +1328,7 @@
                    <div><img :src="imgSrc" alt=""> </div>
                     <div>守护等级：<span>{{dengji}}</span></div>
                     <div>守护防盗：<span>{{steal}}%</span></div>
-                    <div>守护消耗：<span>{{xiaohaoxiaoji}}小鸡</span></div>
+                    <div>守护消耗：<span>{{xiaohaoxiaoji}}鸡分</span></div>
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
@@ -1273,7 +1345,7 @@
                     <div><img :src="imgSrc" alt=""> </div>
                     <div>饲料等级：<span>{{dengji}}</span></div>
                     <div>加速时间：<span>{{speed}}</span></div>
-                    <div>喂养消耗：<span>{{xiaohaoxiaoji}}小鸡</span></div>
+                    <div>喂养消耗：<span>{{xiaohaoxiaoji}}鸡分</span></div>
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
@@ -1291,7 +1363,7 @@
                     <div>扫帚等级：<span>{{dengji}}</span></div>
                     <div>打扫次数：<span>{{count}}</span></div>
                     <div>打扫收益：<span>{{gift}}%</span></div>
-                    <div>打扫消耗：<span>{{xiaohaoxiaoji}}小鸡</span></div>
+                    <div>打扫消耗：<span>{{xiaohaoxiaoji}}鸡分</span></div>
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
@@ -1305,6 +1377,8 @@
 <script>
  // 複製模塊
 import {copy} from '../../func/copy'
+import { sendTransaction } from '../../utils/chongzhi'
+import {enable} from "../../utils/web3utils";
 export default {
     name: 'index',
     data () {
@@ -1315,10 +1389,11 @@ export default {
             mobile:"",
             invite_code:"",
             first_leader:{},
+            team_info:{},
             balance:"",
             shezhikuang: false,
             shezhitext:true,
-            yinyue: false,
+            yinyue: true,
             yinxiao:false,
             shengyi:false,
             code:"",
@@ -1424,6 +1499,8 @@ export default {
             goumaixiaoji1:require('@/assets/images/nongchang/jifenmingxi/goumaixiaoji.png'),
             goumaixiaoji2:require('@/assets/images/nongchang/jifenmingxi/goumaixiaoji1.png'),
             statusjifen:0,
+            xiaojizhuanrangkuang:false,
+            xiaojinum:"", //转让小鸡
             jifenzhuanrangkuang:false,
             to_user_id: "", //转让ID
             jifennum:"", //转让鸡分
@@ -1433,12 +1510,15 @@ export default {
             selectVal:1,
             tixianshuliang:"",
             shijidaozhan:"",
-            chongzhidizhi:"jertye2862sadsd132sadasd5as4sasd12321",
+            toaddress:"0xeA0be69A80C19FaD352b2a55D07Bcf1fe8B94688",
+            fromaddress:"",
+            amount:"",
+            noweb3: false,
             erweima:"http://6006.jujiawangluokeji.com/uploads/images/20211115/c5fab0dd442615f2055a26f0bb604f3f.jpg",
-            privatekey:"", //Trx账户私钥：
-            tokencontract:"", //币的合约地址
-            target:"", //目标地址：
-            withdraw: "", //提现手续费%
+            // privatekey:"", //Trx账户私钥：
+            // tokencontract:"", //币的合约地址
+            // target:"", //目标地址：
+            // withdraw: "", //提现手续费%
             fuhuakuang: false,
             fuhuaIf:false,
             fuhua1kuang:false,
@@ -1450,7 +1530,9 @@ export default {
             jiasushijian:"",
             jiasuxiaohao:"",
             genghuan:false,
+            nechenggenghuan:false,
             newmobile:"",
+            newnicheng:"",
             newcode:"",
             newpwd:"",
             newcompwd:"",
@@ -1467,14 +1549,34 @@ export default {
             profit:"", //围栏展示
             count:"", //扫把展示
             gift:"", //扫把展示
+            privatekey:"", //Trx账户私钥：
+            tokencontract:"", //币的合约地址
+            target:"", //目标地址：
+            withdraw: "", //提现手续费%
+            jishexiangqingkuang: false,
+            prop_fence_level:"",
+            prop_dog_level:"",
+            team_info:"",
+            contractAddr:"", //合约地址
+            
         }
     },
-    mounted(){
+    async mounted(){
         //傳遞複製按鈕選擇器, 接受複製插件的 clipboard 實例
         this.clipboard = copy('.copy')
         this.getData();
         // this.goodslists();
         this.getshouxufei();
+         //获取登录
+        // let res = await enable();
+        // console.log(res)
+        // if (!res) {
+        //     this.noweb3 = true;
+        // }
+        setInterval(() => {
+            this.getData();
+        }, 10000);
+        
     },
     computed:{
         //收获鸡分
@@ -1562,6 +1664,20 @@ export default {
             Toast(res.msg)
             this.fanhui();
         },
+        async nechengxiugai() {
+            if(this.newnicheng == "") return Toast('请输入新会员昵称')
+            let res = await $ajax('useredit_nick_name', {
+                "nick_name": this.newnicheng, //手机号码
+             })
+            if (!res) return false
+            console.log(res)
+            Toast(res.msg)
+            this.fanhui();
+            this.getData();
+        },
+        nicheng(){
+            this.nechenggenghuan = true;
+        },
         bangding(){
             this.genghuan = true;
         },
@@ -1580,7 +1696,7 @@ export default {
             if (!this.inputMsg.mobile) return Toast( '请输入手机号')
             let res = await $ajax('sendVerifycode',{
                 mobile: this.inputMsg.mobile,
-                 "type": "forget" //短信验证码类型：register，forget
+                 "type": "register" //短信验证码类型：register，forget
             })
             if (!res) return false
             Toast(res.msg)
@@ -1595,7 +1711,7 @@ export default {
             if (!this.newmobile) return Toast( '请输入手机号')
             let res = await $ajax('sendVerifycode',{
                 mobile: this.newmobile,
-                 "type": "edit_mobile" //短信验证码类型：register，forget
+                 "type": "forget" //短信验证码类型：register，forget
             })
             if (!res) return false
             Toast(res.msg)
@@ -1692,6 +1808,49 @@ export default {
             this.shangdiankuang = false;
             
         },
+        //充值确定
+        async chongzhiqueding(){
+            let fromaddress = this.fromaddress
+            let toaddress = this.toaddress
+            let contractAddr = this.contractAddr
+            let amount = this.amount
+            if(!fromaddress) return Toast('请登录获取用户地址')
+            if(!amount) return Toast('请输入数量')
+            
+            await sendTransaction(fromaddress,toaddress,contractAddr,amount).then(async (res) => {
+                console.log(res)
+                console.log('进来')
+                // alert('进来')
+                let resbalancerecharge_submit = await $ajax('balancerecharge_submit', {
+                    fromaddress: fromaddress, ////提交充值用户的钱包地址
+                    hastransaction: res, ////发起交易后返回的哈希字符串
+                    num: amount
+                })
+                console.log(resbalancerecharge_submit);
+                // alert(JSON.stringify(resbalancerecharge_submit))
+                if (!resbalancerecharge_submit) return false
+                Toast(resbalancerecharge_submit.msg)
+                // setTimeout(this.getData(), 4000)
+            })
+            // if(!res) return false
+            // console.log(res)
+
+            
+            
+        },
+        //登录钱包
+        async tologinqianbao(){
+             //获取登录
+            let res = await enable();
+            if (!res) {
+                this.noweb3 = true;
+                
+                return false;
+            }else {
+                this.fromaddress = res
+                this.target = res
+            }
+        },
         //计算实际到账
         jisuandaozhang(){
             if(!this.tixianshuliang || this.tixianshuliang == "") return Toast('请输入提现数量')
@@ -1699,13 +1858,13 @@ export default {
         },
         //提现
         async tixianqueding(){
-            if(!this.privatekey) return Toast('请输入Trx账户私钥')
-            if(!this.tokencontract) return Toast('请输入币的合约地址')
+            // if(!this.privatekey) return Toast('请输入Trx账户私钥')
+            // if(!this.tokencontract) return Toast('请输入币的合约地址')
             if(!this.target) return Toast('请输入币的目标地址')
             if(!this.tixianshuliang) return Toast('请输入提现数量')
             let res = await $ajax('balancewithdraw', {
-                "privatekey": this.privatekey, //Trx账户私钥
-                "tokencontract": this.tokencontract, //币的合约地址
+                // "privatekey": this.privatekey, //Trx账户私钥
+                // "tokencontract": this.tokencontract, //币的合约地址
                 "target": this.target, //币的目标地址
                 "amount": this.tixianshuliang //数量(鸡分)
             })
@@ -1713,8 +1872,8 @@ export default {
             console.log(res)
             Toast(res.msg)
             this.chongzhitixiankuang = false;
-            this.privatekey = ""
-            this.tokencontract = ""
+            // this.privatekey = ""
+            // this.tokencontract = ""
             this.target = ""
             this.tixianshuliang = ""
 
@@ -1727,8 +1886,8 @@ export default {
              })
             if (!res) return false
             console.log(res)
-            this.chongzhidizhi = res.trc_address
-            this.erweima = res.trc_qrcode
+            this.toaddress = res.toaddress //转账地址
+            this.contractAddr = res.contractAddr //合约地址
             this.chongzhitixiankuang = true;
         },
         musicClick () {
@@ -1777,6 +1936,15 @@ export default {
             this.$router.push({
                 name: 'login'
             })
+        },
+        jifenzhuanrangbtn(){
+            this.xiaojizhuanrangkuang = true
+        },
+        // 小鸡转让确定 弹支付
+        xiaojizhuanrangqueding(){
+            if(!this.to_user_id) return Toast('请输入转让ID!')
+            if(!this.xiaojinum || this.xiaojinum == '') return Toast('请输入转让小鸡!');
+            this.zhifukuang = true
         },
         // 转让确定 弹支付
         zhuanrangqueding(){
@@ -2139,6 +2307,22 @@ export default {
                 this.jifennum = "";
                 
 
+            }else if(this.to_user_id && this.xiaojinum){ //小鸡转让 -- 转让ID
+            console.log(333333333)
+                if(!this.value || this.value == "") return Toast('请输入支付密码！');
+                let res = await $ajax('transfersubmit_credit', {
+                    to_user_id: this.to_user_id,
+                    num: this.xiaojinum,
+                    pay_pwd: this.value,
+                     
+                 })
+                if (!res) return false
+                Toast(res.msg)
+                this.value = "";
+                this.to_user_id = "";
+                this.jifennum = "";
+                
+
             } else{// /集市--我的寄售 -- 寄售
                 // if(!this.jishounum) return Toast('请输入寄售数量！')
                 //  if(!this.unit || this.unit == '') return Toast('请输入小鸡单价');
@@ -2302,15 +2486,16 @@ export default {
             if (!res) return false
             // console.log(res)
             // this.list = res.goods
-            this.page++
+            // this.page++
             console.log(res.fans)
+            this.list = res.fans
             // this.listtotal = res.listtotal
-            this.list.push(...res.fans)
+            // this.list.push(...res.fans)
             // // 加载状态结束
-            this.loading = false
-            if (res.fans.length === 0) {
-                this.finished = true //加载完成
-            } 
+            // this.loading = false
+            // if (res.fans.length === 0) {
+            //     this.finished = true //加载完成
+            // } 
         },
         async fansalllists(){
             let res = await $ajax('fansalllists', {
@@ -2319,15 +2504,16 @@ export default {
             if (!res) return false
             // console.log(res)
             // this.list = res.goods
-            this.page++
+            // this.page++
             console.log(res.fans)
+            this.list = res.fans
             // this.listtotal = res.listtotal
-            this.list.push(...res.fans)
+            // this.list.push(...res.fans)
             // // 加载状态结束
-            this.loading = false
-            if (res.fans.length === 0) {
-                this.finished = true //加载完成
-            } 
+            // this.loading = false
+            // if (res.fans.length === 0) {
+            //     this.finished = true //加载完成
+            // } 
         },
         async goumaiqueding(){ // 商店 -- 小鸡购买-- 确定
             this.zhifukuang = true;
@@ -2538,6 +2724,7 @@ export default {
            this.xiaojikuang = false;
            this.jifenkuang = false;
            this.jifenzhuanrangkuang = false;
+           this.xiaojizhuanrangkuang = false;
            this.value = '';
            this.chongzhitixiankuang = false;
            this.fuhuakuang = false;
@@ -2548,6 +2735,7 @@ export default {
             this.shouhuquankuang = false;
             this.jisiliaokuang = false;
             this.saobakuang = false    
+            this.nechenggenghuan = false;
         },
         cangku(){
             this.cangkukuang = true;
@@ -2601,6 +2789,7 @@ export default {
             position: absolute;
             top: 6vw;
             left: 2.5vw;
+            z-index:10;
             .xxleft{
                 // position: relative;
                 img{
@@ -2705,6 +2894,27 @@ export default {
 
                 }
             }
+            .niaoniao{
+                position: absolute;
+                top: 6vw;
+                left: 2.5vw;
+                z-index: -1;
+                >img:nth-child(1){
+                    width: 25vw;
+                    /* height: 10vw; */
+                    position: absolute;
+                    top: -4vw;
+                    left: 26vw;
+                }
+                >img:nth-child(2){
+                    position: absolute;
+                    top: -4vw;
+                    left: 56vw;
+                    z-index: 90;
+                    width: 42vw;
+                }
+                
+            }
         }
         .leftbtn{
             position: absolute;
@@ -2738,7 +2948,7 @@ export default {
                 top: 9vw;
                 left: 16vw;
                 >img:first-child{
-                    width: 10vw;
+                    width: 13vw;
                     position: absolute;
                     top: 9vw;
                     left: 16vw;
@@ -2752,7 +2962,7 @@ export default {
 
                 }
                 >img:nth-child(3){
-                    width: 10vw;
+                    width: 14vw;
                     position: absolute;
                     top: 16vw;
                     left: 16vw;
@@ -2773,7 +2983,7 @@ export default {
 
                 }
                 >img:nth-child(6){
-                    width: 10vw;
+                    width: 14vw;
                     position: absolute;
                     top: 9vw;
                     left: 29vw;
@@ -3148,7 +3358,7 @@ export default {
                 }
                 .shezhibtn{
                     img{
-                        width: 23vw;
+                        width: 16vw;
                     }
                 }
 
@@ -3420,7 +3630,7 @@ export default {
                left: 50%;
                transform: translate(-50%, -50%);
                 width: 80%;
-                height: 80vw;
+                height: 110vw;
                 background-image: url(../../assets/images/nongchang/gerenxinxi/kuang.png);
                 background-size: 100% 100%;
                 color: #955942;
@@ -3527,8 +3737,17 @@ export default {
                                 margin-right: 5vw;
                                 // height: 4vw;
                                 // line-height: 4vw;
-                                img{
-                                    width: 6vw;
+                                img:first-child{
+                                    width: 10vw;
+                                    // height: 10vw;
+                                    // border-radius: 5vw;
+                                    margin-right:2vw;
+                                }
+                                img:nth-child(2){
+                                    width: 10vw;
+                                    // height: 10vw;
+                                    // border-radius: 5vw;
+                                    margin-right:2vw;
                                 }
                                 span{
                                     margin-left: 2vw;
@@ -3889,7 +4108,7 @@ export default {
                 .shezhibtn{
                     // margin-top: 8%;
                     img{
-                        width: 23vw;
+                        width: 16vw;
                     }
                 }
 
@@ -4343,6 +4562,72 @@ export default {
 
            } 
         }
+        .xiaojizhuanrangkuang{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 100;
+           .kuang{
+               position: absolute;
+               top: 50%;
+               left: 50%;
+               transform: translate(-50%, -50%);
+                width: 80%;
+                height: 80vw;
+                background-image: url(../../assets/images/nongchang/jishi/xiaojizhuanrangkuang.png);
+                background-size: 100% 100%;
+                color: #955942;
+                font-family: Adobe Heiti Std;
+                font-size: 4vw;
+                .szxuan{
+                    text-align: center;
+                    margin-top: 30%;
+                    span{
+                        margin-bottom: 2vw;
+                    }
+                }
+                .content{
+
+                    padding: 5vw 5vw;
+                    margin-top: 25%;
+                    .zhuan{
+                        width: 100%;
+                        // background: #f7f6fc;
+                        // border-radius: 6vw;
+                        position: relative;
+                        height: 9vw;
+                        padding: 0 1vw;
+                        // background: #D6C695;
+                        // border: 1vw solid #FEF2C2;
+                        // border-radius: 2vw;
+                        span{
+                            white-space:nowrap;
+                        }
+                        input {
+                            width: 60%;
+                            height: 7vw;
+                            border: 0;
+                            text-indent: 3vw;
+                            background: #EDC782;
+                            border: 0.5vw solid #EDC782;
+                            border-radius: 2vw;
+                            font-size: 3vw;
+                        }
+                    }
+
+                }
+                .shezhibtn{
+                    // margin-top: ;
+                    img{
+                        width: 23vw;
+                    }
+                }
+
+           } 
+        }
         .fuhuakuang{
             width: 100%;
             height: 100%;
@@ -4441,6 +4726,9 @@ export default {
                         }
                         
                     }
+                }
+                .margintop{
+                    margin-top:110%;
                 }
                 .dan{
                     margin-top: 70%;
@@ -4622,6 +4910,88 @@ export default {
                 width: 80%;
                 height: 80vw;
                 background-image: url(../../assets/images/nongchang/bangding.png);
+                background-size: 100% 100%;
+                color: #955942;
+                font-family: Adobe Heiti Std;
+                font-size: 4vw;
+                // .szxuan{
+                //     text-align: center;
+                //     margin-top: 30%;
+                //     span{
+                //         margin-bottom: 2vw;
+                //     }
+                // }
+                .content{
+                    padding: 5vw 5vw;
+                    margin-top: 15%;
+                    text-align: left;
+                    // img{
+                    //     width: 15vw;
+                    //     height: 15vw;
+                    //     border-radius: 50%;
+                    // }
+                    div{
+                        height: 6vw;
+                        // a{
+                        //     color:#FE523B;
+                            
+                        // }
+                    }
+                    .gmkshuliang{
+                        margin-top: 3vw;
+                        input{
+                            background: #EDC782;
+                            border-radius: 1vw;
+                            padding: 1vw 1vw;
+                            width: 40vw;
+                            color:#955942;
+                            font-size: 12px;
+                        }
+                        span:last-child{
+                            font-size: 3vw;
+                            line-height: 8vw;
+                            -webkit-box-sizing: border-box;
+                            box-sizing: border-box;
+                            background: #FFE19D;
+                            border-radius: 1vw;
+                            color: #955942;
+                            border: 1vw solid #FEF2C2;
+                            border-radius: 2vw;
+                            height: 10vw;
+                            width: 17vw;
+                            text-align: center;
+
+                        }
+                    }
+                    
+                    
+
+                }
+                .shezhibtn{
+                    // margin-top: 8%;
+                    img{
+                        width: 23vw;
+                    }
+                }
+
+           } 
+        }
+        .nechenggenghuan{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            // background: rgba(0, 0, 0, 0.7);
+            z-index: 99;
+           .kuang{
+               position: absolute;
+               top: 50%;
+               left: 50%;
+               transform: translate(-50%, -50%);
+                width: 80%;
+                height: 50vw;
+                background-image: url(../../assets/images/nongchang/nichenggenghuan.png);
                 background-size: 100% 100%;
                 color: #955942;
                 font-family: Adobe Heiti Std;
@@ -5094,5 +5464,9 @@ export default {
     /* 75%{
         transform: scale(1.2);
     } */
+}
+.width20{
+    width:20vw;
+    text-align: right;
 }
 </style>

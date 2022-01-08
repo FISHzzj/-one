@@ -153,6 +153,7 @@ export default {
     houseuse_fence: `${common}house/use_fence`, //使用围栏
     housesimple: `${common}house/simple`, //鸡舍详情
     transfersubmit: `${common}transfer/submit`, //转账
+    transfersubmit_credit: `${common}transfer/submit_credit`, //小鸡互转
     houselog_list: `${common}house/log_list`, //增养记录列表
     housebuy_broom: `${common}house/buy_broom`, //购买扫帚
     houseuse_broom: `${common}house/use_broom`, //打扫
@@ -175,6 +176,8 @@ export default {
     useredit: `${common}user/edit`, //换手机号
     userforget_pay: `${common}user/forget_pay`, //重置支付密码
     userposter: `${common}user/poster`, //分享页面
+    balancerecharge_submit: `${common}balance/recharge_submit`, //充值提交信息
+    useredit_nick_name: `${common}user/edit_nick_name`, //修改名称
     
     
     

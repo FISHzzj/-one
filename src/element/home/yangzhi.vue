@@ -34,7 +34,7 @@
             <div class="onedi" :class="fangda == houseList[0].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[0].status == 0">
                 <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[0].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="houseList[0].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi1.png" alt="" srcset="" v-show="houseList[0].status == 1" @click="houseadd_detail(houseList[0].id,houseList[0].type,houseList[0].num,houseList[0].sort,houseList[0].prop_dog_level,houseList[0].prop_fence_level)">
                 <div class="xiaoji" v-show="houseList[0].num > 0" @click="houseadd_chick(houseList[0].id,houseList[0].type,houseList[0].num,houseList[0].sort,houseList[0].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -61,7 +61,7 @@
             <div class="twodi" :class="fangda == houseList[1].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[1].status == 0">
                 <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[1].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="houseList[1].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi2.png" alt="" srcset="" v-show="houseList[1].status == 1" @click="houseadd_detail(houseList[1].id,houseList[1].type,houseList[1].num,houseList[1].sort,houseList[1].prop_dog_level,houseList[1].prop_fence_level)">
                 <div class="xiaoji" v-show="houseList[1].num > 0" @click="houseadd_chick(houseList[1].id,houseList[1].type,houseList[1].num,houseList[1].sort,houseList[1].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -88,7 +88,7 @@
             <div class="threedi" :class="fangda == houseList[2].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[2].status == 0">
                 <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[2].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="houseList[2].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi3.png" alt="" srcset="" v-show="houseList[2].status == 1" @click="houseadd_detail(houseList[2].id,houseList[2].type,houseList[2].num,houseList[2].sort,houseList[2].prop_dog_level,houseList[2].prop_fence_level)">
                 <div class="xiaoji" v-show="houseList[2].num > 0" @click="houseadd_chick(houseList[2].id,houseList[2].type,houseList[2].num,houseList[2].sort,houseList[2].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -115,7 +115,7 @@
             <div class="fourdi" :class="fangda == houseList[3].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[3].status == 0">
                 <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[3].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="houseList[3].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi4.png" alt="" srcset="" v-show="houseList[3].status == 1" @click="houseadd_detail(houseList[3].id,houseList[3].type,houseList[3].num,houseList[3].sort,houseList[3].prop_dog_level,houseList[3].prop_fence_level)">
                 <div class="xiaoji" v-show="houseList[3].num > 0" @click="houseadd_chick(houseList[3].id,houseList[3].type,houseList[3].num,houseList[3].sort,houseList[3].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -143,7 +143,7 @@
             <div class="fivedi" :class="fangda == houseList[4].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[4].status == 0">
                 <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[4].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="houseList[4].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi5.png" alt="" srcset="" v-show="houseList[4].status == 1" @click="houseadd_detail(houseList[4].id,houseList[4].type,houseList[4].num,houseList[4].sort,houseList[4].prop_dog_level,houseList[4].prop_fence_level)">
                 <div class="xiaoji" v-show="houseList[4].num > 0" @click="houseadd_chick(houseList[4].id,houseList[4].type,houseList[4].num,houseList[4].sort,houseList[4].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -171,7 +171,7 @@
             <div class="sixdi" :class="fangda == houseList[5].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[5].status == 0">
                 <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[5].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="houseList[5].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi6.png" alt="" srcset="" v-show="houseList[5].status == 1" @click="houseadd_detail(houseList[5].id,houseList[5].type,houseList[5].num,houseList[5].sort,houseList[5].prop_dog_level,houseList[5].prop_fence_level)">
                 <div class="xiaoji" v-show="houseList[5].num > 0" @click="houseadd_chick(houseList[5].id,houseList[5].type,houseList[5].num,houseList[5].sort,houseList[5].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -198,7 +198,7 @@
             <div class="sevendi" :class="fangda == houseList[6].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[6].status == 0">
                 <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[6].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="houseList[6].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi7.png" alt="" srcset="" v-show="houseList[6].status == 1" @click="houseadd_detail(houseList[6].id,houseList[6].type,houseList[6].num,houseList[6].sort,houseList[6].prop_dog_level,houseList[6].prop_fence_level)">
                 <div class="xiaoji" v-show="houseList[6].num > 0" @click="houseadd_chick(houseList[6].id,houseList[6].type,houseList[6].num,houseList[6].sort,houseList[6].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -226,7 +226,7 @@
             <div class="eightdi" :class="fangda == houseList[7].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[7].status == 0">
                 <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[7].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="houseList[7].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi8.png" alt="" srcset="" v-show="houseList[7].status == 1" @click="houseadd_detail(houseList[7].id,houseList[7].type,houseList[7].num,houseList[7].sort,houseList[7].prop_dog_level,houseList[7].prop_fence_level)">
                 <div class="xiaoji" v-show="houseList[7].num > 0" @click="houseadd_chick(houseList[7].id,houseList[7].type,houseList[7].num,houseList[7].sort,houseList[7].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -255,7 +255,7 @@
             <div class="ninedi" :class="fangda == houseList[8].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[8].status == 0">
                 <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[8].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="houseList[8].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi9.png" alt="" srcset="" v-show="houseList[8].status == 1" @click="houseadd_detail(houseList[8].id,houseList[8].type,houseList[8].num,houseList[8].sort,houseList[8].prop_dog_level,houseList[8].prop_fence_level)">
                 <div class="xiaoji" v-show="houseList[8].num > 0" @click="houseadd_chick(houseList[8].id,houseList[8].type,houseList[8].num,houseList[8].sort,houseList[8].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -283,7 +283,7 @@
             <div class="tendi" :class="fangda == houseList[9].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[9].status == 0">
                 <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[9].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="houseList[9].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi10.png" alt="" srcset="" v-show="houseList[9].status == 1" @click="houseadd_detail(houseList[9].id,houseList[9].type,houseList[9].num,houseList[9].sort,houseList[9].prop_dog_level,houseList[9].prop_fence_level)">
                 <div class="xiaoji" v-show="houseList[9].num > 0" @click="houseadd_chick(houseList[9].id,houseList[9].type,houseList[9].num,houseList[8].sort,houseList[9].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -308,13 +308,19 @@
 
             </div>
         </div>
+        <div class="huacaoche">
+            <img src="../../assets/images/nongchang/yangzhi/che.png" alt="" srcset="" >  
+            <img src="../../assets/images/nongchang/yangzhi/caotop.png" alt="" srcset="" >  
+            <img src="../../assets/images/nongchang/yangzhi/caobottom.png" alt="" srcset="" >  
+
+        </div>
 
         <!-- 高级地 -->
         <div class="yzgaojidi" v-if="super_house.length > 0">
             <div class="onedi" :class="fangda == super_house[0].id ? 'animatfangda' : 'animatsuoxiao'">
                  <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="super_house[0].status == 0">
                 <img src="../../assets/images/nongchang/yangzhi/gaojitudi.png" alt="" srcset="" v-show="super_house[0].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="super_house[0].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi11.png" alt="" srcset="" v-show="super_house[0].status == 1" @click="houseadd_detail(super_house[0].id,super_house[0].type,super_house[0].num,super_house[0].sort,super_house[0].prop_dog_level,super_house[0].prop_fence_level)">
                 <div class="xiaoji" v-show="super_house[0].num > 0" @click="houseadd_chick(super_house[0].id,super_house[0].type,super_house[0].num,super_house[0].sort,super_house[0].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -341,7 +347,7 @@
             <div class="twodi" :class="fangda == super_house[1].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="super_house[1].status == 0">
                 <img src="../../assets/images/nongchang/yangzhi/gaojitudi.png" alt="" srcset="" v-show="super_house[1].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="super_house[1].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi12.png" alt="" srcset="" v-show="super_house[1].status == 1" @click="houseadd_detail(super_house[1].id,super_house[1].type,super_house[1].num,super_house[1].sort,super_house[1].prop_dog_level,super_house[1].prop_fence_level)">
                 <div class="xiaoji" v-show="super_house[1].num > 0" @click="houseadd_chick(super_house[1].id,super_house[1].type,super_house[1].num,super_house[1].sort,super_house[1].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -367,7 +373,7 @@
             <div class="threedi" :class="fangda == super_house[2].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="super_house[2].status == 0">
                 <img src="../../assets/images/nongchang/yangzhi/gaojitudi.png" alt="" srcset="" v-show="super_house[2].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="super_house[2].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi13.png" alt="" srcset="" v-show="super_house[2].status == 1" @click="houseadd_detail(super_house[2].id,super_house[2].type,super_house[2].num,super_house[2].sort,super_house[2].prop_dog_level,super_house[2].prop_fence_level)">
                 <div class="xiaoji" v-show="super_house[2].num > 0" @click="houseadd_chick(super_house[2].id,super_house[2].type,super_house[2].num,super_house[2].sort,super_house[2].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -394,7 +400,7 @@
             <div class="fourdi" :class="fangda == super_house[3].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="super_house[3].status == 0">
                 <img src="../../assets/images/nongchang/yangzhi/gaojitudi.png" alt="" srcset="" v-show="super_house[3].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="super_house[3].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi14.png" alt="" srcset="" v-show="super_house[3].status == 1" @click="houseadd_detail(super_house[3].id,super_house[3].type,super_house[3].num,super_house[3].sort,super_house[3].prop_dog_level,super_house[3].prop_fence_level)">
                 <div class="xiaoji" v-show="super_house[3].num > 0" @click="houseadd_chick(super_house[3].id,super_house[3].type,super_house[3].num,super_house[3].sort,super_house[3].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -421,7 +427,7 @@
             <div class="fivedi" :class="fangda == super_house[4].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="super_house[4].status == 0">
                 <img src="../../assets/images/nongchang/yangzhi/gaojitudi.png" alt="" srcset="" v-show="super_house[4].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi.png" alt="" srcset="" v-show="super_house[4].status == 1">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi15.png" alt="" srcset="" v-show="super_house[4].status == 1" @click="houseadd_detail(super_house[4].id,super_house[4].type,super_house[4].num,super_house[4].sort,super_house[4].prop_dog_level,super_house[4].prop_fence_level)">
                 <div class="xiaoji" v-show="super_house[4].num > 0" @click="houseadd_chick(super_house[4].id,super_house[4].type,super_house[4].num,super_house[4].sort,super_house[4].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -446,6 +452,11 @@
                 
             </div>
             
+        </div>
+        <!-- 风车 -->
+        <div class="fengche">
+            <img src="../../assets/images/nongchang/yangzhi/fengche.gif" alt="" srcset="" >  
+
         </div>
 
         <!-- 左下角按钮 -->
@@ -541,7 +552,12 @@
                     <div class="flex">
                         <img :src="avatar" alt="" style="margin-right:2vw;">
                         <div class="flex flex_col">
-                             <div>昵称：{{nick_name}}</div>
+                             <div @click="nicheng">昵称：{{nick_name}}<a style="background: linear-gradient(0deg, rgb(255, 168, 0) 0%, rgb(255, 245, 89) 100%);
+                        padding: 0 2vw;
+                        text-align: center;
+                        display: inline-block;
+                        border-radius: 1vw;
+                        font-size: 14px;margin-left:2vw" href="javascript:;">修改</a></div>
                             <div>ID：{{user_id}}</div>
                         </div>
                     </div>
@@ -559,6 +575,10 @@
                         display: inline-block;
                         border-radius: 1vw;
                         font-size: 14px;margin-left:2vw" href="javascript:;">修改</a></div>
+                    <div>团队总鸡分量：{{team_info.integral}} </div>
+                    <div>团队总鸡量：{{team_info.credit1}} </div>
+                    <div>团队总蛋量：{{team_info.credit2}} </div>
+                    <div>团队总鸡分量：{{team_info.integral}} </div>
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
@@ -575,7 +595,7 @@
                     <div>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</span></div>
                     <div>扫帚等级：<span>扫帚LV{{dengji}}</span></div>
                     <div>小鸡数量：<span>{{num}}</span></div>
-                    <div>扫帚消耗：<span>{{xiaohaoxiaoji}}小鸡</span></div>
+                    <div>扫帚消耗：<span>{{xiaohaoxiaoji}}鸡分</span></div>
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
@@ -600,7 +620,22 @@
                 </div>
             </div>
         </div>
-        
+        <div class="nechenggenghuan animat" v-if="nechenggenghuan">
+            <div class="kuang">
+                <div class="content ">
+                    <!-- <img src="../../assets/images/icon/7.png" alt=""> -->
+                    <!-- <div>购买物品：小鸡</div> -->
+                    <div class="gmkshuliang flex flex_center ali_center">
+                        <span>会员昵称：</span>
+                        <input type="text" v-model="newnicheng" placeholder="请输入新会员昵称">
+                    </div>   
+                </div>
+                <div class="shezhibtn flex flex_center">
+                   <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
+                   <img src="../../assets/images/nongchang/jishi/queding.png" alt="" @click="nechengxiugai">
+                </div>
+            </div>
+        </div>
 
         <!-- 围栏 -->
         <div class="weilan animat" v-if="weilankuang">
@@ -618,7 +653,7 @@
                     </div>
                     <div>围栏天数：<span>{{day}}天</span></div>
                     <div>小鸡数量：<span>{{num}}</span></div>
-                    <div>围栏消耗：<span>{{xiaohaoxiaoji}}小鸡</span></div>
+                    <div>围栏消耗：<span>{{xiaohaoxiaoji}}鸡分</span></div>
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="weilanfanhui">
@@ -642,7 +677,7 @@
                         </span>
                     </div>
                     <div>守护天数：<span>{{day}}天</span></div>
-                    <div>守护消耗：<span>{{money}}小鸡</span></div>
+                    <div>守护消耗：<span>{{money}}鸡分</span></div>
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
@@ -659,7 +694,7 @@
                     <div>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</span></div>
                     <div>饲料等级：<span>鸡饲料LV{{dengji}}</span></div>
                     <div>小鸡数量：<span>{{num}}</span></div>
-                    <div>喂养消耗：<span>{{xiaohaoxiaoji}}小鸡</span></div>
+                    <div>喂养消耗：<span>{{xiaohaoxiaoji}}鸡分</span></div>
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
@@ -682,16 +717,16 @@
                         </select>
                     </div>
                     <div class="flex flex_col flex_end" v-if="selectVal == 2">
-                        <div class="gmkshuliang flex flex_center ali_center">
+                        <!-- <div class="gmkshuliang flex flex_center ali_center">
                             <span style="white-space: nowrap;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;私钥：</span>
                             <input type="text" v-model="privatekey" >
                         </div>
                         <div class="gmkshuliang flex flex_center ali_center">
                             <span style="white-space: nowrap;">合约地址：</span>
                             <input type="text" v-model="tokencontract" >
-                        </div>
+                        </div> -->
                         <div class="gmkshuliang flex flex_center ali_center">
-                            <span style="white-space: nowrap;">目标地址：</span>
+                            <span style="white-space: nowrap;">钱包地址：</span>
                             <input type="text" v-model="target" >
                         </div>
                         <div class="gmkshuliang flex flex_center ali_center">
@@ -709,20 +744,20 @@
                     </div>
                     <div v-else>
                         <div class="gmkshuliang flex flex_center ali_center">
-                            <span style="white-space: nowrap;">充值地址：</span>
-                            <input type="text" v-model="chongzhidizhi"  disabled >
-                            <a style="background: linear-gradient(0deg, rgb(255, 168, 0) 0%, rgb(255, 245, 89) 100%);
+                            <span style="white-space: nowrap;">用户地址：</span>
+                            <input type="text" v-model="fromaddress" placeholder="请登录获取用户地址" >
+                            <!-- <a style="background: linear-gradient(0deg, rgb(255, 168, 0) 0%, rgb(255, 245, 89) 100%);
                             padding: 0 2vw;
                             text-align: center;
                             display: inline-block;
                             border-radius: 1vw;
                             color: #955942;
                             white-space: nowrap;
-                            font-size: 14px;margin-left:2vw" href="javascript:;" :data-clipboard-text="chongzhidizhi" class="copy">复制</a> 
+                            font-size: 14px;margin-left:2vw" href="javascript:;" :data-clipboard-text="chongzhidizhi" class="copy">复制</a>  -->
                         </div>
                         <div class="gmkshuliang flex flex_center ali_center">
-                            <img :src="erweima" alt="">
-                        </div>
+                            <span style="white-space: nowrap;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数量：</span>
+                            <input type="text" v-model="amount"  >                        </div>
                     </div>
                     
                    
@@ -730,6 +765,8 @@
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
                    <img src="../../assets/images/nongchang/jishi/queding.png" alt="" @click="tixianqueding"  v-if="selectVal == 2">
+                   <img src="../../assets/images/nongchang/jishi/queding.png" alt="" @click="chongzhiqueding" v-if="selectVal == 1">
+                   <img src="../../assets/images/nongchang/denglv/login.png" alt="" @click="tologinqianbao" >
                    <!-- <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt=""> -->
                 </div>
             </div>
@@ -949,9 +986,9 @@
                         
                     </van-list>
                 </div>
-                <div class="jishou flex flex_center" v-if="statusjishi == 1">
+                <!-- <div class="jishou flex flex_center" v-if="statusjishi == 1">
                     <img src="../../assets/images/nongchang/jishi/jishou.png" alt="" srcset="" @click="jishoubtn">
-                </div>
+                </div> -->
             </div>
         </div>
         <!-- 鸡分明细 -->
@@ -1070,6 +1107,22 @@
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
                    <img src="../../assets/images/nongchang/jishi/queding.png" alt="" @click="zhuanrangqueding">
                    
+                </div>
+            </div>
+        </div>
+        <!-- 鸡舍详情 -->
+        <div class="jishexiangqingkuang animat" v-if="jishexiangqingkuang">
+            <div class="kuang">
+                <div class="content">
+                    <div>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</span></div>
+                    <div>小鸡数量：<span>{{num}}</span></div>
+                    <div>守护等级：<span>LV{{prop_dog_level}}</span></div>
+                    <div>围栏等级：<span>LV{{prop_fence_level}}</span></div>
+                </div>
+                <div class="shezhibtn flex flex_center">
+                   <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
+                   <!-- <img src="../../assets/images/nongchang/shezhi/queding.png" alt="" @click="shouhuquanqueding"> -->
+                   <!-- <img src="../../assets/images/nongchang/shezhi/qiehuan.png" alt=""> -->
                 </div>
             </div>
         </div>
@@ -1218,6 +1271,8 @@
 <script>
  // 複製模塊
 import {copy} from '../../func/copy'
+import { sendTransaction } from '../../utils/chongzhi'
+import {enable} from "../../utils/web3utils";
 import $ from 'jquery'
 var PathStatus 	= 0;
 var angle 		= Math.PI/((4-1)*2);	
@@ -1248,6 +1303,8 @@ export default {
             balance:"",
             gerenxinxikuang:false,
             genghuan:false,
+            nechenggenghuan:false,
+            newmobile:"",
             newmobile:"",
             newcode:"",
             newpwd:"",
@@ -1354,6 +1411,14 @@ export default {
             tokencontract:"", //币的合约地址
             target:"", //目标地址：
             withdraw: "", //提现手续费%
+            jishexiangqingkuang: false,
+            prop_fence_level:"",
+            prop_dog_level:"",
+            team_info:"",
+            toaddress:"0xeA0be69A80C19FaD352b2a55D07Bcf1fe8B94688",
+            fromaddress:"",
+            amount:"",
+            contractAddr:"", //合约地址
            
         }
     },
@@ -1379,6 +1444,17 @@ export default {
         
     },
     methods:{
+        //点击房子 获取 详情
+        houseadd_detail(id,type,num,sort,prop_dog_level,prop_fence_level){
+            this.jishexiangqingkuang = true;
+            console.log(id,type,num,sort,prop_dog_level,prop_fence_level);
+            this.sort = sort;
+            this.num = num;
+            this.type = type;
+            this.prop_dog_level = prop_dog_level
+            this.prop_fence_level = prop_fence_level
+
+        },
         //获取手续费
         async getshouxufei(){
              let res = await $ajax('config', {})
@@ -1406,20 +1482,53 @@ export default {
             } 
             
         },
+        //充值确定
+        async chongzhiqueding(){
+            let fromaddress = this.fromaddress
+            let toaddress = this.toaddress
+            let contractAddr = this.contractAddr
+            let amount = this.amount
+            if(!fromaddress) return Toast('请登录获取用户地址')
+            if(!amount) return Toast('请输入数量')
+            
+            let res = await sendTransaction(fromaddress,toaddress,contractAddr,amount)
+            if(!res) return false
+            console.log(res)
+            let resbalancerecharge_submit = await $ajax('balancerecharge_submit', {
+                fromaddress: fromaddress, ////提交充值用户的钱包地址
+                hastransaction: res.hastransaction ////发起交易后返回的哈希字符串
+            })
+            if (!resbalancerecharge_submit) return false
+            Toast(resbalancerecharge_submit.msg)
+            
+        },
+        //登录钱包
+        async tologinqianbao(){
+             //获取登录
+            let res = await enable();
+            if (!res) {
+                this.noweb3 = true;
+                
+                return false;
+            }else {
+                this.fromaddress = res
+                this.target = res
+            }
+        },
         //计算实际到账
         jisuandaozhang(){
             if(!this.tixianshuliang || this.tixianshuliang == "") return Toast('请输入提现数量')
             this.shijidaozhan = this.tixianshuliang * (1 - this.withdraw/100)
         },
-         //提现
+        //提现
         async tixianqueding(){
-            if(!this.privatekey) return Toast('请输入Trx账户私钥')
-            if(!this.tokencontract) return Toast('请输入币的合约地址')
+            // if(!this.privatekey) return Toast('请输入Trx账户私钥')
+            // if(!this.tokencontract) return Toast('请输入币的合约地址')
             if(!this.target) return Toast('请输入币的目标地址')
             if(!this.tixianshuliang) return Toast('请输入提现数量')
             let res = await $ajax('balancewithdraw', {
-                "privatekey": this.privatekey, //Trx账户私钥
-                "tokencontract": this.tokencontract, //币的合约地址
+                // "privatekey": this.privatekey, //Trx账户私钥
+                // "tokencontract": this.tokencontract, //币的合约地址
                 "target": this.target, //币的目标地址
                 "amount": this.tixianshuliang //数量(鸡分)
             })
@@ -1427,8 +1536,8 @@ export default {
             console.log(res)
             Toast(res.msg)
             this.chongzhitixiankuang = false;
-            this.privatekey = ""
-            this.tokencontract = ""
+            // this.privatekey = ""
+            // this.tokencontract = ""
             this.target = ""
             this.tixianshuliang = ""
 
@@ -1436,13 +1545,13 @@ export default {
         //充值
         async chongzhitixianhandle(){
             
-            let res = await $ajax('balancerecharge', {
+             let res = await $ajax('balancerecharge', {
                  uid: this.user_id
              })
             if (!res) return false
             console.log(res)
-            this.chongzhidizhi = res.trc_address
-            this.erweima = res.trc_qrcode
+            this.toaddress = res.toaddress //转账地址
+            this.contractAddr = res.contractAddr //合约地址
             this.chongzhitixiankuang = true;
         },
          // 转让确定 弹支付
@@ -2305,6 +2414,20 @@ export default {
             Toast(res.msg)
             this.fanhui();
         },
+        async nechengxiugai() {
+            if(this.newnicheng == "") return Toast('请输入新会员昵称')
+            let res = await $ajax('useredit_nick_name', {
+                "nick_name": this.newnicheng, //手机号码
+             })
+            if (!res) return false
+            console.log(res)
+            Toast(res.msg)
+            this.fanhui();
+            this.getData();
+        },
+         nicheng(){
+            this.nechenggenghuan = true;
+        },
         bangding(){
             this.genghuan = true;
         },
@@ -2335,6 +2458,8 @@ export default {
             this.jifenzhuanrangkuang = false;
             this.value = '';
             this.chongzhitixiankuang = false;
+            this.jishexiangqingkuang = false;
+            this.nechenggenghuan = false;
         },
         
 
@@ -2647,6 +2772,7 @@ export default {
                 position: absolute;
                 left: 30%;
                 top: 50%;
+                z-index:10;
                 >img:first-child{
                     width: 50vw;
                     // position: absolute;
@@ -2929,6 +3055,7 @@ export default {
                 position: absolute;
                 left: 50%;
                 top: 58%;
+                z-index:10;
                 >img:first-child{
                     width: 50vw;
                     // position: absolute;
@@ -3396,7 +3523,36 @@ export default {
                 }
             }
         }
-
+        .fengche{
+            img:first-child{
+                position: absolute;
+                left: 82%;
+                top: 78%;
+                width: 50vw;
+            }
+        }
+        .huacaoche{
+            >img:first-child{
+                position: absolute;
+                left: 28%;
+                top: 32%;
+                width: 25vw;
+            }
+            >img:nth-child(2){
+                position: absolute;
+                left: 40%;
+                top: 31%;
+                width: 121vw;
+                z-index: 0; 
+            }
+            >img:nth-child(3){
+                position: absolute;
+                left: 36%;
+                top: 41%;
+                width: 121vw;
+                z-index: 0; 
+            }
+        }
         .yzgaojidi{
             >.onedi{
                 position: absolute;
@@ -3488,6 +3644,7 @@ export default {
                 position: absolute;
                 left: 45%;
                 top: 24%;
+                z-index:10;
                 >img:first-child{
                     width: 50vw;
                 }
@@ -3573,6 +3730,7 @@ export default {
                 position: absolute;
                 left: 65%;
                 top: 30%;
+                z-index:10;
                 >img:first-child{
                     width: 50vw;
                 }
@@ -3880,7 +4038,88 @@ export default {
             }
             }
         }
+        .nechenggenghuan{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            // background: rgba(0, 0, 0, 0.7);
+            z-index: 99;
+           .kuang{
+               position: absolute;
+               top: 50%;
+               left: 50%;
+               transform: translate(-50%, -50%);
+                width: 80%;
+                height: 50vw;
+                background-image: url(../../assets/images/nongchang/nichenggenghuan.png);
+                background-size: 100% 100%;
+                color: #955942;
+                font-family: Adobe Heiti Std;
+                font-size: 4vw;
+                // .szxuan{
+                //     text-align: center;
+                //     margin-top: 30%;
+                //     span{
+                //         margin-bottom: 2vw;
+                //     }
+                // }
+                .content{
+                    padding: 5vw 5vw;
+                    margin-top: 15%;
+                    text-align: left;
+                    // img{
+                    //     width: 15vw;
+                    //     height: 15vw;
+                    //     border-radius: 50%;
+                    // }
+                    div{
+                        height: 6vw;
+                        // a{
+                        //     color:#FE523B;
+                            
+                        // }
+                    }
+                    .gmkshuliang{
+                        margin-top: 3vw;
+                        input{
+                            background: #EDC782;
+                            border-radius: 1vw;
+                            padding: 1vw 1vw;
+                            width: 40vw;
+                            color:#955942;
+                            font-size: 12px;
+                        }
+                        span:last-child{
+                            font-size: 3vw;
+                            line-height: 8vw;
+                            -webkit-box-sizing: border-box;
+                            box-sizing: border-box;
+                            background: #FFE19D;
+                            border-radius: 1vw;
+                            color: #955942;
+                            border: 1vw solid #FEF2C2;
+                            border-radius: 2vw;
+                            height: 10vw;
+                            width: 17vw;
+                            text-align: center;
 
+                        }
+                    }
+                    
+                    
+
+                }
+                .shezhibtn{
+                    // margin-top: 8%;
+                    img{
+                        width: 23vw;
+                    }
+                }
+
+           } 
+        }
         .gerenxinxi{
             width: 100%;
             height: 100%;
@@ -3895,7 +4134,7 @@ export default {
                left: 50%;
                transform: translate(-50%, -50%);
                 width: 80%;
-                height: 80vw;
+                height: 110vw;
                 background-image: url(../../assets/images/nongchang/gerenxinxi/kuang.png);
                 background-size: 100% 100%;
                 color: #955942;
@@ -3911,7 +4150,8 @@ export default {
                 .content{
                     padding: 5vw 5vw;
                     margin-top: 15%;
-                    text-align: center;
+                    text-align: left;
+                    margin-left: 7vw;
                     img{
                         width: 15vw;
                         height: 15vw;
@@ -4353,7 +4593,7 @@ export default {
                 .shezhibtn{
                     // margin-top: 8%;
                     img{
-                        width: 23vw;
+                        width: 16vw;
                     }
                 }
 
@@ -4807,6 +5047,73 @@ export default {
 
            } 
         }
+        .jishexiangqingkuang{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 100;
+           .kuang{
+               position: absolute;
+               top: 50%;
+               left: 50%;
+               transform: translate(-50%, -50%);
+                width: 80%;
+                height: 80vw;
+                background-image: url(../../assets/images/nongchang/yangzhi/jishexiangqing.png);
+                background-size: 100% 100%;
+                color: #955942;
+                font-family: Adobe Heiti Std;
+                font-size: 4vw;
+                // .szxuan{
+                //     text-align: center;
+                //     margin-top: 30%;
+                //     span{
+                //         margin-bottom: 2vw;
+                //     }
+                // }
+                .content{
+                    padding: 5vw 5vw;
+                    margin-top: 15%;
+                    text-align: center;
+                    // img{
+                    //     width: 15vw;
+                    //     height: 15vw;
+                    //     border-radius: 50%;
+                    // }
+                    div{
+                        // height: 6vw;
+                        margin-bottom: 1vw;
+                        >span{
+                            // padding: 1vw 2vw;
+                            // box-sizing: border-box;
+                            background: #EDC782;
+                            border-radius: 1vw;
+                            width: 30vw;
+                            display: inline-block;
+                            text-align: left;
+                            padding-left: 2vw;
+                        }
+                        
+                        // a{
+                        //     color:#FE523B;
+                            
+                        // }
+                    }
+
+                }
+                .shezhibtn{
+                    // margin-top: 8%;
+                    img{
+                        width: 23vw;
+                    }
+                }
+
+           } 
+        }
+
         .tishikuang{
             width: 100%;
             height: 100%;

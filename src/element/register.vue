@@ -1,26 +1,34 @@
 <template lang="">
     <div class="register">
-        <div class="content" v-if="registerShow">
+        <div>
+            <van-cell center title="中英文切换" style="background-color: rgba(0,0,0, 0.1);color:#fff;">
+                <template #right-icon>
+                    <van-switch v-model="checked" size="24" @input="onInput" />
+                </template>
+            </van-cell>
+        </div>
+
+        <div class="content" :class="checked ? 'yingwenbg' : ''" v-if="registerShow">
              <div class="phone ">
                 <!-- <span>&nbsp;&nbsp;&nbsp;+86：</span> -->
-                <input type="number" v-model="inputMsg.mobile" placeholder="请输入手机号">
+                <input type="number" v-model="inputMsg.mobile" :placeholder="mobiletext">
             </div>
             <div class="code flex ali_center">
-                <input v-model="inputMsg.code" type="text" placeholder="请输入验证码">
+                <input v-model="inputMsg.code" type="text" :placeholder="codetext">
                 <span @click="senVerifyCode()">{{timeAndTextOfSendcode}}</span>
             </div>
             <div class="pwd">
-                <input type="text" v-model="inputMsg.pwd" placeholder="请输入密码8至12位數字和字母">
+                <input type="text" v-model="inputMsg.pwd" :placeholder="pwdtext">
             </div>
             <div class="pwd1">
-                <input type="text" v-model="inputMsg.pwd_confirm" placeholder="请输入确认密码8至12位數字和字母">
+                <input type="text" v-model="inputMsg.pwd_confirm" :placeholder="pwd_confirmtext">
             </div>
             <div class="spread">
-                <input type="text" v-model="inputMsg.spread" placeholder="请输入邀请码">
+                <input type="text" v-model="inputMsg.spread" :placeholder="spreadtext">
             </div>
             <div class="registerbtn flex flex_between">
-                <img src="../assets/images/nongchang/denglv/fanhui.png" alt="" @click="fanhui">
-                <img src="../assets/images/nongchang/denglv/register.png" alt="" @click="register">
+                <img :src="fanhuiurl" alt="" @click="fanhui">
+                <img :src="registerurl" alt="" @click="register">
             </div>
             
         </div>
@@ -42,12 +50,49 @@ export default {
                 spread:"",
             },
             radio: 1,
+            checked:false,
+            fanhuiurl:require('../assets/images/nongchang/denglv/fanhui.png'),
+            registerurl:require('../assets/images/nongchang/denglv/register.png'),
+            mobiletext:'请输入手机号',
+            codetext:'请输入验证码',
+            pwdtext: '请输入密码8至12位數字和字母',
+            pwd_confirmtext: '请输入确认密码8至12位數字和字母',
+            spreadtext:'请输入邀请码',
+            app_download:'',
         }
     },
-    mounted(){
+    created(){
+        sessionStorage.setItem('noApp', true) // 標記爲非APP進入
+        this.getshouxufei()
 
     },
+    mounted(){
+        this.spreadtext = this.$route.params.spreadtext
+        console.log(this.spreadtext)
+    },
     methods:{
+        onInput(checked){
+            this.checked = checked;
+            if(checked){
+                this.fanhuiurl = require('../assets/images/nongchang/denglv/fanhuiying.png')
+                this.registerurl = require('../assets/images/nongchang/denglv/registerying.png')
+                this.mobiletext = 'Please enter your mobile phone number'
+                this.codetext = 'Please enter the verification code'
+                this.pwdtext = 'Please enter the password with 8 to 12 digits and letters'
+                this.pwd_confirmtext = 'Please enter 8 to 12 digits and letters to confirm your password'
+                this.spreadtext = 'Please enter the invitation code'
+                this.timeAndTextOfSendcode = 'Send code'
+            }else{
+                this.fanhuiurl = require('../assets/images/nongchang/denglv/fanhui.png')
+                this.registerurl = require('../assets/images/nongchang/denglv/register.png')
+                this.mobiletext = '请输入手机号'
+                this.codetext = '请输入验证码'
+                this.pwdtext = '请输入密码8至12位數字和字母'
+                this.pwd_confirmtext = '请输入确认密码8至12位數字和字母'
+                this.spreadtext = '请输入邀请码'
+                this.timeAndTextOfSendcode = '发送验证码'
+            }
+        },
         timing () {
             this.timer = setInterval( () => {
                 this.timeAndTextOfSendcode--
@@ -78,6 +123,13 @@ export default {
         fanhui(){
             this.$router.go(-1);
         },
+        //获取下载地址
+        async getshouxufei(){
+             let res = await $ajax('config', {})
+            if (!res) return false
+            console.log(res);
+            this.app_download = res.ins.app_download
+        },
         async register() {
             if (!this.inputMsg.mobile) return Toast( '请输入手机号');
             let pwdRex = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,12}$/g //驗證密碼的正則
@@ -97,11 +149,11 @@ export default {
             })
             if (!res) return false
             // 如果爲 非 app 進入, 則跳轉下載頁面, 並終止函數
-            // if ( sessionStorage.getItem('noApp') ) {
-            //     // alert(222)
-            //     window.location.href = 'https://downloadpkg.app3c.cn/app/download?path=https://A6163977333456.qiniucdn.apicloud-system.com/31caecf2c21c7b3f9bba5698824a8dc0_d&ver=0.0.6&size=3.08M'
-            //     return false
-            // }
+            if ( sessionStorage.getItem('noApp') ) {
+                // alert(222)
+                window.location.href = this.app_download
+                return false
+            }
             // 進行登錄 提示
 			const toast = Toast.loading({
 				message: '登入中...',
@@ -414,7 +466,13 @@ export default {
         }
 
     }
+    .yingwenbg{
+        background-image: url(../assets/images/nongchang/denglv/zhuceying.png)!important;
+    }
     .van-radio{
         background: #C3B79C;
+    }
+    .van-switch--on{
+         background-color: #FFE19D;
     }
 </style>

@@ -37,6 +37,10 @@ export default {
             yinyue: true,
         }
     },
+    mounted() {
+        console.log(2222222)
+        this.$refs.MusicPlay.play()
+    },
     components : {
         Test
     },

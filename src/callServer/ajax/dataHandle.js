@@ -1176,7 +1176,8 @@ export default {
             mobile,
             invite_code,
             balance,
-            first_leader
+            first_leader,
+            team_info: data.team_info
         }
     },
     goodslists(data){
@@ -1346,6 +1347,12 @@ export default {
             msg: data.msg
         }
     },
+    transfersubmit_credit(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
     houselog_list(data){
         if ( mistake(data) ) return false
         let {list} = data
@@ -1381,10 +1388,10 @@ export default {
     },
     balancerecharge(data){
         if ( mistake(data) ) return false
-        let {trc_address, trc_qrcode} = data
+        let {contractAddr, toaddress} = data
         return {
-            trc_address,
-            trc_qrcode
+            contractAddr,
+            toaddress
         }
     },
     balancewithdraw(data){
@@ -1496,5 +1503,16 @@ export default {
             invite_code
         }
     },
-
+    balancerecharge_submit(data){
+        if ( mistake(data) ) return false 
+        return {
+            msg: data.msg
+        }
+    },
+    useredit_nick_name(data){
+        if ( mistake(data) ) return false 
+        return {
+            msg: data.msg
+        }
+    }
 }

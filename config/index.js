@@ -11,7 +11,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
         '/apis': {
-          target: 'http://6006.jujiawangluokeji.com',
+          target: 'http://kiwigame.finance',
           changeOrigin: true,
           logLevel: 'debug',
           headers: {

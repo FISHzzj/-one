@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+// import web3 from 'web3'
 
 import '@/assets/css/override.css'
 import '@/assets/css/font_icon_6164.css'
@@ -19,6 +20,8 @@ import i18n from './i18n/index'
 
 import store from './store/index'
 
+
+
 // import VConsole from 'vconsole/dist/vconsole.min.js' //import vconsole
 // let vConsole = new VConsole() // 初始化
 
@@ -29,8 +32,12 @@ Vue.use(DatetimePicker);
 Vue.use(Switch);
 Vue.use(PasswordInput);
 Vue.use(NumberKeyboard)
+// Vue.use(web3)
 
 Vue.config.productionTip = false
+// Vue.prototype.Web3 = Web3
+
+// console.log(this.Web3)
 
 // 某些 函数, 挂载 到 window 全局 上
 window.Dialog = Dialog
