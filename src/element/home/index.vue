@@ -1697,7 +1697,7 @@ export default {
             if (!this.inputMsg.mobile) return Toast( '请输入手机号')
             let res = await $ajax('sendVerifycode',{
                 mobile: this.inputMsg.mobile,
-                 "type": "register" //短信验证码类型：register，forget
+                 "type": "forget" //短信验证码类型：register，forget
             })
             if (!res) return false
             Toast(res.msg)
@@ -1712,7 +1712,7 @@ export default {
             if (!this.newmobile) return Toast( '请输入手机号')
             let res = await $ajax('sendVerifycode',{
                 mobile: this.newmobile,
-                 "type": "forget" //短信验证码类型：register，forget
+                 "type": "register" //短信验证码类型：register，forget
             })
             if (!res) return false
             Toast(res.msg)
@@ -4451,6 +4451,7 @@ export default {
                                 white-space: nowrap;
                                 height: 4vw;
                                 line-height: 4vw;
+                                width: 88%;
                             }
                         }
                         .sdtextone{

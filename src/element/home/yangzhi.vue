@@ -1199,7 +1199,7 @@
                                 <div class="flex flex_between">
                                     <span style="width: 30vw;overflow: hidden;margin-right:5vw;" v-if="item.source_type == 105">鸡分：-{{item.source_type}}</span>
                                     <span style="width: 30vw;overflow: hidden;margin-right:5vw;" v-else>鸡分：{{item.source_type}}</span>
-                                    <!-- <span>数量：300</span> -->
+                                    <span>昵称：{{item.user_name}}</span>
                                 </div>
                                 
                                 <div>时间：{{item.create_time}}</div>
@@ -2558,7 +2558,11 @@ export default {
             if (!this.newmobile) return Toast( '请输入手机号')
             let res = await $ajax('sendVerifycode',{
                 mobile: this.newmobile,
+<<<<<<< HEAD
                  "type": "forget" //短信验证码类型：register，forget
+=======
+                 "type": "register" //短信验证码类型：register，forget
+>>>>>>> cab3df7d364403fce4c314ae131157eb21d6aae8
             })
             if (!res) return false
             Toast(res.msg)
@@ -5401,6 +5405,7 @@ export default {
                                 white-space: nowrap;
                                 height: 4vw;
                                 line-height: 4vw;
+                                width:88%;
                             }
                         }
                         .sdtextone{
