@@ -56,7 +56,7 @@
                         <div class="num">{{item.text}}</div>
                     </div>
                 </div>
-                 <div class="wrapper flex" v-if="item.paytext == 'BZZ'" :style="{'background-image': 'url('+bzzimg+')'}">
+                 <div class="wrapper flex" v-if="item.paytext == 'CCN'" :style="{'background-image': 'url('+bzzimg+')'}">
                     <div class="left"></div>
                     <div class="right">
                         <div class="name">{{item.wallet}}</div>
@@ -79,7 +79,7 @@
             <div class="item" @click="goedit('ETH')">ETH地址</div>
             <div class="item" @click="goedit('FIL')">FIL地址</div>
             <div class="item" @click="goedit('XCH')">XCH地址</div>
-            <div class="item" @click="goedit('BZZ')">BZZ地址</div>
+            <div class="item" @click="goedit('CCN')">CCN地址</div>
         </div>
     </div>
 </template>
@@ -102,7 +102,7 @@ export default {
             btcimg: require('@/assets/images/btc.png'),
             filimg: require('@/assets/images/fil.png'),
             xchimg: require('@/assets/images/xch.png'),
-            bzzimg: require('@/assets/images/bzz.png'),
+            bzzimg: require('@/assets/images/ccn.png'),
         };
     },
     mounted() {

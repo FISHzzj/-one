@@ -113,12 +113,12 @@
                 <img v-if="paytype == 'xch'" src="@/assets/images/dui.png" alt="" />
                 <img v-else src="@/assets/images/yuan.png" alt="" />
             </div>
-            <div class="item flex ali_center flex_between" @click="change('bzz')" v-if="paystatus == 5">
+            <div class="item flex ali_center flex_between" @click="change('ccn')" v-if="paystatus == 5">
                 <div class="flex ali_center">
                     <img src="" class="icon" alt="" />
-                    <span>BZZ支付</span>
+                    <span>CCN支付</span>
                 </div>
-                <img v-if="paytype == 'bzz'" src="@/assets/images/dui.png" alt="" />
+                <img v-if="paytype == 'ccn'" src="@/assets/images/dui.png" alt="" />
                 <img v-else src="@/assets/images/yuan.png" alt="" />
             </div>
         </div>

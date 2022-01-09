@@ -160,7 +160,7 @@
             </div>
             <!-- <div class="item" v-if="xch" >
                 <div class="title_1 flex ali_center">
-                    <p>BZZ矿池</p>
+                    <p>CCN矿池</p>
                     <van-icon name="warning-o" color="#999" />
                 </div>
                 <div class="somenum flex ali_center">

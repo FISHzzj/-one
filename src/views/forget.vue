@@ -98,7 +98,7 @@ export default {
             })
             if (!res) return false
             // 返回 登錄
-            Dialog.alert({
+            Toast({
                 message: res.msg
             })
             this.$router.push({
@@ -122,102 +122,102 @@ export default {
 }
 </script>
 <style lang="less" scope>
-.login {
-    padding: 0 4vw;
-    font-size: 4vw;
-    .header {
-        height: 10vw;
-    }
-    .title {
-        .first {
-            font-weight: 600;
-            font-size: 5vw;
-            line-height: 10vw;
+// .login {
+//     padding: 0 4vw;
+//     font-size: 4vw;
+//     .header {
+//         height: 10vw;
+//     }
+//     .title {
+//         .first {
+//             font-weight: 600;
+//             font-size: 5vw;
+//             line-height: 10vw;
 
-        }
-        .second {
-            font-size: 4vw;
-            color: #999;
-        }
-    }
-    .content {
-        margin-top: 10vw;
-        .title1 {
-            color: #999;
-            font-size: 3.2vw;
-            line-height: 12vw;
-        }
-        .pwd {
-            position: relative;
-            width: 100%;
-            height: 12vw;
-            border-radius: 6vw;
-            background: #f7f6fc;
-            .iconfont {
-                top: 0;
-                bottom: 0;
-                margin: auto 0;
-                right: 4vw;
-                height: 4vw;
-                position: absolute;
-                border-radius: 50%;
-            }
-            .van-icon {
-                top: 0;
-                bottom: 0;
-                margin: auto 0;
-                right: 12vw;
-                height: 2.5vw;
-                position: absolute;
-                border-radius: 50%;
-                padding: 1vw;
-                background: rgba(0,0,0,.3);
-            }
-            input {
-                text-indent: 3vw;
-                height: 12vw;
-                font-size: 4vw;
-            }
-        }
-        .code {
-            width: 100%;
-            height: 12vw;
-            border-radius: 6vw;
-            background: #f7f6fc;
-            input {
-                text-indent: 3vw;
-                height: 12vw;
-                font-size: 4vw;
-            }
-            span {
-                padding-right: 3vw;
-                color: rgb(112,121,164);
-            }
-        }
-        .spread {
-            width: 100%;
-            height: 12vw;
-            background: rgb(235,245,254);
-            border-radius: 6vw;
-            input {
-                width: 100%;
-                height: 12vw;
-                text-align: center;
-            }
-        }
-        .next {
-            width: 52vw;
-            text-align: center;
-            height: 12vw;
-            background: #f7f6fc;
-            line-height: 12vw;
-            color: #fff;
-            border-radius: 6vw;
-            margin: 20vw auto 0;
-            &.on {
-                background: #4e486e;
-            }
-        }
-    }
-}
+//         }
+//         .second {
+//             font-size: 4vw;
+//             color: #999;
+//         }
+//     }
+//     .content {
+//         margin-top: 10vw;
+//         .title1 {
+//             color: #999;
+//             font-size: 3.2vw;
+//             line-height: 12vw;
+//         }
+//         .pwd {
+//             position: relative;
+//             width: 100%;
+//             height: 12vw;
+//             border-radius: 6vw;
+//             background: #f7f6fc;
+//             .iconfont {
+//                 top: 0;
+//                 bottom: 0;
+//                 margin: auto 0;
+//                 right: 4vw;
+//                 height: 4vw;
+//                 position: absolute;
+//                 border-radius: 50%;
+//             }
+//             .van-icon {
+//                 top: 0;
+//                 bottom: 0;
+//                 margin: auto 0;
+//                 right: 12vw;
+//                 height: 2.5vw;
+//                 position: absolute;
+//                 border-radius: 50%;
+//                 padding: 1vw;
+//                 background: rgba(0,0,0,.3);
+//             }
+//             input {
+//                 text-indent: 3vw;
+//                 height: 12vw;
+//                 font-size: 4vw;
+//             }
+//         }
+//         .code {
+//             width: 100%;
+//             height: 12vw;
+//             border-radius: 6vw;
+//             background: #f7f6fc;
+//             input {
+//                 text-indent: 3vw;
+//                 height: 12vw;
+//                 font-size: 4vw;
+//             }
+//             span {
+//                 padding-right: 3vw;
+//                 color: rgb(112,121,164);
+//             }
+//         }
+//         .spread {
+//             width: 100%;
+//             height: 12vw;
+//             background: rgb(235,245,254);
+//             border-radius: 6vw;
+//             input {
+//                 width: 100%;
+//                 height: 12vw;
+//                 text-align: center;
+//             }
+//         }
+//         .next {
+//             width: 52vw;
+//             text-align: center;
+//             height: 12vw;
+//             background: #f7f6fc;
+//             line-height: 12vw;
+//             color: #fff;
+//             border-radius: 6vw;
+//             margin: 20vw auto 0;
+//             &.on {
+//                 background: #4e486e;
+//             }
+//         }
+//     }
+// }
 </style>

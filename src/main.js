@@ -3,13 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+// import web3 from 'web3'
 
 import '@/assets/css/override.css'
 import '@/assets/css/font_icon_6164.css'
 
 import Vant from 'vant'
 import 'vant/lib/index.css'
-import { Lazyload, Dialog, Toast, Calendar, DatetimePicker } from 'vant';
+import { Lazyload, Dialog, Toast, Calendar, DatetimePicker,Switch, PasswordInput, NumberKeyboard } from 'vant';
 
 import ajax from './callServer/ajax'
 import * as apicloud from './apicloud'
@@ -19,6 +20,8 @@ import i18n from './i18n/index'
 
 import store from './store/index'
 
+
+
 // import VConsole from 'vconsole/dist/vconsole.min.js' //import vconsole
 // let vConsole = new VConsole() // 初始化
 
@@ -26,8 +29,15 @@ Vue.use(Vant)
 Vue.use(Lazyload)
 Vue.use(Calendar);
 Vue.use(DatetimePicker);
+Vue.use(Switch);
+Vue.use(PasswordInput);
+Vue.use(NumberKeyboard)
+// Vue.use(web3)
 
 Vue.config.productionTip = false
+// Vue.prototype.Web3 = Web3
+
+// console.log(this.Web3)
 
 // 某些 函数, 挂载 到 window 全局 上
 window.Dialog = Dialog
@@ -58,8 +68,9 @@ window.apiready = async function() {
 // 进行路由 之前, 进行 判断
 router.beforeEach((to,from,next) => {
     let isLogin = localStorage.getItem("openid") || false //獲取本地存儲的openid, 判斷狀態
-    console.log(isLogin)
-    console.log(to.meta.mustLogin)
+    // console.log(!isLogin)
+    // console.log(to.meta.mustLogin)
+    // console.log(to.meta.mustLogin && !isLogin)
     window.scroll(0, 0) //每次切換頁面, 都滾動到頂部
     // 如果 必須登錄, 且 未登錄, 則 跳轉 登錄界面
     if (to.meta.mustLogin && !isLogin) {
@@ -69,7 +80,7 @@ router.beforeEach((to,from,next) => {
     } else if ( isLogin && !to.meta.mustLogin ) {
         // 已經登錄 且 頁面無需登錄, 跳轉 資產頁面
         next({
-            name: 'index'
+            name: 'yangzhi'
         })
     } else if ( !to.meta.mustLogin || (to.meta.mustLogin && isLogin) ) {
         // 如果 無需登錄 或者 必須登錄且 已經 登錄, 則直接跳轉

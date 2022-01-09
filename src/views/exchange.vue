@@ -11,7 +11,7 @@
             <img class="icon" src="@/assets/images/icon/4.png" alt=""  v-if="type == 'BTC'"/>
             <img class="icon" src="@/assets/images/icon/2.png" alt=""  v-if="type == 'ETH'"/>
             <img class="icon" src="@/assets/images/icon/3.png" alt=""  v-if="type == 'FIL'"/>
-            <img class="icon" src="@/assets/images/icon/7.png" alt=""  v-if="type == 'BZZ'"/>
+            <img class="icon" src="@/assets/images/icon/7.png" alt=""  v-if="type == 'CCN'"/>
            
 
             <div class="name">{{typetype}}{{type}}</div>
@@ -80,7 +80,7 @@ export default {
                 {name: "BTC", img: require('@/assets/images/icon/4.png')},
                 {name: "ETH", img: require('@/assets/images/icon/2.png')},
                 {name: "FIL", img: require('@/assets/images/icon/3.png')},
-                {name: "BZZ", img: require('@/assets/images/icon/7.png')}
+                {name: "CCN", img: require('@/assets/images/icon/7.png')}
             ],
             code: "",
             wallet: "",
@@ -145,7 +145,7 @@ export default {
                 this.accountType = 5
             }else if(type == "xch"){
                 this.accountType = 6
-            }else if(type == "bzz"){
+            }else if(type == "ccn"){
                 this.accountType = 7
             }
             let res = await $ajax('userrechargepays', {

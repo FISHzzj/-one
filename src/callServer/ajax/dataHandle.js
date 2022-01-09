@@ -9,18 +9,19 @@ function mistake (data) {
         // })
         return true //發生錯誤
     }
-    if (parseInt(data.status) !== 1) {
-        if(data.result.message == '请先登录'){
+    if (parseInt(data.code) !== 1) {
+        if(parseInt(data.code) == 12){
             localStorage.removeItem('openid')
             localStorage.removeItem('mobile')
+            location.reload();
         }
         Dialog.alert({
-            message: data.result.message
+            message: data.msg
         })
-        if(data.result.message == '请先登录'){
-            localStorage.removeItem('openid')
-            localStorage.removeItem('mobile')
-        }
+        // if(data.msg == '请先登录'){
+        //     localStorage.removeItem('openid')
+        //     localStorage.removeItem('mobile')
+        // }
         return true //發生錯誤
     }
     return false //未發生錯誤
@@ -36,7 +37,7 @@ export default {
         // console.log(data)
         if ( mistake(data) ) return false
         return {
-            openid: data.result.token,
+            openid: data.token,
             // ip: data.newclientip
         }
     },
@@ -44,21 +45,21 @@ export default {
         // console.log(data)
         if ( mistake(data) ) return false
         return {
-            msg: data.result.message
+            msg: data.msg
         }
     },
     register (data) {
         // console.log(data)
         if ( mistake(data) ) return false
         return {
-            msg: data.result.message
+            msg: data.message
         }
     },
     forget (data) {
         // console.log(data)
         if ( mistake(data) ) return false
         return {
-            msg: data.result.message
+            msg: data.msg
         }
     },
     kuang (data){
@@ -108,7 +109,7 @@ export default {
     },
     userInfowallet(data){
         if ( mistake(data) ) return false
-        let {usdt, cny, btc, eth, fil, xch, bzz, sysmoney, huilv, fil_frozen, fil_sys} = data.result.wallet
+        let {usdt, cny, btc, eth, fil, xch, ccn, sysmoney, huilv, fil_frozen, fil_sys} = data.result.wallet
         return {
             usdt,
             cny,
@@ -116,7 +117,7 @@ export default {
             eth,
             fil,
             xch,
-            bzz,
+            ccn,
             sysmoney,
             huilv,
             fil_frozen,
@@ -284,7 +285,7 @@ export default {
     },
     userpaymentpaylist(data){
         if ( mistake(data) ) return false
-        let {list, btc, eth, fil, usdt, xch, bzz} = data.result
+        let {list, btc, eth, fil, usdt, xch, ccn} = data.result
         return{
             list,
             btc,
@@ -292,7 +293,7 @@ export default {
             fil,
             usdt,
             xch,
-            bzz
+            ccn
 
         }
     },
@@ -1132,7 +1133,7 @@ export default {
         if ( mistake(data) ) return false
         let {feedback_list} = data.result
         let list = []
-        feedback_list.forEach( item => {
+        feedback_list.forEach( item => { 
             let {addtime, content, thumb, title} = item
             let images = thumb ? thumb.split(',') : []
             list.push({
@@ -1150,5 +1151,368 @@ export default {
 
         return list
 
+    },
+
+
+
+    //农场
+    config(data){
+        if ( mistake(data) ) return false
+        let { ins, sms, trade, withdraw } = data
+        return {
+            ins, 
+            sms, 
+            trade,
+            withdraw
+        }
+    },
+    userinfo(data){
+        if ( mistake(data) ) return false
+        let { user_id, nick_name, avatar, mobile, invite_code, balance, first_leader } = data.user
+        return {
+            user_id,
+            nick_name,
+            avatar,
+            mobile,
+            invite_code,
+            balance,
+            first_leader,
+            team_info: data.team_info
+        }
+    },
+    goodslists(data){
+        if ( mistake(data) ) return false
+        let {goods} = data
+
+        return {
+            goods
+        }
+    },
+    propfence(data){
+        if ( mistake(data) ) return false
+        let {fence} = data
+
+        return {
+            fence
+        }
+    },
+    propdog(data){
+        if ( mistake(data) ) return false
+        let {dog} = data
+
+        return {
+            dog
+        }
+    },
+    propfeed(data){
+        if ( mistake(data) ) return false
+        let {feed,chick} = data
+        let list = feed.concat(chick)
+        return {
+            list
+        }
+    },
+    propbroom(data){
+        if ( mistake(data) ) return false
+        let {broom} = data
+
+        return {
+            broom
+        }
+    },
+    proppack(data){
+        if ( mistake(data) ) return false
+        let {pack} = data
+
+        return {
+            pack
+        }
+    },
+    goodsbuy(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
+    fanslists(data){
+        if ( mistake(data) ) return false
+        let {fans} = data
+        return {
+            fans
+        }
+    },
+    fansalllists(data){
+        if ( mistake(data) ) return false
+        let {fans} = data
+        return {
+            fans
+        }
+    },
+    tradelists(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    trademine(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    tradeorder(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    tradebuy(data){
+        if ( mistake(data) ) return false
+        return {
+            // sn: data.sn,
+            msg: data.msg
+        }
+    },
+    tradesell(data){
+        if ( mistake(data) ) return false
+        return {
+            // sn: data.sn,
+            msg: data.msg
+        }
+    },
+    tradeclear(data){
+        if ( mistake(data) ) return false
+        return {
+            // sn: data.sn,
+            msg: data.msg
+        }
+    },
+    houseindex(data){
+        if ( mistake(data) ) return false
+        let {house, super_house} = data
+        return {
+            house,
+            super_house
+        }
+    },
+    housebuild(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
+    houseadd_chick(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
+    housereap(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
+    houseuse_feed(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
+    houseuse_dog(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
+    houseuse_fence(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
+    housesimple(data){
+        if ( mistake(data) ) return false
+        let {house_list} = data
+        return {
+            house_list
+        }
+    },
+    transfersubmit(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
+    transfersubmit_credit(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
+    houselog_list(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+
+    },
+    housebuy_broom(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
+    houseuse_broom(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
+    housebroom_list(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    housesteal(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
+    balancerecharge(data){
+        if ( mistake(data) ) return false
+        let {contractAddr, toaddress} = data
+        return {
+            contractAddr,
+            toaddress
+        }
+    },
+    balancewithdraw(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
+    logbalance_integral(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    logtransfer_integral(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    logtrade_integral(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    logtrade_chick(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    logshop_chick(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    loghatch_chick(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    logget_egg(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    logsteal_egg(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    logclean_egg(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    hatchindex(data){
+        if ( mistake(data) ) return false
+        return {
+            data
+        }
+    },
+    hatchcreate(data){
+        if ( mistake(data) ) return false
+     
+        return {
+            msg: data.msg
+        }
+    },
+    hatchuse_pack(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
+    useredit(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
+    userforget_pay(data){
+        if ( mistake(data) ) return false
+        return {
+            msg: data.msg
+        }
+    },
+    userposter(data){
+        if ( mistake(data) ) return false 
+        let {url, background_img, invite_code} = data
+        return{
+            url, 
+            background_img, 
+            invite_code
+        }
+    },
+    balancerecharge_submit(data){
+        if ( mistake(data) ) return false 
+        return {
+            msg: data.msg
+        }
+    },
+    useredit_nick_name(data){
+        if ( mistake(data) ) return false 
+        return {
+            msg: data.msg
+        }
     }
 }

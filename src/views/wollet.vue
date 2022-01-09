@@ -19,7 +19,7 @@
             <div class="btns flex flex_around ali_center">
                 <span class="recharge" @click="changetype(1)">转入</span>
                 <span class="cash" @click="changetype(2)">转出</span>
-                <span class="exchange" @click="changetype(3)">兑换</span>
+                <!-- <span class="exchange" @click="changetype(3)">兑换</span> -->
                 <span class="huzhuan" @click="changetype(4)">互转</span>
             </div>
         </div>
@@ -100,13 +100,13 @@
                     <div class="num1" v-else>* * * *</div>
                 </div>
             </div>
-            <div @click="godetail(`BZZ/${bzz}`)" class="item flex ali_center">
+            <div @click="godetail(`CCN/${ccn}`)" class="item flex ali_center">
                 <div class="left flex ali_center">
                     <img src="@/assets/images/icon/7.png" alt="" />
-                    <span>BZZ</span>
+                    <span>CCN</span>
                 </div>
                 <div class="right">
-                    <div class="num" v-if="iconeyeclose">{{bzz}}</div>
+                    <div class="num" v-if="iconeyeclose">{{ccn}}</div>
                     <div class="num" v-else>* * * *</div>
                     <span class="num1" v-if="iconeyeclose">≈ {{bzztocny}}CNY</span>
                     <div class="num1" v-else>* * * *</div>
@@ -161,11 +161,11 @@
                     <div class="type">余额：{{xch}}XCh</div>
                 </div>
             </div>
-             <div class="item flex ali_center" @click="gonext('BZZ')">
+             <div class="item flex ali_center" @click="gonext('CCN')">
                 <img src="@/assets/images/icon/7.png" alt="">
                 <div class="info">
-                    <div class="num">BZZ</div>
-                    <div class="type">余额：{{bzz}}BZZ</div>
+                    <div class="num">CCN</div>
+                    <div class="type">余额：{{ccn}}CCN</div>
                 </div>
             </div>
         </div>
@@ -185,7 +185,7 @@ export default {
             eth: "",
             fil: "",
             xch:"",
-            bzz: "",
+            ccn: "",
             sysmoney: "",
             usdttocny: "",
             btctocny: "",
@@ -245,8 +245,8 @@ export default {
                 this.filtocny =  this.fil * this.rates 
             }else if(current == 'XCH'){
                 this.xchtocny =  this.xch * this.rates 
-            }else if(current == 'BZZ'){
-                this.bzztocny =  this.bzz * this.rates 
+            }else if(current == 'CCN'){
+                this.bzztocny =  this.ccn * this.rates 
             }
         },
         changetype(index) {
@@ -288,8 +288,8 @@ export default {
                     this.$router.push('/changeType/' + type + "/" + this.fil);
                 }else if(type == 'XCH') {
                     this.$router.push('/changeType/' + type + "/" + this.xch);
-                }else if(type == 'BZZ') {
-                    this.$router.push('/changeType/' + type + "/" + this.bzz);
+                }else if(type == 'CCN') {
+                    this.$router.push('/changeType/' + type + "/" + this.ccn);
                 }
             }
 

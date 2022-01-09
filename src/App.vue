@@ -2,9 +2,13 @@
     <div id="app">
             <transition :name="names">
                 <keep-alive include="products">
-                    <router-view></router-view>
+                    <router-view/>
+                    
                 </keep-alive>
             </transition>
+            <!-- 背景音乐 -->
+                    <audio :src="MP3_bg" loop ref="MusicPlay" preload="preload"  controls="controls" style="display:none;"></audio>
+                    <audio :src="MP3_click" ref="MusicClick" preload="preload"  controls="controls" style="display:none;"></audio>
     </div>
 </template>
 
@@ -28,11 +32,18 @@ export default {
         return{
             names:'left',
             active: 0,
+            MP3_bg:require('@/assets/images/nongchang/music/bg_music.mp3'),
+            MP3_click:require('@/assets/images/nongchang/music/click.mp3'),
+            yinyue: true,
         }
+    },
+    mounted() {
+        console.log(2222222)
+        this.$refs.MusicPlay.play()
     },
     components : {
         Test
-    }
+    },
 }
 </script>
 
@@ -111,6 +122,22 @@ export default {
     -moz-box-lines: multiple;
     -o-box-lines: multiple;
 }
+.flex_row{
+    flex-direction: row;
+}
+.flex_col{
+    flex-direction: column;
+}
+.flex_wrap{
+    flex-wrap: wrap;
+}
+.flex_nowrap{
+    flex-wrap: nowrap;
+}
+.flex_center{
+    justify-content: center;
+    -webkit-justify-content: center;
+}
 .flex_between {
     justify-content: space-between;
     -webkit-justify-content: space-between;
@@ -118,6 +145,14 @@ export default {
 .flex_around {
     justify-content: space-around;
     -webkit-justify-content: space-around;
+}
+.flex-start {
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
+}
+.flex-end {
+    justify-content: flex-end;
+    -webkit-justify-content: flex-end;
 }
 .ali_center {
     align-items: center;
@@ -127,5 +162,9 @@ input {
     outline: none;
     background: transparent;
     border: none;
+}
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill{
+	 -webkit-box-shadow: 0 0 0px 1000px #D6C695 inset;   
 }
 </style>

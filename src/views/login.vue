@@ -144,144 +144,144 @@ export default {
 }
 </script>
 <style lang="less">
-.login {
-    padding: 0 4vw;
-    font-size: 4vw;
-    .header {
-        height: 10vw;
-    }
-    .title {
-        .first {
-            font-weight: 600;
-            font-size: 5vw;
-            line-height: 10vw;
+// .login {
+//     padding: 0 4vw;
+//     font-size: 4vw;
+//     .header {
+//         height: 10vw;
+//     }
+//     .title {
+//         .first {
+//             font-weight: 600;
+//             font-size: 5vw;
+//             line-height: 10vw;
 
-        }
-        .second {
-            font-size: 5vw;
-            color: #999;
-        }
-    }
-    .content {
-        margin-top: 10vw;
-        .phone {
-            width: 100%;
-            background: #f7f6fc;
-            border-radius: 6vw;
-            position: relative;
-            height: 12vw;
-            input {
-                width: 100%;
-                height: 12vw;
-                border: 0;
-                text-indent: 3vw;
-            }
-            .van-icon {
-                top: 0;
-                bottom: 0;
-                margin: auto 0;
-                right: 4vw;
-                height: 2.5vw;
-                position: absolute;
-                border-radius: 50%;
-                padding: 1vw;
-                background: rgba(0,0,0,.3);
-            }
-        }
-        .pwd {
-            margin-top: 2.4vw;
-            position: relative;
-            width: 100%;
-            height: 12vw;
-            border-radius: 6vw;
-            background: #f7f6fc;
-            .iconfont {
-                top: 0;
-                bottom: 0;
-                margin: auto 0;
-                right: 4vw;
-                height: 4vw;
-                position: absolute;
-                border-radius: 50%;
-            }
-            .van-icon {
-                top: 0;
-                bottom: 0;
-                margin: auto 0;
-                right: 12vw;
-                height: 2.5vw;
-                position: absolute;
-                border-radius: 50%;
-                padding: 1vw;
-                background: rgba(0,0,0,.3);
-            }
-            input {
-                text-indent: 3vw;
-                height: 12vw;
-                font-size: 4vw;
-            }
-        }
-    }
-    .submit {
-        width: 50vw;
-        height: 12vw;
-        margin: 10vw auto;
-        border: 1px solid #da428d;
-        border-radius: 6vw;
-        position: relative;
-        .van-icon {
-            position: absolute;
-            width: 8vw;
-            height: 8vw;
-            border-radius: 50%;
-            background: #da428d;
-            margin: auto 0;
-            color: #da428d;
-            top: 0;
-            bottom: 0;
-            left: 13px;
-        }
-        div {
-            width: 100%;
-            text-align: center;
-            color: #da428d;
-            line-height: 12vw;
-        }
-        &.on {
-            border: 1px solid #da428d;
-            .van-icon {
-                background: #da428d;
-            }
-            div {
-                color: #da428d;
-            }
-        }
-    }
-    .footer {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        .top {
-            width: 100%;
-            color: #da428d;
-            height: 12vw;
-            font-size: 3.2vw;
-            justify-content: center;
-            p {
-                border-right: 1px solid #da428d;
-                height: 4vw;
-                margin: 0 4vw;
-            }
-        }
-        .tips {
-            justify-content: center;
-            font-size: 3.2vw;
-            padding-bottom: 3vw;
-            span {
-                color: #da428d;
-            }
-        }
-    }
-}
+//         }
+//         .second {
+//             font-size: 5vw;
+//             color: #999;
+//         }
+//     }
+//     .content {
+//         margin-top: 10vw;
+//         .phone {
+//             width: 100%;
+//             background: #f7f6fc;
+//             border-radius: 6vw;
+//             position: relative;
+//             height: 12vw;
+//             input {
+//                 width: 100%;
+//                 height: 12vw;
+//                 border: 0;
+//                 text-indent: 3vw;
+//             }
+//             .van-icon {
+//                 top: 0;
+//                 bottom: 0;
+//                 margin: auto 0;
+//                 right: 4vw;
+//                 height: 2.5vw;
+//                 position: absolute;
+//                 border-radius: 50%;
+//                 padding: 1vw;
+//                 background: rgba(0,0,0,.3);
+//             }
+//         }
+//         .pwd {
+//             margin-top: 2.4vw;
+//             position: relative;
+//             width: 100%;
+//             height: 12vw;
+//             border-radius: 6vw;
+//             background: #f7f6fc;
+//             .iconfont {
+//                 top: 0;
+//                 bottom: 0;
+//                 margin: auto 0;
+//                 right: 4vw;
+//                 height: 4vw;
+//                 position: absolute;
+//                 border-radius: 50%;
+//             }
+//             .van-icon {
+//                 top: 0;
+//                 bottom: 0;
+//                 margin: auto 0;
+//                 right: 12vw;
+//                 height: 2.5vw;
+//                 position: absolute;
+//                 border-radius: 50%;
+//                 padding: 1vw;
+//                 background: rgba(0,0,0,.3);
+//             }
+//             input {
+//                 text-indent: 3vw;
+//                 height: 12vw;
+//                 font-size: 4vw;
+//             }
+//         }
+//     }
+//     .submit {
+//         width: 50vw;
+//         height: 12vw;
+//         margin: 10vw auto;
+//         border: 1px solid #da428d;
+//         border-radius: 6vw;
+//         position: relative;
+//         .van-icon {
+//             position: absolute;
+//             width: 8vw;
+//             height: 8vw;
+//             border-radius: 50%;
+//             background: #da428d;
+//             margin: auto 0;
+//             color: #da428d;
+//             top: 0;
+//             bottom: 0;
+//             left: 13px;
+//         }
+//         div {
+//             width: 100%;
+//             text-align: center;
+//             color: #da428d;
+//             line-height: 12vw;
+//         }
+//         &.on {
+//             border: 1px solid #da428d;
+//             .van-icon {
+//                 background: #da428d;
+//             }
+//             div {
+//                 color: #da428d;
+//             }
+//         }
+//     }
+//     .footer {
+//         position: fixed;
+//         bottom: 0;
+//         left: 0;
+//         width: 100%;
+//         .top {
+//             width: 100%;
+//             color: #da428d;
+//             height: 12vw;
+//             font-size: 3.2vw;
+//             justify-content: center;
+//             p {
+//                 border-right: 1px solid #da428d;
+//                 height: 4vw;
+//                 margin: 0 4vw;
+//             }
+//         }
+//         .tips {
+//             justify-content: center;
+//             font-size: 3.2vw;
+//             padding-bottom: 3vw;
+//             span {
+//                 color: #da428d;
+//             }
+//         }
+//     }
+// }
 </style>

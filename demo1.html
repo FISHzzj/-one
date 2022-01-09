@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>动态添加图形和图片并可以拖拽</title>
+    <meta content="width=device-width;initial-scale=1">
+    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/svg.js/3.1.1/svg.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/svg.draggy.js/1.1.1/svg.draggy.min.js"></script>
+    <!-- <script src="svg.draggable.js"></script> -->
+ 
+    <style>
+        #drawing {
+            width: 100%;
+            height: 500px;
+            margin: 0;
+        }
+    </style>
+</head>
+ 
+<body>
+<!--向svg中添加元素-->
+<svg id="svg_my" style="border:1px solid #000;width:500px;height:500px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+ 
+</svg>
+<button onclick="onLoad()">
+    添加
+</button>
+</body>
+<script>
+ 
+    // 向svg中动态添加图形和图片
+    function onLoad(){
+        var m,e, t, s,draw = SVG('svg_my').attr({ 'font-size': 10 }).fill('#f57518')
+        //        向svg中添加矩形rect（宽，高）center（x轴位置，y轴位置） draggable（图形可以拖动的活动区域）
+        e = draw.rect(100,100).center(150, 150).draggable({ minX: 0, minY: 50, maxX: 400, maxY: 400 })
+        //        向svg中添加矩形image（图片地址，宽，高）center（x轴位置，y轴位置） draggable（图形可以拖动的活动区域）
+        draw.image("timg.jpg",100,100).center(150, 150).draggable({ minX: 0, minY: 50, maxX: 400, maxY: 400 })
+        //        在指定位置添加一个text标签
+       draw.plain('constrained with object and ghost').center(200, 210)
+ 
+    }
+ 
+ 
+ 
+</script>
+</html>
+运行结果：

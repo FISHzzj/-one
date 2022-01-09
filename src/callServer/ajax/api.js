@@ -2,14 +2,19 @@
  * 后端 请求, api 的 封装
  */
 
-let common = '/app/index.php?i=1&c=entry&m=ewei_shopv2&' //公共字段
+// let common = '/app/index.php?i=1&c=entry&m=ewei_shopv2&' //公共字段
+let common = '/farm/'  //公共字段
 
 export default {
     uploader: `${common}do=mobile&r=util.uploader`, //上傳圖片
-    sendVerifycode: `${common}do=mobile&r=account.verifycode`, // 發送驗證碼
-    login: `${common}do=mobile&r=account.login`, //登录
-    register: `${common}do=mobile&r=account.register`, //註冊
-    forget: `${common}do=mobile&r=account.forget`, // 忘記密碼
+    // sendVerifycode: `${common}do=mobile&r=account.verifycode`, // 發送驗證碼
+    // login: `${common}do=mobile&r=account.login`, //登录
+    // register: `${common}do=mobile&r=account.register`, //註冊
+    // forget: `${common}do=mobile&r=account.forget`, // 忘記密碼
+
+
+
+
     center: `${common}do=mobile&r=points.center`, // 我的
     kuang: `${common}do=mobile&r=kuang`, //首页
     userSet: `${common}do=mobile&r=user.userSet`, //编辑会员资料
@@ -116,4 +121,74 @@ export default {
     feedbackList: `${common}do=mobile&r=points.feedback.details`, // 反饋列表
     get_qq: `${common}do=mobile&r=points.feedback.get_qq`, // 获取QQ
     sdcustomerService: `${common}do=mobile&r=points.sd_customer_service`, //联系我们
+
+    
+    config:`${common}config`, //系统设定
+    register:`${common}user/register`, //注册
+    login:`${common}user/login`, //登录
+    sendVerifycode: `${common}index/send_sms`, // 發送驗證碼
+    forget: `${common}user/forget_login`, // 忘記密碼
+    userinfo: `${common}user/info`, // 用户信息
+    goodslists: `${common}goods/lists`, //小鸡
+    propfence: `${common}prop/fence`, //围栏 
+    propdog: `${common}prop/dog`, //守护犬 
+    propfeed: `${common}prop/feed`, //饲料 
+    propbroom: `${common}prop/broom`, //扫帚 
+    proppack: `${common}prop/pack`, //加速包
+    goodsbuy: `${common}goods/buy`, //小鸡购买
+    fanslists: `${common}fans/lists`, //好友列表
+    fansalllists: `${common}fans/all_lists`, //广场列表
+    tradelists: `${common}trade/lists`, //我要购买
+    trademine: `${common}trade/mine`, //我的挂卖
+    tradeorder: `${common}trade/order`, //交易记录
+    tradebuy: `${common}trade/buy`, //发起交易
+    tradesell: `${common}trade/sell`, //发布挂买订单
+    tradeclear: `${common}trade/clear`, //取消挂买订单 
+    housebuild: `${common}house/build`, //开鸡舍
+    houseadd_chick: `${common}house/add_chick`, //开鸡舍
+    houseindex: `${common}house/index`, //养殖场首页
+    housereap: `${common}house/reap`, //收获鸡蛋
+    houseuse_feed: `${common}house/use_feed`, //使用饲料
+    houseuse_dog: `${common}house/use_dog`, //使用守护犬
+    houseuse_fence: `${common}house/use_fence`, //使用围栏
+    housesimple: `${common}house/simple`, //鸡舍详情
+    transfersubmit: `${common}transfer/submit`, //转账
+    transfersubmit_credit: `${common}transfer/submit_credit`, //小鸡互转
+    houselog_list: `${common}house/log_list`, //增养记录列表
+    housebuy_broom: `${common}house/buy_broom`, //购买扫帚
+    houseuse_broom: `${common}house/use_broom`, //打扫
+    housebroom_list: `${common}house/broom_list`, //扫帚列表
+    housesteal: `${common}house/steal`, //偷盗
+    balancerecharge: `${common}balance/recharge`, //充值界面
+    balancewithdraw: `${common}balance/withdraw`, //提现界面
+    logbalance_integral: `${common}log/balance_integral`, //充值提现
+    logtransfer_integral: `${common}log/transfer_integral`, //转账
+    logtrade_integral: `${common}log/trade_integral`, //交易
+    logtrade_chick: `${common}log/trade_chick`, //小鸡交易
+    logshop_chick: `${common}log/shop_chick`, //商店购买
+    loghatch_chick: `${common}log/hatch_chick`, //孵化
+    logget_egg: `${common}log/get_egg`, //收获
+    logsteal_egg: `${common}log/steal_egg`, //偷盗获得鸡蛋记录
+    logclean_egg: `${common}log/clean_egg`, //打扫获得鸡蛋 
+    hatchindex: `${common}hatch/index`, //孵化首页
+    hatchcreate: `${common}hatch/create`, //孵化
+    hatchuse_pack: `${common}hatch/use_pack`, //使用加速包
+    useredit: `${common}user/edit`, //换手机号
+    userforget_pay: `${common}user/forget_pay`, //重置支付密码
+    userposter: `${common}user/poster`, //分享页面
+    balancerecharge_submit: `${common}balance/recharge_submit`, //充值提交信息
+    useredit_nick_name: `${common}user/edit_nick_name`, //修改名称
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
 }
