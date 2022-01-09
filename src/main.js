@@ -10,7 +10,7 @@ import '@/assets/css/font_icon_6164.css'
 
 import Vant from 'vant'
 import 'vant/lib/index.css'
-import { Lazyload, Dialog, Toast, Calendar, DatetimePicker,Switch, PasswordInput, NumberKeyboard } from 'vant';
+import { Lazyload, Dialog, Toast, Calendar, DatetimePicker,Switch, PasswordInput, NumberKeyboard, Loading } from 'vant';
 
 import ajax from './callServer/ajax'
 import * as apicloud from './apicloud'
@@ -32,6 +32,7 @@ Vue.use(DatetimePicker);
 Vue.use(Switch);
 Vue.use(PasswordInput);
 Vue.use(NumberKeyboard)
+Vue.use(Loading)
 // Vue.use(web3)
 
 Vue.config.productionTip = false
@@ -44,6 +45,7 @@ window.Dialog = Dialog
 window.Toast = Toast
 window.$ajax = ajax
 window.apicloud = undefined
+
 
 // 将 多语言模块 挂载在 vue 的原型连上
 let lang = localStorage.getItem('lang') || 'cn' // 获取语言, 默认为简体

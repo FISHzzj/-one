@@ -56,6 +56,17 @@
 
                 </div>
                 <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="houseList[0].eggs > 0" @click="shouhuo(houseList[0].id)">
+                <div class="qipaokuang" v-show="jishexiangqingkuang == houseList[0].id">
+                    <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
+                    <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
+                    <p>总鸡量：{{num}}</p>
+                    <p>产蛋速度：1</p>
+                    <p>收获时间剩余：1</p>
+                    <p>围栏级别：{{prop_fence_level}}</p>
+                    <p>围栏使用剩余时间：1</p>
+                    <p>守护犬级别：{{prop_dog_level}}</p>
+                    <p>守护犬使用剩余时间:1</p>
+                </div>
                 
             </div>
             <div class="twodi" :class="fangda == houseList[1].id ? 'animatfangda' : 'animatsuoxiao'">
@@ -83,7 +94,17 @@
 
                 </div>
                 <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="houseList[1].eggs > 0" @click="shouhuo(houseList[1].id)">
-                
+                <div class="qipaokuang" v-show="jishexiangqingkuang == houseList[1].id">
+                    <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
+                    <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
+                    <p>总鸡量：{{num}}</p>
+                    <p>产蛋速度：1</p>
+                    <p>收获时间剩余：1</p>
+                    <p>围栏级别：{{prop_fence_level}}</p>
+                    <p>围栏使用剩余时间：1</p>
+                    <p>守护犬级别：{{prop_dog_level}}</p>
+                    <p>守护犬使用剩余时间:1</p>
+                </div>
             </div>
             <div class="threedi" :class="fangda == houseList[2].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[2].status == 0">
@@ -110,7 +131,17 @@
 
                 </div>
                 <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="houseList[2].eggs > 0" @click="shouhuo(houseList[2].id)">
-                
+                <div class="qipaokuang" v-show="jishexiangqingkuang == houseList[2].id">
+                    <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
+                    <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
+                    <p>总鸡量：{{num}}</p>
+                    <p>产蛋速度：1</p>
+                    <p>收获时间剩余：1</p>
+                    <p>围栏级别：{{prop_fence_level}}</p>
+                    <p>围栏使用剩余时间：1</p>
+                    <p>守护犬级别：{{prop_dog_level}}</p>
+                    <p>守护犬使用剩余时间:1</p>
+                </div>
             </div>
             <div class="fourdi" :class="fangda == houseList[3].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[3].status == 0">
@@ -137,7 +168,17 @@
 
                 </div>
                 <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="houseList[3].eggs > 0" @click="shouhuo(houseList[3].id)">
-                
+                <div class="qipaokuang" v-show="jishexiangqingkuang == houseList[3].id">
+                    <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
+                    <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
+                    <p>总鸡量：{{num}}</p>
+                    <p>产蛋速度：1</p>
+                    <p>收获时间剩余：1</p>
+                    <p>围栏级别：{{prop_fence_level}}</p>
+                    <p>围栏使用剩余时间：1</p>
+                    <p>守护犬级别：{{prop_dog_level}}</p>
+                    <p>守护犬使用剩余时间:1</p>
+                </div>
                 
             </div>
             <div class="fivedi" :class="fangda == houseList[4].id ? 'animatfangda' : 'animatsuoxiao'">
@@ -165,7 +206,17 @@
 
                 </div>
                 <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="houseList[4].eggs > 0" @click="shouhuo(houseList[4].id)">
-                
+                <div class="qipaokuang" v-show="jishexiangqingkuang == houseList[4].id">
+                    <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
+                    <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
+                    <p>总鸡量：{{num}}</p>
+                    <p>产蛋速度：1</p>
+                    <p>收获时间剩余：1</p>
+                    <p>围栏级别：{{prop_fence_level}}</p>
+                    <p>围栏使用剩余时间：1</p>
+                    <p>守护犬级别：{{prop_dog_level}}</p>
+                    <p>守护犬使用剩余时间:1</p>
+                </div>
                 
             </div>
             <div class="sixdi" :class="fangda == houseList[5].id ? 'animatfangda' : 'animatsuoxiao'">
@@ -193,7 +244,17 @@
 
                 </div>
                 <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="houseList[5].eggs > 0" @click="shouhuo(houseList[5].id)">  
-                
+                <div class="qipaokuang" v-show="jishexiangqingkuang == houseList[5].id">
+                    <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
+                    <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
+                    <p>总鸡量：{{num}}</p>
+                    <p>产蛋速度：1</p>
+                    <p>收获时间剩余：1</p>
+                    <p>围栏级别：{{prop_fence_level}}</p>
+                    <p>围栏使用剩余时间：1</p>
+                    <p>守护犬级别：{{prop_dog_level}}</p>
+                    <p>守护犬使用剩余时间:1</p>
+                </div>
             </div>
             <div class="sevendi" :class="fangda == houseList[6].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[6].status == 0">
@@ -220,7 +281,17 @@
 
                 </div>
                 <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="houseList[6].eggs > 0" @click="shouhuo(houseList[6].id)">  
-                
+                <div class="qipaokuang" v-show="jishexiangqingkuang == houseList[6].id">
+                    <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
+                    <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
+                    <p>总鸡量：{{num}}</p>
+                    <p>产蛋速度：1</p>
+                    <p>收获时间剩余：1</p>
+                    <p>围栏级别：{{prop_fence_level}}</p>
+                    <p>围栏使用剩余时间：1</p>
+                    <p>守护犬级别：{{prop_dog_level}}</p>
+                    <p>守护犬使用剩余时间:1</p>
+                </div>
                 
             </div>
             <div class="eightdi" :class="fangda == houseList[7].id ? 'animatfangda' : 'animatsuoxiao'">
@@ -248,7 +319,17 @@
 
                 </div>
                 <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="houseList[7].eggs > 0" @click="shouhuo(houseList[7].id)">  
-                
+                <div class="qipaokuang" v-show="jishexiangqingkuang == houseList[7].id">
+                    <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
+                    <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
+                    <p>总鸡量：{{num}}</p>
+                    <p>产蛋速度：1</p>
+                    <p>收获时间剩余：1</p>
+                    <p>围栏级别：{{prop_fence_level}}</p>
+                    <p>围栏使用剩余时间：1</p>
+                    <p>守护犬级别：{{prop_dog_level}}</p>
+                    <p>守护犬使用剩余时间:1</p>
+                </div>
                 
                 
             </div>
@@ -277,7 +358,17 @@
 
                 </div>
                 <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="houseList[8].eggs > 0" @click="shouhuo(houseList[8].id)">  
-                
+                <div class="qipaokuang" v-show="jishexiangqingkuang == houseList[8].id">
+                    <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
+                    <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
+                    <p>总鸡量：{{num}}</p>
+                    <p>产蛋速度：1</p>
+                    <p>收获时间剩余：1</p>
+                    <p>围栏级别：{{prop_fence_level}}</p>
+                    <p>围栏使用剩余时间：1</p>
+                    <p>守护犬级别：{{prop_dog_level}}</p>
+                    <p>守护犬使用剩余时间:1</p>
+                </div>
                 
             </div>
             <div class="tendi" :class="fangda == houseList[9].id ? 'animatfangda' : 'animatsuoxiao'">
@@ -305,7 +396,17 @@
 
                 </div>
                 <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="houseList[9].eggs > 0" @click="shouhuo(houseList[9].id)">  
-
+                <div class="qipaokuang" v-show="jishexiangqingkuang == houseList[9].id">
+                    <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
+                    <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
+                    <p>总鸡量：{{num}}</p>
+                    <p>产蛋速度：1</p>
+                    <p>收获时间剩余：1</p>
+                    <p>围栏级别：{{prop_fence_level}}</p>
+                    <p>围栏使用剩余时间：1</p>
+                    <p>守护犬级别：{{prop_dog_level}}</p>
+                    <p>守护犬使用剩余时间:1</p>
+                </div>
             </div>
         </div>
         <div class="huacaoche">
@@ -342,7 +443,17 @@
 
                 </div>
                 <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="super_house[0].eggs > 0" @click="shouhuo(super_house[0].id)"> 
-
+                <div class="qipaokuang" v-show="jishexiangqingkuang == super_house[0].id">
+                    <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
+                    <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
+                    <p>总鸡量：{{num}}</p>
+                    <p>产蛋速度：1</p>
+                    <p>收获时间剩余：1</p>
+                    <p>围栏级别：{{prop_fence_level}}</p>
+                    <p>围栏使用剩余时间：1</p>
+                    <p>守护犬级别：{{prop_dog_level}}</p>
+                    <p>守护犬使用剩余时间:1</p>
+                </div>
             </div>
             <div class="twodi" :class="fangda == super_house[1].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="super_house[1].status == 0">
@@ -369,6 +480,17 @@
 
                 </div>
                 <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="super_house[1].eggs > 0" @click="shouhuo(super_house[1].id)"> 
+                <div class="qipaokuang" v-show="jishexiangqingkuang == super_house[1].id">
+                    <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
+                    <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
+                    <p>总鸡量：{{num}}</p>
+                    <p>产蛋速度：1</p>
+                    <p>收获时间剩余：1</p>
+                    <p>围栏级别：{{prop_fence_level}}</p>
+                    <p>围栏使用剩余时间：1</p>
+                    <p>守护犬级别：{{prop_dog_level}}</p>
+                    <p>守护犬使用剩余时间:1</p>
+                </div>
             </div>
             <div class="threedi" :class="fangda == super_house[2].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="super_house[2].status == 0">
@@ -395,7 +517,17 @@
 
                 </div>
                 <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="super_house[2].eggs > 0" @click="shouhuo(super_house[2].id)">
-                
+                <div class="qipaokuang" v-show="jishexiangqingkuang == super_house[2].id">
+                    <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
+                    <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
+                    <p>总鸡量：{{num}}</p>
+                    <p>产蛋速度：1</p>
+                    <p>收获时间剩余：1</p>
+                    <p>围栏级别：{{prop_fence_level}}</p>
+                    <p>围栏使用剩余时间：1</p>
+                    <p>守护犬级别：{{prop_dog_level}}</p>
+                    <p>守护犬使用剩余时间:1</p>
+                </div>
             </div>
             <div class="fourdi" :class="fangda == super_house[3].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="super_house[3].status == 0">
@@ -422,7 +554,17 @@
 
                 </div>
                 <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="super_house[3].eggs > 0" @click="shouhuo(super_house[3].id)">
-                
+                <div class="qipaokuang" v-show="jishexiangqingkuang == super_house[3].id">
+                    <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
+                    <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
+                    <p>总鸡量：{{num}}</p>
+                    <p>产蛋速度：1</p>
+                    <p>收获时间剩余：1</p>
+                    <p>围栏级别：{{prop_fence_level}}</p>
+                    <p>围栏使用剩余时间：1</p>
+                    <p>守护犬级别：{{prop_dog_level}}</p>
+                    <p>守护犬使用剩余时间:1</p>
+                </div>
             </div>
             <div class="fivedi" :class="fangda == super_house[4].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="super_house[4].status == 0">
@@ -449,7 +591,17 @@
 
                 </div>
                 <img src="../../assets/images/nongchang/yangzhi/shouhuo.png" alt="" srcset="" v-show="super_house[4].eggs > 0" @click="shouhuo(super_house[4].id)">
-                
+                <div class="qipaokuang" v-show="jishexiangqingkuang == super_house[4].id">
+                    <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
+                    <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
+                    <p>总鸡量：{{num}}</p>
+                    <p>产蛋速度：1</p>
+                    <p>收获时间剩余：1</p>
+                    <p>围栏级别：{{prop_fence_level}}</p>
+                    <p>围栏使用剩余时间：1</p>
+                    <p>守护犬级别：{{prop_dog_level}}</p>
+                    <p>守护犬使用剩余时间:1</p>
+                </div>
             </div>
             
         </div>
@@ -595,7 +747,7 @@
                     <div>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</span></div>
                     <div>扫帚等级：<span>扫帚LV{{dengji}}</span></div>
                     <div>小鸡数量：<span>{{num}}</span></div>
-                    <div>扫帚消耗：<span>{{xiaohaoxiaoji}}鸡分</span></div>
+                    <div>扫帚消耗：<span>{{xiaohaoxiaoji}}KI</span></div>
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
@@ -653,7 +805,7 @@
                     </div>
                     <div>围栏天数：<span>{{day}}天</span></div>
                     <div>小鸡数量：<span>{{num}}</span></div>
-                    <div>围栏消耗：<span>{{xiaohaoxiaoji}}鸡分</span></div>
+                    <div>围栏消耗：<span>{{xiaohaoxiaoji}}KI</span></div>
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="weilanfanhui">
@@ -677,7 +829,7 @@
                         </span>
                     </div>
                     <div>守护天数：<span>{{day}}天</span></div>
-                    <div>守护消耗：<span>{{money}}鸡分</span></div>
+                    <div>守护消耗：<span>{{money}}KI</span></div>
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
@@ -694,7 +846,7 @@
                     <div>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</span></div>
                     <div>饲料等级：<span>鸡饲料LV{{dengji}}</span></div>
                     <div>小鸡数量：<span>{{num}}</span></div>
-                    <div>喂养消耗：<span>{{xiaohaoxiaoji}}鸡分</span></div>
+                    <div>喂养消耗：<span>{{xiaohaoxiaoji}}KI</span></div>
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
@@ -1111,7 +1263,7 @@
             </div>
         </div>
         <!-- 鸡舍详情 -->
-        <div class="jishexiangqingkuang animat" v-if="jishexiangqingkuang">
+        <div class="jishexiangqingkuang animat" style="display:none;">
             <div class="kuang">
                 <div class="content">
                     <div>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</span></div>
@@ -1273,6 +1425,7 @@
 import {copy} from '../../func/copy'
 import { sendTransaction } from '../../utils/chongzhi'
 import {enable} from "../../utils/web3utils";
+import store from '../../store/index'
 import $ from 'jquery'
 var PathStatus 	= 0;
 var angle 		= Math.PI/((4-1)*2);	
@@ -1419,6 +1572,7 @@ export default {
             fromaddress:"",
             amount:"",
             contractAddr:"", //合约地址
+            
            
         }
     },
@@ -1446,7 +1600,7 @@ export default {
     methods:{
         //点击房子 获取 详情
         houseadd_detail(id,type,num,sort,prop_dog_level,prop_fence_level){
-            this.jishexiangqingkuang = true;
+            this.jishexiangqingkuang = id;
             console.log(id,type,num,sort,prop_dog_level,prop_fence_level);
             this.sort = sort;
             this.num = num;
@@ -1530,7 +1684,7 @@ export default {
                 // "privatekey": this.privatekey, //Trx账户私钥
                 // "tokencontract": this.tokencontract, //币的合约地址
                 "target": this.target, //币的目标地址
-                "amount": this.tixianshuliang //数量(鸡分)
+                "amount": this.tixianshuliang //数量(KI)
             })
             if (!res) return false
             console.log(res)
@@ -1817,6 +1971,7 @@ export default {
 
         // 扫把确定 待定
         async saobaqueding(){
+            store.commit('setLoading', true)
             let res = await $ajax('houseuse_broom', {
                 house_id: this.tudiID, // 土地id
                 prop_broom: this.saobaID // 扫把id
@@ -1829,6 +1984,7 @@ export default {
             this.tudiID = ""; //土地id 清空
             this.type = ""; //1：普通鸡舍；2：高级鸡舍 清空
             this.num = ""; //鸡舍里的小鸡数量 清空
+            store.commit('setLoading', false)
         },
         // 选择扫把等级
         tabsaoba(id){
@@ -1955,12 +2111,14 @@ export default {
         
         //围栏 购买
         async weilanqueding(){
+            store.commit('setLoading', true)
             let res = await $ajax('houseuse_fence', {
                 house_id: this.tudiID, // 土地id
                 prop_fence: this.weilanID, // 围栏id
                 log_id: this.log_id //增养记录 
             })
             if (!res) return false
+            store.commit('setLoading', false)
             this.tishixingxi = res.msg
             this.tishikuang = true
             this.houseIndex();
@@ -2042,11 +2200,13 @@ export default {
         },
         //守护犬 购买
         async shouhuquanqueding(){
+            store.commit('setLoading', true)
             let res = await $ajax('houseuse_dog', {
                 house_id: this.tudiID, // 土地id
                 prop_dog: this.shouhuquanID // 狗狗id
             })
             if (!res) return false
+            store.commit('setLoading', false)
             this.tishixingxi = res.msg
             this.tishikuang = true
             this.houseIndex();
@@ -2098,11 +2258,13 @@ export default {
         },
         //鸡饲料 购买
         async jisiliaoqueding(){
+            store.commit('setLoading', true)
             let res = await $ajax('houseuse_feed', {
                 house_id: this.tudiID, // 土地id
                 prop_feed: this.siliaoID // 饲料id
             })
             if (!res) return false
+            store.commit('setLoading', false)
             this.tishixingxi = res.msg
             this.tishikuang = true
             this.houseIndex();
@@ -2150,18 +2312,22 @@ export default {
         async shouhuo(id){
             console.log(this.user_id_other)
             if(!this.user_id_other || this.user_id_other == ""){
+                store.commit('setLoading', true)
                 let res = await $ajax('housereap', {
                     house_id: id,
                 })
                 if (!res) return false
+                store.commit('setLoading', false)
                 this.tishixingxi = res.msg
                 this.tishikuang = true
                 this.houseIndex();
             }else{
+                store.commit('setLoading', true)
                 let res = await $ajax('housesteal', {
                     house_id: id,
                 })
                 if (!res) return false
+                store.commit('setLoading', false)
                 this.tishixingxi = res.msg
                 this.tishikuang = true
                 this.houseIndex();
@@ -2172,12 +2338,14 @@ export default {
         async zengyangqueding(){
             if(!this.tudiID || this.tudiID == '') return Toast('请先选择土地')
             if(!this.zengyangshuliang || this.zengyangshuliang == '') return Toast('请输入增养数量')
+            store.commit('setLoading', true)
             let res = await $ajax('houseadd_chick', {
                 house_id: this.tudiID,
                 num: this.zengyangshuliang
             })
             if (!res) return false
-            console.log(res)
+            store.commit('setLoading', false)
+            // console.log(res)
             this.tishixingxi = res.msg;
             this.tishikuang = true;
             this.houseIndex();
@@ -2390,7 +2558,7 @@ export default {
             if (!this.newmobile) return Toast( '请输入手机号')
             let res = await $ajax('sendVerifycode',{
                 mobile: this.newmobile,
-                 "type": "edit_mobile" //短信验证码类型：register，forget
+                 "type": "forget" //短信验证码类型：register，forget
             })
             if (!res) return false
             Toast(res.msg)
@@ -2460,6 +2628,7 @@ export default {
             this.chongzhitixiankuang = false;
             this.jishexiangqingkuang = false;
             this.nechenggenghuan = false;
+            this.jishexiangqingkuang = false;
         },
         
 
@@ -2673,6 +2842,26 @@ export default {
                     left: 20vw;
                     z-index: 15;
                 }
+                >.qipaokuang{
+                    >img{
+                        width:10vw;
+                        height:10vw;
+                        position: absolute;
+                        right: 0;
+                        top: -13px;
+
+                    }
+                    width: 50vw;
+                    height: 45vw;
+                    position: absolute;
+                    top: -46vw;
+                    left: 8vw;
+                    z-index: 15;
+                    background: url(/static/img/qipao.d44677b.png);
+                    background-size: 100% 100%;
+                    padding: 2vw 2vw;
+                    box-sizing: border-box;
+                }
             }
             >.twodi{
                 position: absolute;
@@ -2767,6 +2956,26 @@ export default {
                     left: 20vw;
                     z-index: 15;
                 }
+                >.qipaokuang{
+                    >img{
+                        width:10vw;
+                        height:10vw;
+                        position: absolute;
+                        right: 0;
+                        top: -13px;
+
+                    }
+                    width: 50vw;
+                    height: 45vw;
+                    position: absolute;
+                    top: -46vw;
+                    left: 8vw;
+                    z-index: 15;
+                    background: url(/static/img/qipao.d44677b.png);
+                    background-size: 100% 100%;
+                    padding: 2vw 2vw;
+                    box-sizing: border-box;
+                }
             }
             >.threedi{
                 position: absolute;
@@ -2828,6 +3037,26 @@ export default {
                         left: 31vw;
                         z-index: 13;
                     }
+                    >.qipaokuang{
+                        >img{
+                            width:10vw;
+                            height:10vw;
+                            position: absolute;
+                            right: 0;
+                            top: -13px;
+
+                        }
+                        width: 50vw;
+                        height: 45vw;
+                        position: absolute;
+                        top: -46vw;
+                        left: 8vw;
+                        z-index: 15;
+                        background: url(/static/img/qipao.d44677b.png);
+                        background-size: 100% 100%;
+                        padding: 2vw 2vw;
+                        box-sizing: border-box;
+                    }
                 }
                 >img:nth-child(5){
                     width: 10vw;
@@ -2861,6 +3090,26 @@ export default {
                     top: -7vw;
                     left: 20vw;
                     z-index: 15;
+                }
+                >.qipaokuang{
+                    >img{
+                        width:10vw;
+                        height:10vw;
+                        position: absolute;
+                        right: 0;
+                        top: -13px;
+
+                    }
+                    width: 50vw;
+                    height: 45vw;
+                    position: absolute;
+                    top: -46vw;
+                    left: 8vw;
+                    z-index: 15;
+                    background: url(/static/img/qipao.d44677b.png);
+                    background-size: 100% 100%;
+                    padding: 2vw 2vw;
+                    box-sizing: border-box;
                 }
             }
             >.fourdi{
@@ -2956,6 +3205,26 @@ export default {
                     left: 20vw;
                     z-index: 15;
                 }
+                >.qipaokuang{
+                    >img{
+                        width:10vw;
+                        height:10vw;
+                        position: absolute;
+                        right: 0;
+                        top: -13px;
+
+                    }
+                    width: 50vw;
+                    height: 45vw;
+                    position: absolute;
+                    top: -46vw;
+                    left: 8vw;
+                    z-index: 15;
+                    background: url(/static/img/qipao.d44677b.png);
+                    background-size: 100% 100%;
+                    padding: 2vw 2vw;
+                    box-sizing: border-box;
+                }
             }
             >.fivedi{
                 position: absolute;
@@ -3049,6 +3318,26 @@ export default {
                     top: -7vw;
                     left: 20vw;
                     z-index: 15;
+                }
+                >.qipaokuang{
+                    >img{
+                        width:10vw;
+                        height:10vw;
+                        position: absolute;
+                        right: 0;
+                        top: -13px;
+
+                    }
+                    width: 50vw;
+                    height: 45vw;
+                    position: absolute;
+                    top: -46vw;
+                    left: 8vw;
+                    z-index: 15;
+                    background: url(/static/img/qipao.d44677b.png);
+                    background-size: 100% 100%;
+                    padding: 2vw 2vw;
+                    box-sizing: border-box;
                 }
             }
             >.sixdi{
@@ -3145,6 +3434,26 @@ export default {
                     left: 20vw;
                     z-index: 15;
                 }
+                >.qipaokuang{
+                    >img{
+                        width:10vw;
+                        height:10vw;
+                        position: absolute;
+                        right: 0;
+                        top: -13px;
+
+                    }
+                    width: 50vw;
+                    height: 45vw;
+                    position: absolute;
+                    top: -46vw;
+                    left: 8vw;
+                    z-index: 15;
+                    background: url(/static/img/qipao.d44677b.png);
+                    background-size: 100% 100%;
+                    padding: 2vw 2vw;
+                    box-sizing: border-box;
+                }
             }
             >.sevendi{
                 position: absolute;
@@ -3238,6 +3547,26 @@ export default {
                     top: -7vw;
                     left: 20vw;
                     z-index: 15;
+                }
+                >.qipaokuang{
+                    >img{
+                        width:10vw;
+                        height:10vw;
+                        position: absolute;
+                        right: 0;
+                        top: -13px;
+
+                    }
+                    width: 50vw;
+                    height: 45vw;
+                    position: absolute;
+                    top: -46vw;
+                    left: 8vw;
+                    z-index: 15;
+                    background: url(/static/img/qipao.d44677b.png);
+                    background-size: 100% 100%;
+                    padding: 2vw 2vw;
+                    box-sizing: border-box;
                 }
             }
             >.eightdi{
@@ -3333,6 +3662,26 @@ export default {
                     left: 20vw;
                     z-index: 15;
                 }
+                >.qipaokuang{
+                    >img{
+                        width:10vw;
+                        height:10vw;
+                        position: absolute;
+                        right: 0;
+                        top: -13px;
+
+                    }
+                    width: 50vw;
+                    height: 45vw;
+                    position: absolute;
+                    top: -46vw;
+                    left: 8vw;
+                    z-index: 15;
+                    background: url(/static/img/qipao.d44677b.png);
+                    background-size: 100% 100%;
+                    padding: 2vw 2vw;
+                    box-sizing: border-box;
+                }
             }
             >.ninedi{
                 position: absolute;
@@ -3427,6 +3776,26 @@ export default {
                     left: 20vw;
                     z-index: 15;
                 }
+                >.qipaokuang{
+                    >img{
+                        width:10vw;
+                        height:10vw;
+                        position: absolute;
+                        right: 0;
+                        top: -13px;
+
+                    }
+                    width: 50vw;
+                    height: 45vw;
+                    position: absolute;
+                    top: -46vw;
+                    left: 8vw;
+                    z-index: 15;
+                    background: url(/static/img/qipao.d44677b.png);
+                    background-size: 100% 100%;
+                    padding: 2vw 2vw;
+                    box-sizing: border-box;
+                }
             }
             >.tendi{
                 position: absolute;
@@ -3520,6 +3889,26 @@ export default {
                     top: -7vw;
                     left: 20vw;
                     z-index: 15;
+                }
+                >.qipaokuang{
+                    >img{
+                        width:10vw;
+                        height:10vw;
+                        position: absolute;
+                        right: 0;
+                        top: -13px;
+
+                    }
+                    width: 50vw;
+                    height: 45vw;
+                    position: absolute;
+                    top: -46vw;
+                    left: 8vw;
+                    z-index: 15;
+                    background: url(/static/img/qipao.d44677b.png);
+                    background-size: 100% 100%;
+                    padding: 2vw 2vw;
+                    box-sizing: border-box;
                 }
             }
         }
@@ -3638,6 +4027,26 @@ export default {
                     left: 20vw;
                     z-index: 15;
                 }
+                >.qipaokuang{
+                    >img{
+                        width:10vw;
+                        height:10vw;
+                        position: absolute;
+                        right: 0;
+                        top: -13px;
+
+                    }
+                    width: 50vw;
+                    height: 45vw;
+                    position: absolute;
+                    top: -46vw;
+                    left: 8vw;
+                    z-index: 15;
+                    background: url(/static/img/qipao.d44677b.png);
+                    background-size: 100% 100%;
+                    padding: 2vw 2vw;
+                    box-sizing: border-box;
+                }
 
             }
             >.twodi{
@@ -3724,6 +4133,26 @@ export default {
                     top: -7vw;
                     left: 20vw;
                     z-index: 15;
+                }
+                >.qipaokuang{
+                    >img{
+                        width:10vw;
+                        height:10vw;
+                        position: absolute;
+                        right: 0;
+                        top: -13px;
+
+                    }
+                    width: 50vw;
+                    height: 45vw;
+                    position: absolute;
+                    top: -46vw;
+                    left: 8vw;
+                    z-index: 15;
+                    background: url(/static/img/qipao.d44677b.png);
+                    background-size: 100% 100%;
+                    padding: 2vw 2vw;
+                    box-sizing: border-box;
                 }
             }
             >.threedi{
@@ -3896,6 +4325,26 @@ export default {
                     left: 20vw;
                     z-index: 15;
                 }
+                >.qipaokuang{
+                    >img{
+                        width:10vw;
+                        height:10vw;
+                        position: absolute;
+                        right: 0;
+                        top: -13px;
+
+                    }
+                    width: 50vw;
+                    height: 45vw;
+                    position: absolute;
+                    top: -46vw;
+                    left: 8vw;
+                    z-index: 15;
+                    background: url(/static/img/qipao.d44677b.png);
+                    background-size: 100% 100%;
+                    padding: 2vw 2vw;
+                    box-sizing: border-box;
+                }
             }
             >.fivedi{
                 position: absolute;
@@ -3980,6 +4429,26 @@ export default {
                     top: -7vw;
                     left: 20vw;
                     z-index: 15;
+                }
+                >.qipaokuang{
+                    >img{
+                        width:10vw;
+                        height:10vw;
+                        position: absolute;
+                        right: 0;
+                        top: -13px;
+
+                    }
+                    width: 50vw;
+                    height: 45vw;
+                    position: absolute;
+                    top: -46vw;
+                    left: 8vw;
+                    z-index: 15;
+                    background: url(/static/img/qipao.d44677b.png);
+                    background-size: 100% 100%;
+                    padding: 2vw 2vw;
+                    box-sizing: border-box;
                 }
             }
         }

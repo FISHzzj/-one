@@ -3,17 +3,20 @@
             <transition :name="names">
                 <keep-alive include="products">
                     <router-view/>
-                    
                 </keep-alive>
             </transition>
             <!-- 背景音乐 -->
-                    <audio :src="MP3_bg" loop ref="MusicPlay" preload="preload"  controls="controls" style="display:none;"></audio>
-                    <audio :src="MP3_click" ref="MusicClick" preload="preload"  controls="controls" style="display:none;"></audio>
+            <audio :src="MP3_bg" loop ref="MusicPlay" preload="preload"  controls="controls" style="display:none;"></audio>
+            <audio :src="MP3_click" ref="MusicClick" preload="preload"  controls="controls" style="display:none;"></audio>
+            <loader v-if="isLoading" text="拼命加载中" background="rgba(0,0,0,0.8)"></loader>
     </div>
 </template>
 
 <script>
+import {mapState, mapGetters, mapMutations, mapActions} from 'vuex'
 import Test from './components/test.vue'
+import loader from '../src/element/common/Loader.vue'
+import store from './store/index'
 export default {
     name: 'App',
     watch: {
@@ -35,14 +38,23 @@ export default {
             MP3_bg:require('@/assets/images/nongchang/music/bg_music.mp3'),
             MP3_click:require('@/assets/images/nongchang/music/click.mp3'),
             yinyue: true,
+            // isLoading: false
         }
     },
+    computed: {
+        ...mapState({  //
+            isLoading : state => state.golbal.loading, //获取isLoading
+            // allList: state => state.collection.collects, //获取changeNum
+        }),
+    },
     mounted() {
+        console.log('state.golbal.isLoading', store.state.golbal.loading)
         console.log(2222222)
         this.$refs.MusicPlay.play()
     },
     components : {
-        Test
+        Test,
+        loader
     },
 }
 </script>

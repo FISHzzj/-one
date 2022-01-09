@@ -1,6 +1,7 @@
 // 引入 axios
 import axios from 'axios'
 import apiConfig from '../config'
+import store from '../../store/index'
 
 axios.defaults.baseURL = apiConfig.baseURL //默認全局域名
 
@@ -8,6 +9,17 @@ axios.defaults.baseURL = apiConfig.baseURL //默認全局域名
 import api from './api.js'
 // 引入 后端 处理 模块
 import dataHandle from './dataHandle.js'
+
+// axios.interceptors.request.use((config) => {
+//     console.log(222222)
+//     store.commit('setLoading', true)
+//     return config
+// })
+// axios.interceptors.response.use((config) => {
+//     console.log(4444444444)
+//     store.commit('setLoading', false)
+//     return config
+// })
 
 /**
  * 后端 交互 模块
@@ -24,6 +36,7 @@ export default function (port, data = {}, errCallback) {
     Object.keys(data).forEach( key => {
         formData.append(key, data[key])
     })
+    
     // formData.append('token', localStorage.getItem('openid'))
     // 返回 promise 實例
     return new Promise ( resolve => {

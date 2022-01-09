@@ -65,5 +65,14 @@ export default [
             index: 0,
             mustLogin: true,//1111,
         }
+    },
+    {
+        path: "/loader", //loading加载
+        name: "loader",
+        component: () => import("@/element/common/loader.vue"),
+        meta: {
+            index: 0,
+            mustLogin: true,//1111,
+        }
     }
 ];

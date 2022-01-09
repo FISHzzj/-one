@@ -679,7 +679,7 @@
                     <div>购买物品：{{goumaidingdan.title}}</div>
                     <div style="white-space: nowrap;">&nbsp;&nbsp;&nbsp;&nbsp;售卖人：{{goumaidingdan.nick_name}}</div>
                     <div>售卖数量：{{goumaidingdan.sp_num}}</div>
-                    <div>小鸡单价：{{goumaidingdan.unit}}鸡分</div>
+                    <div>小鸡单价：{{goumaidingdan.unit}}KI</div>
                     <div class="gmkshuliang flex flex_center ali_center">
                         <span>购买数量：</span>
                         <input type="text" placeholder="购买数量" v-model="num" @blur="jisuantotal(goumaidingdan.unit)">
@@ -716,7 +716,7 @@
                         <input type="text" placeholder="收获鸡分" v-model="shouhuojifen" disabled>
                     </div>
                     <!-- <div>售卖数量：{{goumaidingdan.sp_num}}</div>
-                    <div>小鸡单价：{{goumaidingdan.unit}}鸡分</div>
+                    <div>小鸡单价：{{goumaidingdan.unit}}KI</div>
                     <div class="gmkshuliang flex flex_center ali_center">
                         <span>购买数量：</span>
                         <input type="text" placeholder="购买数量" v-model="num" @blur="jisuantotal(goumaidingdan.unit)">
@@ -749,7 +749,7 @@
                         <input type="text"  placeholder="收获鸡分" v-model="zongjifen" disabled>
                     </div>
                     <!-- <div>售卖数量：{{goumaidingdan.sp_num}}</div>
-                    <div>小鸡单价：{{goumaidingdan.unit}}鸡分</div>
+                    <div>小鸡单价：{{goumaidingdan.unit}}KI</div>
                     <div class="gmkshuliang flex flex_center ali_center">
                         <span>购买数量：</span>
                         <input type="text" placeholder="购买数量" v-model="num" @blur="jisuantotal(goumaidingdan.unit)">
@@ -1248,7 +1248,7 @@
                         </span>
                     </div>
                     <div>加速时间：<span>{{jiasushijian}}小时</span></div>
-                    <div>加速消耗：<span>{{jiasuxiaohao}}鸡分</span></div>
+                    <div>加速消耗：<span>{{jiasuxiaohao}}KI</span></div>
                 </div>
                 <div class="shezhibtn flex  flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
@@ -1311,7 +1311,7 @@
                     <div><img :src="imgSrc" alt=""> </div>
                     <div>围栏等级：<span>{{dengji}}</span></div>
                     <div>围栏收益：<span>{{profit}}%</span></div>
-                    <div>围栏消耗：<span>{{xiaohaoxiaoji}}鸡分</span></div>
+                    <div>围栏消耗：<span>{{xiaohaoxiaoji}}KI</span></div>
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
@@ -1328,7 +1328,7 @@
                    <div><img :src="imgSrc" alt=""> </div>
                     <div>守护等级：<span>{{dengji}}</span></div>
                     <div>守护防盗：<span>{{steal}}%</span></div>
-                    <div>守护消耗：<span>{{xiaohaoxiaoji}}鸡分</span></div>
+                    <div>守护消耗：<span>{{xiaohaoxiaoji}}KI</span></div>
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
@@ -1345,7 +1345,7 @@
                     <div><img :src="imgSrc" alt=""> </div>
                     <div>饲料等级：<span>{{dengji}}</span></div>
                     <div>加速时间：<span>{{speed}}</span></div>
-                    <div>喂养消耗：<span>{{xiaohaoxiaoji}}鸡分</span></div>
+                    <div>喂养消耗：<span>{{xiaohaoxiaoji}}KI</span></div>
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
@@ -1363,7 +1363,7 @@
                     <div>扫帚等级：<span>{{dengji}}</span></div>
                     <div>打扫次数：<span>{{count}}</span></div>
                     <div>打扫收益：<span>{{gift}}%</span></div>
-                    <div>打扫消耗：<span>{{xiaohaoxiaoji}}鸡分</span></div>
+                    <div>打扫消耗：<span>{{xiaohaoxiaoji}}KI</span></div>
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
@@ -1379,6 +1379,7 @@
 import {copy} from '../../func/copy'
 import { sendTransaction } from '../../utils/chongzhi'
 import {enable} from "../../utils/web3utils";
+import store from '../../store/index'
 export default {
     name: 'index',
     data () {
@@ -1816,7 +1817,7 @@ export default {
             let amount = this.amount
             if(!fromaddress) return Toast('请登录获取用户地址')
             if(!amount) return Toast('请输入数量')
-            
+            // store.commit('setLoading', true)
             await sendTransaction(fromaddress,toaddress,contractAddr,amount).then(async (res) => {
                 console.log(res)
                 console.log('进来')
@@ -1829,6 +1830,7 @@ export default {
                 console.log(resbalancerecharge_submit);
                 // alert(JSON.stringify(resbalancerecharge_submit))
                 if (!resbalancerecharge_submit) return false
+                // store.commit('setLoading', false)
                 Toast(resbalancerecharge_submit.msg)
                 // setTimeout(this.getData(), 4000)
             })
@@ -1866,7 +1868,7 @@ export default {
                 // "privatekey": this.privatekey, //Trx账户私钥
                 // "tokencontract": this.tokencontract, //币的合约地址
                 "target": this.target, //币的目标地址
-                "amount": this.tixianshuliang //数量(鸡分)
+                "amount": this.tixianshuliang //数量(KI)
             })
             if (!res) return false
             console.log(res)
@@ -2593,11 +2595,13 @@ export default {
         },
         //购买扫把
         async goumaisaoba(id){
+            store.commit('setLoading', true)
              let res = await $ajax('housebuy_broom', {
                  fans_id: this.user_id,
                  prop_broom: id,
              })
             if (!res) return false
+            store.commit('setLoading', false)
             Toast(res.msg)
         },
         async propbroom(){ //扫吧
@@ -2638,7 +2642,7 @@ export default {
         async getData(){
             let res = await $ajax('userinfo', {})
             if (!res) return false
-            console.log(res)
+            // console.log(res)
             Object.keys(res).forEach((key) =>{
                 this[key] = res[key]
             })
