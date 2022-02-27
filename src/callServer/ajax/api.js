@@ -139,9 +139,12 @@ export default {
     fanslists: `${common}fans/lists`, //好友列表
     fansalllists: `${common}fans/all_lists`, //广场列表
     tradelists: `${common}trade/lists`, //我要购买
+    trade_buylists: `${common}trade_buy/lists`, //出售
     trademine: `${common}trade/mine`, //我的挂卖
     tradeorder: `${common}trade/order`, //交易记录
     tradebuy: `${common}trade/buy`, //发起交易
+    trade_buybuy: `${common}trade_buy/buy`, //发起出售
+    trade_buysell: `${common}trade_buy/sell`, //发起购买
     tradesell: `${common}trade/sell`, //发布挂买订单
     tradeclear: `${common}trade/clear`, //取消挂买订单 
     housebuild: `${common}house/build`, //开鸡舍
@@ -177,7 +180,16 @@ export default {
     userforget_pay: `${common}user/forget_pay`, //重置支付密码
     userposter: `${common}user/poster`, //分享页面
     balancerecharge_submit: `${common}balance/recharge_submit`, //充值提交信息
+    balancerecharge_submit_new: `${common}balance/recharge_submit_new`, //充值提交信息new
     useredit_nick_name: `${common}user/edit_nick_name`, //修改名称
+    so_sendbind: `${common}so_send/bind`, //soeket
+    logtransfer_credit: `${common}log/transfer_credit`, //小鸡互转
+    noticeindex: `${common}notice/index`, //公告列表
+    noticeinfo: `${common}notice/info`, //公告详情
+    indexpk: `${common}index/pk`, //排行榜
+    feedbackcategory: `${common}feedback/category`, //反馈类型
+    feedbacksubmit: `${common}feedback/submit`, //提交反馈
+    
     
     
     

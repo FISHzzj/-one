@@ -14,11 +14,11 @@ import { Lazyload, Dialog, Toast, Calendar, DatetimePicker,Switch, PasswordInput
 
 import ajax from './callServer/ajax'
 import * as apicloud from './apicloud'
-
 // 引入 多语言 模块
 import i18n from './i18n/index'
-
 import store from './store/index'
+
+// import VueSocketIO from 'vue-socket.io'
 
 
 
@@ -34,11 +34,21 @@ Vue.use(PasswordInput);
 Vue.use(NumberKeyboard)
 Vue.use(Loading)
 // Vue.use(web3)
+// Vue.use(new Socketio({
+//     debug: true,  //展示数据可以为true
+//     connection:'/'  //ws的接口
+// }));
+// Vue.use(new VueSocketIO({
+//     debug: true,
+//     connection: 'ws://kiwigame.finance:8282',  
+//     options: { path: "/", transports: ['websocket', 'polling', 'flashsocket'] }
+// }))
 
 Vue.config.productionTip = false
 // Vue.prototype.Web3 = Web3
+// Vue.prototype.$md5 = md5;
 
-// console.log(this.Web3)
+// console.log(md5('hello'))
 
 // 某些 函数, 挂载 到 window 全局 上
 window.Dialog = Dialog

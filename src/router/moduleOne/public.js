@@ -69,7 +69,7 @@ export default [
     {
         path: "/loader", //loading加载
         name: "loader",
-        component: () => import("@/element/common/loader.vue"),
+        component: () => import("@/element/common/Loader.vue"),
         meta: {
             index: 0,
             mustLogin: true,//1111,

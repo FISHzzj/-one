@@ -33,8 +33,8 @@
         <div class="yzputongdi" v-if="houseList.length > 0">
             <div class="onedi" :class="fangda == houseList[0].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[0].status == 0">
-                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[0].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi1.png" alt="" srcset="" v-show="houseList[0].status == 1" @click="houseadd_detail(houseList[0].id,houseList[0].type,houseList[0].num,houseList[0].sort,houseList[0].prop_dog_level,houseList[0].prop_fence_level)">
+                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[0].status == 1"  @click="houseadd_chick(houseList[0].id,houseList[0].type,houseList[0].num,houseList[0].sort,houseList[0].no_fence_chick_num)">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi1.png" alt="" srcset="" v-show="houseList[0].status == 1" @click="houseadd_detail(houseList[0].id,houseList[0].type,houseList[0].num,houseList[0].sort,houseList[0].prop_dog_level,houseList[0].prop_dog_end_time,houseList[0].prop_fence_level,houseList[0].prop_fence_end_time,houseList[0].prop_fence_speed,houseList[0].eggs_get_time,houseList[0].sp_sum_egg)">
                 <div class="xiaoji" v-show="houseList[0].num > 0" @click="houseadd_chick(houseList[0].id,houseList[0].type,houseList[0].num,houseList[0].sort,houseList[0].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -60,19 +60,20 @@
                     <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
                     <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
                     <p>总鸡量：{{num}}</p>
-                    <p>产蛋速度：1</p>
-                    <p>收获时间剩余：1</p>
-                    <p>围栏级别：{{prop_fence_level}}</p>
-                    <p>围栏使用剩余时间：1</p>
-                    <p>守护犬级别：{{prop_dog_level}}</p>
-                    <p>守护犬使用剩余时间:1</p>
+                    <p>剩余产量：{{sp_sum_egg}}</p>
+                    <p>产蛋速度：{{prop_fence_speed}}</p>
+                    <p>收获时间剩余：<span v-html="eggsgettime == 1 ? eggs_get_time : '' "></span></p>
+                    <p>围栏：{{prop_fence_level}}</p>
+                    <p>围栏剩余时间：{{prop_fence_end_time}}</p>
+                    <p>守护犬：{{prop_dog_level}}</p>
+                    <p>守护犬剩余时间:{{prop_dog_end_time}}</p>
                 </div>
                 
             </div>
             <div class="twodi" :class="fangda == houseList[1].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[1].status == 0">
-                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[1].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi2.png" alt="" srcset="" v-show="houseList[1].status == 1" @click="houseadd_detail(houseList[1].id,houseList[1].type,houseList[1].num,houseList[1].sort,houseList[1].prop_dog_level,houseList[1].prop_fence_level)">
+                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[1].status == 1" @click="houseadd_chick(houseList[1].id,houseList[1].type,houseList[1].num,houseList[1].sort,houseList[1].no_fence_chick_num)">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi2.png" alt="" srcset="" v-show="houseList[1].status == 1" @click="houseadd_detail(houseList[1].id,houseList[1].type,houseList[1].num,houseList[1].sort,houseList[1].prop_dog_level,houseList[1].prop_dog_end_time,houseList[1].prop_fence_level,houseList[1].prop_fence_end_time,houseList[1].prop_fence_speed,houseList[1].eggs_get_time,houseList[1].sp_sum_egg)">
                 <div class="xiaoji" v-show="houseList[1].num > 0" @click="houseadd_chick(houseList[1].id,houseList[1].type,houseList[1].num,houseList[1].sort,houseList[1].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -98,18 +99,19 @@
                     <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
                     <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
                     <p>总鸡量：{{num}}</p>
-                    <p>产蛋速度：1</p>
-                    <p>收获时间剩余：1</p>
+                    <p>剩余产量：{{sp_sum_egg}}</p>
+                    <p>产蛋速度：{{prop_fence_speed}}</p>
+                    <p>收获时间剩余：<span v-html="eggsgettime == 1 ? eggs_get_time : '' "></span></p>
                     <p>围栏级别：{{prop_fence_level}}</p>
-                    <p>围栏使用剩余时间：1</p>
+                    <p>围栏使用剩余时间：{{prop_fence_end_time}}</p>
                     <p>守护犬级别：{{prop_dog_level}}</p>
-                    <p>守护犬使用剩余时间:1</p>
+                    <p>守护犬使用剩余时间:{{prop_dog_end_time}}</p>
                 </div>
             </div>
             <div class="threedi" :class="fangda == houseList[2].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[2].status == 0">
-                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[2].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi3.png" alt="" srcset="" v-show="houseList[2].status == 1" @click="houseadd_detail(houseList[2].id,houseList[2].type,houseList[2].num,houseList[2].sort,houseList[2].prop_dog_level,houseList[2].prop_fence_level)">
+                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[2].status == 1" @click="houseadd_chick(houseList[2].id,houseList[2].type,houseList[2].num,houseList[2].sort,houseList[2].no_fence_chick_num)">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi3.png" alt="" srcset="" v-show="houseList[2].status == 1" @click="houseadd_detail(houseList[2].id,houseList[2].type,houseList[2].num,houseList[2].sort,houseList[2].prop_dog_level,houseList[2].prop_dog_end_time,houseList[2].prop_fence_level,houseList[2].prop_fence_end_time,houseList[2].prop_fence_speed,houseList[2].eggs_get_time,houseList[2].sp_sum_egg)">
                 <div class="xiaoji" v-show="houseList[2].num > 0" @click="houseadd_chick(houseList[2].id,houseList[2].type,houseList[2].num,houseList[2].sort,houseList[2].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -135,18 +137,19 @@
                     <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
                     <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
                     <p>总鸡量：{{num}}</p>
-                    <p>产蛋速度：1</p>
-                    <p>收获时间剩余：1</p>
+                    <p>剩余产量：{{sp_sum_egg}}</p>
+                    <p>产蛋速度：{{prop_fence_speed}}</p>
+                    <p>收获时间剩余：<span v-html="eggsgettime == 1 ? eggs_get_time : '' "></span></p>
                     <p>围栏级别：{{prop_fence_level}}</p>
-                    <p>围栏使用剩余时间：1</p>
+                    <p>围栏使用剩余时间：{{prop_fence_end_time}}</p>
                     <p>守护犬级别：{{prop_dog_level}}</p>
-                    <p>守护犬使用剩余时间:1</p>
+                    <p>守护犬使用剩余时间:{{prop_dog_end_time}}</p>
                 </div>
             </div>
             <div class="fourdi" :class="fangda == houseList[3].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[3].status == 0">
-                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[3].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi4.png" alt="" srcset="" v-show="houseList[3].status == 1" @click="houseadd_detail(houseList[3].id,houseList[3].type,houseList[3].num,houseList[3].sort,houseList[3].prop_dog_level,houseList[3].prop_fence_level)">
+                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[3].status == 1" @click="houseadd_chick(houseList[3].id,houseList[3].type,houseList[3].num,houseList[3].sort,houseList[3].no_fence_chick_num)">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi4.png" alt="" srcset="" v-show="houseList[3].status == 1" @click="houseadd_detail(houseList[3].id,houseList[3].type,houseList[3].num,houseList[3].sort,houseList[3].prop_dog_level,houseList[3].prop_dog_end_time,houseList[3].prop_fence_level,houseList[3].prop_fence_end_time,houseList[3].prop_fence_speed,houseList[3].eggs_get_time,houseList[3].sp_sum_egg)">
                 <div class="xiaoji" v-show="houseList[3].num > 0" @click="houseadd_chick(houseList[3].id,houseList[3].type,houseList[3].num,houseList[3].sort,houseList[3].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -172,19 +175,20 @@
                     <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
                     <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
                     <p>总鸡量：{{num}}</p>
-                    <p>产蛋速度：1</p>
-                    <p>收获时间剩余：1</p>
+                    <p>剩余产量：{{sp_sum_egg}}</p>
+                    <p>产蛋速度：{{prop_fence_speed}}</p>
+                    <p>收获时间剩余：<span v-html="eggsgettime == 1 ? eggs_get_time : '' "></span></p>
                     <p>围栏级别：{{prop_fence_level}}</p>
-                    <p>围栏使用剩余时间：1</p>
+                    <p>围栏使用剩余时间：{{prop_fence_end_time}}</p>
                     <p>守护犬级别：{{prop_dog_level}}</p>
-                    <p>守护犬使用剩余时间:1</p>
+                    <p>守护犬使用剩余时间:{{prop_dog_end_time}}</p>
                 </div>
                 
             </div>
             <div class="fivedi" :class="fangda == houseList[4].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[4].status == 0">
-                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[4].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi5.png" alt="" srcset="" v-show="houseList[4].status == 1" @click="houseadd_detail(houseList[4].id,houseList[4].type,houseList[4].num,houseList[4].sort,houseList[4].prop_dog_level,houseList[4].prop_fence_level)">
+                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[4].status == 1" @click="houseadd_chick(houseList[4].id,houseList[4].type,houseList[4].num,houseList[4].sort,houseList[4].no_fence_chick_num)">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi5.png" alt="" srcset="" v-show="houseList[4].status == 1" @click="houseadd_detail(houseList[4].id,houseList[4].type,houseList[4].num,houseList[4].sort,houseList[4].prop_dog_level,houseList[4].prop_dog_end_time,houseList[4].prop_fence_level,houseList[4].prop_fence_end_time,houseList[4].prop_fence_speed,houseList[4].eggs_get_time,houseList[4].sp_sum_egg)">
                 <div class="xiaoji" v-show="houseList[4].num > 0" @click="houseadd_chick(houseList[4].id,houseList[4].type,houseList[4].num,houseList[4].sort,houseList[4].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -210,19 +214,20 @@
                     <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
                     <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
                     <p>总鸡量：{{num}}</p>
-                    <p>产蛋速度：1</p>
-                    <p>收获时间剩余：1</p>
+                    <p>剩余产量：{{sp_sum_egg}}</p>
+                    <p>产蛋速度：{{prop_fence_speed}}</p>
+                    <p>收获时间剩余：<span v-html="eggsgettime == 1 ? eggs_get_time : '' "></span></p>
                     <p>围栏级别：{{prop_fence_level}}</p>
-                    <p>围栏使用剩余时间：1</p>
+                    <p>围栏使用剩余时间：{{prop_fence_end_time}}</p>
                     <p>守护犬级别：{{prop_dog_level}}</p>
-                    <p>守护犬使用剩余时间:1</p>
+                    <p>守护犬使用剩余时间:{{prop_dog_end_time}}</p>
                 </div>
                 
             </div>
             <div class="sixdi" :class="fangda == houseList[5].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[5].status == 0">
-                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[5].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi6.png" alt="" srcset="" v-show="houseList[5].status == 1" @click="houseadd_detail(houseList[5].id,houseList[5].type,houseList[5].num,houseList[5].sort,houseList[5].prop_dog_level,houseList[5].prop_fence_level)">
+                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[5].status == 1" @click="houseadd_chick(houseList[5].id,houseList[5].type,houseList[5].num,houseList[5].sort,houseList[5].no_fence_chick_num)">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi6.png" alt="" srcset="" v-show="houseList[5].status == 1" @click="houseadd_detail(houseList[5].id,houseList[5].type,houseList[5].num,houseList[5].sort,houseList[5].prop_dog_level,houseList[5].prop_dog_end_time,houseList[5].prop_fence_level,houseList[5].prop_fence_end_time,houseList[5].prop_fence_speed,houseList[5].eggs_get_time,houseList[5].sp_sum_egg)">
                 <div class="xiaoji" v-show="houseList[5].num > 0" @click="houseadd_chick(houseList[5].id,houseList[5].type,houseList[5].num,houseList[5].sort,houseList[5].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -248,18 +253,19 @@
                     <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
                     <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
                     <p>总鸡量：{{num}}</p>
-                    <p>产蛋速度：1</p>
-                    <p>收获时间剩余：1</p>
+                    <p>剩余产量：{{sp_sum_egg}}</p>
+                    <p>产蛋速度：{{prop_fence_speed}}</p>
+                    <p>收获时间剩余：<span v-html="eggsgettime == 1 ? eggs_get_time : '' "></span></p>
                     <p>围栏级别：{{prop_fence_level}}</p>
-                    <p>围栏使用剩余时间：1</p>
+                    <p>围栏使用剩余时间：{{prop_fence_end_time}}</p>
                     <p>守护犬级别：{{prop_dog_level}}</p>
-                    <p>守护犬使用剩余时间:1</p>
+                    <p>守护犬使用剩余时间:{{prop_dog_end_time}}</p>
                 </div>
             </div>
             <div class="sevendi" :class="fangda == houseList[6].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[6].status == 0">
-                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[6].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi7.png" alt="" srcset="" v-show="houseList[6].status == 1" @click="houseadd_detail(houseList[6].id,houseList[6].type,houseList[6].num,houseList[6].sort,houseList[6].prop_dog_level,houseList[6].prop_fence_level)">
+                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[6].status == 1" @click="houseadd_chick(houseList[6].id,houseList[6].type,houseList[6].num,houseList[6].sort,houseList[6].no_fence_chick_num)">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi7.png" alt="" srcset="" v-show="houseList[6].status == 1" @click="houseadd_detail(houseList[6].id,houseList[6].type,houseList[6].num,houseList[6].sort,houseList[6].prop_dog_level,houseList[6].prop_dog_end_time,houseList[6].prop_fence_level,houseList[6].prop_fence_end_time,houseList[6].prop_fence_speed,houseList[6].eggs_get_time,houseList[6].sp_sum_egg)">
                 <div class="xiaoji" v-show="houseList[6].num > 0" @click="houseadd_chick(houseList[6].id,houseList[6].type,houseList[6].num,houseList[6].sort,houseList[6].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -285,19 +291,20 @@
                     <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
                     <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
                     <p>总鸡量：{{num}}</p>
-                    <p>产蛋速度：1</p>
-                    <p>收获时间剩余：1</p>
+                    <p>剩余产量：{{sp_sum_egg}}</p>
+                    <p>产蛋速度：{{prop_fence_speed}}</p>
+                    <p>收获时间剩余：<span v-html="eggsgettime == 1 ? eggs_get_time : '' "></span></p>
                     <p>围栏级别：{{prop_fence_level}}</p>
-                    <p>围栏使用剩余时间：1</p>
+                    <p>围栏使用剩余时间：{{prop_fence_end_time}}</p>
                     <p>守护犬级别：{{prop_dog_level}}</p>
-                    <p>守护犬使用剩余时间:1</p>
+                    <p>守护犬使用剩余时间:{{prop_dog_end_time}}</p>
                 </div>
                 
             </div>
             <div class="eightdi" :class="fangda == houseList[7].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[7].status == 0">
-                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[7].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi8.png" alt="" srcset="" v-show="houseList[7].status == 1" @click="houseadd_detail(houseList[7].id,houseList[7].type,houseList[7].num,houseList[7].sort,houseList[7].prop_dog_level,houseList[7].prop_fence_level)">
+                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[7].status == 1" @click="houseadd_chick(houseList[7].id,houseList[7].type,houseList[7].num,houseList[7].sort,houseList[7].no_fence_chick_num)">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi8.png" alt="" srcset="" v-show="houseList[7].status == 1" @click="houseadd_detail(houseList[7].id,houseList[7].type,houseList[7].num,houseList[7].sort,houseList[7].prop_dog_level,houseList[7].prop_dog_end_time,houseList[7].prop_fence_level,houseList[7].prop_fence_end_time,houseList[7].prop_fence_speed,houseList[7].eggs_get_time,houseList[7].sp_sum_egg)">
                 <div class="xiaoji" v-show="houseList[7].num > 0" @click="houseadd_chick(houseList[7].id,houseList[7].type,houseList[7].num,houseList[7].sort,houseList[7].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -323,20 +330,21 @@
                     <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
                     <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
                     <p>总鸡量：{{num}}</p>
-                    <p>产蛋速度：1</p>
-                    <p>收获时间剩余：1</p>
+                    <p>剩余产量：{{sp_sum_egg}}</p>
+                    <p>产蛋速度：{{prop_fence_speed}}</p>
+                    <p>收获时间剩余：<span v-html="eggsgettime == 1 ? eggs_get_time : '' "></span></p>
                     <p>围栏级别：{{prop_fence_level}}</p>
-                    <p>围栏使用剩余时间：1</p>
+                    <p>围栏使用剩余时间：{{prop_fence_end_time}}</p>
                     <p>守护犬级别：{{prop_dog_level}}</p>
-                    <p>守护犬使用剩余时间:1</p>
+                    <p>守护犬使用剩余时间:{{prop_dog_end_time}}</p>
                 </div>
                 
                 
             </div>
             <div class="ninedi" :class="fangda == houseList[8].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[8].status == 0">
-                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[8].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi9.png" alt="" srcset="" v-show="houseList[8].status == 1" @click="houseadd_detail(houseList[8].id,houseList[8].type,houseList[8].num,houseList[8].sort,houseList[8].prop_dog_level,houseList[8].prop_fence_level)">
+                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[8].status == 1" @click="houseadd_chick(houseList[8].id,houseList[8].type,houseList[8].num,houseList[8].sort,houseList[8].no_fence_chick_num)">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi9.png" alt="" srcset="" v-show="houseList[8].status == 1" @click="houseadd_detail(houseList[8].id,houseList[8].type,houseList[8].num,houseList[8].sort,houseList[8].prop_dog_level,houseList[8].prop_dog_end_time,houseList[8].prop_fence_level,houseList[8].prop_fence_end_time,houseList[8].prop_fence_speed,houseList[8].eggs_get_time,houseList[8].sp_sum_egg)">
                 <div class="xiaoji" v-show="houseList[8].num > 0" @click="houseadd_chick(houseList[8].id,houseList[8].type,houseList[8].num,houseList[8].sort,houseList[8].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -362,19 +370,20 @@
                     <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
                     <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
                     <p>总鸡量：{{num}}</p>
-                    <p>产蛋速度：1</p>
-                    <p>收获时间剩余：1</p>
+                    <p>剩余产量：{{sp_sum_egg}}</p>
+                    <p>产蛋速度：{{prop_fence_speed}}</p>
+                    <p>收获时间剩余：<span v-html="eggsgettime == 1 ? eggs_get_time : '' "></span></p>
                     <p>围栏级别：{{prop_fence_level}}</p>
-                    <p>围栏使用剩余时间：1</p>
+                    <p>围栏使用剩余时间：{{prop_fence_end_time}}</p>
                     <p>守护犬级别：{{prop_dog_level}}</p>
-                    <p>守护犬使用剩余时间:1</p>
+                    <p>守护犬使用剩余时间:{{prop_dog_end_time}}</p>
                 </div>
                 
             </div>
             <div class="tendi" :class="fangda == houseList[9].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="houseList[9].status == 0">
-                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[9].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi10.png" alt="" srcset="" v-show="houseList[9].status == 1" @click="houseadd_detail(houseList[9].id,houseList[9].type,houseList[9].num,houseList[9].sort,houseList[9].prop_dog_level,houseList[9].prop_fence_level)">
+                <img src="../../assets/images/nongchang/yangzhi/yikaidi.png" alt="" srcset="" v-show="houseList[9].status == 1" @click="houseadd_chick(houseList[9].id,houseList[9].type,houseList[9].num,houseList[8].sort,houseList[9].no_fence_chick_num)">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi10.png" alt="" srcset="" v-show="houseList[9].status == 1" @click="houseadd_detail(houseList[9].id,houseList[9].type,houseList[9].num,houseList[9].sort,houseList[9].prop_dog_level,houseList[9].prop_dog_end_time,houseList[9].prop_fence_level,houseList[9].prop_fence_end_time,houseList[9].prop_fence_speed,houseList[9].eggs_get_time,houseList[9].sp_sum_egg)">
                 <div class="xiaoji" v-show="houseList[9].num > 0" @click="houseadd_chick(houseList[9].id,houseList[9].type,houseList[9].num,houseList[8].sort,houseList[9].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -400,12 +409,13 @@
                     <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
                     <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
                     <p>总鸡量：{{num}}</p>
-                    <p>产蛋速度：1</p>
-                    <p>收获时间剩余：1</p>
+                    <p>剩余产量：{{sp_sum_egg}}</p>
+                    <p>产蛋速度：{{prop_fence_speed}}</p>
+                    <p>收获时间剩余：<span v-html="eggsgettime == 1 ? eggs_get_time : '' "></span></p>
                     <p>围栏级别：{{prop_fence_level}}</p>
-                    <p>围栏使用剩余时间：1</p>
+                    <p>围栏使用剩余时间：{{prop_fence_end_time}}</p>
                     <p>守护犬级别：{{prop_dog_level}}</p>
-                    <p>守护犬使用剩余时间:1</p>
+                    <p>守护犬使用剩余时间:{{prop_dog_end_time}}</p>
                 </div>
             </div>
         </div>
@@ -420,8 +430,8 @@
         <div class="yzgaojidi" v-if="super_house.length > 0">
             <div class="onedi" :class="fangda == super_house[0].id ? 'animatfangda' : 'animatsuoxiao'">
                  <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="super_house[0].status == 0">
-                <img src="../../assets/images/nongchang/yangzhi/gaojitudi.png" alt="" srcset="" v-show="super_house[0].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi11.png" alt="" srcset="" v-show="super_house[0].status == 1" @click="houseadd_detail(super_house[0].id,super_house[0].type,super_house[0].num,super_house[0].sort,super_house[0].prop_dog_level,super_house[0].prop_fence_level)">
+                <img src="../../assets/images/nongchang/yangzhi/gaojitudi.png" alt="" srcset="" v-show="super_house[0].status == 1" @click="houseadd_chick(super_house[0].id,super_house[0].type,super_house[0].num,super_house[0].sort,super_house[0].no_fence_chick_num)">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi11.png" alt="" srcset="" v-show="super_house[0].status == 1" @click="houseadd_detail(super_house[0].id,super_house[0].type,super_house[0].num,super_house[0].sort,super_house[0].prop_dog_level,super_house[0].prop_dog_end_time,super_house[0].prop_fence_level,super_house[0].prop_fence_end_time,super_house[0].prop_fence_speed,super_house[0].eggs_get_time,super_house[0].sp_sum_egg)">
                 <div class="xiaoji" v-show="super_house[0].num > 0" @click="houseadd_chick(super_house[0].id,super_house[0].type,super_house[0].num,super_house[0].sort,super_house[0].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -447,18 +457,19 @@
                     <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
                     <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
                     <p>总鸡量：{{num}}</p>
-                    <p>产蛋速度：1</p>
-                    <p>收获时间剩余：1</p>
+                    <p>剩余产量：{{sp_sum_egg}}</p>
+                    <p>产蛋速度：{{prop_fence_speed}}</p>
+                    <p>收获时间剩余：<span v-html="eggsgettime == 1 ? eggs_get_time : '' "></span></p>
                     <p>围栏级别：{{prop_fence_level}}</p>
-                    <p>围栏使用剩余时间：1</p>
+                    <p>围栏使用剩余时间：{{prop_fence_end_time}}</p>
                     <p>守护犬级别：{{prop_dog_level}}</p>
-                    <p>守护犬使用剩余时间:1</p>
+                    <p>守护犬使用剩余时间:{{prop_dog_end_time}}</p>
                 </div>
             </div>
             <div class="twodi" :class="fangda == super_house[1].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="super_house[1].status == 0">
-                <img src="../../assets/images/nongchang/yangzhi/gaojitudi.png" alt="" srcset="" v-show="super_house[1].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi12.png" alt="" srcset="" v-show="super_house[1].status == 1" @click="houseadd_detail(super_house[1].id,super_house[1].type,super_house[1].num,super_house[1].sort,super_house[1].prop_dog_level,super_house[1].prop_fence_level)">
+                <img src="../../assets/images/nongchang/yangzhi/gaojitudi.png" alt="" srcset="" v-show="super_house[1].status == 1" @click="houseadd_chick(super_house[1].id,super_house[1].type,super_house[1].num,super_house[1].sort,super_house[1].no_fence_chick_num)">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi12.png" alt="" srcset="" v-show="super_house[1].status == 1" @click="houseadd_detail(super_house[1].id,super_house[1].type,super_house[1].num,super_house[1].sort,super_house[1].prop_dog_level,super_house[1].prop_dog_end_time,super_house[1].prop_fence_level,super_house[1].prop_fence_end_time,super_house[1].prop_fence_speed,super_house[1].eggs_get_time,super_house[1].sp_sum_egg)">
                 <div class="xiaoji" v-show="super_house[1].num > 0" @click="houseadd_chick(super_house[1].id,super_house[1].type,super_house[1].num,super_house[1].sort,super_house[1].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -484,18 +495,19 @@
                     <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
                     <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
                     <p>总鸡量：{{num}}</p>
-                    <p>产蛋速度：1</p>
-                    <p>收获时间剩余：1</p>
+                    <p>剩余产量：{{sp_sum_egg}}</p>
+                    <p>产蛋速度：{{prop_fence_speed}}</p>
+                    <p>收获时间剩余：<span v-html="eggsgettime == 1 ? eggs_get_time : '' "></span></p>
                     <p>围栏级别：{{prop_fence_level}}</p>
-                    <p>围栏使用剩余时间：1</p>
+                    <p>围栏使用剩余时间：{{prop_fence_end_time}}</p>
                     <p>守护犬级别：{{prop_dog_level}}</p>
-                    <p>守护犬使用剩余时间:1</p>
+                    <p>守护犬使用剩余时间:{{prop_dog_end_time}}</p>
                 </div>
             </div>
             <div class="threedi" :class="fangda == super_house[2].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="super_house[2].status == 0">
-                <img src="../../assets/images/nongchang/yangzhi/gaojitudi.png" alt="" srcset="" v-show="super_house[2].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi13.png" alt="" srcset="" v-show="super_house[2].status == 1" @click="houseadd_detail(super_house[2].id,super_house[2].type,super_house[2].num,super_house[2].sort,super_house[2].prop_dog_level,super_house[2].prop_fence_level)">
+                <img src="../../assets/images/nongchang/yangzhi/gaojitudi.png" alt="" srcset="" v-show="super_house[2].status == 1" @click="houseadd_chick(super_house[2].id,super_house[2].type,super_house[2].num,super_house[2].sort,super_house[2].no_fence_chick_num)">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi13.png" alt="" srcset="" v-show="super_house[2].status == 1" @click="houseadd_detail(super_house[2].id,super_house[2].type,super_house[2].num,super_house[2].sort,super_house[2].prop_dog_level,super_house[2].prop_dog_end_time,super_house[2].prop_fence_level,super_house[2].prop_fence_end_time,super_house[2].prop_fence_speed,super_house[2].eggs_get_time,super_house[2].sp_sum_egg)">
                 <div class="xiaoji" v-show="super_house[2].num > 0" @click="houseadd_chick(super_house[2].id,super_house[2].type,super_house[2].num,super_house[2].sort,super_house[2].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -521,18 +533,19 @@
                     <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
                     <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
                     <p>总鸡量：{{num}}</p>
-                    <p>产蛋速度：1</p>
-                    <p>收获时间剩余：1</p>
+                    <p>剩余产量：{{sp_sum_egg}}</p>
+                    <p>产蛋速度：{{prop_fence_speed}}</p>
+                    <p>收获时间剩余：<span v-html="eggsgettime == 1 ? eggs_get_time : '' "></span></p>
                     <p>围栏级别：{{prop_fence_level}}</p>
-                    <p>围栏使用剩余时间：1</p>
+                    <p>围栏使用剩余时间：{{prop_fence_end_time}}</p>
                     <p>守护犬级别：{{prop_dog_level}}</p>
-                    <p>守护犬使用剩余时间:1</p>
+                    <p>守护犬使用剩余时间:{{prop_dog_end_time}}</p>
                 </div>
             </div>
             <div class="fourdi" :class="fangda == super_house[3].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="super_house[3].status == 0">
-                <img src="../../assets/images/nongchang/yangzhi/gaojitudi.png" alt="" srcset="" v-show="super_house[3].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi14.png" alt="" srcset="" v-show="super_house[3].status == 1" @click="houseadd_detail(super_house[3].id,super_house[3].type,super_house[3].num,super_house[3].sort,super_house[3].prop_dog_level,super_house[3].prop_fence_level)">
+                <img src="../../assets/images/nongchang/yangzhi/gaojitudi.png" alt="" srcset="" v-show="super_house[3].status == 1" @click="houseadd_chick(super_house[3].id,super_house[3].type,super_house[3].num,super_house[3].sort,super_house[3].no_fence_chick_num)">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi14.png" alt="" srcset="" v-show="super_house[3].status == 1" @click="houseadd_detail(super_house[3].id,super_house[3].type,super_house[3].num,super_house[3].sort,super_house[3].prop_dog_level,super_house[3].prop_dog_end_time,super_house[3].prop_fence_level,super_house[3].prop_fence_end_time,super_house[3].prop_fence_speed,super_house[3].eggs_get_time,super_house[3].sp_sum_egg)">
                 <div class="xiaoji" v-show="super_house[3].num > 0" @click="houseadd_chick(super_house[3].id,super_house[3].type,super_house[3].num,super_house[3].sort,super_house[3].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -558,18 +571,19 @@
                     <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
                     <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
                     <p>总鸡量：{{num}}</p>
-                    <p>产蛋速度：1</p>
-                    <p>收获时间剩余：1</p>
+                    <p>剩余产量：{{sp_sum_egg}}</p>
+                    <p>产蛋速度：{{prop_fence_speed}}</p>
+                    <p>收获时间剩余：<span v-html="eggsgettime == 1 ? eggs_get_time : '' "></span></p>
                     <p>围栏级别：{{prop_fence_level}}</p>
-                    <p>围栏使用剩余时间：1</p>
+                    <p>围栏使用剩余时间：{{prop_fence_end_time}}</p>
                     <p>守护犬级别：{{prop_dog_level}}</p>
-                    <p>守护犬使用剩余时间:1</p>
+                    <p>守护犬使用剩余时间:{{prop_dog_end_time}}</p>
                 </div>
             </div>
             <div class="fivedi" :class="fangda == super_house[4].id ? 'animatfangda' : 'animatsuoxiao'">
                 <img src="../../assets/images/nongchang/yangzhi/weikaidi.png" alt="" srcset="" v-show="super_house[4].status == 0">
-                <img src="../../assets/images/nongchang/yangzhi/gaojitudi.png" alt="" srcset="" v-show="super_house[4].status == 1">
-                <img src="../../assets/images/nongchang/yangzhi/fangzi15.png" alt="" srcset="" v-show="super_house[4].status == 1" @click="houseadd_detail(super_house[4].id,super_house[4].type,super_house[4].num,super_house[4].sort,super_house[4].prop_dog_level,super_house[4].prop_fence_level)">
+                <img src="../../assets/images/nongchang/yangzhi/gaojitudi.png" alt="" srcset="" v-show="super_house[4].status == 1" @click="houseadd_chick(super_house[4].id,super_house[4].type,super_house[4].num,super_house[4].sort,super_house[4].no_fence_chick_num)">
+                <img src="../../assets/images/nongchang/yangzhi/fangzi15.png" alt="" srcset="" v-show="super_house[4].status == 1" @click="houseadd_detail(super_house[4].id,super_house[4].type,super_house[4].num,super_house[4].sort,super_house[4].prop_dog_level,super_house[4].prop_dog_end_time,super_house[4].prop_fence_level,super_house[4].prop_fence_end_time,super_house[4].prop_fence_speed,super_house[4].eggs_get_time,super_house[4].sp_sum_egg)">
                 <div class="xiaoji" v-show="super_house[4].num > 0" @click="houseadd_chick(super_house[4].id,super_house[4].type,super_house[4].num,super_house[4].sort,super_house[4].no_fence_chick_num)">
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
                     <img src="../../assets/images/nongchang/yangzhi/xiaoji.gif" alt="" srcset="" >
@@ -595,12 +609,13 @@
                     <img src="../../assets/images/nongchang/shangdian/guanbi.png" alt="" @click="fanhui">
                     <!-- <p>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</p> -->
                     <p>总鸡量：{{num}}</p>
-                    <p>产蛋速度：1</p>
-                    <p>收获时间剩余：1</p>
-                    <p>围栏级别：{{prop_fence_level}}</p>
-                    <p>围栏使用剩余时间：1</p>
-                    <p>守护犬级别：{{prop_dog_level}}</p>
-                    <p>守护犬使用剩余时间:1</p>
+                    <p>剩余产量：{{sp_sum_egg}}</p>
+                    <p>产蛋速度：{{prop_fence_speed}}</p>
+                    <p>收获时间剩余：<span v-html="eggsgettime == 1 ? eggs_get_time : '' "></span></p>
+                    <p>围栏级别：LV{{prop_fence_level}}</p>
+                    <p>围栏使用剩余时间：{{prop_fence_end_time}}</p>
+                    <p>守护犬级别：LV{{prop_dog_level}}</p>
+                    <p>守护犬使用剩余时间:{{prop_dog_end_time}}</p>
                 </div>
             </div>
             
@@ -727,10 +742,10 @@
                         display: inline-block;
                         border-radius: 1vw;
                         font-size: 14px;margin-left:2vw" href="javascript:;">修改</a></div>
-                    <div>团队总鸡分量：{{team_info.integral}} </div>
+                    <div>团队总KI量：{{team_info.integral}} </div>
                     <div>团队总鸡量：{{team_info.credit1}} </div>
                     <div>团队总蛋量：{{team_info.credit2}} </div>
-                    <div>团队总鸡分量：{{team_info.integral}} </div>
+                    <div>团队总KI量：{{team_info.integral}} </div>
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
@@ -747,7 +762,7 @@
                     <div>当前鸡舍：<span>{{sort}}号{{type == 1 ? '普通' : '高级'}}鸡舍</span></div>
                     <div>扫帚等级：<span>扫帚LV{{dengji}}</span></div>
                     <div>小鸡数量：<span>{{num}}</span></div>
-                    <div>扫帚消耗：<span>{{xiaohaoxiaoji}}KI</span></div>
+                    <div>扫帚数量：<span>{{saobacount}}</span></div>
                 </div>
                 <div class="shezhibtn flex flex_center">
                    <img src="../../assets/images/nongchang/shezhi/fanhui.png" alt="" @click="fanhui">
@@ -798,7 +813,7 @@
                         <span>
                             <select style="background: #EDC782;border: 0;width: 88%;color: #955942;font-size: 4vw;" 
                             v-model="weilanID" @change="selectweilandengji(weilanID)">
-                                <option :value ="item.id"  v-for="(item, index) in list" :key="index">{{item.title}}</option>
+                                <option :value ="item.id"  v-for="(item, index) in fencelist" :key="index">{{item.title}}</option>
                             </select>    
                         </span>
                         <!-- <span>围栏LV{{dengji}}</span> -->
@@ -824,7 +839,7 @@
                         <span>
                             <select style="background: #EDC782;border: 0;width: 88%;color: #955942;font-size: 4vw;" 
                             v-model="shouhuquanID" @change="selectdogdengji(shouhuquanID)">
-                                <option :value ="item.id"  v-for="(item, index) in list" :key="index">{{item.title}}</option>
+                                <option :value ="item.id"  v-for="(item, index) in doglist" :key="index">{{item.title}}</option>
                             </select>    
                         </span>
                     </div>
@@ -879,7 +894,7 @@
                         </div> -->
                         <div class="gmkshuliang flex flex_center ali_center">
                             <span style="white-space: nowrap;">钱包地址：</span>
-                            <input type="text" v-model="target" >
+                            <input type="text" v-model="target" disabled>
                         </div>
                         <div class="gmkshuliang flex flex_center ali_center">
                             <span style="white-space: nowrap;">&nbsp;&nbsp;&nbsp;&nbsp;手续费：</span>
@@ -893,6 +908,12 @@
                             <span style="white-space: nowrap;">实际到账：</span>
                             <input type="text"  v-model="shijidaozhan" disabled>
                         </div>
+                        <div class="gmkshuliang flex ali_center">
+                            <span class="width20" style="white-space: nowrap;">&nbsp;&nbsp;&nbsp;&nbsp;验证码：</span>
+                            <input type="text" v-model="code" placeholder="请输入验证码" style="width:23vw;">
+                            <span @click="chongzhisenVerifyCode()" style="white-space: nowrap;">{{timeAndTextOfSendcode}}</span>
+                        </div>
+                       
                     </div>
                     <div v-else>
                         <div class="gmkshuliang flex flex_center ali_center">
@@ -908,8 +929,13 @@
                             font-size: 14px;margin-left:2vw" href="javascript:;" :data-clipboard-text="chongzhidizhi" class="copy">复制</a>  -->
                         </div>
                         <div class="gmkshuliang flex flex_center ali_center">
-                            <span style="white-space: nowrap;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数量：</span>
-                            <input type="text" v-model="amount"  >                        </div>
+                            <span style="white-space: nowrap;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;KIWI：</span>
+                            <input type="text" v-model="amount"  >     
+                        </div>
+                        <div class="gmkshuliang flex flex_center ali_center">
+                            <span style="white-space: nowrap;">&nbsp;&nbsp;&nbsp;&nbsp;KI换算：</span>
+                            <input type="text"  v-model="huilvzhesuan" disabled>
+                        </div>
                     </div>
                     
                    
@@ -1074,8 +1100,8 @@
                                     <!-- <span>鸡舍：1号</span> -->
                                 </div>
                                 <div class="flex flex_between">
-                                    <span v-if="item.change_type == 1">鸡分：{{item.change_amount}}</span>
-                                    <span v-else>鸡分：-{{item.change_amount}}</span>
+                                    <span v-if="item.change_type == 1">KI：{{item.change_amount}}</span>
+                                    <span v-else>KI：-{{item.change_amount}}</span>
                                     <span>数量：{{item.left_amount}}</span>
                                 </div>
                                 
@@ -1143,7 +1169,7 @@
                 </div> -->
             </div>
         </div>
-        <!-- 鸡分明细 -->
+        <!-- KI明细 -->
         <div class="jifenkuang animat" v-if="jifenkuang">
             <div class="kuang">
                 <div class="guanbi flex flex-end">
@@ -1170,8 +1196,8 @@
                                     <span v-if="item.status != 1">ID：ys25421</span>
                                 </div>
                                 <div class="flex flex_between">
-                                    <span style="width: 30vw;overflow: hidden;margin-right:5vw;" v-if="item.source_type == 110">鸡分：-{{item.change_amount}}</span>
-                                    <span style="width: 30vw;overflow: hidden;margin-right:5vw;" v-else>鸡分：{{item.change_amount}}</span>
+                                    <span style="width: 30vw;overflow: hidden;margin-right:5vw;" v-if="item.source_type == 110">KI：-{{item.change_amount}}</span>
+                                    <span style="width: 30vw;overflow: hidden;margin-right:5vw;" v-else>KI：{{item.change_amount}}</span>
                                     <!-- <span>数量：300</span> -->
                                 </div>
                                 
@@ -1197,8 +1223,8 @@
                                     <span >ID：{{item.source_id}}</span>
                                 </div>
                                 <div class="flex flex_between">
-                                    <span style="width: 30vw;overflow: hidden;margin-right:5vw;" v-if="item.source_type == 105">鸡分：-{{item.source_type}}</span>
-                                    <span style="width: 30vw;overflow: hidden;margin-right:5vw;" v-else>鸡分：{{item.source_type}}</span>
+                                    <span style="width: 30vw;overflow: hidden;margin-right:5vw;" v-if="item.source_type == 105">KI：-{{item.source_type}}</span>
+                                    <span style="width: 30vw;overflow: hidden;margin-right:5vw;" v-else>KI：{{item.source_type}}</span>
                                     <span>昵称：{{item.user_name}}</span>
                                 </div>
                                 
@@ -1224,8 +1250,8 @@
                                     <span>ID：{{item.source_id}}</span>
                                 </div>
                                 <div class="flex flex_between">
-                                    <span style="width: 30vw;overflow: hidden;margin-right:5vw;" v-if="item.source_type == 103">鸡分：-{{item.source_type}}</span>
-                                    <span style="width: 30vw;overflow: hidden;margin-right:5vw;" v-else>鸡分：{{item.source_type}}</span>
+                                    <span style="width: 30vw;overflow: hidden;margin-right:5vw;" v-if="item.source_type == 103">KI：-{{item.source_type}}</span>
+                                    <span style="width: 30vw;overflow: hidden;margin-right:5vw;" v-else>KI：{{item.source_type}}</span>
                                     <!-- <span>数量：300</span> -->
                                 </div>
                                 
@@ -1241,17 +1267,22 @@
                 </div>
             </div>
         </div>
-        <!--鸡分转让 -->
+        <!--KI转让 -->
         <div class="jifenzhuanrangkuang animat" v-if="jifenzhuanrangkuang">
             <div class="kuang">
                 <div class="content  ">
                      <div class="zhuan flex ali_center">
-                        <span>&nbsp;&nbsp;&nbsp;&nbsp;转让ID：</span>
+                        <span>转让ID：</span>
                         <input type="number" v-model="to_user_id" placeholder="请输入转让ID">
                     </div>
                     <div class="zhuan flex ali_center">
-                        <span>转让鸡分：</span>
-                        <input type="number" v-model="jifennum" placeholder="请输入转让鸡分">
+                        <span>转让KI：</span>
+                        <input type="number" v-model="jifennum" placeholder="请输入转让KI">
+                    </div>
+                    <div class="gmkshuliang flex ali_center">
+                        <span style="width:17vw;text-align: right;">验证码：</span>
+                        <input type="text" v-model="code" placeholder="请输入验证码" style="width:23vw;">
+                        <span @click="jifensenVerifyCode()">{{timeAndTextOfSendcode}}</span>
                     </div>
     
                 </div>
@@ -1427,6 +1458,7 @@ import { sendTransaction } from '../../utils/chongzhi'
 import {enable} from "../../utils/web3utils";
 import store from '../../store/index'
 import $ from 'jquery'
+import { Toast } from 'vant';
 var PathStatus 	= 0;
 var angle 		= Math.PI/((4-1)*2);	
 var mainButton 	= [
@@ -1452,6 +1484,7 @@ export default {
             avatar:"",
             mobile:"",
             invite_code:"",
+            code:"",
             first_leader:{},
             balance:"",
             gerenxinxikuang:false,
@@ -1486,10 +1519,11 @@ export default {
             tudiID:"",  //土地id
             type:"", //1：普通鸡舍；2：高级鸡舍
             num:"", //鸡舍里的小鸡数量
+            sp_sum_egg:"",//剩余总量
             sort:"",//土地编号
             no_fence_chick_num:"", //没有设置围栏的小鸡数量（用于计算使用围栏的 ）
             dengji:"", // 鸡饲料等级; 守护等级
-            list:[], //鸡饲料 拿money
+            // list:[], //鸡饲料 拿money
             siliaoID:"", //鸡饲料等级id;
             money:"", // 消耗小鸡数量的百分比;守护消耗
             xiaohaoxiaoji:"", //喂养消耗; 围栏消耗：；扫帚消耗：
@@ -1499,6 +1533,10 @@ export default {
             dingdankuang: false, //订单 明细
             house_list:[], //鸡舍详情
             list:[],
+            feedlist:[],
+            doglist:[],
+            fencelist:[],
+            broomlist:[],
             page: 1,
             limit: 10,
             finished: false,
@@ -1507,6 +1545,7 @@ export default {
             saobalistshow:false, 
             saobaID:"", //扫把等级ID
             saobakuang:false,//扫把框
+            saobacount:"",
             houselog_listshow:false,
             houselistshow: true,
             house_id:"",
@@ -1538,7 +1577,7 @@ export default {
             fuhua1:require('@/assets/images/nongchang/xiaojimingxi/fuhua.png'),
             fuhua2:require('@/assets/images/nongchang/xiaojimingxi/fuhua1.png'),
             statusxiaoji:0,
-            jifenkuang: false,//鸡分明细
+            jifenkuang: false,//KI明细
             chongzhitixian:false,
             chongzhitixian1:require('@/assets/images/nongchang/jifenmingxi/chongzhitixian.png'),
             chongzhitixian2:require('@/assets/images/nongchang/jifenmingxi/chongzhitixian1.png'),
@@ -1551,7 +1590,7 @@ export default {
             statusjifen:0,
             jifenzhuanrangkuang:false,
             to_user_id: "", //转让ID
-            jifennum:"", //转让鸡分
+            jifennum:"", //转让KI
             MP3_bg:require('@/assets/images/nongchang/music/bg_music.mp3'),
             MP3_click:require('@/assets/images/nongchang/music/click.mp3'),  
             chongzhitixiankuang:false,
@@ -1567,14 +1606,31 @@ export default {
             jishexiangqingkuang: false,
             prop_fence_level:"",
             prop_dog_level:"",
+            prop_dog_end_time:"",
+            prop_fence_end_time:"",
+            prop_fence_speed:"",
+            eggs_get_time:"",
             team_info:"",
             toaddress:"0xeA0be69A80C19FaD352b2a55D07Bcf1fe8B94688",
             fromaddress:"",
             amount:"",
             contractAddr:"", //合约地址
+            kiwi_to_integral:"", //kiwi换算
+            ws:null,
+            timer:null,
+            timer1:null,
+            timer2:null,
+            timer3:null,
+            eggsgettime:0,
             
            
         }
+    },
+    computed:{
+        //汇率
+        huilvzhesuan(){
+            return (this.amount * this.kiwi_to_integral).toFixed(2)
+        },
     },
     created() {
         //傳遞複製按鈕選擇器, 接受複製插件的 clipboard 實例
@@ -1583,9 +1639,49 @@ export default {
         console.log(this.user_id_other);
         if(this.user_id_other){
             this.userIdshow = true;
+            this.gerenxinxikuang = false;
+             this.propbroom_list();
+            
         }else{
             this.userIdshow = false;
         }
+        this.ws = new WebSocket("ws://app.kiwigame.finance:8282");
+        // 服务端主动推送消息时会触发这里的onmessage
+        this.ws.onmessage = async (e) => {
+            console.log(e)
+            // json数据转换成js对象
+            var data = eval("("+e.data+")");
+            var type = data.type || '';
+            switch(type){
+                // Events.php中返回的init类型的消息，将client_id发给后台进行uid绑定
+                case 'init':
+                    // 利用jquery发起ajax请求，将client_id发给后端进行uid绑定
+                    // $.post('http://kiwigame.finance/farm/so_send/bind', {client_id: data.client_id}, function(data){
+                    //     console.log(data)
+                    // }, 'json');
+                    let res = await $ajax('so_sendbind', {
+                        client_id: data.client_id
+                    })
+                    console.log(res)
+                    break;
+                // 当mvc框架调用GatewayClient发消息时直接alert出来
+                default :
+                    console.log(e.data)
+                    if(type == 're_balance'){
+                        this.balance = {
+                            ...this.balance, 
+                            integral: data.integral,
+                            credit2: data.credit2,
+                            credit1: data.credit1
+                        }
+                    }else if(type == 're_tips') {
+                        Toast(data.msg)
+                    }
+                    
+
+                    // alert(e.data);
+            }
+        };
         this.houseIndex();
     },
     mounted(){
@@ -1598,16 +1694,130 @@ export default {
         
     },
     methods:{
+        // 发送验证码
+        async chongzhisenVerifyCode () {
+            // let { register } = this.$i18n
+            if ( this.timeAndTextOfSendcode !== '发送验证码') return false
+            // if (!this.mobile) return Toast( '请输入手机号')
+            let res = await $ajax('sendVerifycode',{
+                mobile: localStorage.getItem('mobile'),
+                "type": "other" //短信验证码类型：register，forget,login
+            })
+            if (!res) return false
+            Toast(res.msg)
+            this.timeAndTextOfSendcode = 60
+            this.timing() //執行倒計時
+        },
+        // 发送验证码
+        async xiaojisenVerifyCodeoother () {
+            // let { register } = this.$i18n
+            if ( this.timeAndTextOfSendcode !== '发送验证码') return false
+            // if (!this.mobile) return Toast( '请输入手机号')
+            let res = await $ajax('sendVerifycode',{
+                mobile: localStorage.getItem('mobile'),
+                "type": "other" //短信验证码类型：register，forget,login
+            })
+            if (!res) return false
+            Toast(res.msg)
+            this.timeAndTextOfSendcode = 60
+            this.timing() //執行倒計時
+        },
+        // 发送验证码
+        async jifensenVerifyCode () {
+            // let { register } = this.$i18n
+            if ( this.timeAndTextOfSendcode !== '发送验证码') return false
+            // if (!this.mobile) return Toast( '请输入手机号')
+            let res = await $ajax('sendVerifycode',{
+                mobile: localStorage.getItem('mobile'),
+                "type": "other" //短信验证码类型：register，forget,login
+            })
+            if (!res) return false
+            Toast(res.msg)
+            this.timeAndTextOfSendcode = 60
+            this.timing() //執行倒計時
+        },
+        formatSeconds(value) {
+                var secondTime = parseInt(value); // 秒
+                var minuteTime = 0; // 分
+                var hourTime = 0; // 小时
+                if (secondTime >= 60) {
+                    minuteTime = parseInt(secondTime / 60);
+                    secondTime = parseInt(secondTime % 60);
+                    if (minuteTime >= 60) {
+                        hourTime = parseInt(minuteTime / 60);
+                        minuteTime = parseInt(minuteTime % 60);
+                    }
+                }
+                var result ="" +(parseInt(secondTime) < 10? "0" + parseInt(secondTime): parseInt(secondTime));
+
+                // if (minuteTime > 0) {
+                    result ="" + (parseInt(minuteTime) < 10? "0" + parseInt(minuteTime) : parseInt(minuteTime)) + ":" + result;
+                // }
+                // if (hourTime > 0) {
+                    result ="" + (parseInt(hourTime) < 10 ? "0" + parseInt(hourTime): parseInt(hourTime)) +":" + result;
+                // }
+                return result;
+        
+        },
+
         //点击房子 获取 详情
-        houseadd_detail(id,type,num,sort,prop_dog_level,prop_fence_level){
+        houseadd_detail(id,type,num,sort,prop_dog_level,prop_dog_end_time,prop_fence_level,prop_fence_end_time,prop_fence_speed,eggs_get_time,sp_sum_egg){
+            clearInterval(this.timer)
+            clearInterval(this.timer1)
+            clearInterval(this.timer2)
+            clearInterval(this.timer3)
             this.jishexiangqingkuang = id;
-            console.log(id,type,num,sort,prop_dog_level,prop_fence_level);
+            this.eggsgettime = 0;
+            console.log(id,type,num,sort,prop_dog_level,prop_dog_end_time,prop_fence_level,prop_fence_end_time,prop_fence_speed,eggs_get_time,sp_sum_egg);
             this.sort = sort;
             this.num = num;
+            this.sp_sum_egg = sp_sum_egg;
             this.type = type;
-            this.prop_dog_level = prop_dog_level
-            this.prop_fence_level = prop_fence_level
-
+            this.prop_dog_level = 'LV'+ prop_dog_level
+            if(prop_dog_end_time>0){
+                this.timer = setInterval(()=>{
+                    let during = prop_dog_end_time--;
+                    // console.log(during)
+                    this.prop_dog_end_time = this.formatSeconds(during)
+                    // console.log(88888)
+                },1000)
+            }else{
+                this.prop_dog_end_time = 0
+            }
+            this.prop_fence_level = 'LV'+ prop_fence_level
+            if(prop_fence_end_time>0){
+                this.timer1 = setInterval(()=>{
+                    let during = prop_fence_end_time--;
+                    // console.log(during)
+                    this.prop_fence_end_time = this.formatSeconds(during)
+                    // console.log(88888)
+                },1000)
+            }else{
+                this.prop_fence_end_time = 0
+            }
+            this.prop_fence_speed = prop_fence_speed + '%'
+            if(eggs_get_time>0){
+                // new Promise((resolve, reject) => {
+                    this.timer2 = setInterval(()=>{
+                        let during = eggs_get_time--;
+                        // console.log(during)
+                        this.eggs_get_time = this.formatSeconds(during)
+                        // console.log(88888)
+                    },1000)
+                    // resolve(1)
+                // }).then(() => {
+                //     console.log(3333333)
+                //     this.eggsgettime = 1
+                // })
+                this.timer3 = setTimeout(() => {
+                    this.eggsgettime = 1
+                },1500)
+                
+                
+            }else{
+                this.eggs_get_time = 0
+            }
+            
         },
         //获取手续费
         async getshouxufei(){
@@ -1619,12 +1829,13 @@ export default {
         },
         // -- 确认支付密码
         async zhifuqueding(){
-            if(this.to_user_id && this.jifennum){ //鸡分转让 -- 转让ID
+            if(this.to_user_id && this.jifennum){ //KI转让 -- 转让ID
                 if(!this.value || this.value == "") return Toast('请输入支付密码！');
                 let res = await $ajax('transfersubmit', {
                     to_user_id: this.to_user_id,
                     num: this.jifennum,
                     pay_pwd: this.value,
+                    sms_code: this.code
                      
                  })
                 if (!res) return false
@@ -1645,15 +1856,30 @@ export default {
             if(!fromaddress) return Toast('请登录获取用户地址')
             if(!amount) return Toast('请输入数量')
             
-            let res = await sendTransaction(fromaddress,toaddress,contractAddr,amount)
-            if(!res) return false
-            console.log(res)
-            let resbalancerecharge_submit = await $ajax('balancerecharge_submit', {
-                fromaddress: fromaddress, ////提交充值用户的钱包地址
-                hastransaction: res.hastransaction ////发起交易后返回的哈希字符串
+            await $ajax('balancerecharge_submit_new', {
+                    fromaddress: fromaddress, ////提交充值用户的钱包地址
+                    // hastransaction: res, ////发起交易后返回的哈希字符串
+                    num: amount
+            }).then(async (balanceRes) => {
+                if(!balanceRes) return false
+                await sendTransaction(fromaddress,toaddress,contractAddr,amount).then(async (res) => {
+                    console.log(res)
+                    console.log('进来')
+                    // alert('进来')
+                    let resbalancerecharge_submit = await $ajax('balancerecharge_submit', {
+                        fromaddress: fromaddress, ////提交充值用户的钱包地址
+                        hastransaction: res, ////发起交易后返回的哈希字符串
+                        num: amount
+                    })
+                    console.log(resbalancerecharge_submit);
+                    // alert(JSON.stringify(resbalancerecharge_submit))
+                    if (!resbalancerecharge_submit) return false
+                    // store.commit('setLoading', false)
+                    Toast(resbalancerecharge_submit.msg)
+                    // setTimeout(this.getData(), 4000)
+                })
+
             })
-            if (!resbalancerecharge_submit) return false
-            Toast(resbalancerecharge_submit.msg)
             
         },
         //登录钱包
@@ -1684,7 +1910,8 @@ export default {
                 // "privatekey": this.privatekey, //Trx账户私钥
                 // "tokencontract": this.tokencontract, //币的合约地址
                 "target": this.target, //币的目标地址
-                "amount": this.tixianshuliang //数量(KI)
+                "amount": this.tixianshuliang, //数量(KI)
+                "sms_code":  this.code //短信验证码
             })
             if (!res) return false
             console.log(res)
@@ -1706,12 +1933,13 @@ export default {
             console.log(res)
             this.toaddress = res.toaddress //转账地址
             this.contractAddr = res.contractAddr //合约地址
+            this.kiwi_to_integral = res.kiwi_to_integral //汇率
             this.chongzhitixiankuang = true;
         },
          // 转让确定 弹支付
         zhuanrangqueding(){
             if(!this.to_user_id) return Toast('请输入转让ID!')
-            if(!this.jifennum || this.jifennum == '') return Toast('请输入转让鸡分!');
+            if(!this.jifennum || this.jifennum == '') return Toast('请输入转让KI!');
             this.zhifukuang = true
             
         },
@@ -1775,7 +2003,7 @@ export default {
                 this.finished = true //加载完成
             } 
         },
-        //鸡分明细
+        //KI明细
         tabjifen(index){
             console.log(index)
             this.page = 1;
@@ -1971,7 +2199,7 @@ export default {
 
         // 扫把确定 待定
         async saobaqueding(){
-            store.commit('setLoading', true)
+            // store.commit('setLoading', true)
             let res = await $ajax('houseuse_broom', {
                 house_id: this.tudiID, // 土地id
                 prop_broom: this.saobaID // 扫把id
@@ -1984,17 +2212,20 @@ export default {
             this.tudiID = ""; //土地id 清空
             this.type = ""; //1：普通鸡舍；2：高级鸡舍 清空
             this.num = ""; //鸡舍里的小鸡数量 清空
-            store.commit('setLoading', false)
+            // store.commit('setLoading', false)
         },
         // 选择扫把等级
         tabsaoba(id){
             if(!this.tudiID || this.tudiID == '') return Toast('请先选择土地')
             this.dengji = id
-            this.list.forEach((item, index)=>{
+            this.broomlist.forEach((item, index)=>{
                 // let sort = index + 1;
                 if(item.level == id){
                     this.money = item.money
                     this.saobaID = item.id
+                    this.saobacount = item.use_count
+                    console.log(item)
+                    console.log(this.saobaID , item.id, this.saobacount)
                     // this.day = item.day
                 }
             })
@@ -2007,8 +2238,8 @@ export default {
              })
             if (!res) return false
             // console.log(res)
-            this.list = res.list
-            console.log(this.list)
+            this.broomlist = res.list
+            console.log(this.broomlist)
         },
         //返回 -鸡舍详情
         gopage(){
@@ -2029,7 +2260,7 @@ export default {
              })
             if (!res) return false
             // console.log(res)
-            // this.list = res.goods                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+            // this.list = res.goods   
             this.page++
             console.log(res.list)
             // this.listtotal = res.listtotal
@@ -2080,7 +2311,7 @@ export default {
              this.tudiID = house_id
              this.weilanID = prop_fence_id
              this.num = num
-              this.propfence();
+            //   this.propfence();
             setTimeout(()=>{
                 this.shengjiweilanProp(prop_fence_id)
             },500)
@@ -2092,7 +2323,7 @@ export default {
              this.tudiID = id
              this.shouhuquanID = prop_dog_id
              this.sort = sort
-             this.propdog();
+            //  this.propdog();
              setTimeout(()=>{
                  this.shouhuquanProp(prop_dog_id)
              },500)
@@ -2111,14 +2342,14 @@ export default {
         
         //围栏 购买
         async weilanqueding(){
-            store.commit('setLoading', true)
+            // store.commit('setLoading', true)
             let res = await $ajax('houseuse_fence', {
                 house_id: this.tudiID, // 土地id
                 prop_fence: this.weilanID, // 围栏id
                 log_id: this.log_id //增养记录 
             })
             if (!res) return false
-            store.commit('setLoading', false)
+            // store.commit('setLoading', false)
             this.tishixingxi = res.msg
             this.tishikuang = true
             this.houseIndex();
@@ -2147,7 +2378,7 @@ export default {
         async shengjiweilanProp(id){
             if(!this.tudiID || this.tudiID == '') return Toast('请先选择土地')
             this.dengji = id
-            this.list.forEach((item, index)=>{
+            this.fencelist.forEach((item, index)=>{
                 // let sort = index + 1;
                 if(item.level == id){
                     this.money = item.money
@@ -2165,7 +2396,7 @@ export default {
         async weilanProp(id){
             if(!this.tudiID || this.tudiID == '') return Toast('请先选择土地')
             this.dengji = id
-            this.list.forEach((item, index)=>{
+            this.fencelist.forEach((item, index)=>{
                 // let sort = index + 1;
                 if(item.level == id){
                     this.money = item.money
@@ -2185,8 +2416,8 @@ export default {
              })
             if (!res) return false
             // console.log(res)
-            this.list = res.fence
-            console.log(this.list)
+            this.fencelist = res.fence
+            console.log(this.fencelist)
            
         },
         //围栏 列表
@@ -2196,17 +2427,17 @@ export default {
             this.weilanlist = !this.weilanlist
             this.jisiliaolist = false;
             this.shouhuquanlist = false;
-             this.propfence();
+            //  this.propfence();
         },
         //守护犬 购买
         async shouhuquanqueding(){
-            store.commit('setLoading', true)
+            // store.commit('setLoading', true)
             let res = await $ajax('houseuse_dog', {
                 house_id: this.tudiID, // 土地id
                 prop_dog: this.shouhuquanID // 狗狗id
             })
             if (!res) return false
-            store.commit('setLoading', false)
+            // store.commit('setLoading', false)
             this.tishixingxi = res.msg
             this.tishikuang = true
             this.houseIndex();
@@ -2225,7 +2456,7 @@ export default {
         async shouhuquanProp(id){
             if(!this.tudiID || this.tudiID == '') return Toast('请先选择土地')
             this.dengji = id
-            this.list.forEach((item, index)=>{
+            this.doglist.forEach((item, index)=>{
                 if(item.level == id){
                     console.log(item);
                     this.money = item.money
@@ -2244,27 +2475,28 @@ export default {
              })
             if (!res) return false
             // console.log(res)
-            this.list = res.dog
-            console.log(this.list)
+            this.doglist = res.dog
+            console.log(this.doglist)
         },
         // 守护犬 列表
         shouhuquanhandle(){
+            // this.propdog();
             console.log(this.tudiID)
             if(!this.tudiID || this.tudiID == '') return Toast('请先选择土地')
             this.shouhuquanlist = !this.shouhuquanlist
             this.jisiliaolist = false
             this.weilanlist = false
-            this.propdog();
+            // this.propdog();
         },
         //鸡饲料 购买
         async jisiliaoqueding(){
-            store.commit('setLoading', true)
+            // store.commit('setLoading', true)
             let res = await $ajax('houseuse_feed', {
                 house_id: this.tudiID, // 土地id
                 prop_feed: this.siliaoID // 饲料id
             })
             if (!res) return false
-            store.commit('setLoading', false)
+            // store.commit('setLoading', false)
             this.tishixingxi = res.msg
             this.tishikuang = true
             this.houseIndex();
@@ -2275,9 +2507,10 @@ export default {
         },
         // 选择饲料等级
         async jiliaoProp(id){
+            // this.propfeed();
             if(!this.tudiID || this.tudiID == '') return Toast('请先选择土地')
             this.dengji = id
-            this.list.forEach((item, index)=>{
+            this.feedlist.forEach((item, index)=>{
                 // let sort = index + 1;
                 if(item.level == id){
                     this.money = item.money
@@ -2295,39 +2528,41 @@ export default {
              })
             if (!res) return false
             // console.log(res)
-            this.list = res.list
-            console.log(this.list)
+            this.feedlist = res.list
+            console.log(this.feedlist)
            
         },
         // 鸡饲料 列表
         async jisiliaohandle(){
             console.log(this.tudiID)
+            // this.list = []
             if(!this.tudiID || this.tudiID == '') return Toast('请先选择土地')
+            // this.propfeed();
             this.jisiliaolist = !this.jisiliaolist
             this.shouhuquanlist = false;
             this.weilanlist = false;
-            this.propfeed();
+            
         },
         //收货鸡蛋 
         async shouhuo(id){
             console.log(this.user_id_other)
             if(!this.user_id_other || this.user_id_other == ""){
-                store.commit('setLoading', true)
+                // store.commit('setLoading', true)
                 let res = await $ajax('housereap', {
                     house_id: id,
                 })
                 if (!res) return false
-                store.commit('setLoading', false)
+                // store.commit('setLoading', false)
                 this.tishixingxi = res.msg
                 this.tishikuang = true
                 this.houseIndex();
             }else{
-                store.commit('setLoading', true)
+                // store.commit('setLoading', true)
                 let res = await $ajax('housesteal', {
                     house_id: id,
                 })
                 if (!res) return false
-                store.commit('setLoading', false)
+                // store.commit('setLoading', false)
                 this.tishixingxi = res.msg
                 this.tishikuang = true
                 this.houseIndex();
@@ -2338,13 +2573,13 @@ export default {
         async zengyangqueding(){
             if(!this.tudiID || this.tudiID == '') return Toast('请先选择土地')
             if(!this.zengyangshuliang || this.zengyangshuliang == '') return Toast('请输入增养数量')
-            store.commit('setLoading', true)
+            // store.commit('setLoading', true)
             let res = await $ajax('houseadd_chick', {
                 house_id: this.tudiID,
                 num: this.zengyangshuliang
             })
             if (!res) return false
-            store.commit('setLoading', false)
+            // store.commit('setLoading', false)
             // console.log(res)
             this.tishixingxi = res.msg;
             this.tishikuang = true;
@@ -2356,12 +2591,14 @@ export default {
         },
         //增养小鸡 框
         async zengyanghandle(){
+
             if(!this.tudiID || this.tudiID == '') return Toast('请先选择土地')
             this.zengyangkuang = true;
             
         },
         //选择土地 
         async houseadd_chick(id, type, num, sort, no_fence_chick_num){
+            console.log('id', id);
             if(this.fangda){
                 this.fangda = false
                 this.tudiID = ""; //土地id 清空
@@ -2389,6 +2626,7 @@ export default {
             console.log(res)
             this.tishixingxi = res.msg
             this.tishikuang = true
+            this.tudiID = ''
             this.houseIndex();
         },
         //开鸡舍
@@ -2558,11 +2796,7 @@ export default {
             if (!this.newmobile) return Toast( '请输入手机号')
             let res = await $ajax('sendVerifycode',{
                 mobile: this.newmobile,
-<<<<<<< HEAD
                  "type": "forget" //短信验证码类型：register，forget
-=======
-                 "type": "register" //短信验证码类型：register，forget
->>>>>>> cab3df7d364403fce4c314ae131157eb21d6aae8
             })
             if (!res) return false
             Toast(res.msg)
@@ -2604,7 +2838,14 @@ export default {
             this.genghuan = true;
         },
         gerenxinxi(){
-            this.gerenxinxikuang = true;
+            // this.gerenxinxikuang = true;
+            if(this.user_id_other){
+                // this.userIdshow = true;
+                this.gerenxinxikuang = false;
+                
+            }else{
+                this.gerenxinxikuang = true;
+            }
         },
         fanhuimima(){
             this.zhifukuang = false;
@@ -2633,9 +2874,18 @@ export default {
             this.jishexiangqingkuang = false;
             this.nechenggenghuan = false;
             this.jishexiangqingkuang = false;
+            clearInterval(this.timer)
+            clearInterval(this.timer1)
+            clearInterval(this.timer2)
+            this.timeAndTextOfSendcode = '发送验证码'
         },
         
 
+    },
+    destroyed() {
+        clearInterval(this.timer)
+        clearInterval(this.timer1)
+        clearInterval(this.timer2)
     },
 }
 </script>
@@ -2766,6 +3016,7 @@ export default {
                 position: absolute;
                 left: 10%;
                 top: 45%;
+                z-index:1;
                 >img:first-child{
                     width: 50vw;
                 }
@@ -2856,21 +3107,23 @@ export default {
 
                     }
                     width: 50vw;
-                    height: 45vw;
+                    height: 47vw;
                     position: absolute;
                     top: -46vw;
                     left: 8vw;
                     z-index: 15;
-                    background: url(/static/img/qipao.d44677b.png);
+                    background: url(../../assets/images/nongchang/yangzhi/qipao.png);
                     background-size: 100% 100%;
                     padding: 2vw 2vw;
                     box-sizing: border-box;
+                    font-size: 3vw;
                 }
             }
             >.twodi{
                 position: absolute;
                 left: 2%;
                 top: 60%;
+                z-index: 1;
                 >img:first-child{
                     width: 50vw;
                     // position: absolute;
@@ -2970,12 +3223,12 @@ export default {
 
                     }
                     width: 50vw;
-                    height: 45vw;
+                    height: 47vw;
                     position: absolute;
                     top: -46vw;
                     left: 8vw;
                     z-index: 15;
-                    background: url(/static/img/qipao.d44677b.png);
+                    background: url(../../assets/images/nongchang/yangzhi/qipao.png);
                     background-size: 100% 100%;
                     padding: 2vw 2vw;
                     box-sizing: border-box;
@@ -2985,7 +3238,7 @@ export default {
                 position: absolute;
                 left: 30%;
                 top: 50%;
-                z-index:10;
+                z-index:11;
                 >img:first-child{
                     width: 50vw;
                     // position: absolute;
@@ -3051,12 +3304,12 @@ export default {
 
                         }
                         width: 50vw;
-                        height: 45vw;
+                        height: 47vw;
                         position: absolute;
                         top: -46vw;
                         left: 8vw;
                         z-index: 15;
-                        background: url(/static/img/qipao.d44677b.png);
+                        background: url(../../assets/images/nongchang/yangzhi/qipao.png);
                         background-size: 100% 100%;
                         padding: 2vw 2vw;
                         box-sizing: border-box;
@@ -3105,12 +3358,12 @@ export default {
 
                     }
                     width: 50vw;
-                    height: 45vw;
+                    height: 47vw;
                     position: absolute;
                     top: -46vw;
                     left: 8vw;
                     z-index: 15;
-                    background: url(/static/img/qipao.d44677b.png);
+                    background: url(../../assets/images/nongchang/yangzhi/qipao.png);
                     background-size: 100% 100%;
                     padding: 2vw 2vw;
                     box-sizing: border-box;
@@ -3120,6 +3373,7 @@ export default {
                 position: absolute;
                 left: 24%;
                 top: 66%;
+                z-index: 13;
                 >img:first-child{
                     width: 50vw;
                     // position: absolute;
@@ -3219,12 +3473,12 @@ export default {
 
                     }
                     width: 50vw;
-                    height: 45vw;
+                    height: 47vw;
                     position: absolute;
                     top: -46vw;
                     left: 8vw;
                     z-index: 15;
-                    background: url(/static/img/qipao.d44677b.png);
+                    background: url(../../assets/images/nongchang/yangzhi/qipao.png);
                     background-size: 100% 100%;
                     padding: 2vw 2vw;
                     box-sizing: border-box;
@@ -3234,6 +3488,7 @@ export default {
                 position: absolute;
                 left: 8%;
                 top: 80%;
+                z-index: 15;
                 >img:first-child{
                     width: 50vw;
                     // position: absolute;
@@ -3333,12 +3588,12 @@ export default {
 
                     }
                     width: 50vw;
-                    height: 45vw;
+                    height: 47vw;
                     position: absolute;
                     top: -46vw;
                     left: 8vw;
                     z-index: 15;
-                    background: url(/static/img/qipao.d44677b.png);
+                    background: url(../../assets/images/nongchang/yangzhi/qipao.png);
                     background-size: 100% 100%;
                     padding: 2vw 2vw;
                     box-sizing: border-box;
@@ -3348,7 +3603,7 @@ export default {
                 position: absolute;
                 left: 50%;
                 top: 58%;
-                z-index:10;
+                z-index:11;
                 >img:first-child{
                     width: 50vw;
                     // position: absolute;
@@ -3448,12 +3703,12 @@ export default {
 
                     }
                     width: 50vw;
-                    height: 45vw;
+                    height: 47vw;
                     position: absolute;
                     top: -46vw;
                     left: 8vw;
                     z-index: 15;
-                    background: url(/static/img/qipao.d44677b.png);
+                    background: url(../../assets/images/nongchang/yangzhi/qipao.png);
                     background-size: 100% 100%;
                     padding: 2vw 2vw;
                     box-sizing: border-box;
@@ -3463,6 +3718,7 @@ export default {
                 position: absolute;
                 left: 44%;
                 top: 73%;
+                z-index: 12;
                 >img:first-child{
                     width: 50vw;
                     // position: absolute;
@@ -3562,12 +3818,12 @@ export default {
 
                     }
                     width: 50vw;
-                    height: 45vw;
+                    height: 47vw;
                     position: absolute;
                     top: -46vw;
                     left: 8vw;
                     z-index: 15;
-                    background: url(/static/img/qipao.d44677b.png);
+                    background: url(../../assets/images/nongchang/yangzhi/qipao.png);
                     background-size: 100% 100%;
                     padding: 2vw 2vw;
                     box-sizing: border-box;
@@ -3577,6 +3833,7 @@ export default {
                 position: absolute;
                 left: 28%;
                 top: 86%;
+                z-index: 13;
                 >img:first-child{
                     width: 50vw;
                     // position: absolute;
@@ -3676,12 +3933,12 @@ export default {
 
                     }
                     width: 50vw;
-                    height: 45vw;
+                    height: 47vw;
                     position: absolute;
                     top: -46vw;
                     left: 8vw;
                     z-index: 15;
-                    background: url(/static/img/qipao.d44677b.png);
+                    background: url(../../assets/images/nongchang/yangzhi/qipao.png);
                     background-size: 100% 100%;
                     padding: 2vw 2vw;
                     box-sizing: border-box;
@@ -3691,6 +3948,7 @@ export default {
                 position: absolute;
                 left: 70%;
                 top: 65%;
+                z-index: 1;
                 >img:first-child{
                     width: 50vw;
                     // position: absolute;
@@ -3790,12 +4048,12 @@ export default {
 
                     }
                     width: 50vw;
-                    height: 45vw;
+                    height: 47vw;
                     position: absolute;
                     top: -46vw;
                     left: 8vw;
                     z-index: 15;
-                    background: url(/static/img/qipao.d44677b.png);
+                    background: url(../../assets/images/nongchang/yangzhi/qipao.png);
                     background-size: 100% 100%;
                     padding: 2vw 2vw;
                     box-sizing: border-box;
@@ -3805,6 +4063,7 @@ export default {
                 position: absolute;
                 left: 64%;
                 top: 81%;
+                z-index: 11;
                 >img:first-child{
                     width: 50vw;
                     // position: absolute;
@@ -3904,12 +4163,12 @@ export default {
 
                     }
                     width: 50vw;
-                    height: 45vw;
+                    height: 47vw;
                     position: absolute;
                     top: -46vw;
                     left: 8vw;
                     z-index: 15;
-                    background: url(/static/img/qipao.d44677b.png);
+                    background: url(../../assets/images/nongchang/yangzhi/qipao.png);
                     background-size: 100% 100%;
                     padding: 2vw 2vw;
                     box-sizing: border-box;
@@ -4041,12 +4300,12 @@ export default {
 
                     }
                     width: 50vw;
-                    height: 45vw;
+                    height: 47vw;
                     position: absolute;
                     top: -46vw;
                     left: 8vw;
                     z-index: 15;
-                    background: url(/static/img/qipao.d44677b.png);
+                    background: url(../../assets/images/nongchang/yangzhi/qipao.png);
                     background-size: 100% 100%;
                     padding: 2vw 2vw;
                     box-sizing: border-box;
@@ -4148,12 +4407,12 @@ export default {
 
                     }
                     width: 50vw;
-                    height: 45vw;
+                    height: 47vw;
                     position: absolute;
                     top: -46vw;
                     left: 8vw;
                     z-index: 15;
-                    background: url(/static/img/qipao.d44677b.png);
+                    background: url(../../assets/images/nongchang/yangzhi/qipao.png);
                     background-size: 100% 100%;
                     padding: 2vw 2vw;
                     box-sizing: border-box;
@@ -4339,12 +4598,12 @@ export default {
 
                     }
                     width: 50vw;
-                    height: 45vw;
+                    height: 47vw;
                     position: absolute;
                     top: -46vw;
                     left: 8vw;
                     z-index: 15;
-                    background: url(/static/img/qipao.d44677b.png);
+                    background: url(../../assets/images/nongchang/yangzhi/qipao.png);
                     background-size: 100% 100%;
                     padding: 2vw 2vw;
                     box-sizing: border-box;
@@ -4444,12 +4703,12 @@ export default {
 
                     }
                     width: 50vw;
-                    height: 45vw;
+                    height: 47vw;
                     position: absolute;
                     top: -46vw;
                     left: 8vw;
                     z-index: 15;
-                    background: url(/static/img/qipao.d44677b.png);
+                    background: url(../../assets/images/nongchang/yangzhi/qipao.png);
                     background-size: 100% 100%;
                     padding: 2vw 2vw;
                     box-sizing: border-box;
@@ -5058,6 +5317,21 @@ export default {
                             width: 50vw;
                             height: 50vw;
                         }
+                        span:last-child{
+                            font-size: 3vw;
+                            line-height: 8vw;
+                            -webkit-box-sizing: border-box;
+                            box-sizing: border-box;
+                            background: #FFE19D;
+                            border-radius: 1vw;
+                            color: #955942;
+                            border: 1vw solid #FEF2C2;
+                            border-radius: 2vw;
+                            height: 10vw;
+                            width: 17vw;
+                            text-align: center;
+
+                        }
                     }
                     
                     
@@ -5508,6 +5782,33 @@ export default {
                             border: 0.5vw solid #EDC782;
                             border-radius: 2vw;
                             font-size: 3vw;
+                        }
+                    }
+                    .gmkshuliang{
+                        // margin-top: 3vw;
+                        input{
+                            background: #EDC782;
+                            border-radius: 1vw;
+                            padding: 1vw 1vw;
+                            width: 40vw;
+                            color:#955942;
+                            font-size: 12px;
+                            margin-left: 1vw;
+                        }
+                        span:last-child{
+                            font-size: 3vw;
+                            line-height: 8vw;
+                            -webkit-box-sizing: border-box;
+                            box-sizing: border-box;
+                            background: #FFE19D;
+                            border-radius: 1vw;
+                            color: #955942;
+                            border: 1vw solid #FEF2C2;
+                            border-radius: 2vw;
+                            height: 10vw;
+                            width: 17vw;
+                            text-align: center;
+
                         }
                     }
 

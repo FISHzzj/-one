@@ -1,5 +1,5 @@
 <template>
-  <teleport to="#back">
+  <!-- <teleport to="#back"> -->
     <div
       class="loaderbg"
       :style="{backgroundColor:background || ''}"
@@ -12,7 +12,7 @@
         <!-- <p v-if="text" class="text-primary small">{{text}}</p> -->
       </div>
     </div>
-  </teleport>
+  <!-- </teleport> -->
 </template>
 <script>
 
@@ -27,25 +27,27 @@ export default {
     }
   },
   data(){
-    node:null
+    return {
+      node: null
+    }
   },
   mounted() {
-    this.node = document.createElement('div')
-    this.node.id = 'back'
-    document.body.appendChild(this.node)
+    // this.node = document.createElement('div')
+    // this.node.id = 'back'
+    // document.body.appendChild(this.node)
   },
   destroyed() {
-    document.body.removeChild(this.node)
+    // document.body.removeChild(this.node)
   }
 }
 </script>
 <style scoped>
 .loaderbg{
-  width: 100%;
-  height: 100%;
+  width: 100%!important;
+  height: 100%!important;
   /* background: rgba(255, 255, 255, 0.5); */
   z-index: 500;
-  position: fixed;
+  position: fixed!important;
 }
 .loading-content{
     /* background: rgba(255, 255, 255, 0.5); */

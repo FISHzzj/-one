@@ -1,24 +1,28 @@
 <template>
     <div id="app">
             <transition :name="names">
-                <keep-alive include="products">
+                <keep-alive exclude="index,yangzhi">
                     <router-view/>
                 </keep-alive>
             </transition>
             <!-- 背景音乐 -->
             <audio :src="MP3_bg" loop ref="MusicPlay" preload="preload"  controls="controls" style="display:none;"></audio>
             <audio :src="MP3_click" ref="MusicClick" preload="preload"  controls="controls" style="display:none;"></audio>
-            <loader v-if="isLoading" text="拼命加载中" background="rgba(0,0,0,0.8)"></loader>
+            <Loader v-if="isLoading" text="拼命加载中" background="rgba(0,0,0,0.2)"></Loader>
     </div>
 </template>
 
 <script>
 import {mapState, mapGetters, mapMutations, mapActions} from 'vuex'
 import Test from './components/test.vue'
-import loader from '../src/element/common/Loader.vue'
+import Loader from './element/common/Loader.vue'
 import store from './store/index'
 export default {
     name: 'App',
+    components:{
+        Test,
+        Loader
+    },
     watch: {
         $route (to, from){
             // 小于 则为 返回原页面， 大于 则为 进入新页面
@@ -50,12 +54,16 @@ export default {
     mounted() {
         console.log('state.golbal.isLoading', store.state.golbal.loading)
         console.log(2222222)
-        this.$refs.MusicPlay.play()
+        let openPlay = localStorage.getItem('openMusic') || ''
+        console.log(openPlay)
+        if(openPlay == 1 || openPlay == ''){
+            this.$refs.MusicPlay.play()
+        }else {
+            this.$refs.MusicPlay.pause()
+        }
+        
     },
-    components : {
-        Test,
-        loader
-    },
+    
 }
 </script>
 

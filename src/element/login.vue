@@ -7,12 +7,15 @@
         <div class="content" v-if="loginShow">
 
             <div class="phone" >
-                <input  v-model="inputMsg.mobile" placeholder="请输入手机号">
+                <input type="type"  v-model="inputMsg.mobile" placeholder="请输入手机号">
             </div>
             <div class="pwd">
-                <input type="text" v-model="inputMsg.pwd" placeholder="请输入密码8-20位字母或数字">
+                <input type="password" v-model="inputMsg.pwd" placeholder="请输入密码8-20位字母或数字">
             </div>
-
+            <!-- <div class="code flex ali_center">
+                <input v-model="inputMsg.code" type="text" :placeholder="codetext">
+                <span @click="senVerifyCode()">{{timeAndTextOfSendcode}}</span>
+            </div> -->
              <div class="footer">
                  <div class="top flex flex_between">
                     <span @click="forget">忘记密码</span>
@@ -60,10 +63,40 @@ export default {
             inputMsg: {
 				mobile: '',
 				pwd: '',
+                code: '',
 			},
+            codetext:'请输入验证码',
+            timeAndTextOfSendcode:"发送验证码",
         }
     },
+    created() {
+        this.inputMsg.mobile = localStorage.getItem('mobile') || ''
+        this.inputMsg.pwd = localStorage.getItem('pwd') || ''
+    },
     methods:{
+        timing () {
+            this.timer = setInterval( () => {
+                this.timeAndTextOfSendcode--
+                if (this.timeAndTextOfSendcode <= 0) {
+                    clearInterval(this.timer)
+                    this.timeAndTextOfSendcode = '发送验证码'
+                }
+            }, 1000)
+        },
+        // 发送验证码
+        async senVerifyCode () {
+            // let { register } = this.$i18n
+            if ( this.timeAndTextOfSendcode !== '发送验证码') return false
+            if (!this.inputMsg.mobile) return Toast( '请输入手机号')
+            let res = await $ajax('sendVerifycode',{
+                mobile: this.inputMsg.mobile,
+                "type": "login" //短信验证码类型：register，forget,login
+            })
+            if (!res) return false
+            Toast(res.msg)
+            this.timeAndTextOfSendcode = 60
+            this.timing() //執行倒計時
+        },
         async login(e) {
             // console.log(e);
             // if (this.flag) { //登录接口
@@ -84,6 +117,7 @@ export default {
                         duration: 1000,
                     })
                 }
+                // if (!this.inputMsg.code) return Toast( '请输入短信验证码')
                 // 進行登錄 提示
                 const toast = Toast.loading({
                     message: '登入中...',
@@ -95,7 +129,8 @@ export default {
                 // 發送 ajax
                 let res = await $ajax('login',{
                     mobile,
-                    pwd
+                    pwd,
+                    // sms_code: this.inputMsg.code,
                 }, () => {
                     toast.clear()
                 })
@@ -104,6 +139,7 @@ export default {
                 console.log(res)
                 // 保存 openid 以及 ip 到本地
                 localStorage.setItem('openid', res.openid)
+                localStorage.setItem('pwd', pwd)
                 // localStorage.setItem('ip', res.ip)
                 localStorage.setItem('mobile', mobile)
                 this.$router.push({
@@ -158,7 +194,7 @@ export default {
         left: 50%;
         transform: translate(-50%, -70%);
         width: 85%;
-        height: 85vw;
+        height: 110vw;
         // background: #F0E3AE;
         // padding: 5vw 5vw;
         background-image: url(../assets/images/nongchang/denglv/denglv.png);
@@ -184,7 +220,7 @@ export default {
             // border: 1vw solid #FEF2C2;
             border-radius: 2vw;
             position: absolute;
-            top: 41%;
+            top: 42%;
             left: 13%;
             
             span{
@@ -215,7 +251,7 @@ export default {
             // border: 1vw solid #FEF2C2;
             border-radius: 2vw;
             position: absolute;
-            top: 64%;
+            top: 65%;
             left: 13%;
             span{
                 white-space:nowrap;
@@ -251,6 +287,50 @@ export default {
                 background: rgba(255,255,255,0);
             }
         }
+        .code{
+            // margin-top: 2.4vw;
+            width: 100%;
+            height: 9vw;
+            // border-radius: 6vw;
+            // background: #D6C695;
+            position: absolute;
+            top: 72%;
+            left: 13%;
+            
+            
+            
+            div{
+                background: #D6C695;
+                width: 70%;
+                padding: 0 1vw;
+                border: 1vw solid #FEF2C2;
+                border-radius: 2vw;
+            }
+            span{
+                white-space: nowrap;
+            }
+            span:last-child{
+                font-size: 3vw;
+                line-height: 5vw;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+                background: #FFE19D;
+                border-radius: 1vw;
+                color: #955942;
+                border: 1vw solid #FEF2C2;
+                border-radius: 2vw;
+                height: 7vw;
+
+                
+            }
+            input {
+                text-indent: 3vw;
+                height: 9vw;
+                font-size: 3.5vw;
+                width: 52%;
+                opacity: 0.5;
+            }
+        }
         .footer {
             // position: fixed;
             // bottom: 0;
@@ -259,7 +339,7 @@ export default {
             padding: 4vw 0; 
             // font-weight: 900;
             position: absolute;
-            top: 78%;
+            top: 82%;
             left: 13%;
             color: #fff;
             

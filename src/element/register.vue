@@ -67,7 +67,7 @@ export default {
 
     },
     mounted(){
-        this.spreadtext = this.$route.params.spreadtext
+        this.spreadtext = this.$route.query.spreadtext
         console.log(this.spreadtext)
     },
     methods:{

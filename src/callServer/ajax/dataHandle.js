@@ -12,7 +12,7 @@ function mistake (data) {
     if (parseInt(data.code) !== 1) {
         if(parseInt(data.code) == 12){
             localStorage.removeItem('openid')
-            localStorage.removeItem('mobile')
+            // localStorage.removeItem('mobile')
             location.reload();
         }
         Dialog.alert({
@@ -1255,6 +1255,13 @@ export default {
             list
         }
     },
+    trade_buylists(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
     trademine(data){
         if ( mistake(data) ) return false
         let {list} = data
@@ -1270,6 +1277,20 @@ export default {
         }
     },
     tradebuy(data){
+        if ( mistake(data) ) return false
+        return {
+            // sn: data.sn,
+            msg: data.msg
+        }
+    },
+    trade_buybuy(data){
+        if ( mistake(data) ) return false
+        return {
+            // sn: data.sn,
+            msg: data.msg
+        }
+    },
+    trade_buysell(data){
         if ( mistake(data) ) return false
         return {
             // sn: data.sn,
@@ -1388,10 +1409,11 @@ export default {
     },
     balancerecharge(data){
         if ( mistake(data) ) return false
-        let {contractAddr, toaddress} = data
+        let {contractAddr, toaddress, kiwi_to_integral} = data
         return {
             contractAddr,
-            toaddress
+            toaddress,
+            kiwi_to_integral
         }
     },
     balancewithdraw(data){
@@ -1509,10 +1531,66 @@ export default {
             msg: data.msg
         }
     },
+    balancerecharge_submit_new(data){
+        if ( mistake(data) ) return false 
+        return {
+            msg: data.msg
+        }
+    },
     useredit_nick_name(data){
         if ( mistake(data) ) return false 
         return {
             msg: data.msg
         }
-    }
+    },
+    so_sendbind(data){
+        if ( mistake(data) ) return false 
+        return {
+            msg: data
+        }
+    },
+    logtransfer_credit(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    noticeindex(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    noticeinfo(data){
+        if ( mistake(data) ) return false
+        let {id, title, content, create_time } = data.msg
+        return {
+            id, 
+            title, 
+            content, 
+            create_time
+        }
+    },
+    indexpk(data){
+        if ( mistake(data) ) return false
+        let {list} = data
+        return {
+            list
+        }
+    },
+    feedbackcategory(data){
+        if ( mistake(data) ) return false
+        let {category} = data
+        return {
+            categorylist:category
+        }
+    },
+    feedbacksubmit(data){
+        if ( mistake(data) ) return false 
+        return {
+            msg: data.msg
+        }
+    },
 }

@@ -11,7 +11,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
         '/apis': {
-          target: 'http://kiwigame.finance',
+          target: 'http://adm.kiwigame.finance',
           changeOrigin: true,
           logLevel: 'debug',
           headers: {
@@ -19,6 +19,14 @@ module.exports = {
           },
           pathRewrite: {
             '^/apis': '/'
+          }
+        },
+        '/socket.io': {
+          target: 'ws://kiwigame.finance:8282', // target host
+          changeOrigin: true, // needed for virtual hosted sites
+          logLevel: 'debug',
+          pathRewrite: {
+            '^/socket.io': '/'
           }
         }
     },

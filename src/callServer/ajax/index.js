@@ -2,6 +2,7 @@
 import axios from 'axios'
 import apiConfig from '../config'
 import store from '../../store/index'
+import md5 from 'js-md5';
 
 axios.defaults.baseURL = apiConfig.baseURL //默認全局域名
 
@@ -10,16 +11,16 @@ import api from './api.js'
 // 引入 后端 处理 模块
 import dataHandle from './dataHandle.js'
 
-// axios.interceptors.request.use((config) => {
-//     console.log(222222)
-//     store.commit('setLoading', true)
-//     return config
-// })
-// axios.interceptors.response.use((config) => {
-//     console.log(4444444444)
-//     store.commit('setLoading', false)
-//     return config
-// })
+axios.interceptors.request.use((config) => {
+    // console.log(222222)
+    store.commit('setLoading', true)
+    return config
+})
+axios.interceptors.response.use((config) => {
+    // console.log(4444444444)
+    store.commit('setLoading', false)
+    return config
+})
 
 /**
  * 后端 交互 模块
@@ -33,17 +34,18 @@ export default function (port, data = {}, errCallback) {
     if (!data) return console.warn('沒有傳遞 data 參數, 作爲請求的數據')
     // 將 數據 轉換 爲 後端 可 處理的 表單格式
     let formData = new FormData()
+    formData.append('timestamp', new Date().getTime())
     Object.keys(data).forEach( key => {
         formData.append(key, data[key])
     })
+    let newString = md5(JSON.stringify(formData) + 'u5927u50bbu903c')
     
-    // formData.append('token', localStorage.getItem('openid'))
     // 返回 promise 實例
     return new Promise ( resolve => {
         axios.post(api[port], formData, {
             headers: {
                 'token': localStorage.getItem('openid'),
-                
+                'sig': newString
             }
         })
         .then( res => {
@@ -74,7 +76,7 @@ function deviceIpLimit (ip) {
     if (localStorage.getItem('ip') && localStorage.getItem('ip') !== ip) {
         localStorage.removeItem('ip')
         localStorage.removeItem('openid')
-        localStorage.removeItem('mobile')
+        // localStorage.removeItem('mobile')
         window.location.reload()
     }
 }
